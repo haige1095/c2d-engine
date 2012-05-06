@@ -1,0 +1,297 @@
+
+cb21.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+bg
+  rotate: false
+  xy: 0, 0
+  size: 1000, 480
+  orig: 1000, 480
+  offset: 0, 0
+  index: -1
+cloud
+  rotate: false
+  xy: 0, 482
+  size: 1000, 323
+  orig: 1000, 323
+  offset: 0, 0
+  index: -1
+fg
+  rotate: false
+  xy: 0, 807
+  size: 900, 120
+  orig: 900, 120
+  offset: 0, 0
+  index: -1
+stone
+  rotate: false
+  xy: 0, 929
+  size: 436, 38
+  orig: 436, 38
+  offset: 0, 0
+  index: -1
+platform
+  rotate: false
+  xy: 0, 969
+  size: 436, 38
+  orig: 436, 38
+  offset: 0, 0
+  index: -1
+pause
+  rotate: false
+  xy: 438, 929
+  size: 182, 72
+  orig: 182, 72
+  offset: 0, 0
+  index: -1
+box
+  rotate: false
+  xy: 622, 929
+  size: 100, 70
+  orig: 100, 70
+  offset: 0, 0
+  index: -1
+restart
+  rotate: false
+  xy: 724, 929
+  size: 72, 72
+  orig: 72, 72
+  offset: 0, 0
+  index: -1
+pet
+  rotate: false
+  xy: 798, 929
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+main
+  rotate: false
+  xy: 902, 807
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+level
+  rotate: false
+  xy: 902, 873
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+anim5
+  rotate: false
+  xy: 902, 939
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+x-block
+  rotate: false
+  xy: 438, 1003
+  size: 128, 16
+  orig: 128, 16
+  offset: 0, 0
+  index: -1
+arrow
+  rotate: false
+  xy: 864, 929
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+dot
+  rotate: false
+  xy: 1002, 0
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+level-bg
+  rotate: false
+  xy: 1020, 0
+  size: 4, 4
+  orig: 4, 4
+  offset: 0, 0
+  index: -1
+
+cb22.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+rbg
+  rotate: false
+  xy: 0, 0
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: -1
+dock
+  rotate: false
+  xy: 0, 514
+  size: 512, 32
+  orig: 512, 32
+  offset: 0, 0
+  index: -1
+tree1
+  rotate: false
+  xy: 514, 0
+  size: 256, 512
+  orig: 256, 512
+  offset: 0, 0
+  index: -1
+fengche1-wheel
+  rotate: false
+  xy: 0, 548
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+control
+  rotate: false
+  xy: 514, 514
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+fengche1-base
+  rotate: false
+  xy: 772, 0
+  size: 200, 256
+  orig: 200, 256
+  offset: 0, 0
+  index: -1
+wheel
+  rotate: false
+  xy: 772, 258
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+bock-red
+  rotate: false
+  xy: 0, 806
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+block
+  rotate: false
+  xy: 258, 548
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+block-yellow
+  rotate: false
+  xy: 258, 678
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+block-red
+  rotate: false
+  xy: 258, 808
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+block-gray
+  rotate: false
+  xy: 772, 514
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+block-blue
+  rotate: false
+  xy: 514, 772
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+x-block-yellow
+  rotate: false
+  xy: 772, 388
+  size: 128, 16
+  orig: 128, 16
+  offset: 0, 0
+  index: -1
+x-block-red
+  rotate: false
+  xy: 772, 406
+  size: 128, 16
+  orig: 128, 16
+  offset: 0, 0
+  index: -1
+x-block-blue
+  rotate: false
+  xy: 772, 424
+  size: 128, 16
+  orig: 128, 16
+  offset: 0, 0
+  index: -1
+anim4
+  rotate: false
+  xy: 902, 258
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+anim3
+  rotate: false
+  xy: 772, 442
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+anim2
+  rotate: false
+  xy: 902, 388
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+anim1
+  rotate: false
+  xy: 0, 936
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+xanim5
+  rotate: false
+  xy: 902, 324
+  size: 64, 32
+  orig: 64, 32
+  offset: 0, 0
+  index: -1
+xanim4
+  rotate: false
+  xy: 902, 454
+  size: 64, 32
+  orig: 64, 32
+  offset: 0, 0
+  index: -1
+xanim3
+  rotate: false
+  xy: 130, 806
+  size: 64, 32
+  orig: 64, 32
+  offset: 0, 0
+  index: -1
+xanim2
+  rotate: false
+  xy: 130, 840
+  size: 64, 32
+  orig: 64, 32
+  offset: 0, 0
+  index: -1
+xanim1
+  rotate: false
+  xy: 130, 874
+  size: 64, 32
+  orig: 64, 32
+  offset: 0, 0
+  index: -1

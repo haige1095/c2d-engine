@@ -1,0 +1,61 @@
+{
+layers: [
+	{
+		layer: {
+			region:bg,
+			parallaxRatioX: 0,
+			parallaxRatioY: 0,
+			startPositionX: 0,
+			startPositionY: 0,
+			paddingX: 0,
+			paddingY: 1000,
+			loopX:-1,
+			loopY:-1
+		}
+	},
+	{
+		layer: {
+			region:cloud,
+			parallaxRatioX: 0.5,
+			parallaxRatioY: 0.2,
+			startPositionX: 0,
+			startPositionY: 250,
+			paddingX: 0,
+			paddingY: 2000,
+			loopX:-1,
+			loopY:-1
+		}
+	},
+	{
+		layer: {
+			region:tree1,
+			parallaxRatioX: 0.2,
+			parallaxRatioY: 0.5,
+			startPositionX: 0,
+			startPositionY: 0,
+			paddingX: 1000,
+			paddingY: 1000,
+			loopX:1,
+			loopY:-1
+		}
+	},
+	{
+		layer: {
+			region:fg,
+			parallaxRatioX: 1,
+			parallaxRatioY: 1,
+			startPositionX: 0,
+			startPositionY: 0,
+			paddingX: 0,
+			paddingY: 1000,
+			loopX:-1,
+			loopY:-1
+		}
+	}
+],
+name: first-map,
+width:800,
+height:480,
+speedX:30,
+speedY:100
+}
