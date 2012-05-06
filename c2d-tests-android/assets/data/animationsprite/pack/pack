@@ -1,0 +1,75 @@
+
+x1.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+parrot0009
+  rotate: false
+  xy: 2, 2
+  size: 120, 120
+  orig: 120, 120
+  offset: 0, 0
+  index: -1
+parrot0008
+  rotate: false
+  xy: 124, 2
+  size: 120, 120
+  orig: 120, 120
+  offset: 0, 0
+  index: -1
+parrot0007
+  rotate: false
+  xy: 2, 124
+  size: 120, 120
+  orig: 120, 120
+  offset: 0, 0
+  index: -1
+parrot0006
+  rotate: false
+  xy: 124, 124
+  size: 120, 120
+  orig: 120, 120
+  offset: 0, 0
+  index: -1
+parrot0005
+  rotate: false
+  xy: 2, 246
+  size: 120, 120
+  orig: 120, 120
+  offset: 0, 0
+  index: -1
+parrot0004
+  rotate: false
+  xy: 124, 246
+  size: 120, 120
+  orig: 120, 120
+  offset: 0, 0
+  index: -1
+parrot0003
+  rotate: false
+  xy: 2, 368
+  size: 120, 120
+  orig: 120, 120
+  offset: 0, 0
+  index: -1
+parrot0002
+  rotate: false
+  xy: 124, 368
+  size: 120, 120
+  orig: 120, 120
+  offset: 0, 0
+  index: -1
+parrot0001
+  rotate: false
+  xy: 2, 490
+  size: 120, 120
+  orig: 120, 120
+  offset: 0, 0
+  index: -1
+parrot0010
+  rotate: false
+  xy: 2, 490
+  size: 120, 120
+  orig: 120, 120
+  offset: 0, 0
+  index: -1
