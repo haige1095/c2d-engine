@@ -13,11 +13,11 @@ svn checkout http://libgdx.googlecode.com/svn/trunk/ libgdx-read-only
 svn checkout http://c2d-engine.googlecode.com/svn/trunk/ c2d-engine-read-only
 </code>
 
-http://c2d-engine.googlecode.com/svn/wiki/img/setup-project-import-projects.png
 = import the projects(Eclipse)=
 
  # select File->Impor->Existing Projects into Workspace  
  # import below projects as you need
+http://c2d-engine.googlecode.com/svn/wiki/img/setup-project-import-projects.png
 
  = setup a new project =
 TODO
