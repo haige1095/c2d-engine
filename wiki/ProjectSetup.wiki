@@ -1,0 +1,24 @@
+= The concept  =
+
+Currently no jar file is supplied , So You need the source code of libgdx and c2d , all begin from the sources .
+
+= checkout the code =
+
+ # check out the latest libgdx  source code: 
+<code language="xml">
+svn checkout http://libgdx.googlecode.com/svn/trunk/ libgdx-read-only
+</code>
+ # check out the latest c2d  source code: 
+<code language="xml">
+svn checkout http://c2d-engine.googlecode.com/svn/trunk/ c2d-engine-read-only
+</code>
+
+http://c2d-engine.googlecode.com/svn/wiki/img/setup-project-import-projects.png
+= import the projects(Eclipse)=
+
+ # select File->Impor->Existing Projects into Workspace  
+ # import below projects as you need
+
+ = setup a new project =
+TODO
+ 
