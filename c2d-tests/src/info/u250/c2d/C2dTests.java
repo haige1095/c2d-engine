@@ -33,6 +33,8 @@ import info.u250.c2d.tests.ParallaxGroupCustomDrawableTest;
 import info.u250.c2d.tests.ParallaxGroupEventsTest;
 import info.u250.c2d.tests.ParallaxGroupGestureDetectorTest;
 import info.u250.c2d.tests.RepeatTextureBackgroundTest;
+import info.u250.c2d.tests.SimpleMeshBackgroundTest;
+import info.u250.c2d.tests.SurfaceTest;
 import info.u250.c2d.tests.SvgTest;
 import info.u250.c2d.tests.ThumbpadTest;
 import info.u250.c2d.tests.TransitionSceneTest;
@@ -45,6 +47,8 @@ import java.util.List;
 public class C2dTests {
 	
 	public static final Class[] tests = {
+		SimpleMeshBackgroundTest.class,
+		SurfaceTest.class,
 		Box2d_OutlineTest.class,
 		FollowableParticle.class,
 		Nehe23_SphereMapping.class,
