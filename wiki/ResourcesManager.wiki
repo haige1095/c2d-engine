@@ -15,9 +15,10 @@ Before you can use the resources , you must give a alias of it inside method:
 public void onResourcesRegister(AliasResourceManager<String> reg) {
 }
 }}}
+==Use the resources===
 If you want use the resources . You can use the method 
 {{{
-Engine.get("TheKey")
+Engine. resource("TheKey")
 }}}
 Or give a type to cast 
 {{{
@@ -126,4 +127,24 @@ the alias
 		reg.sound("Blosics_normal_17", "data/blosics/sound/kulki_multi_02.wav");
 		reg.sound("Blosics_normal_18", "data/blosics/sound/kulki_multi_03.wav");
 }
+}}}
+
+
+=in game loading=
+You may want unload some resource or just replace it .  See the exmaple :
+
+https://code.google.com/p/c2d-engine/source/browse/trunk/c2d-tests/src/info/u250/c2d/tests/IngameLoadingTest.java
+
+The important method is *Engine.load(*
+{{{
+final InputProcessor preInputProcess = Gdx.input.getInputProcessor();
+Gdx.input.setInputProcessor(null);
+Engine.load(new String[]{"data/"},new LoadingComplete() {
+       @Override
+        public void onReady(AliasResourceManager<String> reg) {
+                           reg.unload("AAA");
+                           reg.texture("AAA", "data/textures/default.png");
+                           Gdx.input.setInputProcessor(preInputProcess);
+                }
+        });
 }}}
