@@ -7,7 +7,7 @@ The placement of  the resources .
  * *Sound* must be endwith "ogg","wav","mp3",you must put the sounds at "sound" or "sounds" folder, such as "data/sounds/abc.ogg" or "data/help/sound/buttonClick.wav" 
  * *Texture* must be endwith "jpg","png","bmp", such as "data/textures/aaa.png","data/haha.jpg"
  * *TextureAtlas* must be named "pack" and the texture file must at the same folder of “pack" , such as "data/pack"
- * "Skin" endwith "json" and the path contains "skin" , such as "data/sk/uiskin.json"
+ * *Skin* endwith "json" and the path contains "skin" , such as "data/sk/uiskin.json"
 
 = Alias =
 Before you can use the resources , you must give a alias of it inside method:
