@@ -1,8 +1,8 @@
 package info.u250.c2d.engine;
 
 import info.u250.c2d.accessors.C2dCameraAccessor;
-import info.u250.c2d.accessors.MeshMaskAccessor;
 import info.u250.c2d.accessors.Cb2ObjectAccessor;
+import info.u250.c2d.accessors.MeshMaskAccessor;
 import info.u250.c2d.accessors.SpriteAccessor;
 import info.u250.c2d.engine.CoreProvider.CoreEvents;
 import info.u250.c2d.engine.CoreProvider.TransitionType;
@@ -13,6 +13,7 @@ import info.u250.c2d.engine.load.Loading.LoadingComplete;
 import info.u250.c2d.engine.load.in.InGameLoading;
 import info.u250.c2d.engine.load.startup.StartupLoading;
 import info.u250.c2d.engine.resources.AliasResourceManager;
+import info.u250.c2d.engine.resources.LanguagesManager;
 import info.u250.c2d.engine.resources.MusicManager;
 import info.u250.c2d.engine.resources.SoundManager;
 import info.u250.c2d.engine.service.Updatable;
@@ -82,6 +83,8 @@ public abstract class Engine extends ApplicationAdapter{
 	private SoundManager soundManager;
 	/** the resources alias manager */
 	private AliasResourceManager<String> aliasResourceManager;
+	/** LanguagesManager */
+	private LanguagesManager languagesManager;
 	/** the fps label */
 	private C2dFps fps;
 	/** the main game scene to show the graphic */
@@ -156,6 +159,7 @@ public abstract class Engine extends ApplicationAdapter{
 			this.aliasResourceManager = new AliasResourceManager<String>();
 			this.soundManager = new SoundManager();
 			this.musicManager = new MusicManager();
+			this.languagesManager = new LanguagesManager();
 			//the event manager
 			this.eventManager = new EventManagerImpl();
 			//set up the sprite batch
@@ -373,7 +377,9 @@ public abstract class Engine extends ApplicationAdapter{
 	public final static TweenManager getTweenManager(){
 		return instance.tweenManager;
 	}
-	
+	public final static LanguagesManager getLanguagesManager(){
+		return instance.languagesManager;
+	}
 	@Override
 	public void resize(int width, int height) {
 		if(this.engineConfig.resizeSync){
