@@ -31,14 +31,19 @@ public class Mask {
 
 	private static Sprite sprite = null;
 	private static Pixmap pixmap = null;
-	public Mask(Color color) {
-		this.color = color ;
+	public static void dispose(){
 		if(pixmap!=null){
 			pixmap.dispose();
+			pixmap = null;
 		}
 		if(null!=sprite){
 			sprite.getTexture().dispose();
+			sprite = null;
 		}
+	}
+	public Mask(Color color) {
+		dispose();
+		this.color = color ;
 		pixmap = new Pixmap(4, 4, Format.RGBA8888);
 		pixmap.setColor(color);
 		pixmap.fillRectangle(0, 0, 4, 4);

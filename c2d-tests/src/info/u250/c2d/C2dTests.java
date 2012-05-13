@@ -1,8 +1,8 @@
 package info.u250.c2d;
 
 import info.u250.c2d.engine.Engine;
-import info.u250.c2d.tests.Box2d_OutlineTest;
 import info.u250.c2d.tests.AdvanceSpriteShadowTest;
+import info.u250.c2d.tests.AnalogTest;
 import info.u250.c2d.tests.AnimationBlinkTest;
 import info.u250.c2d.tests.AnimationEquationsTest;
 import info.u250.c2d.tests.AnimationSimpleTimelineTest;
@@ -10,6 +10,7 @@ import info.u250.c2d.tests.AnimationSimpleTintTest;
 import info.u250.c2d.tests.AnimationSimpleTweenTest;
 import info.u250.c2d.tests.AnimationSpriteLoopTest;
 import info.u250.c2d.tests.AnimationSpriteLoopWithTimesTest;
+import info.u250.c2d.tests.Box2d_OutlineTest;
 import info.u250.c2d.tests.Box2d_PhysicTrackLineTest;
 import info.u250.c2d.tests.Box2d_SimpleObjectTest;
 import info.u250.c2d.tests.EngineSimpleSfxTest;
@@ -36,7 +37,6 @@ import info.u250.c2d.tests.RepeatTextureBackgroundTest;
 import info.u250.c2d.tests.SimpleMeshBackgroundTest;
 import info.u250.c2d.tests.SurfaceTest;
 import info.u250.c2d.tests.SvgTest;
-import info.u250.c2d.tests.ThumbpadTest;
 import info.u250.c2d.tests.TransitionSceneTest;
 
 import java.util.ArrayList;
@@ -62,7 +62,7 @@ public class C2dTests {
 		Nehe04_Rotation.class,
 		LaserTest.class,
 		ParallaxGroupEventsTest.class,
-		ThumbpadTest.class,
+		AnalogTest.class,
 		AnimationSpriteLoopTest.class,
 		AnimationSimpleTweenTest.class,
 		AnimationSimpleTimelineTest.class,
