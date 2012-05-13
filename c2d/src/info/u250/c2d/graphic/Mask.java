@@ -42,7 +42,7 @@ public class Mask {
 		pixmap = new Pixmap(4, 4, Format.RGBA8888);
 		pixmap.setColor(color);
 		pixmap.fillRectangle(0, 0, 4, 4);
-		sprite = new Sprite(new Texture(pixmap));
+		sprite = new Sprite(new Texture(new C2dPixmapTextureData(pixmap)));
 		sprite.setSize(Engine.getEngineConfig().width, Engine.getEngineConfig().height);
 
 	}
