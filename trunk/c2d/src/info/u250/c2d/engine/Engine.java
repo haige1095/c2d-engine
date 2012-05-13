@@ -395,6 +395,7 @@ public abstract class Engine extends ApplicationAdapter{
 		try{
 			this.tweenManager.killAll();
 			engineDrive.dispose();
+			Mask.dispose();
 			if(null!=defaultFont){
 				defaultFont.dispose();
 			}
