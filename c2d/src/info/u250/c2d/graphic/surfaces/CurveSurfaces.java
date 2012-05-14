@@ -8,7 +8,6 @@ import info.u250.c2d.graphic.surfaces.data.SurfaceData;
 import com.badlogic.gdx.graphics.Mesh;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Texture.TextureWrap;
-import com.badlogic.gdx.math.Vector2;
 /**
  * Cure surfaces is a mesh group use the draw method FAN or STRIP of opengles .
  * which defined some base points and draw them ordered ,
@@ -66,10 +65,7 @@ public abstract class CurveSurfaces implements Renderable,Disposable{
 	protected abstract void doRender(float delta);
 	/**the build method is implement at subclass */
 	protected abstract void doBuild();
-	/** if the three points is clock wise , if not , make it to be */
-	public static  boolean isClockwise(Vector2 p1,Vector2 p2,Vector2 p3) { 
-		return ((p1.x-p3.x)*(p2.y-p3.y)-(p1.y-p3.y)*(p2.x-p3.x))<0;
-	}
+	
 	public void dispose(){
 		if(null!=mesh){
 			mesh.dispose();

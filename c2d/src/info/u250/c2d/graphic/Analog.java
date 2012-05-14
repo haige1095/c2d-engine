@@ -8,7 +8,9 @@ import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Vector2;
 
-
+/**
+ * @author lycying@gmail.com
+ */
 public class Analog extends InputAdapter implements Scene{
 
 	protected AdvanceSprite spriteBase ;

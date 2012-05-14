@@ -118,7 +118,7 @@ public class PixmapHelper implements Disposable {
 	}
 
 	public void setPixel(float x, float y, int value) {
-		ColorUtils.rgba8888ToColor(color, value);
+		color.set(ColorUtils.colorFromHex( value));
 		pixmap.setColor(color);
 	}
 
