@@ -19,7 +19,7 @@ import info.u250.c2d.engine.resources.SoundManager;
 import info.u250.c2d.engine.service.Updatable;
 import info.u250.c2d.engine.transitions.TransitionFactory;
 import info.u250.c2d.graphic.C2dFps;
-import info.u250.c2d.graphic.Mask;
+import info.u250.c2d.graphic.FadeMask;
 import info.u250.c2d.physical.box2d.Cb2Object;
 import info.u250.c2d.updatable.PeriodUpdatable;
 
@@ -38,6 +38,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Plane;
 import com.badlogic.gdx.math.Vector2;
@@ -59,6 +60,7 @@ public abstract class Engine extends ApplicationAdapter{
 	public static final <T extends Engine> T get(){
 		return (T)instance;
 	}
+	private ShapeRenderer shapeRenderer;
 	/** the game logic */
 	private final EngineDrive engineDrive;
 	/** the game configure */
@@ -147,6 +149,7 @@ public abstract class Engine extends ApplicationAdapter{
 	@Override
 	public final void create () {
 		try{
+			this.shapeRenderer = new ShapeRenderer();
 			//set up the FPS
 			if(engineConfig.fps)this.fps = new C2dFps();
 			if(engineConfig.catchBackKey)Gdx.input.setCatchBackKey(true);
@@ -200,7 +203,7 @@ public abstract class Engine extends ApplicationAdapter{
 		Tween.registerAccessor(Sprite.class,new SpriteAccessor());
 		Tween.registerAccessor(Cb2Object.class, new Cb2ObjectAccessor());
 		Tween.registerAccessor(C2dCamera.class, new C2dCameraAccessor());
-		Tween.registerAccessor(Mask.class, new MeshMaskAccessor());
+		Tween.registerAccessor(FadeMask.class, new MeshMaskAccessor());
 	}
 	private void setupCamera(){
 		this.defaultCamera = new C2dCamera(this.engineConfig.width,this.engineConfig.height);
@@ -380,6 +383,10 @@ public abstract class Engine extends ApplicationAdapter{
 	public final static LanguagesManager getLanguagesManager(){
 		return instance.languagesManager;
 	}
+	
+	public final static ShapeRenderer getShapeRenderer(){
+		return instance.shapeRenderer;
+	}
 	@Override
 	public void resize(int width, int height) {
 		if(this.engineConfig.resizeSync){
@@ -395,24 +402,32 @@ public abstract class Engine extends ApplicationAdapter{
 		try{
 			this.tweenManager.killAll();
 			engineDrive.dispose();
-			Mask.dispose();
+			if(null!=shapeRenderer){
+				shapeRenderer.dispose();
+				shapeRenderer = null;
+			}
 			if(null!=defaultFont){
 				defaultFont.dispose();
+				defaultFont = null;
 			}
 			if(null!=soundManager){
 				soundManager.dispose();
+				soundManager = null;
 			}
 			if(null!=musicManager){
 				musicManager.dispose();
+				musicManager = null;
 			}
 			if(startupLoading!=null){
 				if(!startupLoading.finished()){
 					this.assetManager.finishLoading();
 				}
 				startupLoading.dispose();
+				startupLoading = null;
 			}
 			if(null!=spriteBatch){
 				this.spriteBatch.dispose();
+				spriteBatch = null;
 			}
 			
 			Texture.invalidateAllTextures(Gdx.app);

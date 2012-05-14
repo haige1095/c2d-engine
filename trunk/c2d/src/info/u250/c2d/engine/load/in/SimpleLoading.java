@@ -1,16 +1,16 @@
 package info.u250.c2d.engine.load.in;
 
 import info.u250.c2d.engine.Engine;
-import info.u250.c2d.graphic.Mask;
+import info.u250.c2d.graphic.FadeMask;
 
 import com.badlogic.gdx.graphics.Color;
 /**Jus show the percent of the loading progress
  * @author lycying@gmail.com
  */
 public class SimpleLoading extends InGameLoading{
-	Mask mask;
+	FadeMask mask;
 	public SimpleLoading(){
-		mask = new Mask(Color.WHITE);
+		mask = new FadeMask(Color.WHITE);
 		mask.setTransparency(0.4f);
 	}
 	@Override

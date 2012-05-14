@@ -2,6 +2,7 @@ package info.u250.c2d.physical.box2d;
 
 import info.u250.c2d.graphic.surfaces.TriangleSurfaces;
 import info.u250.c2d.graphic.surfaces.data.SurfaceData;
+import info.u250.c2d.utils.Mathutils;
 
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.math.Vector2;
@@ -47,7 +48,7 @@ public class Cb2TriangleSurfaces extends TriangleSurfaces {
 				v[1] = data.points.get(i).cpy().mul(1 / Cb2World.RADIO);
 				v[2] = data.points.get(i + 1).cpy().mul(1 / Cb2World.RADIO);
 
-				if (isClockwise(v[0], v[1], v[2])) {
+				if (Mathutils.isClockwise(v[0], v[1], v[2])) {
 					Vector2 vv = v[0];
 					v[0] = v[2];
 					v[2] = vv;
@@ -62,7 +63,7 @@ public class Cb2TriangleSurfaces extends TriangleSurfaces {
 				v[1] = data.points.get(i + 1).cpy().mul(1 / Cb2World.RADIO);
 				v[2] = data.points.get(i).cpy().mul(1 / Cb2World.RADIO);
 
-				if (isClockwise(v[0], v[1], v[2])) {
+				if (Mathutils.isClockwise(v[0], v[1], v[2])) {
 					Vector2 vv = v[0];
 					v[0] = v[2];
 					v[2] = vv;

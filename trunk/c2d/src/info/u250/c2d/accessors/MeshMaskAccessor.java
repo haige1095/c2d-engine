@@ -1,15 +1,15 @@
 package info.u250.c2d.accessors;
 
-import info.u250.c2d.graphic.Mask;
+import info.u250.c2d.graphic.FadeMask;
 import aurelienribon.tweenengine.TweenAccessor;
 /**The mask accessor aim to make change of the mask transparency .
  * @author lycying@gmail.com
  */
-public class MeshMaskAccessor implements TweenAccessor<Mask>{
+public class MeshMaskAccessor implements TweenAccessor<FadeMask>{
 
 	public final static int Transparency = 1;
 	@Override
-	public int getValues(Mask target, int tweenType, float[] returnValues) {
+	public int getValues(FadeMask target, int tweenType, float[] returnValues) {
 		switch(tweenType){
 		case Transparency:
 			returnValues[0] = target.getTransparency();
@@ -19,7 +19,7 @@ public class MeshMaskAccessor implements TweenAccessor<Mask>{
 	}
 
 	@Override
-	public void setValues(Mask target, int tweenType, float[] newValues) {
+	public void setValues(FadeMask target, int tweenType, float[] newValues) {
 		switch(tweenType){
 		case Transparency:
 			target.setTransparency(newValues[0]);

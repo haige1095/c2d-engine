@@ -3,7 +3,7 @@ package info.u250.c2d.engine.transitions;
 import info.u250.c2d.accessors.MeshMaskAccessor;
 import info.u250.c2d.engine.Engine;
 import info.u250.c2d.engine.Transition;
-import info.u250.c2d.graphic.Mask;
+import info.u250.c2d.graphic.FadeMask;
 import aurelienribon.tweenengine.BaseTween;
 import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenCallback;
@@ -16,9 +16,9 @@ import com.badlogic.gdx.graphics.Color;
  */
 final class TransitionSceneFade extends Transition{	
 	public TransitionSceneFade(){
-		this.mask = new Mask(Color.BLACK);
+		this.mask = new FadeMask(Color.BLACK);
 	}
-	Mask mask ;
+	FadeMask mask ;
 
 	@Override
 	protected void doTransition(final int halfDurationMillis) {
