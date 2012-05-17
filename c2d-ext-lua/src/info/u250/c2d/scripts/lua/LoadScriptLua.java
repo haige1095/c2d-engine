@@ -3,35 +3,42 @@ package info.u250.c2d.scripts.lua;
 import org.keplerproject.luajava.LuaState;
 import org.keplerproject.luajava.LuaStateFactory;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 
 public class LoadScriptLua {
 	public LuaState luaState;
-	private String fileName;
+	private FileHandle fileHandle;
+	private String source;
 
 	/**
 	 * Constructor
 	 * 
-	 * @param fileName
-	 *            File name with Lua script.
+	 * @param fileHandle File name with Lua script.
 	 */
-	public LoadScriptLua(final String fileName) {
-		this.luaState = LuaStateFactory.newLuaState();
-		this.luaState.openLibs();
+	public LoadScriptLua(FileHandle fileHandle) {
+		this.fileHandle = fileHandle;
 		// This next part we do because Android cant use LdoFile instead
 		// we load the lua file using gdx and convert it into a string and load
 		// it
-		FileHandle handle = Gdx.files.internal(fileName);
-		String file = handle.readString();
-		this.luaState.LdoString(file);
-		this.fileName = fileName;
+		String source = this.fileHandle.readString();
+		this.loadSource(source);
 	}
 
+	public LoadScriptLua(final String source) {
+		this.loadSource(source);
+		this.source = source;
+	}
+	private void loadSource(final String source){
+		this.luaState = LuaStateFactory.newLuaState();
+		this.luaState.openLibs();
+		this.luaState.LdoString(source);
+	}
 	public void update() {
-		FileHandle handle = Gdx.files.internal(this.fileName);
-		String file = handle.readString();
-		this.luaState.LdoString(file);
+		if(this.fileHandle!=null){
+			this.luaState.LdoString(fileHandle.readString());
+		}else{
+			this.luaState.LdoString(source);
+		}
 	}
 
 	/**
