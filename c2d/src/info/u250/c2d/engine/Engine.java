@@ -2,6 +2,8 @@ package info.u250.c2d.engine;
 
 import info.u250.c2d.accessors.C2dCameraAccessor;
 import info.u250.c2d.accessors.Cb2ObjectAccessor;
+import info.u250.c2d.accessors.FloatValueAccessor;
+import info.u250.c2d.accessors.FloatValueAccessor.FloatValue;
 import info.u250.c2d.accessors.MeshMaskAccessor;
 import info.u250.c2d.accessors.SpriteAccessor;
 import info.u250.c2d.engine.CoreProvider.CoreEvents;
@@ -198,12 +200,12 @@ public abstract class Engine extends ApplicationAdapter{
 	}
 	
 	private void setupTweenEngine(){
-//		Tween.enablePooling(true);
 		this.tweenManager = new TweenManager();
 		Tween.registerAccessor(Sprite.class,new SpriteAccessor());
 		Tween.registerAccessor(Cb2Object.class, new Cb2ObjectAccessor());
 		Tween.registerAccessor(C2dCamera.class, new C2dCameraAccessor());
 		Tween.registerAccessor(FadeMask.class, new MeshMaskAccessor());
+		Tween.registerAccessor(FloatValue.class, new FloatValueAccessor());
 	}
 	private void setupCamera(){
 		this.defaultCamera = new C2dCamera(this.engineConfig.width,this.engineConfig.height);
