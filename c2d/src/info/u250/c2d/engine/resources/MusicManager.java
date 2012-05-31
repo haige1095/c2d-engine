@@ -20,6 +20,18 @@ public class MusicManager implements Disposable{
 		}
 		this.musicVolume = volume;
 	}
+
+	public void stopMusic(String res){
+		final Music musicFromPool = musics.get(res);
+		if(null==musicFromPool){
+			final Music musicFromAssets = Engine.resource(res);
+			musics.put(res, musicFromAssets);
+			musicFromAssets.stop();
+		}else{
+			musicFromPool.stop();
+		}
+	}
+
 	public void pauseMusic(String res){
 		final Music musicFromPool = musics.get(res);
 		if(null==musicFromPool){
