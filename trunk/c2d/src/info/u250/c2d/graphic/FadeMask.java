@@ -9,10 +9,11 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
  /** 
  *  @author lycying@gmail.com
+ *  
  */
 public class FadeMask {
 	private float transparency = 0.6f;
-	private Color color = Color.BLACK;
+	private Color color = null;
 
 	public Color getColor() {
 		return color;
@@ -25,7 +26,8 @@ public class FadeMask {
 	}
 
 	public FadeMask(Color color) {
-		this.color = color;
+		//bugfix : should make a new color instance instead use the orgi color such as Color.Black
+		this.color = new Color(color);
 	}
 
 	public void render(float delta) {
