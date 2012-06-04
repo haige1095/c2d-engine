@@ -10,11 +10,12 @@ import com.badlogic.gdx.Gdx;
 public class C2dFps implements Renderable{
 	@Override
 	public void render(float delta){
-		String text = "FPS:"+Gdx.graphics.getFramesPerSecond();
+		String text = 
+				"FPS:"+Gdx.graphics.getFramesPerSecond()
+				+"\nJHeap:"+Gdx.app.getJavaHeap()/1024/1204+"M"
+				+"\nNHeap:"+Gdx.app.getNativeHeap()/1024/1024+"M";
 		Engine.getSpriteBatch().begin();
-		Engine.getDefaultFont().draw(Engine.getSpriteBatch(), text, 
-				Engine.getEngineConfig().width-100,
-				50f);
+		Engine.getDefaultFont().drawMultiLine(Engine.getSpriteBatch(), text, Engine.getEngineConfig().width-120,60f);
 		Engine.getSpriteBatch().end();
 	}
 }
