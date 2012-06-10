@@ -27,7 +27,10 @@ public class RepeatTextureBackground implements Renderable,Disposable{
 		}};
 		data.primitiveType = GL10.GL_TRIANGLE_STRIP;
 		data.texture = textureName;
+		data.followCamera = false;
 		surface = new TriangleSurfaces(data);
+		Engine.getDefaultCamera().position.y -= 100;
+		Engine.getDefaultCamera().position.x -= 100;
 	}
 	@Override
 	public void dispose() {

@@ -13,4 +13,9 @@ public class SurfaceData {
 	/**the drawing method 
 	 * @see {@link GL10#GL_TRIANGLE_FAN}*/
 	public int primitiveType  = GL10.GL_TRIANGLE_FAN;
+	/**
+	 * if the surface follow the camera's position , currently only support GLES2.x
+	 * TODO : gl1.x support
+	 */
+	public boolean followCamera = true;
 }

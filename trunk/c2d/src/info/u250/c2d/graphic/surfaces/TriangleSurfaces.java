@@ -12,6 +12,7 @@ import com.badlogic.gdx.graphics.VertexAttribute;
 import com.badlogic.gdx.graphics.VertexAttributes.Usage;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Array;
 
 /**
@@ -50,7 +51,15 @@ public class TriangleSurfaces extends CurveSurfaces {
 				gl.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
 				texture.bind();
 				shader.begin();
-				shader.setUniformMatrix("u_projectionViewMatrix", Engine.getDefaultCamera().combined);
+				if(data.followCamera){
+					shader.setUniformMatrix("u_projectionViewMatrix", Engine.getDefaultCamera().combined);
+				}else{
+					shader.setUniformMatrix("u_projectionViewMatrix", Engine.getDefaultCamera().combined.translate(new Vector3(
+							Engine.getDefaultCamera().position.x - Engine.getEngineConfig().width/2,
+							Engine.getDefaultCamera().position.y - Engine.getEngineConfig().height/2,
+							0
+							)));
+				}
 				shader.setUniformf("u_color", 1, 1,1, 1);
 				shader.setUniformi("u_texture" + 0, 0);
 				mesh.render(shader,data.primitiveType);
