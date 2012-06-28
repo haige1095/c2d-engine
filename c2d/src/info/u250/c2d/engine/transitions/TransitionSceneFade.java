@@ -36,8 +36,8 @@ final class TransitionSceneFade extends Transition{
 					
 					@Override
 					public void onEvent(int type, BaseTween<?> source) {
-							incoming.show();
 							Gdx.input.setInputProcessor(incoming.getInputProcessor());
+							incoming.show();
 							reset();
 					}
 				}).start(Engine.getTweenManager());

@@ -64,7 +64,10 @@ public abstract class Transition implements Scene{
 		unfocusAllStage(scene1);
 		unfocusAllStage(scene2);
 		
+		
 		transiting = true;
+		//user input is not allowed during transiting 
+		Gdx.input.setInputProcessor(null);
 				
 		if(null==scene1){
 			Engine._setMainScene(scene2);

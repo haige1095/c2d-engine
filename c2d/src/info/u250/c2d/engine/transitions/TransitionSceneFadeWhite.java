@@ -40,9 +40,8 @@ final class TransitionSceneFadeWhite extends Transition {
 									@Override
 									public void onEvent(int type,
 											BaseTween<?> source) {
+										Gdx.input.setInputProcessor(incoming.getInputProcessor());
 										incoming.show();
-										Gdx.input.setInputProcessor(incoming
-												.getInputProcessor());
 										reset();
 
 									}

@@ -31,8 +31,8 @@ final class TransitionSceneFlipVertical extends Transition{
 				.setCallback(new TweenCallback() {
 					@Override
 					public void onEvent(int type, BaseTween<?> source) {
-						incoming.show();
 						Gdx.input.setInputProcessor(incoming.getInputProcessor());
+						incoming.show();
 						reset();
 					}
 				}).start(Engine.getTweenManager());
