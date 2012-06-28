@@ -36,8 +36,8 @@ abstract class AbstractTransitionSceneSlideIn extends Transition{
 			@Override
 			public void onEvent(int type, BaseTween<?> source) {
 				doSetMainScene(incoming);
-				incoming.show();
 				Gdx.input.setInputProcessor(incoming.getInputProcessor());
+				incoming.show();
 				Engine.getDefaultCamera().position.set(positionBak);
 				reset();
 				
