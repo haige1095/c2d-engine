@@ -11,7 +11,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 public class RuleTextureAtlas implements LoadResourceRule{
 	@Override
 	public boolean match(FileHandle file) {
-		boolean result = file.extension().equals("") && file.name().equals("pack");
+		boolean result = file.extension().equals("atlas") ;
 		if(result) Engine.getAssetManager().load(file.path().replace("\\", "/"),TextureAtlas.class);
 		return  result;
 	}

@@ -53,7 +53,7 @@ public class FollowableParticle extends Engine {
 				public InputProcessor getInputProcessor() {
 					return new InputAdapter(){
 						@Override
-						public boolean touchMoved(int x, int y) {
+						public boolean mouseMoved(int x, int y) {
 							particleEmitter.addParticles(10);
 							Vector2 tmp = Engine.screenToWorld(x, y);
 //							particleEmitter.getAngle().setLow(sprite_ship1.getRotation() - 4,mainGame.sprite_ship1.getRotation() + 4); laserPEmitters.get(i).getAngle().
@@ -61,7 +61,7 @@ public class FollowableParticle extends Engine {
 							particleEmitter.start();
 							
 							particleEmitter.setPosition(tmp.x, tmp.y);
-							return super.touchMoved(x, y);
+							return super.mouseMoved(x, y);
 						}
 					};
 				}

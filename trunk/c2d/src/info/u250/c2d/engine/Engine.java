@@ -298,7 +298,7 @@ public abstract class Engine extends ApplicationAdapter{
 	private static Ray ray = null;
 	private final static Plane xzPlane = new Plane(new Vector3(0, 1, 0), new Vector3(1, 0, 0),new Vector3(1, 1, 0));
 	private final static Vector3 intersection = new Vector3();
-	public final static Vector2 screenToWorld(int x, int y) {	
+	public final static Vector2 screenToWorld(float x, float y) {	
 		ray = instance.defaultCamera.getPickRay(x, y);
 		Intersector.intersectRayPlane(ray, xzPlane, intersection);
 		return new Vector2(intersection.x,intersection.y);

@@ -47,7 +47,7 @@ public class CameraControllerInRange extends GestureDetector {
 		}
 
 		@Override
-		public boolean touchDown(int x, int y, int pointer) {
+		public boolean touchDown(float x, float y, int pointer) {
 			flinging = false;
 			initialScale = camera.position.z
 					/ (Engine.getEngineConfig().height / 2);
@@ -55,12 +55,12 @@ public class CameraControllerInRange extends GestureDetector {
 		}
 
 		@Override
-		public boolean tap(int x, int y, int count) {
+		public boolean tap(float x, float y, int count) {
 			return false;
 		}
 
 		@Override
-		public boolean longPress(int x, int y) {
+		public boolean longPress(float x, float y) {
 			return false;
 		}
 
@@ -75,7 +75,7 @@ public class CameraControllerInRange extends GestureDetector {
 		}
 
 		@Override
-		public boolean pan(int x, int y, int deltaX, int deltaY) {
+		public boolean pan(float x, float y, float deltaX, float deltaY) {
 
 			camera.position.add(
 					-deltaX * camera.position.z
