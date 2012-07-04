@@ -335,7 +335,7 @@ public class Nehe07_TextureFilters_Lighting extends Engine {
 							return super.fling(velocityX, velocityY);
 						};
 						@Override
-						public boolean tap(int x, int y, int count) {
+						public boolean tap(float x, float y, int count) {
 							i++;
 							if(i==TextureFilter.values().length)i=0;
 							

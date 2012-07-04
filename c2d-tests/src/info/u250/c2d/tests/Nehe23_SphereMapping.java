@@ -238,7 +238,7 @@ public class Nehe23_SphereMapping extends Engine {
 						};
 
 						@Override
-						public boolean tap(int x, int y, int count) {
+						public boolean tap(float x, float y, int count) {
 							i++;
 							if (i == 6) {
 								i = 0;

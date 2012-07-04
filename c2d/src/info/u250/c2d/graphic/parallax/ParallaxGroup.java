@@ -126,20 +126,20 @@ public class ParallaxGroup extends Array<ParallaxLayer> implements Renderable{
 		float velX, velY;
 		boolean flinging = false;
 		float initialScale = 1;
-
-		public boolean touchDown (int x, int y, int pointer) {
+		@Override
+		public boolean touchDown (float x, float y, int pointer) {
 			flinging = false;
 			initialScale = camera.position.z/(Engine.getEngineConfig().height/2);
 			return false;
 		}
 
 		@Override
-		public boolean tap (int x, int y, int count) {
+		public boolean tap (float x, float y, int count) {
 			return false;
 		}
 
 		@Override
-		public boolean longPress (int x, int y) {
+		public boolean longPress (float x, float y) {
 			return false;
 		}
 
@@ -157,7 +157,7 @@ public class ParallaxGroup extends Array<ParallaxLayer> implements Renderable{
 		}
 
 		@Override
-		public boolean pan (int x, int y, int deltaX, int deltaY) {
+		public boolean pan (float x, float y, float deltaX, float deltaY) {
 			camera.position.add(-deltaX * camera.position.z/(Engine.getEngineConfig().height/2), deltaY *camera.position.z/(Engine.getEngineConfig().height/2), 0);
 			return false;
 		}
