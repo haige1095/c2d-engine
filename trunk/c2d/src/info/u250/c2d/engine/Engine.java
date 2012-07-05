@@ -153,7 +153,7 @@ public abstract class Engine extends ApplicationAdapter{
 		try{
 			this.shapeRenderer = new ShapeRenderer();
 			//set up the FPS
-			if(engineConfig.fps)this.fps = new C2dFps();
+			if(engineConfig.debug)this.fps = new C2dFps();
 			if(engineConfig.catchBackKey)Gdx.input.setCatchBackKey(true);
 			//set up the TweenEngine 
 			this.setupTweenEngine();
@@ -269,7 +269,7 @@ public abstract class Engine extends ApplicationAdapter{
 				ingameLoading.render(delta);
 			}
 			
-			if(engineConfig.fps)fps.render(delta);
+			if(engineConfig.debug)fps.render(delta);
 		}else{
 			startupLoading.render(delta);
 		}

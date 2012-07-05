@@ -33,7 +33,7 @@ public class Box2d_SimpleObjectTest  extends Engine {
 		@Override
 		public void onResourcesRegister(AliasResourceManager<String> reg) {
 			reg.texture("logo", "data/c2d.png");
-			reg.textureAtlas("ParrotAtlas",  "data/animationsprite/pack/pack");
+			reg.textureAtlas("Anim",  "data/animationsprite/turkey.atlas");
 		}
 		@Override
 		public void dispose() {}
@@ -50,7 +50,7 @@ public class Box2d_SimpleObjectTest  extends Engine {
 			input =new PhysicalFingerInput(
 					Cb2World.getInstance().installDefaultWorld().createScreenBox());
 			
-			final AnimationSprite sprite =  new AnimationSprite(0.05f, Engine.resource("ParrotAtlas",TextureAtlas.class),"parrot000");
+			final AnimationSprite sprite =  new AnimationSprite(0.05f, Engine.resource("Anim",TextureAtlas.class),"fly");
 			sprite.enableShadow();
 			
 			group.add(new Cb2Object(sprite, false)

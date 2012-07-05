@@ -33,7 +33,7 @@ public class RepeatTextureBackgroundTest extends Engine {
 		@Override
 		public EngineOptions onSetupEngine() {
 			EngineOptions opt = new EngineOptions(new String[]{"data/textures/default.png"},800,480);
-			opt.gl20Enable = true;
+			opt.useGL20 = true;
 			return opt;
 		}
 
