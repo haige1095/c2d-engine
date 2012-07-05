@@ -54,7 +54,7 @@ public class C2dDesktop {
 					config.fullscreen = false;
 					config.width =(int) Engine.getEngineConfig().width;
 					config.height = (int) Engine.getEngineConfig().height;
-					config.useGL20 = Engine.getEngineConfig().gl20Enable;
+					config.useGL20 = Engine.getEngineConfig().useGL20;
 					config.title = testName;
 					config.vSyncEnabled = true;
 
