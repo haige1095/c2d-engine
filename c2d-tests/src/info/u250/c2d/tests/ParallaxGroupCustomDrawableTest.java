@@ -37,7 +37,7 @@ public class ParallaxGroupCustomDrawableTest extends Engine{
 	private class EngineX implements EngineDrive{
 		@Override
 		public void onResourcesRegister(AliasResourceManager<String> reg) {
-			reg.textureAtlas("ParrotAtlas",  "data/animationsprite/pack/pack");
+			reg.textureAtlas("Anim",  "data/animationsprite/turkey.atlas");
 			reg.texture("ANDROID", "data/android.png");
 			reg.texture("LINUX", "data/linux.png");
 		}
@@ -82,7 +82,7 @@ public class ParallaxGroupCustomDrawableTest extends Engine{
 			linux.setScale(3f);
 			rbg.add(new ParallaxLayer("android-1", new SpriteParallaxLayerDrawable(linux),
 					new Vector2(0f,3f), new Vector2(1000,3000), -1, -1,new Vector2(300,1600)));
-			rbg.add(new ParallaxLayer("parrot", new SpriteParallaxLayerDrawable(new AnimationSprite(0.05f, Engine.resource("ParrotAtlas",TextureAtlas.class),"parrot000")),
+			rbg.add(new ParallaxLayer("parrot", new SpriteParallaxLayerDrawable(new AnimationSprite(0.05f, Engine.resource("Anim",TextureAtlas.class),"fly")),
 					new Vector2(2f,0f), new Vector2(1000,1000), -1, -1));
 			Sprite android = new Sprite(Engine.resource("ANDROID",Texture.class));
 			android.setScale(0.5f);

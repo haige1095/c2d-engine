@@ -32,7 +32,7 @@ public class SvgTest extends Engine {
 		@Override
 		public EngineOptions onSetupEngine() {
 			final EngineOptions opt = new EngineOptions(new String[]{},800,480);
-			opt.gl20Enable = true;
+			opt.useGL20 = true;
 			return opt;
 		}
 

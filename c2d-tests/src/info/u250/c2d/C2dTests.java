@@ -13,11 +13,11 @@ import info.u250.c2d.tests.AnimationSpriteLoopWithTimesTest;
 import info.u250.c2d.tests.Box2d_OutlineTest;
 import info.u250.c2d.tests.Box2d_PhysicTrackLineTest;
 import info.u250.c2d.tests.Box2d_SimpleObjectTest;
+import info.u250.c2d.tests.Box_SoftBodyTest;
 import info.u250.c2d.tests.EngineSimpleSfxTest;
 import info.u250.c2d.tests.EventTest;
 import info.u250.c2d.tests.Ext_luaTest;
 import info.u250.c2d.tests.FollowableParticle;
-import info.u250.c2d.tests.FreeTypeJapanTest;
 import info.u250.c2d.tests.GestureRecognizerTest;
 import info.u250.c2d.tests.IngameLoadingTest;
 import info.u250.c2d.tests.LaserTest;
@@ -35,7 +35,6 @@ import info.u250.c2d.tests.ParallaxGroupEventsTest;
 import info.u250.c2d.tests.ParallaxGroupGestureDetectorTest;
 import info.u250.c2d.tests.RepeatTextureBackgroundTest;
 import info.u250.c2d.tests.SimpleMeshBackgroundTest;
-import info.u250.c2d.tests.Box_SoftBodyTest;
 import info.u250.c2d.tests.SurfaceTest;
 import info.u250.c2d.tests.SvgTest;
 import info.u250.c2d.tests.TransitionSceneTest;
@@ -85,7 +84,6 @@ public class C2dTests {
 		IngameLoadingTest.class,
 		RepeatTextureBackgroundTest.class,
 		SvgTest.class,
-		FreeTypeJapanTest.class
 	};
 
 	public static String[] getNames () {

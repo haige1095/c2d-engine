@@ -29,7 +29,7 @@ public class ParallaxGroupEventsTest extends Engine{
 	private class EngineX implements EngineDrive{
 		@Override
 		public void onResourcesRegister(AliasResourceManager<String> reg) {
-			reg.textureAtlas("bgAtlas", "data/parallax/pack/pack");
+			reg.textureAtlas("bgAtlas", "data/parallax/bg.atlas");
 		}
 		@Override
 		public void dispose() {}

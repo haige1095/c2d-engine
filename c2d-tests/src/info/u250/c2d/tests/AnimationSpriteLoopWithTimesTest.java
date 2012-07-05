@@ -31,12 +31,12 @@ public class AnimationSpriteLoopWithTimesTest extends Engine {
 
 		@Override
 		public void onResourcesRegister(AliasResourceManager<String> reg) {
-			reg.textureAtlas("ParrotAtlas",  "data/animationsprite/pack/pack");
+			reg.textureAtlas("Anim",  "data/animationsprite/turkey.atlas");
 		}
 		
 		@Override
 		public void onLoadedResourcesCompleted() {
-			TextureAtlas atlas = Engine.resource("ParrotAtlas");
+			TextureAtlas atlas = Engine.resource("Anim");
 			sprite = new AnimationSprite(new float[]{
 					0.1f,
 					0.1f,
@@ -45,19 +45,15 @@ public class AnimationSpriteLoopWithTimesTest extends Engine {
 					0.04f,
 					0.05f,
 					0.09f,
-					0.01f,
-					0.02f,
 			}, new TextureRegion[]{
-					atlas.findRegion("parrot0001"),
-					atlas.findRegion("parrot0002"),
-					atlas.findRegion("parrot0003"),
-					atlas.findRegion("parrot0004"),
-					atlas.findRegion("parrot0005"),
-					atlas.findRegion("parrot0006"),
-					atlas.findRegion("parrot0007"),
-					atlas.findRegion("parrot0008"),
-					atlas.findRegion("parrot0009"),
-					atlas.findRegion("parrot0010"),
+					atlas.findRegion("fly1"),
+					atlas.findRegion("fly2"),
+					atlas.findRegion("fly3"),
+					atlas.findRegion("fly4"),
+					atlas.findRegion("fly5"),
+					atlas.findRegion("fly6"),
+					atlas.findRegion("fly7"),
+					atlas.findRegion("fly8"),
 					
 			});
 			sprite.setPosition((Engine.getEngineConfig().width-sprite.getWidth())/2, 

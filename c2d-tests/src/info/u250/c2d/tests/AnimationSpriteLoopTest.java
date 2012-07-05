@@ -30,12 +30,12 @@ public class AnimationSpriteLoopTest extends Engine {
 		}
 		@Override
 		public void onResourcesRegister(AliasResourceManager<String> reg) {
-			reg.textureAtlas("ParrotAtlas",  "data/animationsprite/pack/pack");
+			reg.textureAtlas("Anim",  "data/animationsprite/turkey.atlas");
 		}
 		
 		@Override
 		public void onLoadedResourcesCompleted() {
-			sprite = new AnimationSprite(0.05f, Engine.resource("ParrotAtlas",TextureAtlas.class),"parrot000");
+			sprite = new AnimationSprite(0.05f, Engine.resource("Anim",TextureAtlas.class),"fly");
 			sprite.setPosition((Engine.getEngineConfig().width-sprite.getWidth())/2, 
 					(Engine.getEngineConfig().height-sprite.getHeight())/2);
 			

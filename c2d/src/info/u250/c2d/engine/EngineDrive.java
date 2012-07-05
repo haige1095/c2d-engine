@@ -44,8 +44,8 @@ public interface EngineDrive extends Disposable{
 		/**the scene height */
 		public float height = 320;
 		
-		/**if the fps is true , we will always show the fps label on the top of the screen */
-		public boolean fps = true;
+		/**if the global debug flag , if it is true , we will always show the debuginfomation label on the bottom of the screen */
+		public boolean debug = true;
 		
 		/**auto resume manager the Engine's running state . If you set it false , you must call
 		 * {@link info.u250.c2d.engine.Engine#doResume() } manually to resume the game or it will keep pause*/
@@ -56,7 +56,7 @@ public interface EngineDrive extends Disposable{
 		/**the game config xml file ,to store some attributes such as the sound state  */
 		public String configFile = "c2d.temp.xml";
 		
-		public boolean gl20Enable = false; 
+		public boolean useGL20 = false; 
 		public EngineOptions(String[] assets,float width,float height){
 			this.assets = assets;
 			this.width = width;
