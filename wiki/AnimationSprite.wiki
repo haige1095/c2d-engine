@@ -92,6 +92,6 @@ exmple files:
 
 The resources used :
 
-http://c2d-engine.googlecode.com/svn/trunk/c2d-tests-android/assets/data/animationsprite/pack/pack
+http://c2d-engine.googlecode.com/svn/trunk/c2d-tests-android/assets/data/animationsprite/turkey.atlas
 
 http://c2d-engine.googlecode.com/svn/trunk/c2d-tests-android/assets/data/animationsprite//turkey.png
