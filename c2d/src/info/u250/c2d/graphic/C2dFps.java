@@ -11,7 +11,7 @@ public class C2dFps implements Renderable{
 	@Override
 	public void render(float delta){
 		String text = 
-				"FPS:"+Gdx.graphics.getFramesPerSecond()
+				"FPS:"+ Math.min( Gdx.graphics.getFramesPerSecond(), 60)
 				+"\nJHeap:"+Gdx.app.getJavaHeap()/1024/1204+"M"
 				+"\nNHeap:"+Gdx.app.getNativeHeap()/1024/1024+"M";
 		Engine.getSpriteBatch().begin();

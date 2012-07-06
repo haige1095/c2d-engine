@@ -23,4 +23,9 @@ public class C2dStage extends Stage{
 	public void screenToStageCoordinates( Vector2 out) {
 		out.set(Engine.screenToWorld(out.x, out.y));
 	}
+	/** max 1/60*/
+	@Override
+	public void act(float delta) {
+		super.act(Math.min(delta, 1f/60f));
+	}
 }

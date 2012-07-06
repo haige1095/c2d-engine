@@ -244,7 +244,7 @@ public abstract class Engine extends ApplicationAdapter{
 		}else{
 			Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 		}
-		final float delta = Gdx.graphics.getDeltaTime();
+		final float delta = Engine.getDeltaTime();
 		this.defaultCamera.update();
 		if(Gdx.graphics.isGL11Available()){
 			this.defaultCamera.apply(Gdx.graphics.getGL11());
@@ -311,7 +311,7 @@ public abstract class Engine extends ApplicationAdapter{
 		getSpriteBatch().end();
 	}
 	public final static float getDeltaTime(){
-		return Gdx.graphics.getDeltaTime();
+		return Math.min(1f/60f,Gdx.graphics.getDeltaTime());
 	}
 
 	public final static MusicManager getMusicManager() {
