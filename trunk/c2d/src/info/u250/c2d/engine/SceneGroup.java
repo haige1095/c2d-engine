@@ -10,6 +10,7 @@ import com.badlogic.gdx.utils.Array;
  * @author lycying@gmail.com
  */
 public class SceneGroup extends Array<Scene> implements Scene {
+	final private InputMultiplexer input = new InputMultiplexer();
 	@Override
 	public void update(float delta) {
 		for(Scene scene:this){
@@ -41,13 +42,13 @@ public class SceneGroup extends Array<Scene> implements Scene {
 	@Override
 	public InputProcessor getInputProcessor() {
 		if(this.size>0){
-			InputMultiplexer im = new InputMultiplexer();
+			input.clear();
 			for(int i=this.size-1;i>=0;i--){
 				if(null!=this.get(i).getInputProcessor()){
-					im.addProcessor(this.get(i).getInputProcessor());
+					input.addProcessor(this.get(i).getInputProcessor());
 				}
 			}
-			return im;
+			return input;
 		}
 		return null;
 	}
