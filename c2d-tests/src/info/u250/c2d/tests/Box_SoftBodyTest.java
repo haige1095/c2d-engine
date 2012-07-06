@@ -55,7 +55,8 @@ public class Box_SoftBodyTest extends Engine {
 			final PhysicalFingerInput input = new PhysicalFingerInput(Cb2World.getInstance().createScreenBox());
 			
 			final CircleData center = new CircleData();
-			final Array<CircleData> array = new Array<CircleData>();
+			final Array<CircleData> circles = new Array<CircleData>();
+			final Array<DistanceJointData> joints = new Array<DistanceJointData>();
 			center.radius = 10;
 			center.density = 0.1f;
 			center.restitution = 0.05f;
@@ -64,8 +65,8 @@ public class Box_SoftBodyTest extends Engine {
 			center.isDynamic = true;
 			center.build();
 			for(int i=0;i<NUM_SEGMENTS;i++){
-				float x = MathUtils.cosDeg(360/NUM_SEGMENTS*i)*100;
-				float y = MathUtils.sinDeg(360/NUM_SEGMENTS*i)*100;
+				float x = MathUtils.cosDeg(360/NUM_SEGMENTS*i)*50;
+				float y = MathUtils.sinDeg(360/NUM_SEGMENTS*i)*50;
 				CircleData subCircleData = new CircleData();
 				subCircleData.radius = 10;
 				subCircleData.density = 0.1f;
@@ -74,25 +75,27 @@ public class Box_SoftBodyTest extends Engine {
 				subCircleData.center.set(center.center).add(x,y);
 				subCircleData.isDynamic = true;
 				subCircleData.build();
-				array.add(subCircleData);
+				circles.add(subCircleData);
 			}
 			for (int i = 0; i < NUM_SEGMENTS; i++) {
 		        int neighborIndex = (i + 1) % NUM_SEGMENTS;
-		        DistanceJointData jx = new DistanceJointData();
-				jx.bodyA = center	;
-				jx.bodyB = array.get(i);
-				jx.collideConnected = true;
-				jx.frequencyHz = SPRING;
-				jx.dampingRatio = 0.1f;
-				jx.build();
+		        DistanceJointData joint1 = new DistanceJointData();
+				joint1.bodyA = center	;
+				joint1.bodyB = circles.get(i);
+				joint1.collideConnected = false;
+				joint1.frequencyHz = SPRING;
+				joint1.dampingRatio = 0.1f;
+				joint1.build();
+				joints.add(joint1);
 				
-				DistanceJointData jx2 = new DistanceJointData();
-				jx2.bodyA = array.get(neighborIndex);
-				jx2.bodyB = array.get(i);
-				jx2.collideConnected = true;
-				jx2.frequencyHz = SPRING;
-				jx2.dampingRatio = 0.1f;
-				jx2.build();
+				DistanceJointData joint2 = new DistanceJointData();
+				joint2.bodyA = circles.get(neighborIndex);
+				joint2.bodyB = circles.get(i);
+				joint2.collideConnected = false;
+				joint2.frequencyHz = SPRING;
+				joint2.dampingRatio = 0.1f;
+				joint2.build();
+				joints.add(joint2);
 			}
 			
 			final Texture texture = Engine.resource("Ball");
@@ -114,12 +117,18 @@ public class Box_SoftBodyTest extends Engine {
 					Vector2 impulsePoint = center.body.getPosition();
 					center.body.applyLinearImpulse(impulse,impulsePoint);
 				}
+				private void debug(){
+					center.debug(Engine.getShapeRenderer());
+					for(CircleData c:circles){
+						c.debug(Engine.getShapeRenderer());
+					}
+					for(DistanceJointData j:joints){
+						j.debug(Engine.getShapeRenderer());
+					}
+				}
 				@Override
 				public void render(float delta) {
-//					center.debug(Engine.getShapeRenderer());
-//					for(CircleData c:array){
-//						c.debug(Engine.getShapeRenderer());
-//					}
+					
 					vertices[0] = center.body.getPosition().x*Cb2World.RADIO;
 					vertices[1] = center.body.getPosition().y*Cb2World.RADIO;
 					vertices[2] = 0;
@@ -130,8 +139,8 @@ public class Box_SoftBodyTest extends Engine {
 					vertices[7] = 1f;
 					vertices[8] = 1f;
 					for(int i=0;i<NUM_SEGMENTS;i++){
-						vertices[(i+1)*9+0] = array.get(i).body.getPosition().x*Cb2World.RADIO ;
-						vertices[(i+1)*9+1] = array.get(i).body.getPosition().y*Cb2World.RADIO;
+						vertices[(i+1)*9+0] = circles.get(i).body.getPosition().x*Cb2World.RADIO ;
+						vertices[(i+1)*9+1] = circles.get(i).body.getPosition().y*Cb2World.RADIO;
 						vertices[(i+1)*9+2] = 0 ;
 						vertices[(i+1)*9+3] = MathUtils.cosDeg(360/NUM_SEGMENTS*i)*0.5f+0.5f ;
 						vertices[(i+1)*9+4] = MathUtils.sinDeg(360/NUM_SEGMENTS*i)*0.5f+0.5f ;
@@ -155,11 +164,11 @@ public class Box_SoftBodyTest extends Engine {
 					Gdx.graphics.getGL10().glEnable(GL10.GL_TEXTURE_2D);
 					texture.bind();
 					mesh.render(GL10.GL_TRIANGLE_FAN);
-				   	Gdx.graphics.getGL10().glEnableClientState(GL10.GL_COLOR_ARRAY);
+					Gdx.graphics.getGL10().glDisable(GL10.GL_TEXTURE_2D);
+					Gdx.graphics.getGL10().glDisable(GL10.GL_BLEND);
+				   	this.debug();
 					Engine.debugInfo(
 							"This example shows how simple to achive the soft body use box2d .\n" +
-							"We follow the guide http://www.uchidacoonga.com/2012/03/soft-body-physics-with-box2d-and-cocos2d-part-34/\n" +
-							"~.~\n" +
 							"Touch the screen to make the body bounce.\n" +
 							"Do not touch quickly its not so strong as you think");
 				}
