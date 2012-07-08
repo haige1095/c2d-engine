@@ -13,7 +13,7 @@ import info.u250.c2d.tests.AnimationSpriteLoopWithTimesTest;
 import info.u250.c2d.tests.Box2d_OutlineTest;
 import info.u250.c2d.tests.Box2d_PhysicTrackLineTest;
 import info.u250.c2d.tests.Box2d_SimpleObjectTest;
-import info.u250.c2d.tests.Box_SoftBodyTest;
+import info.u250.c2d.tests.Box2d_SoftBodyTest;
 import info.u250.c2d.tests.EngineSimpleSfxTest;
 import info.u250.c2d.tests.EventTest;
 import info.u250.c2d.tests.Ext_luaTest;
@@ -47,7 +47,7 @@ import java.util.List;
 public class C2dTests {
 	
 	public static final Class[] tests = {
-		Box_SoftBodyTest.class,
+		Box2d_SoftBodyTest.class,
 		SimpleMeshBackgroundTest.class,
 		SurfaceTest.class,
 		Box2d_OutlineTest.class,
