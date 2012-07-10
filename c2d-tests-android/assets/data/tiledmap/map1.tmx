@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><map height="40" orientation="orthogonal" tileheight="32" tilewidth="32" version="1.0" width="60"><properties><property name="blended tiles" value="1,3,4,6,13,15,16,18,19,21,25,26,27,28,29,37,38,39,40,41,49,50,51,52,53,58,59,64,65,70,71,73,74,75,76,77,82,83,88,89,91,92,97,98,99,100,101,102"/></properties>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><map height="40" orientation="orthogonal" tileheight="32" tilewidth="32" version="1.0" width="60"><properties><property name="blended tiles" value="14,15,30,31,32,46,47,48,62,63,64,1,3,4,6,13,15,16,18,19,21,25,26,27,28,29,37,38,39,40,41,49,50,51,52,53,58,59,64,65,70,71,73,74,75,76,77,82,83,88,89,91,92,97,98,99,100,101,102"/></properties>
  <tileset firstgid="1" name="tileset-platformer" tileheight="32" tilewidth="32">
   <image height="544" source="tileset-platformer.png" width="192"/>
   <tile id="84">

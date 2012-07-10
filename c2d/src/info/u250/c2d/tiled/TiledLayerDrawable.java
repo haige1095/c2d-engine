@@ -3,6 +3,7 @@ package info.u250.c2d.tiled;
 import com.badlogic.gdx.graphics.g2d.tiled.TileAtlas;
 import com.badlogic.gdx.graphics.g2d.tiled.TiledLayer;
 import com.badlogic.gdx.graphics.g2d.tiled.TiledMap;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Group;
 
 public class TiledLayerDrawable extends Group{
@@ -18,5 +19,16 @@ public class TiledLayerDrawable extends Group{
 		}
 	}
 	public void processProperties(TiledLayer tiledLayer){
+	}
+	
+	Rectangle cullingArea = new Rectangle();
+	@Override
+	public void act(float delta) {
+		super.act(delta);
+		cullingArea.x = -this.getParent().getX();
+		cullingArea.y = -this.getParent().getY();
+		cullingArea.width = this.getWidth();
+		cullingArea.height = this.getHeight();
+		this.setCullingArea(cullingArea);
 	}
 }

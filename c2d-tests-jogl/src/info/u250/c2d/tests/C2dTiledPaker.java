@@ -11,8 +11,8 @@ import com.badlogic.gdx.tools.imagepacker.TexturePacker.Settings;
 public class C2dTiledPaker {
 	public static void main (String[] args) {
 		File  inputDir, outputDir;
-		inputDir = new File("/home/lycy/trunk/public/c2d/c2d-tests-jogl/assets-raw/tiledmap");
-		outputDir = new File("/home/lycy/trunk/public/c2d/c2d-tests-android/assets/data/tiledmap");
+		inputDir = new File("assets-raw/tiledmap");
+		outputDir = new File("../c2d-tests-android/assets/data/tiledmap");
 		Settings settings = new Settings();
 
 		// Note: the settings below are now default...

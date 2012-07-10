@@ -13,6 +13,7 @@ public class RuleTexture implements LoadResourceRule{
 	public boolean match(FileHandle file) {
 		boolean result = 
 				file.extension().contains("png") || 
+				file.extension().contains("gif") || 
 				file.extension().contains("jpg") ||
 				file.extension().contains("bmp");
 		if(result) Engine.getAssetManager().load(file.path().replace("\\", "/"),Texture.class);
