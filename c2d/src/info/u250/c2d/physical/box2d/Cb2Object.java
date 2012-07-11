@@ -163,7 +163,7 @@ public  class Cb2Object implements Renderable,Disposable{
 			final BoxData tmp = BoxData.class.cast(data);
 			object.setSize(tmp.width, tmp.height);
 			pos.set(tmp.center).sub(tmp.width/2,tmp.height/2);
-		}else if(data instanceof BoxData){
+		}else if(data instanceof PolygonData){
 			final PolygonData tmp = PolygonData.class.cast(data);
 			object.setSize(tmp.width, tmp.height);
 			pos.set(tmp.center).sub(tmp.width/2,tmp.height/2);

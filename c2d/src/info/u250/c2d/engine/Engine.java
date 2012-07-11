@@ -252,6 +252,10 @@ public abstract class Engine extends ApplicationAdapter{
 		this.spriteBatch.setProjectionMatrix(this.defaultCamera.combined);
 		if(startupLoading.isLoaded()){
 			if(running){
+				if(null == mainScene){
+					Gdx.app.log("Error", "you must supply a main Scene , Set it at EngineDriveer#onLoadedResourcesCompleted()");
+					System.exit(-1);
+				}
 				tweenManager.update(delta*1000);
 				for(Updatable updatable: updatables.values()){
 					updatable.update(delta);
