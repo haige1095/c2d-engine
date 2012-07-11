@@ -6,7 +6,8 @@ The placement of  the resources .
  * *Music* must be endwith "ogg","wav","mp3",you must put the music at "music" or "musics" folder, such as "data/music/abc.ogg" or "data/help/musics/helpbg.mp3" 
  * *Sound* must be endwith "ogg","wav","mp3",you must put the sounds at "sound" or "sounds" folder, such as "data/sounds/abc.ogg" or "data/help/sound/buttonClick.wav" 
  * *Texture* must be endwith "jpg","png","bmp", such as "data/textures/aaa.png","data/haha.jpg"
- * *TextureAtlas* must be named "pack" and the texture file must at the same folder of “pack" , such as "data/pack"
+ *  ~~ TextureAtlas must be named "pack" and the texture file must at the same folder of “pack" , such as "data/pack"~~
+ *  * TextureAtlas*  must be endwith "atlas" and the texture file must at the same folder of “.atlas" , such as "data/bird.atlas"
  * *Skin* endwith "json" and the path contains "skin" , such as "data/sk/uiskin.json"
 
 = Alias =
