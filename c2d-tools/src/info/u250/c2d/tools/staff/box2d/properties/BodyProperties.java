@@ -24,15 +24,15 @@ public abstract class BodyProperties extends EditorProperties{
 	
 	
 	public BodyProperties(){
-		name = new TextField("", "", skin);
-		res = new TextField("", "", skin);
-		userData = new TextField("", "", skin);
-		density = new TextField("", "", skin);
-		friction = new TextField("", "", skin);
-		restitution = new TextField("", "", skin);
-		filter_categoryBits = new TextField("", "", skin) ;
-		filter_groupIndex = new TextField("", "", skin) ;
-		filter_maskBits = new TextField("", "", skin) ;
+		name = new TextField("", skin);
+		res = new TextField("", skin);
+		userData = new TextField("", skin);
+		density = new TextField("", skin);
+		friction = new TextField("", skin);
+		restitution = new TextField("",  skin);
+		filter_categoryBits = new TextField("", skin) ;
+		filter_groupIndex = new TextField("", skin) ;
+		filter_maskBits = new TextField("",  skin) ;
 		sensor = new CheckBox(skin) ;
 		dynamic = new CheckBox(skin) ;
 		angle = new TextField("", "", skin) ;

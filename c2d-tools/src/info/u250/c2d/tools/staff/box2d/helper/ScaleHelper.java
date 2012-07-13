@@ -102,10 +102,7 @@ public class ScaleHelper implements Scene {
 				}
 				return true;
 			}
-			@Override
-			public boolean touchMoved(int x, int y) {
-				return super.touchMoved(x, y);
-			}
+			
 
 			@Override
 			public boolean touchUp(int x, int y, int pointer, int button) {

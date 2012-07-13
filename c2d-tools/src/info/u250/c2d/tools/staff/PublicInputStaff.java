@@ -15,16 +15,16 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Button.ButtonStyle;
-import com.badlogic.gdx.scenes.scene2d.ui.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
 import com.badlogic.gdx.scenes.scene2d.ui.SelectBox.SelectBoxStyle;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
-import com.badlogic.gdx.scenes.scene2d.ui.tablelayout.Table;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.esotericsoftware.tablelayout.BaseTableLayout;
 
 
@@ -209,12 +209,9 @@ public final class PublicInputStaff extends InputStaff{
 	//the positon of the window may be put here .
 	@Override
 	protected void resize(float width, float height) {
-		this.toolbar.x = 0;
-		this.toolbar.y = height - this.toolbar.height;
-		
+		this.toolbar.setPosition(0,  height - this.toolbar.getHeight());
 		UiUtils.centerActor(tools_run);
-		tools_run.y = Engine.getEngineConfig().height - tools_run.height;
-		
+		tools_run.setY(Engine.getEngineConfig().height - tools_run.getHeight());
 		UiUtils.centerActor(newStaffWindow);
 		UiUtils.centerActor(staffListWindow);
 	}

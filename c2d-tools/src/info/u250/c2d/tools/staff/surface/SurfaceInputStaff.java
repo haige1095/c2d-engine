@@ -10,20 +10,20 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.ActorEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.CheckBox;
 import com.badlogic.gdx.scenes.scene2d.ui.CheckBox.CheckBoxStyle;
-import com.badlogic.gdx.scenes.scene2d.ui.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane.ScrollPaneStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
 import com.badlogic.gdx.scenes.scene2d.ui.SelectBox.SelectBoxStyle;
-import com.badlogic.gdx.scenes.scene2d.ui.SelectionListener;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField.TextFieldListener;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField.TextFieldStyle;
-import com.badlogic.gdx.scenes.scene2d.ui.tablelayout.Table;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
 public class SurfaceInputStaff extends SceneLayerInputStaff{
 
@@ -34,7 +34,7 @@ public class SurfaceInputStaff extends SceneLayerInputStaff{
 	}
 	@Override
 	public void buildStaff() {
-		this.ui.removeActor(pane);
+		pane.remove();
 		
 		final SurfaceAdapter sAdapter = SurfaceAdapter.class.cast(this.layer.adapter);
 		
@@ -78,26 +78,27 @@ public class SurfaceInputStaff extends SceneLayerInputStaff{
 		showNumber.setChecked(sAdapter.isShowNumbers());
 		showLine.setChecked(sAdapter.isShowLines());
 		
-		showAll.setClickListener(new ClickListener() {
-			public void click(Actor actor, float x, float y) {
+		showAll.addListener(new ClickListener() {
+			@Override
+			public void clicked(ActorEvent event, float x, float y) {
 				final SurfaceAdapter sAdapter = SurfaceAdapter.class.cast(layer.adapter);
 				sAdapter.setShowAll(showAll.isChecked());
 			}
 		});
-		showSnape.setClickListener(new ClickListener() {
-			public void click(Actor actor, float x, float y) {
+		showSnape.addListener(new ClickListener() {
+			public void clicked(ActorEvent event, float x, float y) {
 				final SurfaceAdapter sAdapter = SurfaceAdapter.class.cast(layer.adapter);
 				sAdapter.setShowSnape(showSnape.isChecked());
 			}
 		});
-		showLine.setClickListener(new ClickListener() {
-			public void click(Actor actor, float x, float y) {
+		showLine.addListener(new ClickListener() {
+			public void clicked(ActorEvent event, float x, float y) {
 				final SurfaceAdapter sAdapter = SurfaceAdapter.class.cast(layer.adapter);
 				sAdapter.setShowLines(showLine.isChecked());
 			}
 		});
-		showNumber.setClickListener(new ClickListener() {
-			public void click(Actor actor, float x, float y) {
+		showNumber.addListener(new ClickListener() {
+			public void clicked(ActorEvent event, float x, float y) {
 				final SurfaceAdapter sAdapter = SurfaceAdapter.class.cast(layer.adapter);
 				sAdapter.setShowNumbers(showNumber.isChecked());
 			}
@@ -139,8 +140,8 @@ public class SurfaceInputStaff extends SceneLayerInputStaff{
 		
 		final Image tools_open = new Image(skin.getRegion("tools-open"));
 		final Image tools_save = new Image(skin.getRegion("tools-save"));
-		tools_open.setClickListener(new ClickListener() {
-			public void click(Actor actor, float x, float y) {
+		tools_open.addListener(new ClickListener() {
+			public void clicked(ActorEvent event, float x, float y) {
 				try{
 					String file = DesktopUtil.getFile();
 					SurfaceAdapter.file = Gdx.files.absolute(file);
@@ -151,8 +152,8 @@ public class SurfaceInputStaff extends SceneLayerInputStaff{
 				}
 			}
 		});
-		tools_save.setClickListener(new ClickListener() {
-			public void click(Actor actor, float x, float y) {
+		tools_save.addListener(new ClickListener() {
+			public void clicked(ActorEvent event, float x, float y) {
 				sAdapter.save();
 			}
 		});
@@ -169,10 +170,10 @@ public class SurfaceInputStaff extends SceneLayerInputStaff{
 		
 		for(final String res:Constants.TextureNames){
 			final Image texture = new Image(Engine.resource(res,Texture.class));
-			texture.width = texture.height  = 128;
-			texture.setClickListener(new ClickListener() {
+			texture.setSize(128, 128);
+			texture.addListener(new ClickListener() {
 				@Override
-				public void click(Actor actor, float x, float y) {
+				public void clicked(ActorEvent event, float x, float y) {
 					sAdapter.setTexture(res);
 					currentTextureName.setText(res);
 				}
@@ -214,26 +215,26 @@ public class SurfaceInputStaff extends SceneLayerInputStaff{
 		showNumber.setChecked(sAdapter.isShowNumbers());
 		showLine.setChecked(sAdapter.isShowLines());
 		
-		showAll.setClickListener(new ClickListener() {
-			public void click(Actor actor, float x, float y) {
+		showAll.addListener(new ClickListener() {
+			public void clicked(ActorEvent event, float x, float y) {
 				final SurfaceAdapter sAdapter = SurfaceAdapter.class.cast(layer.adapter);
 				sAdapter.setShowAll(showAll.isChecked());
 			}
 		});
-		showSnape.setClickListener(new ClickListener() {
-			public void click(Actor actor, float x, float y) {
+		showSnape.addListener(new ClickListener() {
+			public void clicked(ActorEvent event, float x, float y) {
 				final SurfaceAdapter sAdapter = SurfaceAdapter.class.cast(layer.adapter);
 				sAdapter.setShowSnape(showSnape.isChecked());
 			}
 		});
-		showLine.setClickListener(new ClickListener() {
-			public void click(Actor actor, float x, float y) {
+		showLine.addListener(new ClickListener() {
+			public void clicked(ActorEvent event, float x, float y) {
 				final SurfaceAdapter sAdapter = SurfaceAdapter.class.cast(layer.adapter);
 				sAdapter.setShowLines(showLine.isChecked());
 			}
 		});
-		showNumber.setClickListener(new ClickListener() {
-			public void click(Actor actor, float x, float y) {
+		showNumber.addListener(new ClickListener() {
+			public void clicked(ActorEvent event, float x, float y) {
 				final SurfaceAdapter sAdapter = SurfaceAdapter.class.cast(layer.adapter);
 				sAdapter.setShowNumbers(showNumber.isChecked());
 			}

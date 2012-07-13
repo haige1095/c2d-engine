@@ -109,12 +109,12 @@ public class BoxHelper implements Scene {
 			}
 
 			@Override
-			public boolean touchMoved(int x, int y) {
+			public boolean mouseMoved(int x, int y) {
 				if (1 == currentPoint) {
 					// do move
 					secondPoint.set(Engine.screenToWorld(x, y));
 				}
-				return super.touchMoved(x, y);
+				return super.mouseMoved(x, y);
 			}
 			@Override
 			public boolean keyDown(int keycode) {

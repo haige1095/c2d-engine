@@ -142,12 +142,10 @@ public class PublicAssistantStaff implements Scene{
 		return new InputAdapter(){
 			boolean moveCam = false;
 			Vector2  beginPosition = new Vector2();
-			
 			@Override
-			public boolean touchMoved(int x, int y) {
-//				callback.xy(Engine.screenToWorld(x, y));
+			public boolean mouseMoved(int x, int y) {
 				snapPoint = Engine.screenToWorld(x, y);
-				return super.touchMoved(x, y);
+				return super.mouseMoved(x, y);
 			}
 
 			@Override
