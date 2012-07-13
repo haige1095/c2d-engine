@@ -56,7 +56,7 @@ class SurfaceInput extends  InputAdapter {
 	}
 
 	@Override
-	public boolean touchMoved(int x, int y) {
+	public boolean mouseMoved(int x, int y) {
 		model.snapPoint = null;
 		for(Vector2 v:this.model.data.points){
 			if(Engine.screenToWorld(x, y).dst(v)<10){
@@ -64,6 +64,6 @@ class SurfaceInput extends  InputAdapter {
 				break;
 			}
 		}
-		return false;
+		return super.mouseMoved(x, y);
 	}
 }
