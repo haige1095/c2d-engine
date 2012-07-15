@@ -1,9 +1,7 @@
 package info.u250.c2d.engine;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.InputProcessor;
-import com.badlogic.gdx.scenes.scene2d.Stage;
 
 /** <p>The transitionScene is a Scene itself , So it can be renderable . <br/>
  * it supply a kind of method to switch two scene when you call {@link info.u250.c2d.engine.Engine#setMainScene(Scene)}<br/>
@@ -27,25 +25,7 @@ public abstract class Transition implements Scene{
 	protected void doSetMainScene(Scene scene2){
 		Engine._setMainScene(scene2);
 	}
-	/**iterator the inputProcess , unfocus all stage's input ~
-	 */
-	private  void unfocusAllStage(final Scene scene){
-		if(scene == null){
-			return;
-		}
-		if(scene.getInputProcessor() == null){
-			return;
-		}
-		if(scene.getInputProcessor() instanceof InputMultiplexer){
-			for(InputProcessor process:InputMultiplexer.class.cast(scene.getInputProcessor()).getProcessors()){
-				if(process instanceof Stage){
-					Stage.class.cast(process).unfocusAll();
-				}
-			}
-		}else if(scene.getInputProcessor() instanceof Stage){
-			Stage.class.cast(scene.getInputProcessor()).unfocusAll();
-		}
-	}
+
 	/**the scene2 */
 	protected Scene incoming ;
 	/**the scene1 */
@@ -60,10 +40,7 @@ public abstract class Transition implements Scene{
 	public void transition(final Scene scene1,final Scene scene2,final int halfDurationMillis ){
 		this.incoming = scene2;
 		this.outgoing = scene1;
-		
-		unfocusAllStage(scene1);
-		unfocusAllStage(scene2);
-		
+
 		
 		transiting = true;
 		//user input is not allowed during transiting 
