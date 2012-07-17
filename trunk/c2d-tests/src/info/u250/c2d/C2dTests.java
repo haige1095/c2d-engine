@@ -38,6 +38,7 @@ import info.u250.c2d.tests.SimpleMeshBackgroundTest;
 import info.u250.c2d.tests.SurfaceTest;
 import info.u250.c2d.tests.SvgTest;
 import info.u250.c2d.tests.TileTest;
+import info.u250.c2d.tests.TinyWingsStripesTest;
 import info.u250.c2d.tests.TransitionSceneTest;
 
 import java.util.ArrayList;
@@ -86,6 +87,7 @@ public class C2dTests {
 		RepeatTextureBackgroundTest.class,
 		SvgTest.class,
 		TileTest.class,
+		TinyWingsStripesTest.class,
 	};
 
 	public static String[] getNames () {
