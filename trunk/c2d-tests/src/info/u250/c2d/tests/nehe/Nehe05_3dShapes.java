@@ -1,4 +1,4 @@
-package info.u250.c2d.tests;
+package info.u250.c2d.tests.nehe;
 
 import info.u250.c2d.engine.Engine;
 import info.u250.c2d.engine.EngineDrive;
@@ -10,11 +10,10 @@ import java.nio.FloatBuffer;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.GL10;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.BufferUtils;
 
 
-public class Nehe06_TextureMapping extends Engine {
+public class Nehe05_3dShapes extends Engine {
 	@Override
 	protected EngineDrive onSetupEngineDrive() {
 		return new EngineX();
@@ -24,15 +23,30 @@ public class Nehe06_TextureMapping extends Engine {
 		super.dispose();
 	}
 	
-	
-	
 	final static class SceneState {
-		float cubeRotX = 0.0f;
-		float cubeRotY = 0.0f;
-		float cubeRotZ = 0.0f;
+		float pyramidRot = 0.0f;
+		float cubeRot = 0.0f;
 	}
+	
+	private static float[] pyramidCoords = new float[] {
+		 0,  1,  0,
+		 1, -1,  1,
+		 1, -1, -1,
+		-1, -1, -1,
+		-1, -1,  1,
+		 1, -1,  1
+	};
 
-	private static float[][] cubeVertexCoords = new float[][] {
+	private static float[] pyramidColors = new float[] {
+		1, 0, 0, 1,
+		0, 1, 0, 1,
+		0, 0, 1, 1,
+		0, 1, 0, 1,
+		0, 0, 1, 1,
+		0, 1, 0, 1
+	};
+	
+	private static float[][] cubeCoords = new float[][] {
 		new float[] { // top
 			 1, 1,-1,
 			-1, 1,-1,
@@ -71,66 +85,36 @@ public class Nehe06_TextureMapping extends Engine {
 		},
 	};
 
-	private static float[][] cubeTextureCoords = new float[][] {
-		new float[] { // top
-			1, 0,
-			1, 1,
-			0, 1,
-			0, 0
-		},
-		new float[] { // bottom
-			0, 0,
-			1, 0,
-			1, 1,
-			0, 1
-		},
-		new float[] { // front
-			1, 1,
-			0, 1,
-			0, 0,
-			1, 0
-		},
-		new float[] { // back
-			0, 1,
-			0, 0,
-			1, 0,
-			1, 1
-		},
-		new float[] { // left
-			1, 1,
-			0, 1,
-			0, 0,
-			1, 0
-		},
-		new float[] { // right
-			0, 1,
-			0, 0,
-			1, 0,
-			1, 1
-		},
+	private static float[] cubeColors = new float[] {
+		0,1,0,1,
+		1,0.5f,0,1,
+		1,0,0,1,
+		1,1,0,1,
+		0,0,1,1,
+		1,0,1,1		
 	};
 	
+	private static FloatBuffer pyramidVertexBfr;
+	private static FloatBuffer pyramidColorBfr;
 	private static FloatBuffer[] cubeVertexBfr;
-	private static FloatBuffer[] cubeTextureBfr;
 	
-//	private IntBuffer texturesBuffer;
-
 	private static final SceneState sceneState;
 	
 	static
 	{
+		pyramidVertexBfr = BufferUtils.newFloatBuffer(pyramidCoords.length);
+		pyramidVertexBfr.put(pyramidCoords);
+		pyramidVertexBfr.rewind();
+		pyramidColorBfr = BufferUtils.newFloatBuffer(pyramidColors.length);
+		pyramidColorBfr.put(pyramidColors);
+		pyramidColorBfr.rewind();
+		
 		cubeVertexBfr = new FloatBuffer[6];
-		cubeTextureBfr = new FloatBuffer[6];
 		for (int i = 0; i < 6; i++)
 		{
-			cubeVertexBfr[i] = BufferUtils.newFloatBuffer(cubeVertexCoords[i].length);
-			cubeVertexBfr[i].put(cubeVertexCoords[i]);
+			cubeVertexBfr[i] = BufferUtils.newFloatBuffer(cubeCoords[i].length);
+			cubeVertexBfr[i] .put(cubeCoords[i]);
 			cubeVertexBfr[i].rewind();
-//			cubeVertexBfr[i] = FloatBuffer.wrap(cubeVertexCoords[i]);
-			cubeTextureBfr[i] = BufferUtils.newFloatBuffer(cubeTextureCoords[i].length);
-			cubeTextureBfr[i].put(cubeTextureCoords[i]);
-			cubeTextureBfr[i].rewind();
-//			cubeTextureBfr[i] = FloatBuffer.wrap(cubeTextureCoords[i]);
 		}
 		
 		sceneState = new SceneState();
@@ -139,19 +123,19 @@ public class Nehe06_TextureMapping extends Engine {
 	private class EngineX implements EngineDrive{
 		@Override
 		public void onResourcesRegister(AliasResourceManager<String> reg) {
-			reg.texture("Tex", "data/nehe/nehe_texture_logo.bmp");
 		}
 		@Override
 		public void dispose() {}
 		@Override
 		public EngineOptions onSetupEngine() {
-			final EngineOptions opt = new EngineOptions(new String[]{"data/nehe/nehe_texture_logo.bmp"},800,480);
+			final EngineOptions opt = new EngineOptions(new String[]{},800,480);
 			return opt;
 		}
 
 		@Override
 		public void onLoadedResourcesCompleted() {
 			GL10 gl = Gdx.gl10;
+			
 			gl.glShadeModel(GL10.GL_SMOOTH);
 			gl.glClearColor(0, 0, 0, 0);
 
@@ -164,44 +148,45 @@ public class Nehe06_TextureMapping extends Engine {
 			
 			gl.glHint(GL10.GL_PERSPECTIVE_CORRECTION_HINT, GL10.GL_NICEST);
 			
-			// create texture
-			gl.glEnable(GL10.GL_TEXTURE_2D);
 			
 			Engine.getDefaultCamera().fieldOfView = 45f;
+			
 			Engine.setMainScene(new Scene() {
 				@Override
 				public void render(float delta) {
-					GL10 gl = Gdx.gl10;
+					com.badlogic.gdx.graphics.GL10 gl = Gdx.gl10;
 					gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
+					
 					gl.glMatrixMode(GL10.GL_MODELVIEW);
 					gl.glLoadIdentity();
 					
-					// draw cube
-					
-					gl.glTranslatef(0, 0, -6);
-					gl.glRotatef(sceneState.cubeRotX, 1, 0, 0);
-					gl.glRotatef(sceneState.cubeRotY, 0, 1, 0);
-					gl.glRotatef(sceneState.cubeRotZ, 0, 0, 1);
-					
-//					gl.glBindTexture(GL10.GL_TEXTURE_2D, Engine.resource("Tex",Texture.class).getTextureObjectHandle());
-					// create texture
-					gl.glEnable(GL10.GL_TEXTURE_2D);
-					Engine.resource("Tex",Texture.class).bind();  
+					// draw pyramid
+					gl.glTranslatef(-1.5f, 0, -6);
+					gl.glRotatef(sceneState.pyramidRot, 0, 1, 0);
 					gl.glEnableClientState(GL10.GL_VERTEX_ARRAY);
-					gl.glEnableClientState(GL10.GL_TEXTURE_COORD_ARRAY);
-					for (int i = 0; i < 6; i++) // draw each face
-					{
-						gl.glVertexPointer(3, GL10.GL_FLOAT, 0, cubeVertexBfr[i]);
-						gl.glTexCoordPointer(2, GL10.GL_FLOAT, 0, cubeTextureBfr[i]);
-						gl.glDrawArrays(GL10.GL_TRIANGLE_FAN, 0, 4);
-					}
+					gl.glEnableClientState(GL10.GL_COLOR_ARRAY);
+					gl.glVertexPointer(3, GL10.GL_FLOAT, 0, pyramidVertexBfr);
+					gl.glColorPointer(4, GL10.GL_FLOAT, 0, pyramidColorBfr);
+					gl.glDrawArrays(GL10.GL_TRIANGLE_FAN, 0, 6);
 					gl.glDisableClientState(GL10.GL_VERTEX_ARRAY);
-					gl.glDisableClientState(GL10.GL_TEXTURE_COORD_ARRAY);
+					gl.glDisableClientState(GL10.GL_COLOR_ARRAY);
+					
+					// draw cube
+					gl.glLoadIdentity();
+					gl.glTranslatef(1.5f, 0, -6);
+					gl.glRotatef(sceneState.cubeRot, 1, 1, 1);
+					for (int i = 0; i < 6; i++)
+					{
+						gl.glColor4f(cubeColors[4*i+0], cubeColors[4*i+1], cubeColors[4*i+2], cubeColors[4*i+3]);
+						gl.glEnableClientState(GL10.GL_VERTEX_ARRAY);
+						gl.glVertexPointer(3, GL10.GL_FLOAT, 0, cubeVertexBfr[i]);
+						gl.glDrawArrays(GL10.GL_TRIANGLE_FAN, 0, 4);
+						gl.glDisableClientState(GL10.GL_VERTEX_ARRAY);
+					}
 					
 					// update rotations
-					sceneState.cubeRotX += 1.2f;
-					sceneState.cubeRotY += 0.8f;
-					sceneState.cubeRotZ += 0.6f;
+					sceneState.pyramidRot += 0.8f;
+					sceneState.cubeRot -= 0.5f;
 				}
 				@Override
 				public InputProcessor getInputProcessor() {
