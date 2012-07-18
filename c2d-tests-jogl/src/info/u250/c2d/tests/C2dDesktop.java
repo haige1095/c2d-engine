@@ -73,7 +73,7 @@ public class C2dDesktop {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setContentPane(new TestList());
 		frame.pack();
-		frame.setSize(300, 600);
+		frame.setSize(400, 600);
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 	}

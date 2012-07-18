@@ -1,15 +1,12 @@
-package info.u250.c2d.tests;
+package info.u250.c2d.tests.animations;
 
-import info.u250.c2d.accessors.SpriteAccessor;
 import info.u250.c2d.engine.Engine;
 import info.u250.c2d.engine.EngineDrive;
 import info.u250.c2d.engine.Scene;
 import info.u250.c2d.engine.resources.AliasResourceManager;
 import info.u250.c2d.graphic.AnimationSprite;
-import aurelienribon.tweenengine.Tween;
-import aurelienribon.tweenengine.equations.Back;
 
-import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 
@@ -26,7 +23,7 @@ public class AnimationSpriteLoopTest extends Engine {
 		boolean toggle = false;
 		@Override
 		public EngineOptions onSetupEngine() {
-			return new EngineOptions(new String[]{"data/animationsprite/"},480,320);
+			return new EngineOptions(new String[]{"data/animationsprite/"},800,480);
 		}
 		@Override
 		public void onResourcesRegister(AliasResourceManager<String> reg) {
@@ -39,11 +36,6 @@ public class AnimationSpriteLoopTest extends Engine {
 			sprite.setPosition((Engine.getEngineConfig().width-sprite.getWidth())/2, 
 					(Engine.getEngineConfig().height-sprite.getHeight())/2);
 			
-			Tween.to(sprite, SpriteAccessor.POSITION_XY, 5000)
-			.ease(Back.INOUT)
-			.target(sprite.getX(),sprite.getY()+100 )
-			.repeatYoyo(-1, 100)
-			.start(Engine.getTweenManager());
 			
 			Engine.setMainScene(new Scene() {
 				
@@ -52,25 +44,26 @@ public class AnimationSpriteLoopTest extends Engine {
 					Engine.getSpriteBatch().begin();
 					sprite.render( delta);
 					Engine.getSpriteBatch().end();
-					
 					Engine.debugInfo( "animation with loop . touch the screen to stop \n and touch again to begin ");
-					
-					if(Gdx.input.isTouched()){
-						toggle = !toggle;
-						if(toggle){
-							sprite.setAlphaModulation(0.2f);
-							sprite.stop();
-						}else{
-							sprite.setAlphaModulation(1f);
-							sprite.play();
-						}
-					}
-					
 				}
 				
 				@Override
 				public InputProcessor getInputProcessor() {
-					return null;
+					return new InputAdapter(){
+						@Override
+						public boolean touchUp(int x, int y, int pointer,
+								int button) {
+							toggle = !toggle;
+							if(toggle){
+								sprite.setAlphaModulation(0.2f);
+								sprite.stop();
+							}else{
+								sprite.setAlphaModulation(1f);
+								sprite.play();
+							}
+							return super.touchUp(x, y, pointer, button);
+						}
+					};
 				}
 
 				@Override
