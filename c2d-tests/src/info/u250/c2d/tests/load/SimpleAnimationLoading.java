@@ -37,7 +37,7 @@ public class SimpleAnimationLoading extends StartupLoading{
 
 	@Override
 	protected void inLoadingRender(float delta) {
-		Gdx.graphics.getGL10().glClearColor(52/255f, 138/255f, 152/255f, 1);
+		Gdx.gl.glClearColor(52/255f, 138/255f, 152/255f, 1);
 		fg.setPosition(
 				(Engine.getEngineConfig().width-357)/2  - fg.getWidth() + 357*this.percent() , 
 				fg.getY());
