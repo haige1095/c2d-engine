@@ -4,6 +4,7 @@ import info.u250.c2d.engine.Engine;
 import info.u250.c2d.engine.EngineDrive;
 import info.u250.c2d.engine.Scene;
 import info.u250.c2d.engine.resources.AliasResourceManager;
+import info.u250.c2d.tests.load.SimpleAnimationLoading;
 
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Texture;
@@ -27,7 +28,8 @@ public class EngineSimpleSfxTest extends Engine{
 		@Override
 		public EngineOptions onSetupEngine() {
 			final EngineOptions opt =  new EngineOptions(new String[]{"data/"},480,320);
-			opt.loading = "info.u250.c2d.tests.load.SimpleAnimationLoading";
+			opt.useGL20 = true;
+			opt.loading = SimpleAnimationLoading.class.getName();
 			return opt;
 		}
 
@@ -49,9 +51,7 @@ public class EngineSimpleSfxTest extends Engine{
 					Engine.getSpriteBatch().begin();
 					Engine.getSpriteBatch().draw(Engine.resource("logo",Texture.class), 0,0);
 					Engine.getSpriteBatch().end();
-					
 					Engine.debugInfo( "This will load all resources and just play a sound and a music");
-					
 				}
 				
 				@Override

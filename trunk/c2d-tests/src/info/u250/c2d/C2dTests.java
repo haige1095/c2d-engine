@@ -25,6 +25,7 @@ import info.u250.c2d.tests.parallax.ParallaxGroupEventsTest;
 import info.u250.c2d.tests.parallax.ParallaxGroupGestureDetectorTest;
 import info.u250.c2d.tests.particle.FollowableParticle;
 import info.u250.c2d.tests.sfx.EngineSimpleSfxTest;
+import info.u250.c2d.tests.tools.MotionWelderTest;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -119,19 +120,16 @@ public class C2dTests {
 							new TestItem(SoftBodyTest.class, "Soft Body",
 									"How to make a soft body use spring force",
 									"default"), }),
-			new TestGroup(
-					"Mesh",
+			new TestGroup("Mesh",
 					"Some advance effect that use the mesh(OpenglES)",
 					new TestItem[] {
-							new TestItem(
-									SurfaceTest.class,
+							new TestItem(SurfaceTest.class,
 									"Surface : Repeated",
 									"Use a texture to fill the points .",
 									"default"),
 							new TestItem(TinyWingsStripesTest.class,
 									"TinyWings like Stripes",
-									"draw stripes like tinywings",
-									"default"),
+									"draw stripes like tinywings", "default"),
 							new TestItem(OutlineTest.class, "Texture Outline",
 									"Texture Outline", "default"),
 							new TestItem(SoftBodyTest.class, "Soft Body",
@@ -143,6 +141,12 @@ public class C2dTests {
 					new TestItem[] { new TestItem(FollowableParticle.class,
 							"Followable Particle",
 							"The particle will follow your finger", "default"), }),
+			new TestGroup(
+					"Tools",
+					"Many tools implements",
+					new TestItem[] { new TestItem(MotionWelderTest.class,
+							"Motion Welder",
+							"Motion Welder animation design tool", "default"), }),
 			new TestGroup(
 					"Sfx",
 					"Sounds and musics",
