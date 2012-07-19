@@ -1,4 +1,4 @@
-package info.u250.c2d.tests;
+package info.u250.c2d.tests.parallax;
 
 
 import info.u250.c2d.engine.CoreProvider.StartupLoadingScreens;
@@ -35,7 +35,7 @@ public class ParallaxGroupEventsTest extends Engine{
 		public void dispose() {}
 		@Override
 		public EngineOptions onSetupEngine() {
-			final EngineOptions opt =  new EngineOptions(new String[]{"data/"},800,480);
+			final EngineOptions opt =  new EngineOptions(new String[]{"data/parallax/bg.atlas"},800,480);
 			opt.loading = StartupLoadingScreens.LineLoading;
 			return opt;
 		}

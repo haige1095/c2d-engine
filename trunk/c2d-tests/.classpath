@@ -7,7 +7,5 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/c2d-ext-lua"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/c2d-ext-gestures"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/c2d-ext-svg"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/gdx-freetype"/>
-	<classpathentry kind="lib" path="/gdx-freetype/libs/gdx-freetype-natives.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

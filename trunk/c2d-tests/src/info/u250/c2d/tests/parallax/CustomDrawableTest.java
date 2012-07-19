@@ -1,4 +1,4 @@
-package info.u250.c2d.tests;
+package info.u250.c2d.tests.parallax;
 
 import info.u250.c2d.accessors.C2dCameraAccessor;
 import info.u250.c2d.engine.CoreProvider.StartupLoadingScreens;
@@ -28,7 +28,7 @@ import com.badlogic.gdx.graphics.g2d.tiled.TiledMap;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 
-public class ParallaxGroupCustomDrawableTest extends Engine{
+public class CustomDrawableTest extends Engine{
 	@Override
 	protected EngineDrive onSetupEngineDrive() {
 		return new EngineX();

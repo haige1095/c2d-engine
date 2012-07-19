@@ -1,4 +1,4 @@
-package info.u250.c2d.tests;
+package info.u250.c2d.tests.parallax;
 
 
 import info.u250.c2d.engine.CoreProvider.StartupLoadingScreens;
@@ -32,7 +32,7 @@ public class ParallaxGroupGestureDetectorTest  extends Engine{
 		ParallaxGroup rbg ;
 		@Override
 		public EngineOptions onSetupEngine() {
-			final EngineOptions opt =  new EngineOptions(new String[]{"data/"},480,320);
+			final EngineOptions opt =  new EngineOptions(new String[]{"data/parallax/bg.atlas"},480,320);
 			opt.loading = StartupLoadingScreens.WindmillLoading;
 			return opt;
 		}
