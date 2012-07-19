@@ -1,4 +1,4 @@
-package info.u250.c2d.tests;
+package info.u250.c2d.tests.box2d;
 
 import info.u250.c2d.engine.Engine;
 import info.u250.c2d.engine.EngineDrive;
@@ -23,7 +23,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 
 
-public class Box2d_SoftBodyTest extends Engine {
+public class SoftBodyTest extends Engine {
 	@Override
 	protected EngineDrive onSetupEngineDrive() {
 		return new EngineX();

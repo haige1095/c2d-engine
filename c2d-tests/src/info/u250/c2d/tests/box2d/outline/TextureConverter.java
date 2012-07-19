@@ -1,4 +1,4 @@
-package info.u250.c2d.tests.outline;
+package info.u250.c2d.tests.box2d.outline;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;

@@ -1,4 +1,4 @@
-package info.u250.c2d.tests;
+package info.u250.c2d.tests.box2d;
 
 import info.u250.c2d.engine.Engine;
 import info.u250.c2d.engine.EngineDrive;
@@ -6,11 +6,11 @@ import info.u250.c2d.engine.Scene;
 import info.u250.c2d.engine.resources.AliasResourceManager;
 import info.u250.c2d.graphic.AdvanceSprite;
 import info.u250.c2d.input.PhysicalFingerInput;
-import info.u250.c2d.physical.box2d.Cb2World;
 import info.u250.c2d.physical.box2d.Cb2Object;
+import info.u250.c2d.physical.box2d.Cb2World;
 import info.u250.c2d.physical.box2d.loader.cbt.data.PolygonData;
-import info.u250.c2d.tests.outline.BayazitDecomposer;
-import info.u250.c2d.tests.outline.TextureConverter;
+import info.u250.c2d.tests.box2d.outline.BayazitDecomposer;
+import info.u250.c2d.tests.box2d.outline.TextureConverter;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
@@ -26,7 +26,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 
 
-public class Box2d_OutlineTest extends Engine {
+public class OutlineTest extends Engine {
 	Array<Vector2> create_sprite_OUTLINE(FileHandle file) {
 		Pixmap.setBlending(Blending.None);
 		Pixmap pixmap = new Pixmap(file);

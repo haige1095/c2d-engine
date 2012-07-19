@@ -1,4 +1,4 @@
-package info.u250.c2d.tests.outline;
+package info.u250.c2d.tests.box2d.outline;
 
 // Taken from BayazitDecomposer.cs (FarseerPhysics.Common.Decomposition.BayazitDecomposer)
 // at http://farseerphysics.codeplex.com
