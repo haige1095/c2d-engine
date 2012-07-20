@@ -38,8 +38,7 @@ public class AdvanceSpriteShadowTest extends Engine {
 
 		@Override
 		public EngineOptions onSetupEngine() {
-			return new EngineOptions(new String[] { "data/red.png","data/yellow.png","data/blue.png","data/green.png" }, 800,
-					480);
+			return new EngineOptions(new String[] { "data/red.png","data/yellow.png","data/blue.png","data/green.png" }, 800,480);
 		}
 
 		Cb2ObjectGroup group = new Cb2ObjectGroup();
