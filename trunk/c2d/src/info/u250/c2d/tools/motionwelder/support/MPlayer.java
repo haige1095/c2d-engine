@@ -103,6 +103,12 @@ public abstract class MPlayer implements Renderable,Updatable{
 //	
 	private final byte POSITIONERRECTANGLE_FLAG 		= 0x0f; // 0000 1111
 	
+	
+	
+	public MSpriteData getData() {
+		return data;
+	}
+
 	/**
 	 * @param data sprite data to be played
 	 */
@@ -243,6 +249,7 @@ public abstract class MPlayer implements Renderable,Updatable{
 	}
 
 	
+	
 	/**  
 	 * This method will update sprite to next frame  
 	 */
@@ -375,8 +382,12 @@ public abstract class MPlayer implements Renderable,Updatable{
 		// changing x and y
 		if(spriteOrientation==1){// flip h
 			x = -x-clipW;
-		} else if(spriteOrientation==2){// flip v
-			y = -y-clipH;
+		} else {
+			if(spriteOrientation==2){// flip v
+				
+			}else{
+				y = -y-clipH;
+			}
 		}
 		
 		
@@ -563,10 +574,28 @@ public abstract class MPlayer implements Renderable,Updatable{
 	public void render(float delta) {
 		this.drawFrame();
 	}
-
+	
+	/**
+	 * this is the value that you have set at the motionWelder Editor. Options>Settings>FPS. this is the value
+	 * @param fps
+	 */
+	public void setSimulationFps(int fps){
+		simulationFps = fps;
+		speed = simulationFps/60f;
+	}
+	private int simulationFps = 10;//play the animation on this frame rate
+	private float speed = simulationFps/60f;
+	private float speedCount = 0;
+	
 	@Override
 	public void update(float delta) {
-		this.update();
+		speedCount +=delta;
+		if(speedCount>speed){
+			this.speedCount = 0;
+			this.update();
+		}else{
+			return;
+		}
 	}
 	/**
 	 * @return spriteX
