@@ -1,6 +1,12 @@
 package info.u250.c2d;
 
 import info.u250.c2d.engine.Engine;
+import info.u250.c2d.tests.animations.ActionBLink;
+import info.u250.c2d.tests.animations.ActionMove;
+import info.u250.c2d.tests.animations.ActionRotate;
+import info.u250.c2d.tests.animations.ActionScale;
+import info.u250.c2d.tests.animations.ActionShake;
+import info.u250.c2d.tests.animations.ActionTint;
 import info.u250.c2d.tests.animations.AdvanceSpriteShadowTest;
 import info.u250.c2d.tests.animations.AnimationSpriteLoopTest;
 import info.u250.c2d.tests.backgrounds.RepeatTextureBackgroundTest;
@@ -62,7 +68,9 @@ public class C2dTests {
 	}
 
 	public static final TestGroup[] tests = new TestGroup[] {
-			new TestGroup("Animations", "the graphics animations",
+			new TestGroup(
+					"Animations",
+					"the graphics animations",
 					new TestItem[] {
 							new TestItem(AnimationSpriteLoopTest.class,
 									"Animation Sprite Loop Model",
@@ -71,6 +79,36 @@ public class C2dTests {
 							new TestItem(AdvanceSpriteShadowTest.class,
 									"AdvanceSprite Shadow",
 									"Used a box2d body to make them moveable.",
+									"default"),
+							new TestItem(
+									ActionTint.class,
+									"Action Tint",
+									"a tint action for the animation sprite or the images.",
+									"default"),
+							new TestItem(
+									ActionBLink.class,
+									"Action Blink",
+									"a blink action for the animation sprite or the images.",
+									"default"),
+							new TestItem(
+									ActionMove.class,
+									"Action Move",
+									"a move action for the animation sprite or the images.",
+									"default"),
+							new TestItem(
+									ActionShake.class,
+									"Action Shake",
+									"a shake action for the animation sprite or the images.",
+									"default"),
+							new TestItem(
+									ActionRotate.class,
+									"Action Rotate",
+									"a rotate action for the animation sprite or the images.",
+									"default"),
+							new TestItem(
+									ActionScale.class,
+									"Action Scale",
+									"a scale action for the animation sprite or the images.",
 									"default"), }),
 			new TestGroup(
 					"Backgrounds",
@@ -204,15 +242,7 @@ public class C2dTests {
 
 			new TestGroup("Other",
 					"Other misc . Some may not run on your device",
-					new TestItem[] {
-							new TestItem(AnimationSpriteLoopTest.class,
-									"Animation Sprite Loop Model",
-									"Touch to stop/play the animations",
-									"default"),
-							new TestItem(AdvanceSpriteShadowTest.class,
-									"AdvanceSprite Shadow",
-									"Used a box2d body to make them moveable.",
-									"default"), }), };
+					new TestItem[] {}), };
 
 	public static String[] getNames() {
 		List<String> names = new ArrayList<String>();
