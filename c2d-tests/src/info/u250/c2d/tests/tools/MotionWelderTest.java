@@ -28,6 +28,13 @@ public class MotionWelderTest extends Engine {
 		public void onResourcesRegister(AliasResourceManager<String> reg) {
 			reg.texture("Texture1", "data/tools/motionwelder/mongo.png");
 			reg.texture("Texture2", "data/tools/motionwelder/banana.png");
+			
+			reg.texture("Texture3", "data/tools/motionwelder/get.png");
+			reg.texture("Texture4", "data/tools/motionwelder/mainmenu.png");
+			reg.texture("Texture5", "data/tools/motionwelder/gameover.png");
+			
+			reg.texture("Texture6", "data/tools/motionwelder/interface.png");
+			reg.texture("Texture7", "data/tools/motionwelder/bg.png");
 		}
 
 		@Override
@@ -45,40 +52,75 @@ public class MotionWelderTest extends Engine {
 
 		@Override
 		public void onLoadedResourcesCompleted() {
-			final MSimpleAnimationPlayer player = MotionwelderSupport.makeMotionwelderAnimationPlayer("data/tools/motionwelder/mongo.anu", 
+			final MSimpleAnimationPlayer mongo = MotionwelderSupport.makeMotionwelderAnimationPlayer("data/tools/motionwelder/mongo.anu", 
 					new TextureRegion[]{
 					new TextureRegion(Engine.resource("Texture1",Texture.class)),
 					new TextureRegion(Engine.resource("Texture2",Texture.class))
 			},100,100);
-			player.setAnimation(0);
+			mongo.setAnimation(0);
+			
+			final MSimpleAnimationPlayer animationsuite = MotionwelderSupport.makeMotionwelderAnimationPlayer("data/tools/motionwelder/animationsuite.anu", 
+					new TextureRegion[]{
+					new TextureRegion(Engine.resource("Texture3",Texture.class)),
+					new TextureRegion(Engine.resource("Texture4",Texture.class)),
+					new TextureRegion(Engine.resource("Texture5",Texture.class))
+			},300,100);
+			
+			final MSimpleAnimationPlayer staticbg = MotionwelderSupport.makeMotionwelderAnimationPlayer("data/tools/motionwelder/interface.anu", 
+					new TextureRegion[]{
+					new TextureRegion(Engine.resource("Texture6",Texture.class)),
+					new TextureRegion(Engine.resource("Texture7",Texture.class))
+			},500,250);
+			mongo.setAnimation(0);
+			
+			mongo.setAnimation(0);
 			Engine.setMainScene(new Scene() {
 				@Override
 				public void render(float delta) {
 					Engine.getSpriteBatch().begin();
-					player.update(delta);
-					player.render(delta);
+					mongo.update(delta);
+					mongo.render(delta);
 					
-					Engine.getSpriteBatch().draw(Engine.resource("Texture1",Texture.class),100,300);
-					Engine.getSpriteBatch().draw(Engine.resource("Texture2",Texture.class),300,300);
+					animationsuite.update(delta);
+					animationsuite.render(delta);
+					
+					staticbg.update(delta);
+					staticbg.render(delta);
+					
+					Engine.getSpriteBatch().draw(Engine.resource("Texture1",Texture.class),0,300);
+					Engine.getSpriteBatch().draw(Engine.resource("Texture2",Texture.class),100,300);
+					Engine.getSpriteBatch().draw(Engine.resource("Texture3",Texture.class),150,300);
+					Engine.getSpriteBatch().draw(Engine.resource("Texture4",Texture.class),250,300);
+					Engine.getSpriteBatch().draw(Engine.resource("Texture5",Texture.class),300,300);
+					Engine.getSpriteBatch().draw(Engine.resource("Texture6",Texture.class),500,300);
+					Engine.getSpriteBatch().draw(Engine.resource("Texture7",Texture.class),650,300);
+					
 					Engine.getSpriteBatch().end();
 					
 					Engine.debugInfo("Touch the screen to see different animations\nThe images in the top is the origi images");
 				}
 
-				int animationId = 0;
+				int mongoAnimationId = 0;
+				int animationSiuteAnimationId = 0;
 				@Override
 				public InputProcessor getInputProcessor() {
 					return new InputAdapter() {
 						@Override
 						public boolean touchUp(int x, int y, int pointer,
 								int button) {
-							animationId++;
-							if(animationId>3){
-								animationId=0;
+							mongoAnimationId++;
+							if(mongoAnimationId>3){
+								mongoAnimationId=0;
 							}
-							player.setAnimation(animationId);
-							player.setSpriteX(100);
-							player.setSpriteY(100);
+							mongo.setAnimation(mongoAnimationId);
+							mongo.setSpriteX(100);
+							mongo.setSpriteY(100);
+							
+							animationSiuteAnimationId++;
+							if(animationSiuteAnimationId>4){
+								animationSiuteAnimationId=0;
+							}
+							animationsuite.setAnimation(animationSiuteAnimationId);
 
 							return super.touchUp(x, y, pointer, button);
 						}
