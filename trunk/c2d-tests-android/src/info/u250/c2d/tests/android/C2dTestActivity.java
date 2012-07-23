@@ -16,7 +16,7 @@ public class C2dTestActivity extends AndroidApplication {
 		Bundle extras = getIntent().getExtras();
 		String testName = (String)extras.get("test");
 
-		ApplicationListener test = C2dTests.newTest(testName);
+		ApplicationListener test = C2dTests.newTestFullName(testName);
 		AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
 		config.useGL20 = Engine.getEngineConfig().useGL20;
 		config.numSamples = 2;
