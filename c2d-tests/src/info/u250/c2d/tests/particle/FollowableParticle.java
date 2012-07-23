@@ -47,7 +47,7 @@ public class FollowableParticle extends Engine {
 					particleEmitter.draw(Engine.getSpriteBatch(),delta);
 					Engine.getSpriteBatch().end();
 					
-					Engine.debugInfo("Move your finger or your mouse to make the sprite follow");
+					Engine.debugInfo("Dragge or move your mouse to make the sprite follow");
 				}
 				@Override
 				public InputProcessor getInputProcessor() {
@@ -56,12 +56,16 @@ public class FollowableParticle extends Engine {
 						public boolean mouseMoved(int x, int y) {
 							particleEmitter.addParticles(10);
 							Vector2 tmp = Engine.screenToWorld(x, y);
-//							particleEmitter.getAngle().setLow(sprite_ship1.getRotation() - 4,mainGame.sprite_ship1.getRotation() + 4); laserPEmitters.get(i).getAngle().
-//									setHigh(sprite_ship1.getRotation() - 4, sprite_ship1.getRotation() + 4);
 							particleEmitter.start();
 							
 							particleEmitter.setPosition(tmp.x, tmp.y);
 							return super.mouseMoved(x, y);
+						}
+						@Override
+						public boolean touchDragged(int x, int y, int pointer) {
+							Vector2 tmp = Engine.screenToWorld(x, y);
+							particleEmitter.setPosition(tmp.x, tmp.y);
+							return super.touchDragged(x, y, pointer);
 						}
 					};
 				}
