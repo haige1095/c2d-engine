@@ -48,3 +48,12 @@ Transitions>
 Other>
 	--Page
 	
+
+C2d>
+	--Camera need redesigned
+	--Make easy use of TweenEngine
+	--Tiled map advance
+	--Transitions
+	--TextureRender like CCTextureRender
+	0
+	

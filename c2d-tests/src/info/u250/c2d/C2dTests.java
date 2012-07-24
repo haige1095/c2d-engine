@@ -339,7 +339,7 @@ public class C2dTests {
 			Map<String,Object> map = new HashMap<String, Object>();
 			map.put("title", "Transitions");
 			map.put("desc", "Some transition effects to switch scenes");
-			map.put("image", "drawable/item");
+			map.put("image", "drawable/transitions");
 			final List<Map<String,Object>> subs = new ArrayList<Map<String,Object>>();
 			{
 				Map<String,Object> sub = new HashMap<String,Object>();
