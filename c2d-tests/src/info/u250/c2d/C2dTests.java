@@ -69,7 +69,7 @@ public class C2dTests {
 			Map<String,Object> map = new HashMap<String, Object>();
 			map.put("title", "Animations");
 			map.put("desc", "the graphics animations");
-			map.put("image", "drawable/item");
+			map.put("image", "drawable/animations");
 			final List<Map<String,Object>> subs = new ArrayList<Map<String,Object>>();
 			{
 				Map<String,Object> sub = new HashMap<String, Object>();
@@ -175,7 +175,7 @@ public class C2dTests {
 			Map<String,Object> map = new HashMap<String, Object>();
 			map.put("title", "Parallax Layer");
 			map.put("desc", "Parallax texture or layer . fill the screen");
-			map.put("image", "drawable/item");
+			map.put("image", "drawable/parallax");
 			final List<Map<String,Object>> subs = new ArrayList<Map<String,Object>>();
 			{
 				Map<String,Object> sub = new HashMap<String,Object>();
@@ -209,7 +209,7 @@ public class C2dTests {
 			Map<String,Object> map = new HashMap<String, Object>();
 			map.put("title", "Box2d");
 			map.put("desc", "Physical Engine . How to use the c2d box2d");
-			map.put("image", "drawable/item");
+			map.put("image", "drawable/box2d");
 			final List<Map<String,Object>> subs = new ArrayList<Map<String,Object>>();
 			{
 				Map<String,Object> sub = new HashMap<String,Object>();
@@ -243,7 +243,7 @@ public class C2dTests {
 			Map<String,Object> map = new HashMap<String, Object>();
 			map.put("title", "Mesh");
 			map.put("desc", "Some advance effect that use the mesh(OpenglES)");
-			map.put("image", "drawable/item");
+			map.put("image", "drawable/mesh");
 			final List<Map<String,Object>> subs = new ArrayList<Map<String,Object>>();
 			{
 				Map<String,Object> sub = new HashMap<String,Object>();
@@ -285,7 +285,7 @@ public class C2dTests {
 			Map<String,Object> map = new HashMap<String, Object>();
 			map.put("title", "Particle");
 			map.put("desc", "Some particle effects");
-			map.put("image", "drawable/item");
+			map.put("image", "drawable/particle");
 			final List<Map<String,Object>> subs = new ArrayList<Map<String,Object>>();
 			{
 				Map<String,Object> sub = new HashMap<String,Object>();
@@ -303,7 +303,7 @@ public class C2dTests {
 			Map<String,Object> map = new HashMap<String, Object>();
 			map.put("title", "Tools");
 			map.put("desc", "thrid tools that we supported");
-			map.put("image", "drawable/item");
+			map.put("image", "drawable/tools");
 			final List<Map<String,Object>> subs = new ArrayList<Map<String,Object>>();
 			{
 				Map<String,Object> sub = new HashMap<String,Object>();
@@ -321,7 +321,7 @@ public class C2dTests {
 			Map<String,Object> map = new HashMap<String, Object>();
 			map.put("title", "Sfx");
 			map.put("desc", "Sounds and musics");
-			map.put("image", "drawable/item");
+			map.put("image", "drawable/sfx");
 			final List<Map<String,Object>> subs = new ArrayList<Map<String,Object>>();
 			{
 				Map<String,Object> sub = new HashMap<String,Object>();
@@ -437,7 +437,7 @@ public class C2dTests {
 			Map<String,Object> map = new HashMap<String, Object>();
 			map.put("title", "The Tiledmap");
 			map.put("desc", "tiledmap");
-			map.put("image", "drawable/item");
+			map.put("image", "drawable/tiled");
 			final List<Map<String,Object>> subs = new ArrayList<Map<String,Object>>();
 			{
 				Map<String,Object> sub = new HashMap<String,Object>();
@@ -513,7 +513,7 @@ public class C2dTests {
 			Map<String,Object> map = new HashMap<String, Object>();
 			map.put("title", "Nehe OpenglES");
 			map.put("desc", "A port of the NeHe tutorials for the Libgdx platform.");
-			map.put("image", "drawable/item");
+			map.put("image", "drawable/nehe");
 			final List<Map<String,Object>> subs = new ArrayList<Map<String,Object>>();
 			{
 				Map<String,Object> sub = new HashMap<String,Object>();
