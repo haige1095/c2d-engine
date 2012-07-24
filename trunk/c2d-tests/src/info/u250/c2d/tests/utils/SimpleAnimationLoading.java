@@ -1,4 +1,4 @@
-package info.u250.c2d.tests.load;
+package info.u250.c2d.tests.utils;
 
 import info.u250.c2d.engine.Engine;
 import info.u250.c2d.engine.load.startup.StartupLoading;

@@ -1,4 +1,4 @@
-package info.u250.c2d.tests;
+package info.u250.c2d.tests.animations;
 
 import info.u250.c2d.engine.Engine;
 import info.u250.c2d.engine.EngineDrive;
@@ -6,7 +6,7 @@ import info.u250.c2d.engine.Scene;
 import info.u250.c2d.engine.resources.AliasResourceManager;
 import info.u250.c2d.graphic.AnimationSprite;
 
-import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -72,24 +72,24 @@ public class AnimationSpriteLoopWithTimesTest extends Engine {
 					
 					Engine.debugInfo(  "animation with different keyframes duration .\n touch the screen to replay the animation .\n touch the sprite to handle the onClick event ");
 					
-					if(Gdx.input.isTouched()){
-						toggle = !toggle;
-						if(toggle){
-							
-						}else{
-							sprite.replay();
-						}
-					}
-					
 				}
 				@Override
-				public void update(float delta) {
-				
-					
-				}
+				public void update(float delta) {}
 				@Override
 				public InputProcessor getInputProcessor() {
-					return null;
+					return new InputAdapter(){
+						@Override
+						public boolean touchUp(int x, int y, int pointer,
+								int button) {
+							toggle = !toggle;
+							if(toggle){
+								
+							}else{
+								sprite.replay();
+							}
+							return super.touchUp(x, y, pointer, button);
+						}
+					};
 				}
 				@Override
 				public void hide() {

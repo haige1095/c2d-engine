@@ -31,8 +31,6 @@ public abstract interface CoreProvider {
 		SplitRows,
 		/** split the first scene cols and move them out , finally show the second scene */
 		SplitCols,
-		/** the scene1 leave as a circle round */
-		CircleLeave,
 		/** the first scene zoom out , and then the second scene zoom in */
 		ZoomOut,
 		/** Transition Scene Flip Horizontal */
