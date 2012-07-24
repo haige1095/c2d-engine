@@ -9,15 +9,23 @@ import info.u250.c2d.tests.animations.ActionScale;
 import info.u250.c2d.tests.animations.ActionShake;
 import info.u250.c2d.tests.animations.ActionTint;
 import info.u250.c2d.tests.animations.AdvanceSpriteShadowTest;
+import info.u250.c2d.tests.animations.AnalogTest;
 import info.u250.c2d.tests.animations.AnimationSpriteLoopTest;
-import info.u250.c2d.tests.backgrounds.RepeatTextureBackgroundTest;
-import info.u250.c2d.tests.backgrounds.SimpleMeshBackgroundTest;
-import info.u250.c2d.tests.box2d.OutlineTest;
+import info.u250.c2d.tests.animations.AnimationSpriteLoopWithTimesTest;
+import info.u250.c2d.tests.animations.LaserTest;
 import info.u250.c2d.tests.box2d.PhysicTrackLineTest;
 import info.u250.c2d.tests.box2d.SimpleObjectTest;
 import info.u250.c2d.tests.box2d.SoftBodyTest;
+import info.u250.c2d.tests.mesh.RepeatTextureBackgroundTest;
+import info.u250.c2d.tests.mesh.SimpleMeshBackgroundTest;
 import info.u250.c2d.tests.mesh.SurfaceTest;
 import info.u250.c2d.tests.mesh.TinyWingsStripesTest;
+import info.u250.c2d.tests.misc.CustomLoadingTest;
+import info.u250.c2d.tests.misc.EventTest;
+import info.u250.c2d.tests.misc.Ext_luaTest;
+import info.u250.c2d.tests.misc.GestureRecognizerTest;
+import info.u250.c2d.tests.misc.IngameLoadingTest;
+import info.u250.c2d.tests.misc.SvgTest;
 import info.u250.c2d.tests.nehe.Nehe04_Rotation;
 import info.u250.c2d.tests.nehe.Nehe05_3dShapes;
 import info.u250.c2d.tests.nehe.Nehe06_TextureMapping;
@@ -32,7 +40,19 @@ import info.u250.c2d.tests.parallax.ParallaxGroupEventsTest;
 import info.u250.c2d.tests.parallax.ParallaxGroupGestureDetectorTest;
 import info.u250.c2d.tests.particle.FollowableParticle;
 import info.u250.c2d.tests.sfx.EngineSimpleSfxTest;
+import info.u250.c2d.tests.tiled.Box2dTileTest;
 import info.u250.c2d.tests.tools.MotionWelderTest;
+import info.u250.c2d.tests.transitions.FadeTest;
+import info.u250.c2d.tests.transitions.FadeWhiteTest;
+import info.u250.c2d.tests.transitions.FlipHTest;
+import info.u250.c2d.tests.transitions.FlipVTest;
+import info.u250.c2d.tests.transitions.MoveInTest;
+import info.u250.c2d.tests.transitions.RotateTest;
+import info.u250.c2d.tests.transitions.RotateWithZoomInTest;
+import info.u250.c2d.tests.transitions.SlideInTest;
+import info.u250.c2d.tests.transitions.SplitTest;
+import info.u250.c2d.tests.transitions.ZoomInTest;
+import info.u250.c2d.tests.transitions.ZoomOutTest;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -51,22 +71,6 @@ public class C2dTests {
 			map.put("desc", "the graphics animations");
 			map.put("image", "drawable/item");
 			final List<Map<String,Object>> subs = new ArrayList<Map<String,Object>>();
-			{
-				Map<String,Object> sub = new HashMap<String, Object>();
-				sub.put("title", "Animation Sprite Loop Model");
-				sub.put("desc", "Touch to stop/play the animations");
-				sub.put("image", "drawable/item");
-				sub.put("cls", AnimationSpriteLoopTest.class.getName());
-				subs.add(sub);
-			}
-			{
-				Map<String,Object> sub = new HashMap<String, Object>();
-				sub.put("title", "AdvanceSprite Shadow");
-				sub.put("desc", "Used a box2d body to make them moveable.");
-				sub.put("image", "drawable/item");
-				sub.put("cls", AdvanceSpriteShadowTest.class.getName());
-				subs.add(sub);
-			}
 			{
 				Map<String,Object> sub = new HashMap<String, Object>();
 				sub.put("title", "Action Tint");
@@ -123,30 +127,44 @@ public class C2dTests {
 				sub.put("cls", ActionJump.class.getName());
 				subs.add(sub);
 			}
-			map.put("subs", subs);
-			tests.add(map);
-		}
-		//
-		{
-			Map<String,Object> map = new HashMap<String, Object>();
-			map.put("title", "Backgrounds");
-			map.put("desc", "Simple background that not texture");
-			map.put("image", "drawable/item");
-			final List<Map<String,Object>> subs = new ArrayList<Map<String,Object>>();
 			{
 				Map<String,Object> sub = new HashMap<String, Object>();
-				sub.put("title", "Repeat texture background");
-				sub.put("desc", "A small texture to fill the screen");
+				sub.put("title", "Animation Sprite Loop Model");
+				sub.put("desc", "Touch to stop/play the animations");
 				sub.put("image", "drawable/item");
-				sub.put("cls", RepeatTextureBackgroundTest.class.getName());
+				sub.put("cls", AnimationSpriteLoopTest.class.getName());
 				subs.add(sub);
 			}
 			{
 				Map<String,Object> sub = new HashMap<String, Object>();
-				sub.put("title", "Simple Mesh Background");
-				sub.put("desc", "Rectangle mesh background .");
+				sub.put("title", "Animation Sprite Loop With Time Model");
+				sub.put("desc", "Touch to stop/play the animations. it has different frame durations");
 				sub.put("image", "drawable/item");
-				sub.put("cls", SimpleMeshBackgroundTest.class.getName());
+				sub.put("cls", AnimationSpriteLoopWithTimesTest.class.getName());
+				subs.add(sub);
+			}
+			{
+				Map<String,Object> sub = new HashMap<String, Object>();
+				sub.put("title", "AdvanceSprite Shadow");
+				sub.put("desc", "Used a box2d body to make them moveable.");
+				sub.put("image", "drawable/item");
+				sub.put("cls", AdvanceSpriteShadowTest.class.getName());
+				subs.add(sub);
+			}
+			{
+				Map<String,Object> sub = new HashMap<String, Object>();
+				sub.put("title", "Analog");
+				sub.put("desc", "This is a simple analog widget , via this you can get the value and the directions");
+				sub.put("image", "drawable/item");
+				sub.put("cls", AnalogTest.class.getName());
+				subs.add(sub);
+			}
+			{
+				Map<String,Object> sub = new HashMap<String, Object>();
+				sub.put("title", "Laser");
+				sub.put("desc", "a simple laser effect");
+				sub.put("image", "drawable/item");
+				sub.put("cls", LaserTest.class.getName());
 				subs.add(sub);
 			}
 			map.put("subs", subs);
@@ -211,14 +229,6 @@ public class C2dTests {
 			}
 			{
 				Map<String,Object> sub = new HashMap<String,Object>();
-				sub.put("title", "Texture Outline");
-				sub.put("desc", "Texture Outline");
-				sub.put("image", "drawable/item");
-				sub.put("cls", OutlineTest.class.getName());
-				subs.add(sub);
-			}
-			{
-				Map<String,Object> sub = new HashMap<String,Object>();
 				sub.put("title", "Soft Body");
 				sub.put("desc", "How to make a soft body use spring force");
 				sub.put("image", "drawable/item");
@@ -251,6 +261,22 @@ public class C2dTests {
 				sub.put("cls", TinyWingsStripesTest.class.getName());
 				subs.add(sub);
 			}
+			{
+				Map<String,Object> sub = new HashMap<String, Object>();
+				sub.put("title", "Repeat texture background");
+				sub.put("desc", "A small texture to fill the screen");
+				sub.put("image", "drawable/item");
+				sub.put("cls", RepeatTextureBackgroundTest.class.getName());
+				subs.add(sub);
+			}
+			{
+				Map<String,Object> sub = new HashMap<String, Object>();
+				sub.put("title", "Simple Mesh Background");
+				sub.put("desc", "Rectangle mesh background .");
+				sub.put("image", "drawable/item");
+				sub.put("cls", SimpleMeshBackgroundTest.class.getName());
+				subs.add(sub);
+			}
 			map.put("subs", subs);
 			tests.add(map);
 		}
@@ -276,7 +302,7 @@ public class C2dTests {
 		{
 			Map<String,Object> map = new HashMap<String, Object>();
 			map.put("title", "Tools");
-			map.put("desc", "Some particle effects");
+			map.put("desc", "thrid tools that we supported");
 			map.put("image", "drawable/item");
 			final List<Map<String,Object>> subs = new ArrayList<Map<String,Object>>();
 			{
@@ -303,6 +329,180 @@ public class C2dTests {
 				sub.put("desc", "Play a sound and a music");
 				sub.put("image", "drawable/item");
 				sub.put("cls", EngineSimpleSfxTest.class.getName());
+				subs.add(sub);
+			}
+			map.put("subs", subs);
+			tests.add(map);
+		}
+		//
+		{
+			Map<String,Object> map = new HashMap<String, Object>();
+			map.put("title", "Transitions");
+			map.put("desc", "Some transition effects to switch scenes");
+			map.put("image", "drawable/item");
+			final List<Map<String,Object>> subs = new ArrayList<Map<String,Object>>();
+			{
+				Map<String,Object> sub = new HashMap<String,Object>();
+				sub.put("title", "Fade");
+				sub.put("desc", "the first scene fade out , and then the second scene fade in");
+				sub.put("image", "drawable/item");
+				sub.put("cls", FadeTest.class.getName());
+				subs.add(sub);
+			}
+			{
+				Map<String,Object> sub = new HashMap<String,Object>();
+				sub.put("title", "Fade White");
+				sub.put("desc", "The  type 'Fade white'");
+				sub.put("image", "drawable/item");
+				sub.put("cls", FadeWhiteTest.class.getName());
+				subs.add(sub);
+			}
+			{
+				Map<String,Object> sub = new HashMap<String,Object>();
+				sub.put("title", "Move in");
+				sub.put("desc", "The  type 'move in' from different directions");
+				sub.put("image", "drawable/item");
+				sub.put("cls", MoveInTest.class.getName());
+				subs.add(sub);
+			}
+			{
+				Map<String,Object> sub = new HashMap<String,Object>();
+				sub.put("title", "Slide in");
+				sub.put("desc", "The  type 'slide in' from different directions");
+				sub.put("image", "drawable/item");
+				sub.put("cls", SlideInTest.class.getName());
+				subs.add(sub);
+			}
+			{
+				Map<String,Object> sub = new HashMap<String,Object>();
+				sub.put("title", "Rotate");
+				sub.put("desc", "The  type 'rotate'");
+				sub.put("image", "drawable/item");
+				sub.put("cls", RotateTest.class.getName());
+				subs.add(sub);
+			}
+			{
+				Map<String,Object> sub = new HashMap<String,Object>();
+				sub.put("title", "Zoom out");
+				sub.put("desc", "The  type 'zoom out'");
+				sub.put("image", "drawable/item");
+				sub.put("cls", ZoomOutTest.class.getName());
+				subs.add(sub);
+			}
+			{
+				Map<String,Object> sub = new HashMap<String,Object>();
+				sub.put("title", "Zoom in");
+				sub.put("desc", "the first scene zoom in , and then the second scene zoom out");
+				sub.put("image", "drawable/item");
+				sub.put("cls", ZoomInTest.class.getName());
+				subs.add(sub);
+			}
+			{
+				Map<String,Object> sub = new HashMap<String,Object>();
+				sub.put("title", "Zoom in with rotate");
+				sub.put("desc", "The  type 'zoom in with rotate'");
+				sub.put("image", "drawable/item");
+				sub.put("cls", RotateWithZoomInTest.class.getName());
+				subs.add(sub);
+			}
+			{
+				Map<String,Object> sub = new HashMap<String,Object>();
+				sub.put("title", "Flip Horizontal");
+				sub.put("desc", "Transition Scene Flip Horizontal");
+				sub.put("image", "drawable/item");
+				sub.put("cls", FlipHTest.class.getName());
+				subs.add(sub);
+			}
+			{
+				Map<String,Object> sub = new HashMap<String,Object>();
+				sub.put("title", "Flip Vertical");
+				sub.put("desc", "Transition Scene Flip Vertical");
+				sub.put("image", "drawable/item");
+				sub.put("cls", FlipVTest.class.getName());
+				subs.add(sub);
+			}
+			{
+				Map<String,Object> sub = new HashMap<String,Object>();
+				sub.put("title", "Split");
+				sub.put("desc", "split the first scene rows or clos and move them out , finally show the second scene");
+				sub.put("image", "drawable/item");
+				sub.put("cls", SplitTest.class.getName());
+				subs.add(sub);
+			}
+			map.put("subs", subs);
+			tests.add(map);
+		}
+		//
+		{
+			Map<String,Object> map = new HashMap<String, Object>();
+			map.put("title", "The Tiledmap");
+			map.put("desc", "tiledmap");
+			map.put("image", "drawable/item");
+			final List<Map<String,Object>> subs = new ArrayList<Map<String,Object>>();
+			{
+				Map<String,Object> sub = new HashMap<String,Object>();
+				sub.put("title", "Box2d TiledMap");
+				sub.put("desc", "example: how to make a pysicalable tiledmap");
+				sub.put("image", "drawable/item");
+				sub.put("cls", Box2dTileTest.class.getName());
+				subs.add(sub);
+			}
+			map.put("subs", subs);
+			tests.add(map);
+		}
+		//
+		{
+			Map<String,Object> map = new HashMap<String, Object>();
+			map.put("title", "Other");
+			map.put("desc", "Other misc . Some may not run on your device");
+			map.put("image", "drawable/item");
+			final List<Map<String,Object>> subs = new ArrayList<Map<String,Object>>();
+			{
+				Map<String,Object> sub = new HashMap<String,Object>();
+				sub.put("title", "Custom Loading");
+				sub.put("desc", "a example : how to make a custom loading screen, it's simple");
+				sub.put("image", "drawable/item");
+				sub.put("cls", CustomLoadingTest.class.getName());
+				subs.add(sub);
+			}
+			{
+				Map<String,Object> sub = new HashMap<String,Object>();
+				sub.put("title", "InGame Loading");
+				sub.put("desc", "how to load other resources after start the game and replace some resources");
+				sub.put("image", "drawable/item");
+				sub.put("cls", IngameLoadingTest.class.getName());
+				subs.add(sub);
+			}
+			{
+				Map<String,Object> sub = new HashMap<String,Object>();
+				sub.put("title", "Ext Lua");
+				sub.put("desc", "load lua script and execute it");
+				sub.put("image", "drawable/item");
+				sub.put("cls", Ext_luaTest.class.getName());
+				subs.add(sub);
+			}
+			{
+				Map<String,Object> sub = new HashMap<String,Object>();
+				sub.put("title", "Ext SVG");
+				sub.put("desc", "load svg file and render it . this may take some times to gen the image");
+				sub.put("image", "drawable/item");
+				sub.put("cls", SvgTest.class.getName());
+				subs.add(sub);
+			}
+			{
+				Map<String,Object> sub = new HashMap<String,Object>();
+				sub.put("title", "Event");
+				sub.put("desc", "how to use the simple built in event system . ");
+				sub.put("image", "drawable/item");
+				sub.put("cls", EventTest.class.getName());
+				subs.add(sub);
+			}
+			{
+				Map<String,Object> sub = new HashMap<String,Object>();
+				sub.put("title", "Gesture Recognizer");
+				sub.put("desc", "load a json file  ");
+				sub.put("image", "drawable/item");
+				sub.put("cls", GestureRecognizerTest.class.getName());
 				subs.add(sub);
 			}
 			map.put("subs", subs);
@@ -387,17 +587,6 @@ public class C2dTests {
 				sub.put("cls", Nehe23_SphereMapping.class.getName());
 				subs.add(sub);
 			}
-			map.put("subs", subs);
-			tests.add(map);
-		}
-		//
-		{
-			Map<String,Object> map = new HashMap<String, Object>();
-			map.put("title", "Other");
-			map.put("desc", "Other misc . Some may not run on your device");
-			map.put("image", "drawable/item");
-			final List<Map<String,Object>> subs = new ArrayList<Map<String,Object>>();
-			
 			map.put("subs", subs);
 			tests.add(map);
 		}

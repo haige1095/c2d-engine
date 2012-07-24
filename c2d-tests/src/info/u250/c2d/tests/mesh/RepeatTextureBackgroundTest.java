@@ -1,4 +1,4 @@
-package info.u250.c2d.tests.backgrounds;
+package info.u250.c2d.tests.mesh;
 
 import info.u250.c2d.engine.Engine;
 import info.u250.c2d.engine.EngineDrive;
