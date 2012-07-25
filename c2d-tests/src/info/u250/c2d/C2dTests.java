@@ -16,6 +16,8 @@ import info.u250.c2d.tests.animations.LaserTest;
 import info.u250.c2d.tests.box2d.PhysicTrackLineTest;
 import info.u250.c2d.tests.box2d.SimpleObjectTest;
 import info.u250.c2d.tests.box2d.SoftBodyTest;
+import info.u250.c2d.tests.mesh.GradientTest;
+import info.u250.c2d.tests.mesh.JumpyLineTest;
 import info.u250.c2d.tests.mesh.RepeatTextureBackgroundTest;
 import info.u250.c2d.tests.mesh.SimpleMeshBackgroundTest;
 import info.u250.c2d.tests.mesh.SurfaceTest;
@@ -275,6 +277,22 @@ public class C2dTests {
 				sub.put("desc", "Rectangle mesh background .");
 				sub.put("image", "drawable/item");
 				sub.put("cls", SimpleMeshBackgroundTest.class.getName());
+				subs.add(sub);
+			}
+			{
+				Map<String,Object> sub = new HashMap<String, Object>();
+				sub.put("title", "Gradient");
+				sub.put("desc", "Gradient effect use the ImmediateModeRenderer .");
+				sub.put("image", "drawable/item");
+				sub.put("cls", GradientTest.class.getName());
+				subs.add(sub);
+			}
+			{
+				Map<String,Object> sub = new HashMap<String, Object>();
+				sub.put("title", "Jumpy line");
+				sub.put("desc", " A line that jump jump jump .");
+				sub.put("image", "drawable/item");
+				sub.put("cls", JumpyLineTest.class.getName());
 				subs.add(sub);
 			}
 			map.put("subs", subs);
