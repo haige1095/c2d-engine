@@ -1,6 +1,7 @@
 package info.u250.c2d.engine.resources;
 
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.ObjectMap;
@@ -15,7 +16,7 @@ public class LanguagesManager {
 	}
 	public void load(String name){
 		try {
-			parse(new XmlReader().parse(Gdx.files.internal("lang/"+name+"-"+lang+".xml")));
+			parse(new XmlReader().parse(new InputStreamReader(Gdx.files.internal("lang/"+name+"-"+lang+".xml").read(),"UTF8")));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -27,7 +28,9 @@ public class LanguagesManager {
 		map.clear();
 		for(int i=0;i<ele.getChildCount();i++){
 			Element e = ele.getChild(i);
-			map.put(e.getAttribute("name"), e.getText());
+			String text = e.getText();
+			text = text.replace("\\n", "\n").replace("\\t", "\t");
+			map.put(e.getAttribute("name"), text);
 		}
 	}
 }
