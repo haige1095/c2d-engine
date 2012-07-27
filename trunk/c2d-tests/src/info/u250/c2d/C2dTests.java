@@ -16,6 +16,8 @@ import info.u250.c2d.tests.animations.LaserTest;
 import info.u250.c2d.tests.box2d.PhysicTrackLineTest;
 import info.u250.c2d.tests.box2d.SimpleObjectTest;
 import info.u250.c2d.tests.box2d.SoftBodyTest;
+import info.u250.c2d.tests.box2d.WaterEffectTest;
+import info.u250.c2d.tests.box2d.WebTest;
 import info.u250.c2d.tests.mesh.GradientTest;
 import info.u250.c2d.tests.mesh.JumpyLineTest;
 import info.u250.c2d.tests.mesh.RepeatTextureBackgroundTest;
@@ -235,6 +237,22 @@ public class C2dTests {
 				sub.put("desc", "How to make a soft body use spring force");
 				sub.put("image", "drawable/item");
 				sub.put("cls", SoftBodyTest.class.getName());
+				subs.add(sub);
+			}
+			{
+				Map<String,Object> sub = new HashMap<String,Object>();
+				sub.put("title", "Web");
+				sub.put("desc", "there is a spring force between them");
+				sub.put("image", "drawable/item");
+				sub.put("cls", WebTest.class.getName());
+				subs.add(sub);
+			}
+			{
+				Map<String,Object> sub = new HashMap<String,Object>();
+				sub.put("title", "Water effect");
+				sub.put("desc", "the water effect use the box2d. can't use this tool with OpenGL ES 1.x ");
+				sub.put("image", "drawable/item");
+				sub.put("cls", WaterEffectTest.class.getName());
 				subs.add(sub);
 			}
 			map.put("subs", subs);

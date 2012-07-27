@@ -99,15 +99,24 @@ public  class Cb2Object implements Renderable,Disposable{
 	 */
 	private boolean visiable = true;
 	
+	private boolean resizeObject = true;
 	
 	protected Vector2 offset = new Vector2();
 
+	
+	public boolean isResizeObject() {
+		return resizeObject;
+	}
+	public void setResizeObject(boolean resizeObject) {
+		this.resizeObject = resizeObject;
+	}
 	public boolean isVisiable() {
 		return visiable;
 	}
 	public void setVisiable(boolean visiable){
 		this.visiable = visiable;
 	}
+	
 	
 	public static interface Cb2ObjectSetupCallback{
 		void before(Cb2Object obj);
@@ -157,15 +166,21 @@ public  class Cb2Object implements Renderable,Disposable{
 		final Vector2 pos = new Vector2();
 		if(data instanceof CircleData){
 			final CircleData tmp = CircleData.class.cast(data);
-			object.setSize(tmp.radius*2, tmp.radius*2);
+			if(resizeObject){
+				object.setSize(tmp.radius*2, tmp.radius*2);
+			}
 			pos.set(tmp.center).sub(tmp.radius, tmp.radius);
 		}else if(data instanceof BoxData){
 			final BoxData tmp = BoxData.class.cast(data);
-			object.setSize(tmp.width, tmp.height);
+			if(resizeObject){
+				object.setSize(tmp.width, tmp.height);
+			}
 			pos.set(tmp.center).sub(tmp.width/2,tmp.height/2);
 		}else if(data instanceof PolygonData){
 			final PolygonData tmp = PolygonData.class.cast(data);
-			object.setSize(tmp.width, tmp.height);
+			if(resizeObject){
+				object.setSize(tmp.width, tmp.height);
+			}
 			pos.set(tmp.center).sub(tmp.width/2,tmp.height/2);
 		}
 		this.object.setScale(1);
