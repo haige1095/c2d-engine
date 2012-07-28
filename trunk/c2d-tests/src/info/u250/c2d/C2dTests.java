@@ -19,6 +19,7 @@ import info.u250.c2d.tests.box2d.SimpleObjectTest;
 import info.u250.c2d.tests.box2d.SoftBodyTest;
 import info.u250.c2d.tests.box2d.WaterEffectTest;
 import info.u250.c2d.tests.box2d.WebTest;
+import info.u250.c2d.tests.mesh.GradientEllipseTest;
 import info.u250.c2d.tests.mesh.GradientTest;
 import info.u250.c2d.tests.mesh.JumpyLineTest;
 import info.u250.c2d.tests.mesh.RepeatTextureBackgroundTest;
@@ -312,6 +313,14 @@ public class C2dTests {
 				sub.put("desc", "Gradient effect use the ImmediateModeRenderer .");
 				sub.put("image", "drawable/item");
 				sub.put("cls", GradientTest.class.getName());
+				subs.add(sub);
+			}
+			{
+				Map<String,Object> sub = new HashMap<String, Object>();
+				sub.put("title", "Ellipse Gradient");
+				sub.put("desc", "Ellipse Gradient effect use the ImmediateModeRenderer .");
+				sub.put("image", "drawable/item");
+				sub.put("cls", GradientEllipseTest.class.getName());
 				subs.add(sub);
 			}
 			{
