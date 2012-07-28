@@ -181,7 +181,6 @@ class Box2dWater implements Renderable, Disposable {
 		ShaderProgram.pedantic = false;
 		eraser = new ShaderProgram(Eraser_vertexShader,Eraser_fragmentShader);
 		shader = new ShaderProgram(vertexShader,fragmentShader);
-		ShaderProgram.pedantic = true;
 		
 		frameBuffer = new FrameBuffer(Pixmap.Format.RGBA8888,
 				(int) Engine.getEngineConfig().width,
@@ -268,5 +267,7 @@ class Box2dWater implements Renderable, Disposable {
 		Engine.getSpriteBatch().begin();
 		frameSprite.draw(Engine.getSpriteBatch());
 		Engine.getSpriteBatch().end();
+		
+		Engine.debugInfo("Touch the screen to add a new water drop");
 	}
 }

@@ -13,6 +13,7 @@ import info.u250.c2d.tests.animations.AnalogTest;
 import info.u250.c2d.tests.animations.AnimationSpriteLoopTest;
 import info.u250.c2d.tests.animations.AnimationSpriteLoopWithTimesTest;
 import info.u250.c2d.tests.animations.LaserTest;
+import info.u250.c2d.tests.box2d.KinematicBodiesTest;
 import info.u250.c2d.tests.box2d.PhysicTrackLineTest;
 import info.u250.c2d.tests.box2d.SimpleObjectTest;
 import info.u250.c2d.tests.box2d.SoftBodyTest;
@@ -253,6 +254,14 @@ public class C2dTests {
 				sub.put("desc", "the water effect use the box2d. can't use this tool with OpenGL ES 1.x ");
 				sub.put("image", "drawable/item");
 				sub.put("cls", WaterEffectTest.class.getName());
+				subs.add(sub);
+			}
+			{
+				Map<String,Object> sub = new HashMap<String,Object>();
+				sub.put("title", "Kinematic Bodies");
+				sub.put("desc", "A kinematic body is an hybrid body which is not affected by forces and collisions like a static body but can moved with a linear velocity like a dynamic body. ");
+				sub.put("image", "drawable/item");
+				sub.put("cls", KinematicBodiesTest.class.getName());
 				subs.add(sub);
 			}
 			map.put("subs", subs);

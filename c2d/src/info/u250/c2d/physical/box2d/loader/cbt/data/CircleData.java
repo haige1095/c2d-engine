@@ -29,7 +29,7 @@ public class CircleData extends BodyData{
 				.circleShape(this.radius/Cb2World.RADIO)
 				.sensor(this.isSensor)
 				.build())
-		.type(this.isDynamic?BodyType.DynamicBody:BodyType.StaticBody)
+		.type(this.isKinematic?BodyType.KinematicBody:(this.isDynamic?BodyType.DynamicBody:BodyType.StaticBody))
 		.userData(this.data)
 		.angle(MathUtils.degreesToRadians*this.angle)
 		.position(this.center.cpy().mul(1/Cb2World.RADIO))
