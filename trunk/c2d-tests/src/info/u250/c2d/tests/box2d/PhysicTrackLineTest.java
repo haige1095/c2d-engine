@@ -5,14 +5,13 @@ import info.u250.c2d.engine.EngineDrive;
 import info.u250.c2d.engine.Scene;
 import info.u250.c2d.engine.resources.AliasResourceManager;
 import info.u250.c2d.graphic.AdvanceSprite;
-import info.u250.c2d.physical.box2d.Cb2World;
 import info.u250.c2d.physical.box2d.Cb2Object;
+import info.u250.c2d.physical.box2d.Cb2World;
 
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
@@ -45,10 +44,8 @@ public class PhysicTrackLineTest extends Engine {
 			reg.texture("Branch", "data/box2d/branch.png");
 		}
 		
-		ShapeRenderer renderer ;
 		@Override
 		public void onLoadedResourcesCompleted() {
-			renderer = new ShapeRenderer();
 			Cb2World.getInstance().installDefaultWorld().createScreenBox();
 			
 			Engine.setMainScene(new Scene() {
@@ -67,14 +64,13 @@ public class PhysicTrackLineTest extends Engine {
 					}
 					Engine.getSpriteBatch().end();
 					
-					renderer.setProjectionMatrix(Engine.getDefaultCamera().combined);
-					renderer.begin(ShapeType.FilledCircle);
-					renderer.setColor(Color.WHITE);
+					Engine.getShapeRenderer().begin(ShapeType.FilledCircle);
+					Engine.getShapeRenderer().setColor(Color.WHITE);
 					for(Vector2 v:tracks){
-						renderer.filledCircle(v.x, v.y, 3);
+						Engine.getShapeRenderer().filledCircle(v.x, v.y, 3);
 					}
-					renderer.end();
-					if(object!=null)object.data.debug(renderer);
+					Engine.getShapeRenderer().end();
+					if(object!=null)object.data.debug(Engine.getShapeRenderer());
 					Engine.debugInfo(" Physic Track .  Drag to fire~");
 					
 				}

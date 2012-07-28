@@ -29,6 +29,8 @@ public abstract class BodyData implements Disposable{
 	public int filter_maskBits = -1;
 	public boolean isSensor = false;
 	public boolean isDynamic = true;
+	/** if its true , the {@link #isDynamic} is no use at all*/
+	public boolean isKinematic = false;
 	
 	public float angle = 0;
 	public final Vector2 center = new Vector2();

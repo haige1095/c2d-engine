@@ -14,7 +14,6 @@ import info.u250.c2d.physical.box2d.loader.cbt.data.DistanceJointData;
 
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.Array;
 
 
@@ -37,14 +36,12 @@ public class WebTest  extends Engine {
 		public EngineOptions onSetupEngine() {
 			return new EngineOptions(new String[]{"data/c2d.png"},800,480);
 		}
-		ShapeRenderer render;
 		PhysicalFingerInput input;
 		
 		Array<DistanceJointData> joints = new Array<DistanceJointData>(); 
 		Cb2ObjectGroup group = new Cb2ObjectGroup();
 		@Override
 		public void onLoadedResourcesCompleted() {
-			render = new ShapeRenderer();
 			input =new PhysicalFingerInput( Cb2World.getInstance().installDefaultWorld().createScreenBox());
 			
 			
@@ -149,7 +146,7 @@ public class WebTest  extends Engine {
 					Engine.getSpriteBatch().end();
 //					group.debug(render);	
 					for(DistanceJointData j:joints){
-						j.debug(render);
+						j.debug(Engine.getShapeRenderer());
 					}
 				}
 				

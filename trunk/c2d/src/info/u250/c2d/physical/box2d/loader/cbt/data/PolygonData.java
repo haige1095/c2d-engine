@@ -44,7 +44,7 @@ public class PolygonData extends BodyData{
 					.build());
 		}
 		this.body = bodyBuilder
-		.type(this.isDynamic?BodyType.DynamicBody:BodyType.StaticBody)
+		.type(this.isKinematic?BodyType.KinematicBody:(this.isDynamic?BodyType.DynamicBody:BodyType.StaticBody))
 		.userData(this.data)
 		.angle(MathUtils.degreesToRadians*this.angle)
 		.position(this.center.cpy().mul(1/Cb2World.RADIO))

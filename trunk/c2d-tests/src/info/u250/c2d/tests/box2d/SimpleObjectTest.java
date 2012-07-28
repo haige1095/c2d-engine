@@ -17,7 +17,6 @@ import java.util.Random;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 
 
@@ -41,12 +40,9 @@ public class SimpleObjectTest  extends Engine {
 		public EngineOptions onSetupEngine() {
 			return new EngineOptions(new String[]{"data/c2d.png","data/animationsprite/"},800,480);
 		}
-		ShapeRenderer render;
 		PhysicalFingerInput input;
 		@Override
-		public void onLoadedResourcesCompleted() {
-			render = new ShapeRenderer();
-			
+		public void onLoadedResourcesCompleted() {			
 			input =new PhysicalFingerInput(
 					Cb2World.getInstance().installDefaultWorld().createScreenBox());
 			
@@ -96,7 +92,7 @@ public class SimpleObjectTest  extends Engine {
 					Engine.getSpriteBatch().begin();
 					group.render(delta);
 					Engine.getSpriteBatch().end();
-					group.debug(render);
+					group.debug(Engine.getShapeRenderer());
 					Engine.debugInfo( "Make a physical object is simple \njust new a PhysicalObject");
 					
 				}
