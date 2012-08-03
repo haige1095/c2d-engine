@@ -55,26 +55,6 @@ public class CameraControllerInRange extends GestureDetector {
 		}
 
 		@Override
-		public boolean tap(float x, float y, int count) {
-			return false;
-		}
-
-		@Override
-		public boolean longPress(float x, float y) {
-			return false;
-		}
-
-		@Override
-		public boolean fling(float velocityX, float velocityY) {
-			flinging = true;
-			velX = camera.position.z / (Engine.getEngineConfig().height / 2)
-					* velocityX * 0.5f;
-			velY = camera.position.z / (Engine.getEngineConfig().height / 2)
-					* velocityY * 0.5f;
-			return false;
-		}
-
-		@Override
 		public boolean pan(float x, float y, float deltaX, float deltaY) {
 
 			camera.position.add(
@@ -114,6 +94,27 @@ public class CameraControllerInRange extends GestureDetector {
 					velY = 0;
 			}
 
+		}
+
+		@Override
+		public boolean tap(float x, float y, int count, int pointer, int button) {
+			return false;
+		}
+
+		@Override
+		public boolean fling(float velocityX, float velocityY, int pointer,
+				int button) {
+			flinging = true;
+			velX = camera.position.z / (Engine.getEngineConfig().height / 2)
+					* velocityX * 0.5f;
+			velY = camera.position.z / (Engine.getEngineConfig().height / 2)
+					* velocityY * 0.5f;
+			return false;
+		}
+
+		@Override
+		public boolean longPress(float x, float y) {
+			return false;
 		}
 	}
 
