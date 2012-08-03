@@ -331,11 +331,12 @@ public class Nehe08_Blending extends Engine {
 				public InputProcessor getInputProcessor() {
 					return new GestureDetector(new GestureAdapter(){
 						@Override
-						public boolean fling(float velocityX, float velocityY) {
+						public boolean fling(float velocityX, float velocityY,
+								int pointer, int button) {
 							sceneState.dxSpeed = velocityX/10 ;
 							sceneState.dySpeed = velocityY/10 ;
-							return super.fling(velocityX, velocityY);
-						};
+							return super.fling(velocityX, velocityY, pointer, button);
+						}
 					});
 				}
 				@Override

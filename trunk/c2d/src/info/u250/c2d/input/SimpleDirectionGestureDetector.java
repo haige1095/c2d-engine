@@ -21,7 +21,8 @@ public class SimpleDirectionGestureDetector extends GestureDetector{
 			this.directionListener = directionListener;
 		}
 		@Override
-		public boolean fling(float velocityX, float velocityY) {
+		public boolean fling(float velocityX, float velocityY, int pointer,
+				int button) {
 			if(Math.abs(velocityX)>Math.abs(velocityY)){
 				if(velocityX>0){
 					directionListener.onRight();
@@ -35,7 +36,7 @@ public class SimpleDirectionGestureDetector extends GestureDetector{
 					directionListener.onUp();
 				}
 			}
-			return super.fling(velocityX, velocityY);
+			return super.fling(velocityX, velocityY, pointer, button);
 		}
 	}
 }

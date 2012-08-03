@@ -197,20 +197,21 @@ public class Nehe18_Quadrics extends Engine {
 				public InputProcessor getInputProcessor() {
 					return new GestureDetector(new GestureAdapter(){
 						@Override
-						public boolean fling(float velocityX, float velocityY) {
+						public boolean fling(float velocityX, float velocityY,
+								int pointer, int button) {
 							sceneState.dxSpeed = velocityX/10 ;
 							sceneState.dySpeed = velocityY/10 ;
-							return super.fling(velocityX, velocityY);
-						};
+							return super.fling(velocityX, velocityY, pointer, button);
+						}
 						@Override
-						public boolean tap(float x, float y, int count) {
+						public boolean tap(float x, float y, int count,
+								int pointer, int button) {
 							i++;
 							if(i==6){
 								i = 0;
 							}
-							return super.tap(x, y, count);
+							return super.tap(x, y, count, pointer, button);
 						}
-						
 					});
 				}
 				@Override
