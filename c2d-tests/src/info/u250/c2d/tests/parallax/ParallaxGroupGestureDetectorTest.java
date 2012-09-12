@@ -7,12 +7,12 @@ import info.u250.c2d.engine.EngineDrive;
 import info.u250.c2d.engine.Scene;
 import info.u250.c2d.engine.resources.AliasResourceManager;
 import info.u250.c2d.graphic.parallax.ParallaxGroup;
-import info.u250.c2d.input.CameraControllerInRange;
-import info.u250.c2d.input.CameraControllerInRange.CameraControllerInRangeAdapter;
+import info.u250.c2d.graphic.parallax.ParallaxGroup.DefaultParallaxGroupGestureListener;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.input.GestureDetector;
 
 
 public class ParallaxGroupGestureDetectorTest  extends Engine{
@@ -74,9 +74,8 @@ public class ParallaxGroupGestureDetectorTest  extends Engine{
 				
 				@Override
 				public InputProcessor getInputProcessor() {
-//					return rbg.enableGestureDetector().getGestureDetector();
-					CameraControllerInRangeAdapter ca=new CameraControllerInRangeAdapter(rbg.getCamera());
-					return rbg.enableGeBackground(new CameraControllerInRange(ca),ca).getGestureDetector();
+					DefaultParallaxGroupGestureListener ca=new DefaultParallaxGroupGestureListener(rbg.getCamera());
+					return rbg.enableGeBackground(new GestureDetector(ca),ca).getGestureDetector();
 				}
 			});
 

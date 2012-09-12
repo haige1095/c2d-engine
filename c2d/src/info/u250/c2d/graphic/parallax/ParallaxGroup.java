@@ -12,12 +12,12 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.input.GestureDetector;
+import com.badlogic.gdx.input.GestureDetector.GestureListener;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.Json.Serializer;
 import com.badlogic.gdx.utils.ObjectMap;
-import info.u250.c2d.input.CameraControllerInRange.CameraGestureListener;
 
 /**
  *  This only make a group only via to the {@link SpriteParallaxLayerDrawable} .if you want to 
@@ -118,21 +118,100 @@ speedY:0
 public class ParallaxGroup extends Array<ParallaxLayer> implements Renderable{
 	
 	/** the background gesture listener use the core {@link GestureDetector} , a {@link ParallaxGroupGestureListener#update()} is added */
-//	public interface ParallaxGroupGestureListener extends GestureListener{
-//		public void update();
-//	}
+	public interface ParallaxGroupGestureListener extends GestureListener{
+		public void update();
+	}
+
+	public static class DefaultParallaxGroupGestureListener implements ParallaxGroupGestureListener {
+		float velX, velY;
+		boolean flinging = false;
+		float initialScale = 1;
+		C2dCamera camera;
+
+		public DefaultParallaxGroupGestureListener(C2dCamera camera) {
+			this.camera = camera;
+		}
+
+		@Override
+		public boolean touchDown(float x, float y, int pointer, int button) {
+			flinging = false;
+			initialScale = camera.position.z / (Engine.getEngineConfig().height / 2);
+			return false;
+		}
+		@Override
+		public boolean pan(float x, float y, float deltaX, float deltaY) {
+
+			camera.position.add(
+					-deltaX * camera.position.z
+							/ (Engine.getEngineConfig().height / 2), deltaY
+							* camera.position.z
+							/ (Engine.getEngineConfig().height / 2), 0);
+
+			return false;
+		}
+
+		@Override
+		public boolean zoom(float originalDistance, float currentDistance) {
+
+			float ratio = originalDistance / currentDistance;
+			camera.position.z = initialScale * ratio
+					* Engine.getEngineConfig().height / 2;
+			return false;
+		}
+
+		@Override
+		public boolean pinch(Vector2 initialFirstPointer,
+				Vector2 initialSecondPointer, Vector2 firstPointer,
+				Vector2 secondPointer) {
+			return false;
+		}
+
+		@Override
+		public void update() {
+
+			if (flinging) {
+				velX *= 0.98f;
+				velY *= 0.98f;
+				camera.position.add(-velX * Gdx.graphics.getDeltaTime(), velY
+						* Gdx.graphics.getDeltaTime(), 0);
+				if (Math.abs(velX) < 0.01f)
+					velX = 0;
+				if (Math.abs(velY) < 0.01f)
+					velY = 0;
+			}
+
+		}
+
+
+		@Override
+		public boolean fling(float velocityX, float velocityY, int button) {
+			flinging = true;
+			velX = camera.position.z / (Engine.getEngineConfig().height / 2)
+					* velocityX * 0.5f;
+			velY = camera.position.z / (Engine.getEngineConfig().height / 2)
+					* velocityY * 0.5f;
+			return false;
+		}
+		@Override
+		public boolean tap(float x, float y, int count, int button) {
+			return false;
+		}
+		@Override
+		public boolean longPress(float x, float y) {
+			return false;
+		}
+	}
 	/** the default camera controller */
-	private class DefaultCameraController implements CameraGestureListener {
+	private class DefaultCameraController implements ParallaxGroupGestureListener {
 		float velX, velY;
 		boolean flinging = false;
 		float initialScale = 1;
 		@Override
-		public boolean touchDown (float x, float y, int pointer) {
+		public boolean touchDown(float x, float y, int pointer, int button) {
 			flinging = false;
 			initialScale = camera.position.z/(Engine.getEngineConfig().height/2);
 			return false;
 		}
-
 		@Override
 		public boolean longPress (float x, float y) {
 			return false;
@@ -166,15 +245,12 @@ public class ParallaxGroup extends Array<ParallaxLayer> implements Renderable{
 				if (Math.abs(velY) < 0.01f) velY = 0;
 			}
 		}
-
 		@Override
-		public boolean tap(float x, float y, int count, int pointer, int button) {
+		public boolean tap(float x, float y, int count, int button) {
 			return false;
 		}
-
 		@Override
-		public boolean fling(float velocityX, float velocityY, int pointer,
-				int button) {
+		public boolean fling(float velocityX, float velocityY, int button) {
 			flinging = true;
 			velX = camera.position.z/(Engine.getEngineConfig().height/2) * velocityX * 0.5f;
 			velY = camera.position.z/(Engine.getEngineConfig().height/2) * velocityY * 0.5f;
@@ -207,7 +283,7 @@ public class ParallaxGroup extends Array<ParallaxLayer> implements Renderable{
 	private C2dCamera camera;
 	private Vector2 speed = new Vector2();
 	private GestureDetector gestureDetector;
-	private CameraGestureListener controller;
+	private ParallaxGroupGestureListener controller;
 	
 	public GestureDetector getGestureDetector(){
 		return this.gestureDetector;
@@ -217,7 +293,7 @@ public class ParallaxGroup extends Array<ParallaxLayer> implements Renderable{
 		gestureDetector = new GestureDetector(20, 0.5f, 2, 0.15f,controller );
 		return this;
 	}
-	public ParallaxGroup enableGeBackground(GestureDetector gestureDetector,CameraGestureListener controller){
+	public ParallaxGroup enableGeBackground(GestureDetector gestureDetector,ParallaxGroupGestureListener controller){
 		this.gestureDetector = gestureDetector;
 		this.controller=controller;
 		return this;
