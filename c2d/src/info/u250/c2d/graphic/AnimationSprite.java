@@ -1,5 +1,13 @@
 package info.u250.c2d.graphic;
 
+import static com.badlogic.gdx.graphics.g2d.SpriteBatch.U1;
+import static com.badlogic.gdx.graphics.g2d.SpriteBatch.U2;
+import static com.badlogic.gdx.graphics.g2d.SpriteBatch.U3;
+import static com.badlogic.gdx.graphics.g2d.SpriteBatch.U4;
+import static com.badlogic.gdx.graphics.g2d.SpriteBatch.V1;
+import static com.badlogic.gdx.graphics.g2d.SpriteBatch.V2;
+import static com.badlogic.gdx.graphics.g2d.SpriteBatch.V3;
+import static com.badlogic.gdx.graphics.g2d.SpriteBatch.V4;
 import info.u250.c2d.engine.Engine;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -70,7 +78,31 @@ public class AnimationSprite extends AdvanceSprite{
 	 * AnimationSpriteData
 	 */
 	private AnimationSpriteData data ;
-	
+	@Override
+	public void flip(boolean x, boolean y) {
+		for(TextureRegion region:data.keyFrames){
+			if(null!=region){
+				region.flip(x, y);
+			}
+		}
+		float[] vertices = this.getVertices();
+		if (x) {
+			float temp = vertices[U1];
+			vertices[U1] = vertices[U3];
+			vertices[U3] = temp;
+			temp = vertices[U2];
+			vertices[U2] = vertices[U4];
+			vertices[U4] = temp;
+		}
+		if (y) {
+			float temp = vertices[V1];
+			vertices[V1] = vertices[V3];
+			vertices[V3] = temp;
+			temp = vertices[V2];
+			vertices[V2] = vertices[V4];
+			vertices[V4] = temp;
+		}
+	}
 	/**
 	 * make a new animation sprite from the atlas file . if your textureRegions's names are abc. then we will try to load abc1,abc2,abc3,abc4....until its null
 	 * @param frameDuration
