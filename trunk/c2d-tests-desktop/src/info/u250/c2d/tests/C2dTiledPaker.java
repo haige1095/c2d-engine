@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.IOException;
 
 import com.badlogic.gdx.ApplicationListener;
-import com.badlogic.gdx.backends.jogl.JoglApplication;
+import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.tiledmappacker.TiledMapPacker;
 import com.badlogic.gdx.tools.imagepacker.TexturePacker.Settings;
 
@@ -20,7 +20,7 @@ public class C2dTiledPaker {
 		settings.duplicatePadding = true;
 
 		// Create a new JoglApplication so that Gdx stuff works properly
-		new JoglApplication(new ApplicationListener() {
+		new LwjglApplication(new ApplicationListener() {
 			@Override
 			public void create () {
 			}

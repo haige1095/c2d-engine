@@ -18,8 +18,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 
-import com.badlogic.gdx.backends.jogl.JoglApplication;
-import com.badlogic.gdx.backends.jogl.JoglApplicationConfiguration;
+import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
+import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 
 public class C2dDesktop {
 	
@@ -50,7 +50,7 @@ public class C2dDesktop {
 				public void actionPerformed (ActionEvent e) {
 					String testName = (String)list.getSelectedValue();
 					Engine test = C2dTests.newTest(testName);
-					JoglApplicationConfiguration config = new JoglApplicationConfiguration();
+					LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 					config.fullscreen = false;
 					config.width =(int) Engine.getEngineConfig().width;
 					config.height = (int) Engine.getEngineConfig().height;
@@ -58,7 +58,7 @@ public class C2dDesktop {
 					config.title = testName;
 					config.vSyncEnabled = true;
 
-					new JoglApplication(test,  config);
+					new LwjglApplication(test,  config);
 				}
 			});
 

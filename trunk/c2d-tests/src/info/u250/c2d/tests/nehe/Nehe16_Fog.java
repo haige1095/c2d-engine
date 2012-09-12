@@ -342,19 +342,19 @@ public class Nehe16_Fog extends Engine {
 					return new GestureDetector(new GestureAdapter(){
 						@Override
 						public boolean fling(float velocityX, float velocityY,
-								int pointer, int button) {
+								int button) {
 							sceneState.dxSpeed = velocityX/10 ;
 							sceneState.dySpeed = velocityY/10 ;
-							return super.fling(velocityX, velocityY, pointer, button);
+							return super.fling(velocityX, velocityY, button);
 						}
 						@Override
 						public boolean tap(float x, float y, int count,
-								int pointer, int button) {
+								int button) {
 							i++;
 							if(i>=fogMode.length){
 								i = 0;
 							}
-							return super.tap(x, y, count, pointer, button);
+							return super.tap(x, y, count, button);
 						}
 					});
 				}

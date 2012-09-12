@@ -20,8 +20,9 @@ public class C2dStage extends Stage{
 	 * it is important to change the method to stage coordinate
 	 */
 	@Override
-	public void screenToStageCoordinates( Vector2 out) {
+	public Vector2 screenToStageCoordinates( Vector2 out) {
 		out.set(Engine.screenToWorld(out.x, out.y));
+		return out;
 	}
 	/** max 1/60*/
 	@Override
