@@ -10,12 +10,12 @@ public class DistanceJointProperties extends JointProperties{
 					frequencyHz,dampingRatio;
 	public DistanceJointProperties(){
 		super();
-		localAnchorAx = new TextField(skin);
-		localAnchorAy = new TextField(skin);
-		localAnchorBx = new TextField(skin);
-		localAnchorBy = new TextField(skin);
-		frequencyHz = new TextField(skin);
-		dampingRatio = new TextField(skin);
+		localAnchorAx = new TextField("localAnchorAx",skin);
+		localAnchorAy = new TextField("localAnchorAy",skin);
+		localAnchorBx = new TextField("localAnchorBx",skin);
+		localAnchorBy = new TextField("localAnchorBy",skin);
+		frequencyHz = new TextField("frequencyHz",skin);
+		dampingRatio = new TextField("dampingRatio",skin);
 		
 		this.add(new Label("anchorA_x", skin)).colspan(2);
 		this.add(this.localAnchorAx).colspan(2).fillX();

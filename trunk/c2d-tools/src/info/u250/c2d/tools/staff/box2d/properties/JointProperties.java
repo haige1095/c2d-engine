@@ -9,8 +9,8 @@ public abstract class JointProperties extends EditorProperties{
 	final TextField name;
 //	final TextField type;
 	public JointProperties(){
-		collideConnected = new CheckBox(skin) ;
-		name = new TextField("", "", skin);
+		collideConnected = new CheckBox("collideConnected",skin) ;
+		name = new TextField("name", skin);
 //		type = new TextField("", "", skin);
 		
 		this.add(new Label("name:", skin));

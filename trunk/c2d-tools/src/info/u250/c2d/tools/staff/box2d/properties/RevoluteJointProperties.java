@@ -14,15 +14,15 @@ public class RevoluteJointProperties extends JointProperties{
 	final CheckBox enableLimit,enableMotor;
 	public RevoluteJointProperties(){
 		super();
-		localAnchorX = new TextField(skin);
-		localAnchorY = new TextField(skin);
-		lowerAngle = new TextField(skin);
-		upperAngle = new TextField(skin);
-		motorSpeed = new TextField(skin);
-		maxMotorTorque = new TextField(skin);
+		localAnchorX = new TextField("localAnchorX",skin);
+		localAnchorY = new TextField("localAnchorY",skin);
+		lowerAngle = new TextField("lowerAngle",skin);
+		upperAngle = new TextField("upperAngle",skin);
+		motorSpeed = new TextField("motorSpeed",skin);
+		maxMotorTorque = new TextField("maxMotorTorque",skin);
 		
-		enableLimit = new CheckBox(skin);
-		enableMotor = new CheckBox(skin);
+		enableLimit = new CheckBox("enableLimit",skin);
+		enableMotor = new CheckBox("enableMotor",skin);
 		
 		
 		this.add(new Label("localAnchorX", skin)).colspan(2);

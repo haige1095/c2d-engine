@@ -8,6 +8,7 @@ import info.u250.c2d.tools.Events;
 import info.u250.c2d.tools.scenes.SceneWorkTable;
 
 import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
@@ -16,11 +17,13 @@ public abstract class InputStaff implements Scene{
 	protected abstract void resize(float width,float height);
 	protected Stage ui ;
 	protected Skin skin;
+	protected TextureAtlas atlas ;
 	protected SceneWorkTable editor;
 	
 	public InputStaff(){
 		ui = new Stage(Engine.getEngineConfig().width, Engine.getEngineConfig().height, false);
 		skin = Engine.resource("Skin");
+		atlas = Engine.resource("AAA");
 		editor = Engine.resource("Editor");
 		Engine.getEventManager().register(Events.RESIZE, new EventListener() {
 			@Override

@@ -77,11 +77,11 @@ public class BoxHelper implements Scene {
 						float width =  secondPoint.x - firstPoint.x ;
 						float height = secondPoint.y - firstPoint.y ;
 						
-//						data.width = Math.abs(width);
-//						data.height = Math.abs(height);
-						//TODO ; temp
-						data.width = 16;
-						data.height = 16;
+						data.width = Math.abs(width);
+						data.height = Math.abs(height);
+						
+//						data.width = 16;
+//						data.height = 16;
 						
 						Vector2 start = new Vector2();
 						

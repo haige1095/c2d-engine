@@ -11,16 +11,16 @@ public class PulleyJointProperties extends JointProperties{
 	final TextField ratio;
 	public PulleyJointProperties(){
 		super();
-		localAnchorAx = new TextField(skin);
-		localAnchorAy = new TextField(skin);
-		localAnchorBx = new TextField(skin);
-		localAnchorBy = new TextField(skin);
+		localAnchorAx = new TextField("",skin);
+		localAnchorAy = new TextField("",skin);
+		localAnchorBx = new TextField("",skin);
+		localAnchorBy = new TextField("",skin);
 		
-		groundAnchorAx = new TextField(skin);
-		groundAnchorAy = new TextField(skin);
-		groundAnchorBx = new TextField(skin);
-		groundAnchorBy = new TextField(skin);
-		ratio = new TextField(skin);
+		groundAnchorAx = new TextField("",skin);
+		groundAnchorAy = new TextField("",skin);
+		groundAnchorBx = new TextField("",skin);
+		groundAnchorBy = new TextField("",skin);
+		ratio = new TextField("",skin);
 		
 		
 		this.add(new Label("anchorA_x", skin)).colspan(2);

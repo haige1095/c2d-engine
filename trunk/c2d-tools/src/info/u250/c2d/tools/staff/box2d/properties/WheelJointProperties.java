@@ -13,16 +13,16 @@ public class WheelJointProperties extends JointProperties{
 	final CheckBox enableMotor;
 	public WheelJointProperties(){
 		super();
-		localAnchorX = new TextField(skin);
-		localAnchorY = new TextField(skin);
-		localAxisAx = new TextField(skin);
-		localAxisAy = new TextField(skin);
-		dampingRatio = new TextField(skin);
-		frequencyHz = new TextField(skin);
-		motorSpeed = new TextField(skin);
-		maxMotorTorque = new TextField(skin);
+		localAnchorX = new TextField("localAnchorX",skin);
+		localAnchorY = new TextField("localAnchorY",skin);
+		localAxisAx = new TextField("localAxisAx",skin);
+		localAxisAy = new TextField("localAxisAy",skin);
+		dampingRatio = new TextField("dampingRatio",skin);
+		frequencyHz = new TextField("frequencyHz",skin);
+		motorSpeed = new TextField("motorSpeed",skin);
+		maxMotorTorque = new TextField("maxMotorTorque",skin);
 		
-		enableMotor = new CheckBox(skin);
+		enableMotor = new CheckBox("enableMotor",skin);
 		
 		
 		this.add(new Label("localAnchorX", skin)).colspan(2);
