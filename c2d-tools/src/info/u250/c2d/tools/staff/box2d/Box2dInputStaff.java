@@ -34,11 +34,11 @@ import java.util.Iterator;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
-import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane.ScrollPaneStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
@@ -151,12 +151,12 @@ public class Box2dInputStaff extends SceneLayerInputStaff {
 	}
 
 	private void uncheckAllButton(){
-		for(Actor item:this.tableCommon.getActors()){
+		for(Actor item:this.tableCommon.getChildren()){
 			if(item instanceof Button){
 				((Button) item).setChecked(false);
 			}
 		}
-		for(Actor item:this.tools_table.getActors()){
+		for(Actor item:this.tools_table.getChildren()){
 			if(item instanceof Button){
 				((Button) item).setChecked(false);
 			}
@@ -166,23 +166,16 @@ public class Box2dInputStaff extends SceneLayerInputStaff {
 	public void buildStaff() {
 		tableCommon.clear();
 		tools_table.clear();
-		
-		this.ui.removeActor(right);
-		this.right = new Table(){
-			@Override
-			public boolean touchDown(float x, float y, int pointer) {
-				super.touchDown(x, y, pointer);
-				return true;
-			}
-		};
+		if(null!=right)right.remove();
+		this.right = new Table();
 		
 		
 		final Box2dAdapter sAdapter = Box2dAdapter.class.cast(this.layer.adapter);
 		
-		final Button tools_delete = new Button(new Image(skin.getRegion("tools-delete")),skin.getStyle("toggle", TextButtonStyle.class));
-		tools_delete.setClickListener(new ClickListener() {
+		final Button tools_delete = new Button(new Image(atlas.findRegion("tools-delete")),skin.get( TextButtonStyle.class));
+		tools_delete.addListener(new ClickListener(){
 			@Override
-			public void click(Actor actor, float x, float y) {
+			public void clicked(InputEvent event, float x, float y) {
 				tools_delete.setChecked(false);
 				if(obejct_temp_for_delete_and_current instanceof JointData){
 					sAdapter.data.jointDatas.removeValue(JointData.class.cast(obejct_temp_for_delete_and_current), false);
@@ -205,75 +198,75 @@ public class Box2dInputStaff extends SceneLayerInputStaff {
 		
 		
 		
-		final Button tools_select = new Button(new Image(skin.getRegion("tools-select")),skin.getStyle("toggle", TextButtonStyle.class));
-		tools_select.setClickListener(new ClickListener() {
+		final Button tools_select = new Button(new Image(atlas.findRegion("tools-select")),skin);
+		tools_select.addListener(new ClickListener() {
 			@Override
-			public void click(Actor actor, float x, float y) {
+			public void clicked(InputEvent event, float x, float y) {
 				sAdapter.activeSelectHelper();
 				uncheckAllButton();
 				tools_select.setChecked(true);
 			}
 		});
 		
-		final Button tools_clear = new Button(new Image(skin.getRegion("tools-clear")),skin.getStyle("toggle", TextButtonStyle.class));
-		tools_clear.setClickListener(new ClickListener() {
+		final Button tools_clear = new Button(new Image(atlas.findRegion("tools-clear")),skin);
+		tools_clear.addListener(new ClickListener() {
 			@Override
-			public void click(Actor actor, float x, float y) {
+			public void clicked(InputEvent event, float x, float y) {
 				sAdapter.reset();
 				tools_clear.setChecked(false);
 			}
 		});
 		
-		final Button tools_select_joint = new Button(new Image(skin.getRegion("tools-select-joint")),skin.getStyle("toggle", TextButtonStyle.class));
-		tools_select_joint.setClickListener(new ClickListener() {
+		final Button tools_select_joint = new Button(new Image(atlas.findRegion("tools-select-joint")),skin);
+		tools_select_joint.addListener(new ClickListener() {
 			@Override
-			public void click(Actor actor, float x, float y) {
+			public void clicked(InputEvent event, float x, float y) {
 				sAdapter.activeJointSelectHelper();
 				uncheckAllButton();
 				tools_select_joint.setChecked(true);
 			}
 		});
 		
-		final Button tools_rotate = new Button(new Image(skin.getRegion("tools-rotate")),skin.getStyle("toggle", TextButtonStyle.class));
-		tools_rotate.setClickListener(new ClickListener() {
+		final Button tools_rotate = new Button(new Image(atlas.findRegion("tools-rotate")),skin);
+		tools_rotate.addListener(new ClickListener() {
 			@Override
-			public void click(Actor actor, float x, float y) {
+			public void clicked(InputEvent event, float x, float y) {
 				sAdapter.activeRotateHelper();
 				uncheckAllButton();
 				tools_rotate.setChecked(true);
 			}
 		});
-		final Button tools_scale = new Button(new Image(skin.getRegion("tools-scale")),skin.getStyle("toggle", TextButtonStyle.class));
-		tools_scale.setClickListener(new ClickListener() {
+		final Button tools_scale = new Button(new Image(atlas.findRegion("tools-scale")),skin);
+		tools_scale.addListener(new ClickListener() {
 			@Override
-			public void click(Actor actor, float x, float y) {
+			public void clicked(InputEvent event, float x, float y) {
 				sAdapter.activeScaleHelper();
 				uncheckAllButton();
 				tools_scale.setChecked(true);
 			}
 		});
-		final Button tools_circle = new Button(new Image(skin.getRegion("tools-circle")),skin.getStyle("toggle", TextButtonStyle.class));;
-		tools_circle.setClickListener(new ClickListener() {
+		final Button tools_circle = new Button(new Image(atlas.findRegion("tools-circle")),skin);;
+		tools_circle.addListener(new ClickListener() {
 			@Override
-			public void click(Actor actor, float x, float y) {
+			public void clicked(InputEvent event, float x, float y) {
 				sAdapter.activeCircleHelper();
 				uncheckAllButton();
 				tools_circle.setChecked(true);
 			}
 		});
-		final Button tools_rect = new Button(new Image(skin.getRegion("tools-rect")),skin.getStyle("toggle", TextButtonStyle.class));
-		tools_rect.setClickListener(new ClickListener() {
+		final Button tools_rect = new Button(new Image(atlas.findRegion("tools-rect")),skin);
+		tools_rect.addListener(new ClickListener() {
 			@Override
-			public void click(Actor actor, float x, float y) {
+			public void clicked(InputEvent event, float x, float y) {
 				sAdapter.activeBoxHelper();
 				uncheckAllButton();
 				tools_rect.setChecked(true);
 			}
 		});
-		final Button tools_line = new Button(new Image(skin.getRegion("tools-line")),skin.getStyle("toggle", TextButtonStyle.class));
-		tools_line.setClickListener(new ClickListener() {
+		final Button tools_line = new Button(new Image(atlas.findRegion("tools-line")),skin);
+		tools_line.addListener(new ClickListener() {
 			@Override
-			public void click(Actor actor, float x, float y) {
+			public void clicked(InputEvent event, float x, float y) {
 				uncheckAllButton();
 				tools_line.setChecked(true);
 			}
@@ -292,72 +285,72 @@ public class Box2dInputStaff extends SceneLayerInputStaff {
 		tools_table.row();
 		tools_table.pack();
 		
-		final Button distanceJointBtn = new TextButton("Distance Joint", skin.getStyle("toggle", TextButtonStyle.class), "button-sl");
-		final Button revoluteJointBtn = new TextButton("Revolute Joint", skin.getStyle("toggle", TextButtonStyle.class), "button-sl");
-		final Button gearJointBtn = new TextButton("GearJoint Joint", skin.getStyle("toggle", TextButtonStyle.class), "button-sl");
-		final Button prismaticJointBtn = new TextButton("Prismatic Joint", skin.getStyle("toggle", TextButtonStyle.class), "button-sl");
-		final Button pulleyJointBtn = new TextButton("Pulley Joint", skin.getStyle("toggle", TextButtonStyle.class), "button-sl");
-		final Button ropeJointBtn = new TextButton("Rope Joint", skin.getStyle("toggle", TextButtonStyle.class), "button-sl");
-		final Button weldJointBtn = new TextButton("Weld Joint", skin.getStyle("toggle", TextButtonStyle.class), "button-sl");
-		final Button wheelJointBtn = new TextButton("Wheel Joint", skin.getStyle("toggle", TextButtonStyle.class), "button-sl");
-		final Button frictionJointBtn = new TextButton("Friction Joint", skin.getStyle("toggle", TextButtonStyle.class), "button-sl");
-		distanceJointBtn.setClickListener(new ClickListener() {
-			public void click(Actor actor, float x, float y) {
+		final Button distanceJointBtn = new TextButton("Distance Joint", skin);
+		final Button revoluteJointBtn = new TextButton("Revolute Joint", skin);
+		final Button gearJointBtn = new TextButton("GearJoint Joint", skin);
+		final Button prismaticJointBtn = new TextButton("Prismatic Joint", skin);
+		final Button pulleyJointBtn = new TextButton("Pulley Joint", skin);
+		final Button ropeJointBtn = new TextButton("Rope Joint", skin);
+		final Button weldJointBtn = new TextButton("Weld Joint", skin);
+		final Button wheelJointBtn = new TextButton("Wheel Joint", skin);
+		final Button frictionJointBtn = new TextButton("Friction Joint", skin);
+		distanceJointBtn.addListener(new ClickListener() {
+			public void clicked(InputEvent event, float x, float y) {
 				uncheckAllButton();
 				distanceJointBtn.setChecked(true);
 				sAdapter.activeDistanceJointHelper();
 			}
 		});
-		revoluteJointBtn.setClickListener(new ClickListener() {
-			public void click(Actor actor, float x, float y) {
+		revoluteJointBtn.addListener(new ClickListener() {
+			public void clicked(InputEvent event, float x, float y) {
 				uncheckAllButton();
 				revoluteJointBtn.setChecked(true);
 				sAdapter.activeRevoluteJointHelper();
 			}
 		});
-		gearJointBtn.setClickListener(new ClickListener() {
-			public void click(Actor actor, float x, float y) {
+		gearJointBtn.addListener(new ClickListener() {
+			public void clicked(InputEvent event, float x, float y) {
 				uncheckAllButton();
 				gearJointBtn.setChecked(true);
 			}
 		});
-		prismaticJointBtn.setClickListener(new ClickListener() {
-			public void click(Actor actor, float x, float y) {
+		prismaticJointBtn.addListener(new ClickListener() {
+			public void clicked(InputEvent event, float x, float y) {
 				uncheckAllButton();
 				prismaticJointBtn.setChecked(true);
 				sAdapter.activePrismaticJointHelper();
 			}
 		});
-		pulleyJointBtn.setClickListener(new ClickListener() {
-			public void click(Actor actor, float x, float y) {
+		pulleyJointBtn.addListener(new ClickListener() {
+			public void clicked(InputEvent event, float x, float y) {
 				uncheckAllButton();
 				pulleyJointBtn.setChecked(true);
 				sAdapter.activePulleyJointHelper();
 			}
 		});
-		ropeJointBtn.setClickListener(new ClickListener() {
-			public void click(Actor actor, float x, float y) {
+		ropeJointBtn.addListener(new ClickListener() {
+			public void clicked(InputEvent event, float x, float y) {
 				uncheckAllButton();
 				ropeJointBtn.setChecked(true);
 				sAdapter.activeRopeJointHelper();
 			}
 		});
-		weldJointBtn.setClickListener(new ClickListener() {
-			public void click(Actor actor, float x, float y) {
+		weldJointBtn.addListener(new ClickListener() {
+			public void clicked(InputEvent event, float x, float y) {
 				uncheckAllButton();
 				weldJointBtn.setChecked(true);
 				sAdapter.activeWeldJointHelper();
 			}
 		});
-		wheelJointBtn.setClickListener(new ClickListener() {
-			public void click(Actor actor, float x, float y) {
+		wheelJointBtn.addListener(new ClickListener() {
+			public void clicked(InputEvent event, float x, float y) {
 				uncheckAllButton();
 				wheelJointBtn.setChecked(true);
 				sAdapter.activeWheelJointHelper();
 			}
 		});
-		frictionJointBtn.setClickListener(new ClickListener() {
-			public void click(Actor actor, float x, float y) {
+		frictionJointBtn.addListener(new ClickListener() {
+			public void clicked(InputEvent event, float x, float y) {
 				uncheckAllButton();
 				frictionJointBtn.setChecked(true);
 				sAdapter.activeFrictionJointHelper();
@@ -392,10 +385,10 @@ public class Box2dInputStaff extends SceneLayerInputStaff {
 		tableCommon.row();
 		
 		final Label path =  new Label("Path:",skin);
-		final Image tools_open = new Image(skin.getRegion("tools-open"));
-		final Image tools_save = new Image(skin.getRegion("tools-save"));
-		tools_open.setClickListener(new ClickListener() {
-			public void click(Actor actor, float x, float y) {
+		final Image tools_open = new Image(atlas.findRegion("tools-open"));
+		final Image tools_save = new Image(atlas.findRegion("tools-save"));
+		tools_open.addListener(new ClickListener() {
+			public void clicked(InputEvent event, float x, float y) {
 				try{
 					String file = DesktopUtil.getFile();
 					sAdapter.file = Gdx.files.absolute(file);
@@ -410,8 +403,8 @@ public class Box2dInputStaff extends SceneLayerInputStaff {
 				}
 			}
 		});
-		tools_save.setClickListener(new ClickListener() {
-			public void click(Actor actor, float x, float y) {
+		tools_save.addListener(new ClickListener() {
+			public void clicked(InputEvent event, float x, float y) {
 				sAdapter.save();
 				path.setText(null==sAdapter.file?"Path:Invalid":"Path:"+sAdapter.file.file().getAbsolutePath());
 			}
@@ -431,7 +424,7 @@ public class Box2dInputStaff extends SceneLayerInputStaff {
 		tableCommon.row();
 		
 
-		ScrollPane pane = new ScrollPane(propertiesTable, skin.getStyle(ScrollPaneStyle.class));
+		ScrollPane pane = new ScrollPane(propertiesTable, skin);
 		pane.setFillParent(true);
 		pane.setScrollingDisabled(true, false);
 		
@@ -450,11 +443,9 @@ public class Box2dInputStaff extends SceneLayerInputStaff {
 		this.right.add(tablePro).fillY();
 //		this.right.pack();
 		this.right.left().top();
-		this.right.width = 270;
-		this.right.height = Engine.getEngineConfig().height ;
-		this.right.x = Engine.getEngineConfig().width - this.right.width;
-		this.right.y = 0;
-		this.right.setBackground(skin.getPatch("default-pane"));
+		this.right.setSize(270,Engine.getEngineConfig().height);
+		this.right.setPosition(Engine.getEngineConfig().width - this.right.getWidth(),0);
+//		this.right.setBackground(new TextureRegionDrawable(skin.getPatch("default-pane")));
 		this.ui.addActor(right);
 	}
 

@@ -10,11 +10,11 @@ public class RopeJointProperties extends JointProperties{
 	maxLength;
 	public RopeJointProperties(){
 		super();
-		localAnchorAx = new TextField(skin);
-		localAnchorAy = new TextField(skin);
-		localAnchorBx = new TextField(skin);
-		localAnchorBy = new TextField(skin);
-		maxLength = new TextField(skin);
+		localAnchorAx = new TextField("localAnchorAx",skin);
+		localAnchorAy = new TextField("localAnchorAy",skin);
+		localAnchorBx = new TextField("localAnchorBx",skin);
+		localAnchorBy = new TextField("localAnchorBy",skin);
+		maxLength = new TextField("maxLength",skin);
 		
 		this.add(new Label("anchorA_x", skin)).colspan(2);
 		this.add(this.localAnchorAx).colspan(2).fillX();

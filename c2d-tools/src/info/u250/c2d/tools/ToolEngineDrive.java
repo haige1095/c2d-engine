@@ -15,9 +15,9 @@ public class ToolEngineDrive implements EngineDrive{
 		final EngineOptions opt = new EngineOptions(new String[]{
 				"data/"
 		},800,480);
-		opt.gl20Enable = false;
+		opt.useGL20 = false;
 		opt.resizeSync = true;
-		opt.fps = false;
+		opt.debug = false;
 		return opt;
 	}
 
@@ -38,7 +38,7 @@ public class ToolEngineDrive implements EngineDrive{
 		reg.skin("Skin", "data/skin/uiskin.json");
 		reg.texture("CircleTexture", "data/circle.png");
 		reg.texture("BoxTexture", "data/box.png");
-		reg.textureAtlas("AAA", "data/cb2/pack");
+		reg.textureAtlas("AAA", "data/cb2/cb2.atlas");
 		for(String res:Constants.TextureNames){
 			reg.texture(res, "data/textures/"+res);
 		}

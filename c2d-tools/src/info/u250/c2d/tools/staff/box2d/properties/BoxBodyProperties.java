@@ -7,8 +7,8 @@ public class BoxBodyProperties extends BodyProperties{
 	final TextField width,height;
 	public BoxBodyProperties(){
 		super();
-		width = new TextField(skin);
-		height = new TextField(skin);
+		width = new TextField("width",skin);
+		height = new TextField("height",skin);
 		this.add(new Label("width", skin));
 		this.add(this.width).colspan(3).fillX();
 		this.row();

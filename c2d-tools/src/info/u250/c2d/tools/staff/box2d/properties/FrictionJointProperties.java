@@ -11,10 +11,10 @@ public class FrictionJointProperties extends JointProperties{
 	
 	public FrictionJointProperties(){
 		super();
-		localAnchorX = new TextField(skin);
-		localAnchorY = new TextField(skin);
-		maxForce = new TextField(skin);
-		maxTorque = new TextField(skin);
+		localAnchorX = new TextField("localAnchorX",skin);
+		localAnchorY = new TextField("localAnchorY",skin);
+		maxForce = new TextField("maxForce",skin);
+		maxTorque = new TextField("maxTorque",skin);
 		
 		
 		this.add(new Label("localAnchorX", skin)).colspan(2);

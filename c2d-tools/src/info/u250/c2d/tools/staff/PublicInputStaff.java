@@ -11,10 +11,8 @@ import info.u250.c2d.utils.UiUtils;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.InputProcessor;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
-import com.badlogic.gdx.scenes.scene2d.ui.Button.ButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
@@ -25,6 +23,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.esotericsoftware.tablelayout.BaseTableLayout;
 
 
@@ -32,18 +31,19 @@ public final class PublicInputStaff extends InputStaff{
 	//new staff window , open a dialog to input sth and make it in use of 
 	final class NewStaffWindow extends Window{
 		public NewStaffWindow(){
-			super("New Tool Window", skin.getStyle(WindowStyle.class), "newStaffWindow");
+			super("New Tool Window", skin.get(WindowStyle.class));
 			
 			//the type of the editor.
 			final SelectBox type = new SelectBox(new String[] {
 					"Box2d",
 					"Surface", 
 					},
-					skin.getStyle(SelectBoxStyle.class), "type");
-			final TextField nameField = new TextField("", "", skin);
-			final Button ok = new TextButton("Ok", skin.getStyle(TextButtonStyle.class), "button-sl"){
+					skin.get(SelectBoxStyle.class));
+			final TextField nameField = new TextField("",  skin);
+			final Button ok = new TextButton("Ok", skin.get(TextButtonStyle.class));
+			ok.addListener(new ClickListener(){
 				@Override
-				public boolean touchDown(float x, float y, int pointer) {
+				public void clicked(InputEvent event, float x, float y) {
 					String _type = type.getSelection();
 					String _name = nameField.getText().trim();
 					if(_type.equals("Surface") && !_name.equals("")){
@@ -56,18 +56,18 @@ public final class PublicInputStaff extends InputStaff{
 						editor.layers.add(layer);
 						editor.active(layer);
 					}
-					ui.removeActor(newStaffWindow);
-					return true;
+					newStaffWindow.remove();
 				}
-			};
-			final Button cancel = new TextButton("Cancel", skin.getStyle(TextButtonStyle.class), "button-sl"){
+			});
+			
+			final Button cancel = new TextButton("Cancel", skin.get(TextButtonStyle.class));
+			cancel.addListener(new ClickListener(){
 				@Override
-				public boolean touchDown(float x, float y, int pointer) {
+				public void clicked(InputEvent event, float x, float y) {
 					nameField.setText("");
-					ui.removeActor(newStaffWindow);
-					return true;
+					newStaffWindow.remove();
 				}
-			};
+			});
 			
 			
 			this.defaults().spaceBottom(10).space(20);
@@ -88,13 +88,13 @@ public final class PublicInputStaff extends InputStaff{
 	
 	class StaffListWindow extends Window{
 		public StaffListWindow(){
-			super("Layers", skin.getStyle(WindowStyle.class), "StaffListWindow");
+			super("Layers", skin);
 		}
 		private void close(){
 			for(SceneLayer layer:editor.layers){
 				layer.inputStaff.buildStaff();
 			}
-			ui.removeActor(staffListWindow);
+			staffListWindow.remove();
 		}
 		public void refresh(){
 			this.clear();
@@ -105,22 +105,24 @@ public final class PublicInputStaff extends InputStaff{
 				Table table = layer.inputStaff.layoutInfo();
 				TextButton button = new TextButton("Active",skin);
 				table.add(button);
-				button.setClickListener(new ClickListener() {
+				button.addListener(new ClickListener(){
 					@Override
-					public void click(Actor actor, float x, float y) {
+					public void clicked(InputEvent event, float x, float y) {
 						editor.active(layer);
 					}
 				});
 				this.add(table);
 				this.row();
 			}
-			this.add(new Button(new Image(skin.getRegion("tools-close")), skin.getStyle(ButtonStyle.class)){
+			
+			Button closeBtn = new Button(new Image(atlas.findRegion("tools-close")), skin);
+			closeBtn.addListener(new ClickListener(){
 				@Override
-				public boolean touchDown(float x, float y, int pointer) {
+				public void clicked(InputEvent event, float x, float y) {
 					close();
-					return true;
 				}
-			}).align(BaseTableLayout.CENTER);
+			});
+			this.add(closeBtn).align(BaseTableLayout.CENTER);
 			this.pack();
 			UiUtils.centerActor(this);
 			
@@ -135,20 +137,23 @@ public final class PublicInputStaff extends InputStaff{
 	
 	//the main game input staff 
 	public PublicInputStaff(){
-		Button newStaffBtn = new TextButton("New", skin.getStyle(TextButtonStyle.class), "button-sl"){
+		Button newStaffBtn = new TextButton("New", skin);
+		newStaffBtn.addListener(new ClickListener(){
 			@Override
-			public boolean touchDown(float x, float y, int pointer) {
+			public void clicked(InputEvent event, float x, float y) {
+				newStaffWindow.remove();
 				ui.addActor(newStaffWindow);
-				return true;
 			}
-		};
-		Button staffListBtn = new TextButton("Tasks", skin.getStyle(TextButtonStyle.class), "button-sl"){
+		});
+		Button staffListBtn = new TextButton("Tasks", skin);
+		staffListBtn.addListener(new ClickListener(){
 			@Override
-			public boolean touchDown(float x, float y, int pointer) {
+			public void clicked(InputEvent event, float x, float y) {
 				staffListWindow.refresh();
-				return true;
 			}
-		};
+		});
+	
+		
 		
 		
 		toolbar = new Table();
@@ -156,16 +161,17 @@ public final class PublicInputStaff extends InputStaff{
 		toolbar.add(staffListBtn);
 		toolbar.pack();
 		
-		final TextureRegion pauseRegion = skin.getRegion("tools-pause");
-		final TextureRegion playRegion = skin.getRegion("tools-run");
-		tools_run = new Image(skin.getRegion("tools-pause")){
+		final TextureRegionDrawable pauseRegion = new TextureRegionDrawable(atlas.findRegion("tools-pause"));
+		final TextureRegionDrawable playRegion = new TextureRegionDrawable(atlas.findRegion("tools-run"));
+		tools_run = new Image(atlas.findRegion("tools-pause"));
+		tools_run.addListener(new ClickListener(){
 			@Override
-			public boolean touchDown(float x, float y, int pointer) {
-				if(this.getRegion() == playRegion){
+			public void clicked(InputEvent event, float x, float y) {
+				if(tools_run.getDrawable() == playRegion){
 					Cb2World.getInstance().dispose();
 					Cb2World.getInstance().installDefaultWorld();
 					
-					this.setRegion(pauseRegion);
+					tools_run.setDrawable(pauseRegion);
 					for(SceneLayer layer:editor.layers){
 						layer.start();
 					}
@@ -177,7 +183,7 @@ public final class PublicInputStaff extends InputStaff{
 				}else{
 					Cb2World.getInstance().dispose();
 					
-					this.setRegion(playRegion);
+					tools_run.setDrawable(playRegion);
 					for(SceneLayer layer:editor.layers){
 						layer.stop();
 					}
@@ -191,13 +197,13 @@ public final class PublicInputStaff extends InputStaff{
 						}
 					}
 				}
-				return true;
 			}
-		};
+		});
 		
-		tools_run.setRegion(playRegion);
+		
+		tools_run.setDrawable(playRegion);
 		UiUtils.centerActor(tools_run);
-		tools_run.y = Engine.getEngineConfig().height - tools_run.height;
+		tools_run.setY( Engine.getEngineConfig().height - tools_run.getHeight());
 		this.ui.addActor(tools_run);
 		
 		newStaffWindow = new NewStaffWindow();

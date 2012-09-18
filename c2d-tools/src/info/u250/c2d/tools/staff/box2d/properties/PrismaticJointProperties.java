@@ -15,17 +15,17 @@ public class PrismaticJointProperties extends JointProperties{
 	final CheckBox enableLimit,enableMotor;
 	public PrismaticJointProperties(){
 		super();
-		localAnchorX = new TextField(skin);
-		localAnchorY = new TextField(skin);
-		localAxisAx = new TextField(skin);
-		localAxisAy = new TextField(skin);
-		lowerTranslation = new TextField(skin);
-		upperTranslation = new TextField(skin);
-		motorSpeed = new TextField(skin);
-		maxMotorForce = new TextField(skin);
+		localAnchorX = new TextField("localAnchorX",skin);
+		localAnchorY = new TextField("localAnchorY",skin);
+		localAxisAx = new TextField("localAxisAx",skin);
+		localAxisAy = new TextField("localAxisAy",skin);
+		lowerTranslation = new TextField("lowerTranslation",skin);
+		upperTranslation = new TextField("upperTranslation",skin);
+		motorSpeed = new TextField("motorSpeed",skin);
+		maxMotorForce = new TextField("maxMotorForce",skin);
 		
-		enableLimit = new CheckBox(skin);
-		enableMotor = new CheckBox(skin);
+		enableLimit = new CheckBox("enableLimit",skin);
+		enableMotor = new CheckBox("enableMotor",skin);
 		
 		
 		this.add(new Label("localAnchorX", skin)).colspan(2);

@@ -33,11 +33,11 @@ public abstract class BodyProperties extends EditorProperties{
 		filter_categoryBits = new TextField("", skin) ;
 		filter_groupIndex = new TextField("", skin) ;
 		filter_maskBits = new TextField("",  skin) ;
-		sensor = new CheckBox(skin) ;
-		dynamic = new CheckBox(skin) ;
-		angle = new TextField("", "", skin) ;
-		centerX = new TextField("", "", skin) ;
-		centerY = new TextField("", "", skin) ;
+		sensor = new CheckBox("sensor",skin) ;
+		dynamic = new CheckBox("dynamic",skin) ;
+		angle = new TextField("angle", skin) ;
+		centerX = new TextField("centerX", skin) ;
+		centerY = new TextField("centerY", skin) ;
 		this.left();
 		
 		this.add(new Label("name:", skin));

@@ -3,7 +3,7 @@ package info.u250.c2d.tools.staff.box2d.properties;
 import java.lang.reflect.Field;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.ActorEvent;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.CheckBox;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField.TextFieldListener;
@@ -61,7 +61,7 @@ public class BindSupport {
 		}else if(inputField instanceof CheckBox){
 			CheckBox.class.cast(inputField).addListener(new ClickListener() {
 				@Override
-				public void clicked(ActorEvent event, float x, float y) {
+				public void clicked(InputEvent event, float x, float y) {
 					try {
 						field.set(obj, CheckBox.class.cast(inputField).isChecked());
 					} catch (Exception e) {

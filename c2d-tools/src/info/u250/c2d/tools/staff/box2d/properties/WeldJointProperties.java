@@ -10,8 +10,8 @@ public class WeldJointProperties extends JointProperties{
 	
 	public WeldJointProperties(){
 		super();
-		localAnchorX = new TextField(skin);
-		localAnchorY = new TextField(skin);
+		localAnchorX = new TextField("localAnchorX",skin);
+		localAnchorY = new TextField("localAnchorY",skin);
 		
 		this.add(new Label("localAnchorX", skin)).colspan(2);
 		this.add(this.localAnchorX).colspan(2).fillX();
