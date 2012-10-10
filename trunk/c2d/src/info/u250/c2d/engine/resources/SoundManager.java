@@ -12,6 +12,9 @@ public class SoundManager implements Disposable{
 	ObjectMap<String,Sound> sounds = new ObjectMap<String,Sound>();
 	
 	float soundVolume = 1f;
+	public float getSoundVolume(){
+		return soundVolume;
+	}
 	
 	public void setVolume(float volume){
 		this.soundVolume = volume;

@@ -14,6 +14,9 @@ public class MusicManager implements Disposable{
 	
 	float musicVolume = 1f;
 	
+	public float getMusicVolume(){
+		return musicVolume;
+	}
 	public void setVolume(float volume){
 		for(Music music:musics.values()){
 			music.setVolume(volume);
