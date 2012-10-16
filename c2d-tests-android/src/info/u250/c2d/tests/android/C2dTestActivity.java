@@ -1,7 +1,7 @@
 package info.u250.c2d.tests.android;
 
-import info.u250.c2d.C2dTests;
 import info.u250.c2d.engine.Engine;
+import info.u250.c2d.tests.C2dTests;
 import android.os.Bundle;
 
 import com.badlogic.gdx.ApplicationListener;

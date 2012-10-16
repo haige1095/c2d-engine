@@ -1,10 +1,10 @@
 package info.u250.c2d.tests.android;
 
-import java.util.ArrayList;
+import info.u250.c2d.tests.C2dTests;
+
 import java.util.List;
 import java.util.Map;
 
-import info.u250.c2d.C2dTests;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;

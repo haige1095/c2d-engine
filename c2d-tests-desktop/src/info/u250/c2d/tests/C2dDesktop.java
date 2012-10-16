@@ -1,7 +1,6 @@
 package info.u250.c2d.tests;
 
 
-import info.u250.c2d.C2dTests;
 import info.u250.c2d.engine.Engine;
 
 import java.awt.BorderLayout;
