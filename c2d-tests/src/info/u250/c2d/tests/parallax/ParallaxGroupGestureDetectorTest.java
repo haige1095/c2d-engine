@@ -1,10 +1,10 @@
 package info.u250.c2d.tests.parallax;
 
-
-import info.u250.c2d.engine.CoreProvider.StartupLoadingScreens;
 import info.u250.c2d.engine.Engine;
 import info.u250.c2d.engine.EngineDrive;
 import info.u250.c2d.engine.Scene;
+import info.u250.c2d.engine.load.startup.StartupLoading;
+import info.u250.c2d.engine.load.startup.WindmillLoading;
 import info.u250.c2d.engine.resources.AliasResourceManager;
 import info.u250.c2d.graphic.parallax.ParallaxGroup;
 import info.u250.c2d.graphic.parallax.ParallaxGroup.DefaultParallaxGroupGestureListener;
@@ -21,6 +21,10 @@ public class ParallaxGroupGestureDetectorTest  extends Engine{
 		return new EngineX();
 	}
 	
+	@Override
+	protected StartupLoading getStartupLoading() {
+		return new WindmillLoading();
+	}
 	
 	private class EngineX implements EngineDrive{
 		@Override
@@ -33,7 +37,6 @@ public class ParallaxGroupGestureDetectorTest  extends Engine{
 		@Override
 		public EngineOptions onSetupEngine() {
 			final EngineOptions opt =  new EngineOptions(new String[]{"data/parallax/bg.atlas"},480,320);
-			opt.loading = StartupLoadingScreens.WindmillLoading;
 			return opt;
 		}
 		

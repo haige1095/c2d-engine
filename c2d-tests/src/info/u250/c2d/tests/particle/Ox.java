@@ -1,60 +1,62 @@
-package info.u250.c2d.tests.misc;
+package info.u250.c2d.tests.particle;
 
 import info.u250.c2d.engine.Engine;
 import info.u250.c2d.engine.EngineDrive;
 import info.u250.c2d.engine.Scene;
-import info.u250.c2d.engine.load.startup.StartupLoading;
 import info.u250.c2d.engine.resources.AliasResourceManager;
-import info.u250.c2d.tests.utils.SimpleAnimationLoading;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 
-public class CustomLoadingTest extends Engine{
+
+public class Ox extends Engine {
 	@Override
 	protected EngineDrive onSetupEngineDrive() {
 		return new EngineX();
 	}
-	
 	@Override
-	protected StartupLoading getStartupLoading() {
-		return new SimpleAnimationLoading();
+	public void dispose () {
+		super.dispose();
 	}
+	
 	private class EngineX implements EngineDrive{
 		@Override
 		public void onResourcesRegister(AliasResourceManager<String> reg) {
-			
 		}
 		@Override
 		public void dispose() {}
 		@Override
 		public EngineOptions onSetupEngine() {
-			final EngineOptions opt =  new EngineOptions(new String[]{"data/"},480,320);
-			opt.useGL20 = true;
+			final EngineOptions opt = new EngineOptions(new String[]{},800,480);
 			return opt;
 		}
 
+		private ShaderProgram shader;
+		
 		@Override
 		public void onLoadedResourcesCompleted() {
-			
+			shader = new ShaderProgram(Gdx.files.internal("shaders/simple.vert"), Gdx.files.internal("shaders/toner.frag"));
 			
 			Engine.setMainScene(new Scene() {
 				@Override
-				public void update(float delta) {}
-				@Override
-				public void hide() {}
-				@Override
-				public void show() {}
-				@Override
 				public void render(float delta) {
-					Engine.debugInfo( "Load all.... nothing to draw.");
+					Engine.getSpriteBatch().setShader(shader);
 				}
-				
 				@Override
 				public InputProcessor getInputProcessor() {
 					return null;
 				}
-			});
+				@Override
+				public void update(float delta) {	
+				}
+				@Override
+				public void hide() {	
+				}
+				@Override
+				public void show() {
+				}
+			});	
 		}
 	}
-	
 }

@@ -1,17 +1,17 @@
 package info.u250.c2d.tests.parallax;
 
 import info.u250.c2d.accessors.C2dCameraAccessor;
-import info.u250.c2d.engine.CoreProvider.StartupLoadingScreens;
 import info.u250.c2d.engine.Engine;
 import info.u250.c2d.engine.EngineDrive;
 import info.u250.c2d.engine.Scene;
+import info.u250.c2d.engine.load.startup.LineLoading;
+import info.u250.c2d.engine.load.startup.StartupLoading;
 import info.u250.c2d.engine.resources.AliasResourceManager;
 import info.u250.c2d.graphic.AnimationSprite;
 import info.u250.c2d.graphic.parallax.ParallaxGroup;
 import info.u250.c2d.graphic.parallax.ParallaxLayer;
 import info.u250.c2d.graphic.parallax.SpriteParallaxLayerDrawable;
 import info.u250.c2d.graphic.parallax.TileParallaxLayerDrawable;
-
 import aurelienribon.tweenengine.Timeline;
 import aurelienribon.tweenengine.Tween;
 
@@ -33,7 +33,10 @@ public class CustomDrawableTest extends Engine{
 	protected EngineDrive onSetupEngineDrive() {
 		return new EngineX();
 	}
-	
+	@Override
+	protected StartupLoading getStartupLoading() {
+		return new LineLoading();
+	}
 	private class EngineX implements EngineDrive{
 		@Override
 		public void onResourcesRegister(AliasResourceManager<String> reg) {
@@ -46,7 +49,6 @@ public class CustomDrawableTest extends Engine{
 		@Override
 		public EngineOptions onSetupEngine() {
 			final EngineOptions opt =  new EngineOptions(new String[]{"data/animationsprite/","data/android.png","data/linux.png"},800,480);
-			opt.loading = StartupLoadingScreens.LineLoading;
 			return opt;
 		}
 		
