@@ -1,7 +1,5 @@
 package info.u250.c2d.engine;
 
-import info.u250.c2d.engine.CoreProvider.InGameLoadingScreens;
-import info.u250.c2d.engine.CoreProvider.StartupLoadingScreens;
 import info.u250.c2d.engine.resources.AliasResourceManager;
 import info.u250.c2d.engine.service.Disposable;
 
@@ -24,14 +22,7 @@ public interface EngineDrive extends Disposable{
 	 * @author lycying@gmail.com
 	 */
 	public final static class EngineOptions {
-		/**the loading screen , use the java reflect to make a new instance 
-		 * @see {@link info.u250.c2d.engine.load.startup.StartupLoading}
-		 * @see {@link info.u250.c2d.engine.load.startup.SimpleLoading}*/
-		public  String loading = StartupLoadingScreens.SimpleLoading;
-		
 		public boolean catchBackKey = false;
-		
-		public  String ingameLoading = InGameLoadingScreens.SimpleLoading;
 		
 		/**load all the resources atomically
 		 * its a "String[]", so you can supply a dictionary or a full path of the resources 

@@ -13,6 +13,7 @@ import info.u250.c2d.engine.events.EventManager;
 import info.u250.c2d.engine.events.EventManagerImpl;
 import info.u250.c2d.engine.load.Loading.LoadingComplete;
 import info.u250.c2d.engine.load.in.InGameLoading;
+import info.u250.c2d.engine.load.startup.SimpleLoading;
 import info.u250.c2d.engine.load.startup.StartupLoading;
 import info.u250.c2d.engine.resources.AliasResourceManager;
 import info.u250.c2d.engine.resources.LanguagesManager;
@@ -181,9 +182,15 @@ public abstract class Engine extends ApplicationAdapter{
 	protected void preLoad(){
 		
 	}
+	protected StartupLoading getStartupLoading(){
+		return new SimpleLoading();
+	}
+	protected InGameLoading getInGameLoading(){
+		return new info.u250.c2d.engine.load.in.SimpleLoading();
+	}
 	private void setupLoading() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
-		this.startupLoading = (StartupLoading)Class.forName(engineConfig.loading).newInstance();
-		this.ingameLoading = (InGameLoading)Class.forName(engineConfig.ingameLoading).newInstance();
+		this.startupLoading = getStartupLoading();
+		this.ingameLoading = getInGameLoading();
 		this.startupLoading.setLoaded(false);
 		this.ingameLoading.setLoaded(true);
 		this.startupLoading.setLoadingComplete(new LoadingComplete() {
