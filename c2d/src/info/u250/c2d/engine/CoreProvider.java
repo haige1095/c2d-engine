@@ -1,10 +1,5 @@
 package info.u250.c2d.engine;
 
-import info.u250.c2d.engine.EngineDrive.EngineOptions;
-import info.u250.c2d.engine.load.startup.LineBlocksLoading;
-import info.u250.c2d.engine.load.startup.LineLoading;
-import info.u250.c2d.engine.load.startup.SimpleLoading;
-import info.u250.c2d.engine.load.startup.WindmillLoading;
 
 /**
  * the core provider give some static access attributes that need by the engine .
@@ -64,23 +59,5 @@ public abstract interface CoreProvider {
 		/** the scene move in from bottom */
 		MoveInBottom,
 		
-	}
-	/**
-	 * the core loading screen .
-	 * @see {@link EngineOptions#loading}
-	 * @author lycying@gmail.com
-	 */
-	public final class StartupLoadingScreens{
-		/** just show the loading percent */
-		public static final String SimpleLoading = SimpleLoading.class.getName();
-		/** just show a loadding progress line */
-		public static final String LineLoading = LineLoading.class.getName();
-		/** show a line blocks group */
-		public static final String LineBlocksLoading = LineBlocksLoading.class.getName();
-		/** WindmillLoading */
-		public static final String WindmillLoading = WindmillLoading.class.getName();
-	}
-	public final class InGameLoadingScreens{
-		public static final String SimpleLoading = info.u250.c2d.engine.load.in.SimpleLoading.class.getName();
 	}
 }
