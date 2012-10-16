@@ -1,4 +1,4 @@
-package info.u250.c2d;
+package info.u250.c2d.tests;
 
 import info.u250.c2d.engine.Engine;
 import info.u250.c2d.tests.animations.ActionBLink;
