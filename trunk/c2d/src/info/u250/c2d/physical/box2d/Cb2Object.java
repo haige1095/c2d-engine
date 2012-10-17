@@ -165,19 +165,19 @@ public  class Cb2Object implements Renderable,Disposable{
 		}
 		final Vector2 pos = new Vector2();
 		if(data instanceof CircleData){
-			final CircleData tmp = CircleData.class.cast(data);
+			final CircleData tmp = (CircleData)data;
 			if(resizeObject){
 				object.setSize(tmp.radius*2, tmp.radius*2);
 			}
 			pos.set(tmp.center).sub(tmp.radius, tmp.radius);
 		}else if(data instanceof BoxData){
-			final BoxData tmp = BoxData.class.cast(data);
+			final BoxData tmp = (BoxData)data;
 			if(resizeObject){
 				object.setSize(tmp.width, tmp.height);
 			}
 			pos.set(tmp.center).sub(tmp.width/2,tmp.height/2);
 		}else if(data instanceof PolygonData){
-			final PolygonData tmp = PolygonData.class.cast(data);
+			final PolygonData tmp = (PolygonData)data;
 			if(resizeObject){
 				object.setSize(tmp.width, tmp.height);
 			}
