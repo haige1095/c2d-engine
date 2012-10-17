@@ -37,10 +37,6 @@ public class TransitionFactory {
 			return new TransitionSceneMoveInTop();
 		case MoveInBottom:
 			return new TransitionSceneMoveInBottom();
-		case SplitRows:
-			return new TransitionSceneSplitRows();
-		case SplitCols:
-			return new TransitionSceneSplitCols();
 		case FadeWhite:
 			return new TransitionSceneFadeWhite();
 		default:

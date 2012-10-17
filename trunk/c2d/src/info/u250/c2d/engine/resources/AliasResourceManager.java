@@ -105,7 +105,7 @@ public class AliasResourceManager<K>  {
 		}
 	}
 	private void loadDesktop(String dataDir){
-		File file = new File( AliasResourceManager.class.getResource("/"+dataDir).getFile() );
+		File file = new File( "bin/"+dataDir );
 		if(file.isDirectory()){
 			for(String f:file.list()){
 				loadDesktop((dataDir.endsWith("/")?dataDir:(dataDir+"/"))+f);
