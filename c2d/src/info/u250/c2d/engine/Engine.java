@@ -1,7 +1,6 @@
 package info.u250.c2d.engine;
 
 import info.u250.c2d.accessors.C2dCameraAccessor;
-import info.u250.c2d.accessors.Cb2ObjectAccessor;
 import info.u250.c2d.accessors.FloatValueAccessor;
 import info.u250.c2d.accessors.FloatValueAccessor.FloatValue;
 import info.u250.c2d.accessors.MeshMaskAccessor;
@@ -23,7 +22,6 @@ import info.u250.c2d.engine.service.Updatable;
 import info.u250.c2d.engine.transitions.TransitionFactory;
 import info.u250.c2d.graphic.C2dFps;
 import info.u250.c2d.graphic.FadeMask;
-import info.u250.c2d.physical.box2d.Cb2Object;
 import info.u250.c2d.updatable.PeriodUpdatable;
 
 import java.util.HashMap;
@@ -37,7 +35,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -188,7 +185,7 @@ public abstract class Engine extends ApplicationAdapter{
 	protected InGameLoading getInGameLoading(){
 		return new info.u250.c2d.engine.load.in.SimpleLoading();
 	}
-	private void setupLoading() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
+	private void setupLoading() {
 		this.startupLoading = getStartupLoading();
 		this.ingameLoading = getInGameLoading();
 		this.startupLoading.setLoaded(false);
@@ -209,7 +206,6 @@ public abstract class Engine extends ApplicationAdapter{
 	private void setupTweenEngine(){
 		this.tweenManager = new TweenManager();
 		Tween.registerAccessor(Sprite.class,new SpriteAccessor());
-		Tween.registerAccessor(Cb2Object.class, new Cb2ObjectAccessor());
 		Tween.registerAccessor(C2dCamera.class, new C2dCameraAccessor());
 		Tween.registerAccessor(FadeMask.class, new MeshMaskAccessor());
 		Tween.registerAccessor(FloatValue.class, new FloatValueAccessor());
@@ -338,14 +334,14 @@ public abstract class Engine extends ApplicationAdapter{
 		PeriodUpdatable object = null;
 		if(null!=evt){
 			if(evt instanceof PeriodUpdatable){
-				object = PeriodUpdatable.class.cast(evt);
+				object = (PeriodUpdatable)evt;
 				if(!object.isStart()){
 					object.go();
 				}
 			}
 		}else{
 			if(updatable instanceof PeriodUpdatable){
-				object = PeriodUpdatable.class.cast(updatable);
+				object = (PeriodUpdatable)updatable;
 				if(!object.isStart()){
 					object.go();
 				}
@@ -443,7 +439,6 @@ public abstract class Engine extends ApplicationAdapter{
 				spriteBatch = null;
 			}
 			
-			Texture.invalidateAllTextures(Gdx.app);
 			this.assetManager = null;
 			this.defaultCamera = null;
 			instance = null;
