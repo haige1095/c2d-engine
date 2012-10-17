@@ -29,7 +29,7 @@ public  class SpriteParallaxLayerDrawable implements ParallaxLayerDrawable{
 		this.object.setPosition(parallaxLayerResult.resultX, parallaxLayerResult.resultY);
 
 		if(this.object instanceof AnimationSprite){
-			AnimationSprite.class.cast(this.object).render(delta);
+			((AnimationSprite)this.object).render(delta);
 		}else{
 			this.object.draw(Engine.getSpriteBatch());
 		}
