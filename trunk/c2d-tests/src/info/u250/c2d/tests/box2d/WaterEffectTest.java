@@ -233,7 +233,9 @@ class Box2dWater implements Renderable, Disposable {
 		return this.drops;
 	}
 	public void freeAll(){
-		this.objects.free(this.drops);
+		for(Cb2Object o:drops){
+			this.objects.free(o);
+		}
 		this.drops.clear();
 	}
 
