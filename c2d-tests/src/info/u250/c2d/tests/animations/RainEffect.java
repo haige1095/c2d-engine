@@ -56,7 +56,7 @@ public class RainEffect extends Engine {
 				rains[i] = new Rain(Engine.resource("r"+(new Random().nextInt(4)+1),Texture.class));
 				rains[i].setX(Rain.WIDTH*i);
 			}
-			final SimpleMeshBackground bg = new SimpleMeshBackground(Color.BLACK,Color.GRAY);
+			final SimpleMeshBackground bg = new SimpleMeshBackground(Color.GRAY,Color.BLACK);
 			Engine.setMainScene(new Scene() {
 				@Override
 				public void render(float delta) {
