@@ -63,7 +63,8 @@ public class PhysicTrackLineTest extends Engine {
 						object.render(delta);
 					}
 					Engine.getSpriteBatch().end();
-					
+					/* ohoh do not forgot set the matrix */
+					Engine.getShapeRenderer().setProjectionMatrix(Engine.getDefaultCamera().combined);
 					Engine.getShapeRenderer().begin(ShapeType.FilledCircle);
 					Engine.getShapeRenderer().setColor(Color.WHITE);
 					for(Vector2 v:tracks){

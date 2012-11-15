@@ -128,6 +128,8 @@ public class SoftBodyTest extends Engine {
 				}
 				@Override
 				public void render(float delta) {
+					/* ohoh do not forgot set the matrix */
+					Engine.getShapeRenderer().setProjectionMatrix(Engine.getDefaultCamera().combined);
 					
 					vertices[0] = center.body.getPosition().x*Cb2World.RADIO;
 					vertices[1] = center.body.getPosition().y*Cb2World.RADIO;

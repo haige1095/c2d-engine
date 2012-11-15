@@ -92,6 +92,8 @@ public class SimpleObjectTest  extends Engine {
 					Engine.getSpriteBatch().begin();
 					group.render(delta);
 					Engine.getSpriteBatch().end();
+					/* ohoh do not forgot set the matrix */
+					Engine.getShapeRenderer().setProjectionMatrix(Engine.getDefaultCamera().combined);
 					group.debug(Engine.getShapeRenderer());
 					Engine.debugInfo( "Make a physical object is simple \njust new a PhysicalObject");
 					

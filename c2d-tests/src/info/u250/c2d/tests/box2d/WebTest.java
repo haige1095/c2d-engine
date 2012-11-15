@@ -141,6 +141,11 @@ public class WebTest  extends Engine {
 				public void show() {}
 				@Override
 				public void render(float delta) {
+					
+					/* ohoh do not forgot set the matrix */
+					Engine.getShapeRenderer().setProjectionMatrix(Engine.getDefaultCamera().combined);
+					
+					
 					Engine.getSpriteBatch().begin();
 					group.render(delta);
 					Engine.getSpriteBatch().end();
