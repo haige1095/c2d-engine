@@ -45,7 +45,6 @@ import info.u250.c2d.tests.parallax.CustomDrawableTest;
 import info.u250.c2d.tests.parallax.ParallaxGroupEventsTest;
 import info.u250.c2d.tests.parallax.ParallaxGroupGestureDetectorTest;
 import info.u250.c2d.tests.particle.FollowableParticle;
-import info.u250.c2d.tests.particle.Ox;
 import info.u250.c2d.tests.sfx.EngineSimpleSfxTest;
 import info.u250.c2d.tests.tiled.Box2dTileTest;
 import info.u250.c2d.tests.tools.MotionWelderTest;
@@ -348,14 +347,6 @@ public class C2dTests {
 				sub.put("desc", "The particle will follow your finger");
 				sub.put("image", "drawable/item");
 				sub.put("cls", FollowableParticle.class.getName());
-				subs.add(sub);
-			}
-			{
-				Map<String,Object> sub = new HashMap<String,Object>();
-				sub.put("title", "Followable Particle");
-				sub.put("desc", "The particle will follow your finger");
-				sub.put("image", "drawable/item");
-				sub.put("cls", Ox.class.getName());
 				subs.add(sub);
 			}
 			map.put("subs", subs);
