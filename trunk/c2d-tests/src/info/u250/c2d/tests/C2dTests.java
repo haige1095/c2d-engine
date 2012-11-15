@@ -13,6 +13,7 @@ import info.u250.c2d.tests.animations.AnalogTest;
 import info.u250.c2d.tests.animations.AnimationSpriteLoopTest;
 import info.u250.c2d.tests.animations.AnimationSpriteLoopWithTimesTest;
 import info.u250.c2d.tests.animations.LaserTest;
+import info.u250.c2d.tests.animations.RainEffect;
 import info.u250.c2d.tests.box2d.KinematicBodiesTest;
 import info.u250.c2d.tests.box2d.PhysicTrackLineTest;
 import info.u250.c2d.tests.box2d.SimpleObjectTest;
@@ -171,6 +172,14 @@ public class C2dTests {
 				sub.put("desc", "a simple laser effect");
 				sub.put("image", "drawable/item");
 				sub.put("cls", LaserTest.class.getName());
+				subs.add(sub);
+			}
+			{
+				Map<String,Object> sub = new HashMap<String,Object>();
+				sub.put("title", "Rain Effect");
+				sub.put("desc", "A simple rain effect use random texture");
+				sub.put("image", "drawable/item");
+				sub.put("cls", RainEffect.class.getName());
 				subs.add(sub);
 			}
 			map.put("subs", subs);
