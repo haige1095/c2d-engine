@@ -6,8 +6,9 @@ Currently no jar file is supplied , So You need the source code of libgdx and c2
 
  # check out the latest libgdx  source code: 
 <code language="xml">
-svn checkout http://libgdx.googlecode.com/svn/trunk/ libgdx-read-only
+git clone https://github.com/libgdx/libgdx.git
 </code>
+ Or [https://github.com/libgdx/libgdx/archive/master.tar.gz Download] it
  # check out the latest c2d  source code: 
 <code language="xml">
 svn checkout http://c2d-engine.googlecode.com/svn/trunk/ c2d-engine-read-only
