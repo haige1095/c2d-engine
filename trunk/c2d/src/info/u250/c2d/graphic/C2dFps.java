@@ -18,8 +18,8 @@ public class C2dFps implements Renderable{
 		//don not follow the main camera . 
 		Engine.getDefaultFont().drawMultiLine(
 				Engine.getSpriteBatch(), text, 
-				Engine.getEngineConfig().width-120 + Engine.getDefaultCamera().position.x - Engine.getEngineConfig().width/2 ,
-				60f + Engine.getDefaultCamera().position.y - Engine.getEngineConfig().height/2);
+				Engine.getWidth()-120 + Engine.getDefaultCamera().position.x - Engine.getWidth()/2 ,
+				60f + Engine.getDefaultCamera().position.y - Engine.getHeight()/2);
 		Engine.getSpriteBatch().end();
 	}
 }

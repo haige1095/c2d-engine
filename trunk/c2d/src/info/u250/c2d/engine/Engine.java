@@ -32,6 +32,7 @@ import aurelienribon.tweenengine.TweenManager;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.GL20;
@@ -52,9 +53,9 @@ import com.badlogic.gdx.math.collision.Ray;
 public abstract class Engine extends ApplicationAdapter{
 	private static Engine instance = null;
 	public Engine(){
+		instance = this;
 		this.engineDrive = this.onSetupEngineDrive();
 		this.engineConfig = engineDrive.onSetupEngine();
-		instance = this;
 	}
 	@SuppressWarnings("unchecked")
 	public static final <T extends Engine> T get(){
@@ -62,9 +63,9 @@ public abstract class Engine extends ApplicationAdapter{
 	}
 	private ShapeRenderer shapeRenderer;
 	/** the game logic */
-	private final EngineDrive engineDrive;
+	private EngineDrive engineDrive;
 	/** the game configure */
-	private final EngineOptions engineConfig;
+	private EngineOptions engineConfig;
 	/** the event manager */
 	private EventManager eventManager;
 	/** the core asset manager of Libgdx */
@@ -87,6 +88,8 @@ public abstract class Engine extends ApplicationAdapter{
 	private AliasResourceManager<String> aliasResourceManager;
 	/** LanguagesManager */
 	private LanguagesManager languagesManager;
+	/** Preferences */
+	private Preferences preferences;
 	/** the fps label */
 	private C2dFps fps;
 	/** the main game scene to show the graphic */
@@ -169,6 +172,8 @@ public abstract class Engine extends ApplicationAdapter{
 			this.spriteBatch = new SpriteBatch();
 			//set up the default font
 			this.defaultFont = new BitmapFont();
+			//set up the default preferences
+			this.preferences = Gdx.app.getPreferences(engineConfig.configFile);
 			this.preLoad();
 			//loading screen
 			this.setupLoading();
@@ -176,9 +181,8 @@ public abstract class Engine extends ApplicationAdapter{
 			ex.printStackTrace();
 		}
 	}
-	protected void preLoad(){
-		
-	}
+	protected void preLoad(){}
+	protected void postLoad(){}
 	protected StartupLoading getStartupLoading(){
 		return new SimpleLoading();
 	}
@@ -196,6 +200,7 @@ public abstract class Engine extends ApplicationAdapter{
 				transitionScene = TransitionFactory.getTransitionScene(TransitionType.Fade);
 				engineDrive.onResourcesRegister(aliasResourceManager);
 				engineDrive.onLoadedResourcesCompleted();
+				postLoad();
 			}
 		});
 		for(final String path:engineConfig.assets){
@@ -314,7 +319,7 @@ public abstract class Engine extends ApplicationAdapter{
 	
 	public final static void debugInfo(String str){
 		getSpriteBatch().begin();
-		getDefaultFont().drawMultiLine(getSpriteBatch(), str, 0, getEngineConfig().height);
+		getDefaultFont().drawMultiLine(getSpriteBatch(), str, 0, getHeight());
 		getSpriteBatch().end();
 	}
 	public final static float getDeltaTime(){
@@ -375,8 +380,16 @@ public abstract class Engine extends ApplicationAdapter{
 		return instance.defaultCamera;
 	}
 	
-	public final static EngineOptions getEngineConfig(){
-		return instance.engineConfig;
+	public final static float getHeight(){
+		return instance.engineConfig.height;
+	}
+	
+	public final static boolean useGL20(){
+		return instance.engineConfig.useGL20;
+	}
+	
+	public final static float getWidth(){
+		return instance.engineConfig.width;
 	}
 	
 	public final static BitmapFont getDefaultFont(){
@@ -391,6 +404,10 @@ public abstract class Engine extends ApplicationAdapter{
 	}
 	public final static LanguagesManager getLanguagesManager(){
 		return instance.languagesManager;
+	}
+	
+	public final static Preferences getPreferences(){
+		return instance.preferences;
 	}
 	
 	public final static ShapeRenderer getShapeRenderer(){
@@ -438,7 +455,9 @@ public abstract class Engine extends ApplicationAdapter{
 				this.spriteBatch.dispose();
 				spriteBatch = null;
 			}
-			
+			if(null!=preferences){
+				preferences.flush();
+			}
 			this.assetManager = null;
 			this.defaultCamera = null;
 			instance = null;

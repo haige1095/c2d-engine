@@ -33,8 +33,8 @@ public class AnimationSpriteLoopTest extends Engine {
 		@Override
 		public void onLoadedResourcesCompleted() {
 			sprite = new AnimationSprite(0.05f, Engine.resource("Anim",TextureAtlas.class),"fly");
-			sprite.setPosition((Engine.getEngineConfig().width-sprite.getWidth())/2, 
-					(Engine.getEngineConfig().height-sprite.getHeight())/2);
+			sprite.setPosition((Engine.getWidth()-sprite.getWidth())/2, 
+					(Engine.getHeight()-sprite.getHeight())/2);
 			
 			
 			Engine.setMainScene(new Scene() {

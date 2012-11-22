@@ -92,7 +92,7 @@ public class Cb2World implements Updatable,Disposable{
 	 * create the box via the screen's width and height 
 	 */
 	public Body createScreenBox(){
-		return this.createScreenBox(new Rectangle(0, 0, Engine.getEngineConfig().width, Engine.getEngineConfig().height));
+		return this.createScreenBox(new Rectangle(0, 0, Engine.getWidth(), Engine.getHeight()));
 	}
 	public Body createScreenBox(final Rectangle rect){
 		if(world==null) {

@@ -184,8 +184,8 @@ public class SurfaceInputStaff extends SceneLayerInputStaff{
 		
 		pane = new ScrollPane(table, skin.get(ScrollPaneStyle.class));
 		
-		pane.setSize(250, Engine.getEngineConfig().height);
-		pane.setX( Engine.getEngineConfig().width - pane.getWidth());
+		pane.setSize(250, Engine.getHeight());
+		pane.setX( Engine.getWidth() - pane.getWidth());
 		this.ui.addActor(pane);
 	}
 	@Override

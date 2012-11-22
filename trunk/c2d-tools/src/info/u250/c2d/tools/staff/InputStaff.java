@@ -21,15 +21,15 @@ public abstract class InputStaff implements Scene{
 	protected SceneWorkTable editor;
 	
 	public InputStaff(){
-		ui = new Stage(Engine.getEngineConfig().width, Engine.getEngineConfig().height, false);
+		ui = new Stage(Engine.getWidth(), Engine.getHeight(), false);
 		skin = Engine.resource("Skin");
 		atlas = Engine.resource("AAA");
 		editor = Engine.resource("Editor");
 		Engine.getEventManager().register(Events.RESIZE, new EventListener() {
 			@Override
 			public void onEvent(Event event) {
-				ui.setViewport(Engine.getEngineConfig().width, Engine.getEngineConfig().height, false);
-				resize(Engine.getEngineConfig().width, Engine.getEngineConfig().height);
+				ui.setViewport(Engine.getWidth(), Engine.getHeight(), false);
+				resize(Engine.getWidth(), Engine.getHeight());
 			}
 		});
 	}

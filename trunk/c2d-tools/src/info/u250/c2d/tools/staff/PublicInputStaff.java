@@ -203,7 +203,7 @@ public final class PublicInputStaff extends InputStaff{
 		
 		tools_run.setDrawable(playRegion);
 		UiUtils.centerActor(tools_run);
-		tools_run.setY( Engine.getEngineConfig().height - tools_run.getHeight());
+		tools_run.setY( Engine.getHeight() - tools_run.getHeight());
 		this.ui.addActor(tools_run);
 		
 		newStaffWindow = new NewStaffWindow();
@@ -217,7 +217,7 @@ public final class PublicInputStaff extends InputStaff{
 	protected void resize(float width, float height) {
 		this.toolbar.setPosition(0,  height - this.toolbar.getHeight());
 		UiUtils.centerActor(tools_run);
-		tools_run.setY(Engine.getEngineConfig().height - tools_run.getHeight());
+		tools_run.setY(Engine.getHeight() - tools_run.getHeight());
 		UiUtils.centerActor(newStaffWindow);
 		UiUtils.centerActor(staffListWindow);
 	}

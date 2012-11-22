@@ -50,8 +50,8 @@ public class SimpleObjectTest  extends Engine {
 			sprite.enableShadow();
 			
 			group.add(new Cb2Object(sprite, false)
-			.setPosition(new Vector2((Engine.getEngineConfig().width-sprite.getWidth())/2, 
-					(Engine.getEngineConfig().height-sprite.getHeight())/2)));
+			.setPosition(new Vector2((Engine.getWidth()-sprite.getWidth())/2, 
+					(Engine.getHeight()-sprite.getHeight())/2)));
 			
 			//some ball
 			final AdvanceSprite sprite2  = new AdvanceSprite(Engine.resource("logo",Texture.class));
@@ -64,7 +64,7 @@ public class SimpleObjectTest  extends Engine {
 					
 					@Override
 					public void after(Cb2Object obj) {
-						obj.setPosition(new Vector2((Engine.getEngineConfig().width-sprite2.getWidth())/2, 200));
+						obj.setPosition(new Vector2((Engine.getWidth()-sprite2.getWidth())/2, 200));
 						obj.data.body.setLinearVelocity(new Random().nextFloat()*10, new Random().nextFloat()*10);
 					}
 				})

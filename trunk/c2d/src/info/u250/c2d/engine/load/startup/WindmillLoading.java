@@ -19,7 +19,7 @@ public class WindmillLoading extends StartupLoading{
 	protected void inLoadingRender(float delta) {
 		deltaAppend+=delta;
 		Engine.getShapeRenderer().identity();
-		Engine.getShapeRenderer().translate(Engine.getEngineConfig().width/2, Engine.getEngineConfig().height/2, 0);
+		Engine.getShapeRenderer().translate(Engine.getWidth()/2, Engine.getHeight()/2, 0);
 		Engine.getShapeRenderer().rotate(0, 0, 1, deltaAppend*50);
 		Engine.getShapeRenderer().setProjectionMatrix(Engine.getDefaultCamera().combined);
 		Engine.getShapeRenderer().setColor(Color.YELLOW);

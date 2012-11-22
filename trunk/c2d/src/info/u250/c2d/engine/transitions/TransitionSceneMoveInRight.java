@@ -11,6 +11,6 @@ import com.badlogic.gdx.math.Vector3;
 final class TransitionSceneMoveInRight extends AbstractTransitionSceneMoveIn{
 	@Override
 	Vector3 iniTargetPositionOffset() {
-		return new Vector3(-Engine.getEngineConfig().width,0, 0);
+		return new Vector3(-Engine.getWidth(),0, 0);
 	}
 }

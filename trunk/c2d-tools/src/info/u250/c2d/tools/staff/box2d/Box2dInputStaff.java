@@ -443,8 +443,8 @@ public class Box2dInputStaff extends SceneLayerInputStaff {
 		this.right.add(tablePro).fillY();
 //		this.right.pack();
 		this.right.left().top();
-		this.right.setSize(270,Engine.getEngineConfig().height);
-		this.right.setPosition(Engine.getEngineConfig().width - this.right.getWidth(),0);
+		this.right.setSize(270,Engine.getHeight());
+		this.right.setPosition(Engine.getWidth() - this.right.getWidth(),0);
 //		this.right.setBackground(new TextureRegionDrawable(skin.getPatch("default-pane")));
 		this.ui.addActor(right);
 	}

@@ -69,8 +69,8 @@ public class Box2dTileTest extends Engine {
 			OrthographicCamera camera;
 			public SceneMain(){
 				camera = new OrthographicCamera();
-				camera.viewportWidth = Engine.getEngineConfig().width;
-				camera.viewportHeight = Engine.getEngineConfig().height;
+				camera.viewportWidth = Engine.getWidth();
+				camera.viewportHeight = Engine.getHeight();
 				camera.position.set(camera.viewportWidth/2, camera.viewportHeight/2, 0);
 				
 				
@@ -140,8 +140,8 @@ public class Box2dTileTest extends Engine {
 				Cb2World.getInstance().update(delta);
 				boolean mapMove = true;
 				
-				if(this.camera.position.x-this.camera.viewportWidth/2  <=-(this.render.getMapWidthUnits()-Engine.getEngineConfig().width )&& moveVector.x>0)mapMove = false ;
-				if(this.camera.position.y-this.camera.viewportHeight/2 <=-(this.render.getMapWidthUnits()-Engine.getEngineConfig().height)&& moveVector.y>0)mapMove = false ;
+				if(this.camera.position.x-this.camera.viewportWidth/2  <=-(this.render.getMapWidthUnits()-Engine.getWidth() )&& moveVector.x>0)mapMove = false ;
+				if(this.camera.position.y-this.camera.viewportHeight/2 <=-(this.render.getMapWidthUnits()-Engine.getHeight())&& moveVector.y>0)mapMove = false ;
 				if(this.camera.position.x-this.camera.viewportWidth/2  >=0  && moveVector.x<0)mapMove = false ;
 				if(this.camera.position.y-this.camera.viewportHeight/2 >=0  && moveVector.y<0)mapMove = false ;
 				if(mapMove){
@@ -149,9 +149,9 @@ public class Box2dTileTest extends Engine {
 //					this.camera.position.y -= moveVector.y*delta;
 				}else{
 					if(	( this.player.object.getX()<=0 && moveVector.x<0 )
-						||( this.player.object.getX()>=Engine.getEngineConfig().width-this.player.object.getWidth()  && moveVector.x>0 )
+						||( this.player.object.getX()>=Engine.getWidth()-this.player.object.getWidth()  && moveVector.x>0 )
 						||( this.player.object.getY()<=0 && moveVector.y<0 )
-						||( this.player.object.getY()>=Engine.getEngineConfig().height-this.player.object.getHeight()  && moveVector.y>0 ))return;
+						||( this.player.object.getY()>=Engine.getHeight()-this.player.object.getHeight()  && moveVector.y>0 ))return;
 //					this.player.setPosition(this.player.object.getX()+moveVector.x*delta, this.player.object.getY()+moveVector.y*delta);
 				}
 			}

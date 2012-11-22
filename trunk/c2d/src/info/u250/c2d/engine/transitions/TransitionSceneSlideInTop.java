@@ -10,12 +10,12 @@ import com.badlogic.gdx.math.Vector3;
 final class TransitionSceneSlideInTop extends AbstractTransitionSceneSlideIn{
 	@Override
 	Vector3 targetPositionOffset() {
-		return Engine.getDefaultCamera().position.cpy().add(0, -Engine.getEngineConfig().height, 0);
+		return Engine.getDefaultCamera().position.cpy().add(0, -Engine.getHeight(), 0);
 	}
 
 	@Override
 	Vector3 orgiPosition() {
-		return Engine.getDefaultCamera().position.cpy().set(Engine.getEngineConfig().width/2,Engine.getEngineConfig().height/2+Engine.getEngineConfig().height,0);
+		return Engine.getDefaultCamera().position.cpy().set(Engine.getWidth()/2,Engine.getHeight()/2+Engine.getHeight(),0);
 	}
 
 }

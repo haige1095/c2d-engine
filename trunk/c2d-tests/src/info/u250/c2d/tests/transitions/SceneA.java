@@ -13,7 +13,7 @@ public class SceneA implements Scene {
 	AdvanceSprite sprite ;
 	private SceneA(){
 		sprite = new AdvanceSprite(Engine.resource("A",Texture.class));
-		sprite.setSize(Engine.getEngineConfig().width, Engine.getEngineConfig().height);
+		sprite.setSize(Engine.getWidth(), Engine.getHeight());
 		sprite.setColor(Color.RED);
 	}
 	private static SceneA instance ;

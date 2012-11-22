@@ -68,7 +68,7 @@ public class KinematicBodiesTest  extends Engine {
 				public void update(float delta) {
 					Cb2World.getInstance().update(delta);
 					for(Cb2Object obj : group){
-						if(obj.getPosition().x < 0 || obj.getPosition().x > Engine.getEngineConfig().width - obj.object.getWidth() ){
+						if(obj.getPosition().x < 0 || obj.getPosition().x > Engine.getWidth() - obj.object.getWidth() ){
 							obj.data.body.setLinearVelocity(-obj.data.body.getLinearVelocity().x, 0);
 						}
 					}

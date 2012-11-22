@@ -12,7 +12,7 @@ public class TileParallaxLayerDrawable implements ParallaxLayerDrawable{
 	TileMapRenderer object;
 	OrthographicCamera cam ;
 	public TileParallaxLayerDrawable(TileMapRenderer tileMapRenderer){
-		cam = new OrthographicCamera(Engine.getEngineConfig().width,Engine.getEngineConfig().height);
+		cam = new OrthographicCamera(Engine.getWidth(),Engine.getHeight());
 		object = tileMapRenderer;
 	}
 	

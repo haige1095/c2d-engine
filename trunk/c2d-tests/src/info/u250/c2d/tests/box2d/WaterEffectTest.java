@@ -183,8 +183,8 @@ class Box2dWater implements Renderable, Disposable {
 		shader = new ShaderProgram(vertexShader,fragmentShader);
 		
 		frameBuffer = new FrameBuffer(Pixmap.Format.RGBA8888,
-				(int) Engine.getEngineConfig().width,
-				(int) Engine.getEngineConfig().height, false);
+				(int) Engine.getWidth(),
+				(int) Engine.getHeight(), false);
 		frameSprite = new AdvanceSprite(frameBuffer.getColorBufferTexture());
 		frameSprite.flip(false, true);
 	}

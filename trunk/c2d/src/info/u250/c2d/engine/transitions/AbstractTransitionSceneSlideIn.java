@@ -24,7 +24,7 @@ abstract class AbstractTransitionSceneSlideIn extends Transition{
 	abstract Vector3 orgiPosition();
 	@Override
 	protected void doTransition(int halfDurationMillis) {
-		this.targetCamera = new C2dCamera(Engine.getEngineConfig().width, Engine.getEngineConfig().height);
+		this.targetCamera = new C2dCamera(Engine.getWidth(), Engine.getHeight());
 		
 		final Vector3 positionBak = Engine.getDefaultCamera().position.cpy();
 		outgoing.hide();

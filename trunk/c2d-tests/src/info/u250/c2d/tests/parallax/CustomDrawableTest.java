@@ -76,7 +76,7 @@ public class CustomDrawableTest extends Engine{
 			tileMapRenderer = new TileMapRenderer(map, atlas, blockWidth, blockHeight);
 			
 			//rbg
-			rbg = new ParallaxGroup(Engine.getEngineConfig().width, Engine.getEngineConfig().height, new Vector2(100,100), false);
+			rbg = new ParallaxGroup(Engine.getWidth(), Engine.getHeight(), new Vector2(100,100), false);
 			
 			rbg.add(new ParallaxLayer("tile", new TileParallaxLayerDrawable(tileMapRenderer), 
 					new Vector2(0.9f,1), new Vector2(), -1, -1));
@@ -96,9 +96,9 @@ public class CustomDrawableTest extends Engine{
 			//tween it 
 			final Vector3 positon = rbg.getCamera().position ;
 			Timeline.createSequence()
-			.push(Tween.to(rbg.getCamera(), C2dCameraAccessor.XY, 5000).target(positon.x + 32*60-Engine.getEngineConfig().width,positon.y ))
-			.push(Tween.to(rbg.getCamera(), C2dCameraAccessor.XY, 5000).target(positon.x + 32*60-Engine.getEngineConfig().width,positon.y + 32*40-Engine.getEngineConfig().height))
-			.push(Tween.to(rbg.getCamera(), C2dCameraAccessor.XY, 5000).target(positon.x ,positon.y + 32*40-Engine.getEngineConfig().height))
+			.push(Tween.to(rbg.getCamera(), C2dCameraAccessor.XY, 5000).target(positon.x + 32*60-Engine.getWidth(),positon.y ))
+			.push(Tween.to(rbg.getCamera(), C2dCameraAccessor.XY, 5000).target(positon.x + 32*60-Engine.getWidth(),positon.y + 32*40-Engine.getHeight()))
+			.push(Tween.to(rbg.getCamera(), C2dCameraAccessor.XY, 5000).target(positon.x ,positon.y + 32*40-Engine.getHeight()))
 			.push(Tween.to(rbg.getCamera(), C2dCameraAccessor.XY, 5000).target(positon.x ,positon.y ))
 			.repeat(-1, 0)
 			.start(Engine.getTweenManager());
