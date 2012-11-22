@@ -22,12 +22,12 @@ abstract class AbstractTransitionSceneMoveIn extends Transition{
 	abstract Vector3 iniTargetPositionOffset();
 	@Override
 	protected void doTransition(int halfDurationMillis ) {
-		this.targetCamera = new C2dCamera(Engine.getEngineConfig().width, Engine.getEngineConfig().height);
+		this.targetCamera = new C2dCamera(Engine.getWidth(), Engine.getHeight());
 		//add the init offset
 		this.targetCamera.position.add(this.iniTargetPositionOffset());
 		outgoing.hide();
 		Tween
-		.to(targetCamera, C2dCameraAccessor.XY, halfDurationMillis*2).target(Engine.getEngineConfig().width/2, Engine.getEngineConfig().height/2)
+		.to(targetCamera, C2dCameraAccessor.XY, halfDurationMillis*2).target(Engine.getWidth()/2, Engine.getHeight()/2)
 		.setCallback(new TweenCallback() {
 
 			@Override
@@ -35,7 +35,7 @@ abstract class AbstractTransitionSceneMoveIn extends Transition{
 				doSetMainScene(incoming);
 				Gdx.input.setInputProcessor(incoming.getInputProcessor());
 				incoming.show();
-				Engine.getDefaultCamera().position.set(Engine.getEngineConfig().width/2, Engine.getEngineConfig().height/2,Engine.getEngineConfig().height/2);
+				Engine.getDefaultCamera().position.set(Engine.getWidth()/2, Engine.getHeight()/2,Engine.getHeight()/2);
 				reset();
 			}
 		}).start(Engine.getTweenManager());

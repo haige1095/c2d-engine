@@ -16,16 +16,16 @@ public class SimpleAnimationLoading extends StartupLoading{
 		atlas = new TextureAtlas(Gdx.files.internal("loading/pack"));
 		fg = atlas.createSprite("fg");
 		fg.setPosition(
-				(Engine.getEngineConfig().width-fg.getWidth())/2, 
-				(Engine.getEngineConfig().height-fg.getHeight())/2);
+				(Engine.getWidth()-fg.getWidth())/2, 
+				(Engine.getHeight()-fg.getHeight())/2);
 		bg = atlas.createSprite("bg");
 		bg.setPosition(
-				(Engine.getEngineConfig().width-bg.getWidth())/2, 
-				(Engine.getEngineConfig().height-bg.getHeight())/2);
+				(Engine.getWidth()-bg.getWidth())/2, 
+				(Engine.getHeight()-bg.getHeight())/2);
 		mask = atlas.createSprite("mask");
 		mask.setPosition(
-				(Engine.getEngineConfig().width-mask.getWidth())/2, 
-				(Engine.getEngineConfig().height-mask.getHeight())/2);
+				(Engine.getWidth()-mask.getWidth())/2, 
+				(Engine.getHeight()-mask.getHeight())/2);
 	}
 	@Override
 	public void finishLoadingCleanup() {
@@ -39,7 +39,7 @@ public class SimpleAnimationLoading extends StartupLoading{
 	protected void inLoadingRender(float delta) {
 		Gdx.gl.glClearColor(52/255f, 138/255f, 152/255f, 1);
 		fg.setPosition(
-				(Engine.getEngineConfig().width-357)/2  - fg.getWidth() + 357*this.percent() , 
+				(Engine.getWidth()-357)/2  - fg.getWidth() + 357*this.percent() , 
 				fg.getY());
 		Engine.getSpriteBatch().begin();
 		mask.draw(Engine.getSpriteBatch());

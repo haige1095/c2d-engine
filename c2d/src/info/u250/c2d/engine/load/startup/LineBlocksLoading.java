@@ -16,12 +16,12 @@ public class LineBlocksLoading extends StartupLoading{
 	protected void inLoadingRender(float delta) {
 		Engine.getShapeRenderer().setProjectionMatrix(Engine.getDefaultCamera().combined);
 
-		final float width = (Engine.getEngineConfig().width-OFFSET*2)*this.percent();
+		final float width = (Engine.getWidth()-OFFSET*2)*this.percent();
 		Engine.getShapeRenderer().setColor(Color.WHITE);
 		Engine.getShapeRenderer().begin(ShapeType.FilledRectangle);
-		for(int i=0;i*BLOCK*Engine.getEngineConfig().width<width;i++){
+		for(int i=0;i*BLOCK*Engine.getWidth()<width;i++){
 			if(i%2==0){
-				Engine.getShapeRenderer().filledRect(OFFSET+i*BLOCK*Engine.getEngineConfig().width, Engine.getEngineConfig().height/2, BLOCK*Engine.getEngineConfig().width , HEIGHT*Engine.getEngineConfig().height);
+				Engine.getShapeRenderer().filledRect(OFFSET+i*BLOCK*Engine.getWidth(), Engine.getHeight()/2, BLOCK*Engine.getWidth() , HEIGHT*Engine.getHeight());
 			}
 		}
 		Engine.getShapeRenderer().end();

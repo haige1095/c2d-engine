@@ -50,7 +50,7 @@ public class RainEffect extends Engine {
 		
 		@Override
 		public void onLoadedResourcesCompleted() {
-			int number = (int)(Engine.getEngineConfig().width/Rain.WIDTH);
+			int number = (int)(Engine.getWidth()/Rain.WIDTH);
 			final Rain[] rains = new Rain[number];
 			for(int i=0;i<number;i++){
 				rains[i] = new Rain(Engine.resource("r"+(new Random().nextInt(4)+1),Texture.class));
@@ -90,7 +90,7 @@ public class RainEffect extends Engine {
 		float speed = 0;
 		public void setup(){
 			speed = random.nextFloat()*1000+500;
-			this.setY(Engine.getEngineConfig().height);
+			this.setY(Engine.getHeight());
 		}
 		public Rain(Texture texture) {
 			super(texture);

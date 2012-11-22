@@ -27,8 +27,8 @@ public class SimpleMeshBackground implements Disposable{
 		this(new Color(1, 1, 1, 1f),new Color(152f/255f, 181f/255f, 249f/255f, 1));
 	}
 	public SimpleMeshBackground(Color color1,Color color2){
-		float WIDTH = Engine.getEngineConfig().width;
-		float HEIGHT = Engine.getEngineConfig().height;
+		float WIDTH = Engine.getWidth();
+		float HEIGHT = Engine.getHeight();
 		float[] vertices = new float[] {
 				0, 0, 				color1.r,color1.g,color1.b,color1.a,
 				WIDTH, 0, 			color1.r,color1.g,color1.b,color1.a,

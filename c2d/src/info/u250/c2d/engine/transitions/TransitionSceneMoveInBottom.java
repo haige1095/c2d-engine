@@ -11,6 +11,6 @@ import com.badlogic.gdx.math.Vector3;
 final class TransitionSceneMoveInBottom extends AbstractTransitionSceneMoveIn{
 	@Override
 	Vector3 iniTargetPositionOffset() {
-		return new Vector3(0, Engine.getEngineConfig().height, 0);
+		return new Vector3(0, Engine.getHeight(), 0);
 	}
 }

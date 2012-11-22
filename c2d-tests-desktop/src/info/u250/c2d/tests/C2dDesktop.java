@@ -51,9 +51,9 @@ public class C2dDesktop {
 					Engine test = C2dTests.newTest(testName);
 					LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 					config.fullscreen = false;
-					config.width =(int) Engine.getEngineConfig().width;
-					config.height = (int) Engine.getEngineConfig().height;
-					config.useGL20 = Engine.getEngineConfig().useGL20;
+					config.width =(int) Engine.getWidth();
+					config.height = (int) Engine.getHeight();
+					config.useGL20 = Engine.useGL20();
 					config.title = testName;
 					config.vSyncEnabled = true;
 

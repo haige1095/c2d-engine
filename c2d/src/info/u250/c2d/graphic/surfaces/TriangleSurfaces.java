@@ -55,8 +55,8 @@ public class TriangleSurfaces extends CurveSurfaces {
 					shader.setUniformMatrix("u_projectionViewMatrix", Engine.getDefaultCamera().combined);
 				}else{
 					shader.setUniformMatrix("u_projectionViewMatrix", Engine.getDefaultCamera().combined.translate(new Vector3(
-							Engine.getDefaultCamera().position.x - Engine.getEngineConfig().width/2,
-							Engine.getDefaultCamera().position.y - Engine.getEngineConfig().height/2,
+							Engine.getDefaultCamera().position.x - Engine.getWidth()/2,
+							Engine.getDefaultCamera().position.y - Engine.getHeight()/2,
 							0
 							)));
 				}

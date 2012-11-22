@@ -67,8 +67,8 @@ public class AnalogTest  extends Engine {
 				public void render(float delta) {
 					Engine.getSpriteBatch().begin();
 					sprite.setPosition(
-							Engine.getEngineConfig().width/2+analog.getAmount()*Engine.getEngineConfig().width/2*(float)Math.cos(analog.getAngle()),
-							Engine.getEngineConfig().height/2+analog.getAmount()*Engine.getEngineConfig().height/2*(float)Math.sin(analog.getAngle()));
+							Engine.getWidth()/2+analog.getAmount()*Engine.getWidth()/2*(float)Math.cos(analog.getAngle()),
+							Engine.getHeight()/2+analog.getAmount()*Engine.getHeight()/2*(float)Math.sin(analog.getAngle()));
 					sprite.draw(Engine.getSpriteBatch());
 					analog.render(delta);
 					Engine.getSpriteBatch().end();

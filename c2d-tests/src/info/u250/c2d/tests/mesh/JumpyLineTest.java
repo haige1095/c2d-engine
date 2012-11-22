@@ -41,7 +41,7 @@ public class JumpyLineTest extends Engine {
 		
 		@Override
 		public void onLoadedResourcesCompleted() {
-			final int width = (int)Engine.getEngineConfig().width;
+			final int width = (int)Engine.getWidth();
 			Engine.setMainScene(new Scene() {
 				@Override
 				public void render(float delta) {
@@ -52,7 +52,7 @@ public class JumpyLineTest extends Engine {
 						float blend = 1 - Math.abs(width/2 - x)/(float)width/2f;
 						blend =(float) Math.pow(blend, 3);
 						float y = MathUtils.cosDeg(x / (float)width * 360 * 2 * 5 + _myPhase) * _myAmplitude * blend;
-						Engine.getShapeRenderer().point(x,y+Engine.getEngineConfig().height/2,0);
+						Engine.getShapeRenderer().point(x,y+Engine.getHeight()/2,0);
 					}
 					Engine.getShapeRenderer().end();
 				}

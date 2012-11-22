@@ -84,7 +84,7 @@ public class LaserTest extends Engine {
 			laser3.mid2 = Engine.resource("Mid2");
 			laser3.end1 = Engine.resource("End1");
 			laser3.end2 = Engine.resource("End2");
-			laser3.positon.set(400,Engine.getEngineConfig().height);
+			laser3.positon.set(400,Engine.getHeight());
 			laser3.color = Color.YELLOW;
 			laser3.degrees = 180;
 			

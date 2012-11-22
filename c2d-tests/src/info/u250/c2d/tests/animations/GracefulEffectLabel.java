@@ -99,11 +99,11 @@ public class GracefulEffectLabel extends Engine {
 					this.addActor(temp);
 					width+=temp.getPrefWidth();
 				}
-				this.setPosition(Engine.getEngineConfig().width / 2 - width / 2, 100);
+				this.setPosition(Engine.getWidth() / 2 - width / 2, 100);
 			}else{
 				Label battleLabel = new Label(text, new LabelStyle(Engine.resource("Font", BitmapFont.class), Color.WHITE));
 				this.setSize(battleLabel.getPrefWidth(), battleLabel.getPrefHeight());
-				this.setPosition(Engine.getEngineConfig().width / 2 - battleLabel.getPrefWidth() / 2, 200);
+				this.setPosition(Engine.getWidth() / 2 - battleLabel.getPrefWidth() / 2, 200);
 				this.setOrigin(this.getWidth() / 2, this.getHeight()/2);
 				this.setScale(0);
 				this.addAction(sequence(scaleTo(1, 1, 1f, Interpolation.swingOut), delay(1f), moveBy(50, 0, 0.1f), moveBy(-1500, 0, 0.3f)));

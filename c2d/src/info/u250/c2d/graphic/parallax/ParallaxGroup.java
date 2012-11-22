@@ -135,7 +135,7 @@ public class ParallaxGroup extends Array<ParallaxLayer> implements Renderable{
 		@Override
 		public boolean touchDown(float x, float y, int pointer, int button) {
 			flinging = false;
-			initialScale = camera.position.z / (Engine.getEngineConfig().height / 2);
+			initialScale = camera.position.z / (Engine.getHeight() / 2);
 			return false;
 		}
 		@Override
@@ -143,9 +143,9 @@ public class ParallaxGroup extends Array<ParallaxLayer> implements Renderable{
 
 			camera.position.add(
 					-deltaX * camera.position.z
-							/ (Engine.getEngineConfig().height / 2), deltaY
+							/ (Engine.getHeight() / 2), deltaY
 							* camera.position.z
-							/ (Engine.getEngineConfig().height / 2), 0);
+							/ (Engine.getHeight() / 2), 0);
 
 			return false;
 		}
@@ -155,7 +155,7 @@ public class ParallaxGroup extends Array<ParallaxLayer> implements Renderable{
 
 			float ratio = originalDistance / currentDistance;
 			camera.position.z = initialScale * ratio
-					* Engine.getEngineConfig().height / 2;
+					* Engine.getHeight() / 2;
 			return false;
 		}
 
@@ -186,9 +186,9 @@ public class ParallaxGroup extends Array<ParallaxLayer> implements Renderable{
 		@Override
 		public boolean fling(float velocityX, float velocityY, int button) {
 			flinging = true;
-			velX = camera.position.z / (Engine.getEngineConfig().height / 2)
+			velX = camera.position.z / (Engine.getHeight() / 2)
 					* velocityX * 0.5f;
-			velY = camera.position.z / (Engine.getEngineConfig().height / 2)
+			velY = camera.position.z / (Engine.getHeight() / 2)
 					* velocityY * 0.5f;
 			return false;
 		}
@@ -209,7 +209,7 @@ public class ParallaxGroup extends Array<ParallaxLayer> implements Renderable{
 		@Override
 		public boolean touchDown(float x, float y, int pointer, int button) {
 			flinging = false;
-			initialScale = camera.position.z/(Engine.getEngineConfig().height/2);
+			initialScale = camera.position.z/(Engine.getHeight()/2);
 			return false;
 		}
 		@Override
@@ -225,14 +225,14 @@ public class ParallaxGroup extends Array<ParallaxLayer> implements Renderable{
 
 		@Override
 		public boolean pan (float x, float y, float deltaX, float deltaY) {
-			camera.position.add(-deltaX * camera.position.z/(Engine.getEngineConfig().height/2), deltaY *camera.position.z/(Engine.getEngineConfig().height/2), 0);
+			camera.position.add(-deltaX * camera.position.z/(Engine.getHeight()/2), deltaY *camera.position.z/(Engine.getHeight()/2), 0);
 			return false;
 		}
 
 		@Override
 		public boolean zoom (float originalDistance, float currentDistance) {
 			float ratio = originalDistance / currentDistance;
-			camera.position.z = initialScale * ratio * Engine.getEngineConfig().height/2;
+			camera.position.z = initialScale * ratio * Engine.getHeight()/2;
 			return false;
 		}
 
@@ -252,8 +252,8 @@ public class ParallaxGroup extends Array<ParallaxLayer> implements Renderable{
 		@Override
 		public boolean fling(float velocityX, float velocityY, int button) {
 			flinging = true;
-			velX = camera.position.z/(Engine.getEngineConfig().height/2) * velocityX * 0.5f;
-			velY = camera.position.z/(Engine.getEngineConfig().height/2) * velocityY * 0.5f;
+			velX = camera.position.z/(Engine.getHeight()/2) * velocityX * 0.5f;
+			velY = camera.position.z/(Engine.getHeight()/2) * velocityY * 0.5f;
 			return false;
 		}
 

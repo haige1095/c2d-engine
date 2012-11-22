@@ -56,8 +56,8 @@ public class AnimationSpriteLoopWithTimesTest extends Engine {
 					atlas.findRegion("fly8"),
 					
 			});
-			sprite.setPosition((Engine.getEngineConfig().width-sprite.getWidth())/2, 
-					(Engine.getEngineConfig().height-sprite.getHeight())/2);
+			sprite.setPosition((Engine.getWidth()-sprite.getWidth())/2, 
+					(Engine.getHeight()-sprite.getHeight())/2);
 			sprite.setLoopTimes(2);
 			sprite.setWaitingIndex(4);
 			

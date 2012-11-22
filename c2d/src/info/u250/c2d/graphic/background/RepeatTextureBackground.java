@@ -21,9 +21,9 @@ public class RepeatTextureBackground implements Renderable,Disposable{
 		SurfaceData data = new SurfaceData();
 		data.points = new Array<Vector2>(){{
 			add(new Vector2(0,0));
-			add(new Vector2(0,Engine.getEngineConfig().height));
-			add(new Vector2(Engine.getEngineConfig().width,0));
-			add(new Vector2(Engine.getEngineConfig().width,Engine.getEngineConfig().height));
+			add(new Vector2(0,Engine.getHeight()));
+			add(new Vector2(Engine.getWidth(),0));
+			add(new Vector2(Engine.getWidth(),Engine.getHeight()));
 		}};
 		data.primitiveType = GL10.GL_TRIANGLE_STRIP;
 		data.texture = textureName;

@@ -20,11 +20,11 @@ public class LineLoading extends StartupLoading{
 		Engine.getShapeRenderer().setProjectionMatrix(Engine.getDefaultCamera().combined);
 		Engine.getShapeRenderer().setColor(Color.GRAY);
 		Engine.getShapeRenderer().begin(ShapeType.FilledRectangle);
-		Engine.getShapeRenderer().filledRect(OFFSET, Engine.getEngineConfig().height/2, Engine.getEngineConfig().width-OFFSET*2, HEIGHT*Engine.getEngineConfig().height);
+		Engine.getShapeRenderer().filledRect(OFFSET, Engine.getHeight()/2, Engine.getWidth()-OFFSET*2, HEIGHT*Engine.getHeight());
 		Engine.getShapeRenderer().end();
 		Engine.getShapeRenderer().setColor(1,1,0,0.2f);
 		Engine.getShapeRenderer().begin(ShapeType.FilledRectangle);
-		Engine.getShapeRenderer().filledRect(OFFSET, Engine.getEngineConfig().height/2, (Engine.getEngineConfig().width-OFFSET*2)*this.percent(), HEIGHT*Engine.getEngineConfig().height);
+		Engine.getShapeRenderer().filledRect(OFFSET, Engine.getHeight()/2, (Engine.getWidth()-OFFSET*2)*this.percent(), HEIGHT*Engine.getHeight());
 		Engine.getShapeRenderer().end();
 	}
 }

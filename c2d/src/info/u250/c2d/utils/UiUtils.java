@@ -8,7 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 public class UiUtils {
 	/**aligin the Actor to the center of the screen */
 	public static void centerActor(final Actor actor){
-		actor.setX( ( Engine.getEngineConfig().width - actor.getWidth() )/2 );
-		actor.setY( ( Engine.getEngineConfig().height - actor.getHeight() )/2 );
+		actor.setX( ( Engine.getWidth() - actor.getWidth() )/2 );
+		actor.setY( ( Engine.getHeight() - actor.getHeight() )/2 );
 	}
 }

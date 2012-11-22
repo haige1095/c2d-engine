@@ -12,7 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
  */
 public class C2dStage extends Stage{
 	public C2dStage(){
-		super(Engine.getEngineConfig().width, Engine.getEngineConfig().height, true, Engine.getSpriteBatch());
+		super(Engine.getWidth(), Engine.getHeight(), true, Engine.getSpriteBatch());
 		this.setCamera(Engine.getDefaultCamera());
 	}
 	
