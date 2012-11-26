@@ -18,6 +18,7 @@ import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 
 
 public class SimpleObjectTest  extends Engine {
@@ -28,6 +29,7 @@ public class SimpleObjectTest  extends Engine {
 	}
 	
 	Cb2ObjectGroup group = new Cb2ObjectGroup();
+	
 	private class EngineX implements EngineDrive{
 		@Override
 		public void onResourcesRegister(AliasResourceManager<String> reg) {
@@ -42,7 +44,8 @@ public class SimpleObjectTest  extends Engine {
 		}
 		PhysicalFingerInput input;
 		@Override
-		public void onLoadedResourcesCompleted() {			
+		public void onLoadedResourcesCompleted() {	
+			final Box2DDebugRenderer box2dRender = new Box2DDebugRenderer(true, true, true, true, true);
 			input =new PhysicalFingerInput(
 					Cb2World.getInstance().installDefaultWorld().createScreenBox());
 			
@@ -92,9 +95,9 @@ public class SimpleObjectTest  extends Engine {
 					Engine.getSpriteBatch().begin();
 					group.render(delta);
 					Engine.getSpriteBatch().end();
-					/* ohoh do not forgot set the matrix */
-					Engine.getShapeRenderer().setProjectionMatrix(Engine.getDefaultCamera().combined);
-					group.debug(Engine.getShapeRenderer());
+			
+					box2dRender.render(Cb2World.getInstance().world(), Engine.getDefaultCamera().combined.scl(Cb2World.RADIO));
+					
 					Engine.debugInfo( "Make a physical object is simple \njust new a PhysicalObject");
 					
 				}

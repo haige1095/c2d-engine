@@ -14,7 +14,7 @@ import java.util.Random;
 
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 
 public class AdvanceSpriteShadowTest extends Engine {
 
@@ -42,10 +42,10 @@ public class AdvanceSpriteShadowTest extends Engine {
 		}
 
 		Cb2ObjectGroup group = new Cb2ObjectGroup();
-		ShapeRenderer render ;
 		@Override
 		public void onLoadedResourcesCompleted() {
-			render = new ShapeRenderer();
+			final Box2DDebugRenderer box2dRender = new Box2DDebugRenderer(true, true, true, true, true);
+
 			Cb2World.getInstance().installDefaultWorld().createScreenBox();
 
 			{
@@ -150,11 +150,10 @@ public class AdvanceSpriteShadowTest extends Engine {
 
 				@Override
 				public void render(float delta) {
-					render.setProjectionMatrix(Engine.getDefaultCamera().combined);
 					Engine.getSpriteBatch().begin();
 					group.render(delta);
 					Engine.getSpriteBatch().end();
-					group.debug(render);
+					box2dRender.render(Cb2World.getInstance().world(), Engine.getDefaultCamera().combined.scl(Cb2World.RADIO));
 					Engine.debugInfo("The physical object also the animation draw the shadows");
 
 				}
