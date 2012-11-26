@@ -4,7 +4,6 @@ import info.u250.c2d.engine.service.Renderable;
 
 import java.util.Iterator;
 
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.utils.Array;
 /**
@@ -17,11 +16,7 @@ public class Cb2ObjectGroup extends Array<Cb2Object> implements Renderable{
 		while(it.hasNext())
 			it.next().render(delta);
 	}
-	public void debug(ShapeRenderer render){
-		final Iterator<Cb2Object> it = this.iterator();
-		while(it.hasNext())
-			it.next().data.debug(render);
-	}
+
 	public Cb2Object findByBody(Body body){
 		final Iterator<Cb2Object> it = this.iterator();
 		while(it.hasNext()){

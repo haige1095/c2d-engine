@@ -46,6 +46,7 @@ public class PhysicTrackLineTest extends Engine {
 		
 		@Override
 		public void onLoadedResourcesCompleted() {
+
 			Cb2World.getInstance().installDefaultWorld().createScreenBox();
 			
 			Engine.setMainScene(new Scene() {
@@ -63,15 +64,13 @@ public class PhysicTrackLineTest extends Engine {
 						object.render(delta);
 					}
 					Engine.getSpriteBatch().end();
-					/* ohoh do not forgot set the matrix */
-					Engine.getShapeRenderer().setProjectionMatrix(Engine.getDefaultCamera().combined);
+					
 					Engine.getShapeRenderer().begin(ShapeType.FilledCircle);
 					Engine.getShapeRenderer().setColor(Color.WHITE);
 					for(Vector2 v:tracks){
 						Engine.getShapeRenderer().filledCircle(v.x, v.y, 3);
 					}
 					Engine.getShapeRenderer().end();
-					if(object!=null)object.data.debug(Engine.getShapeRenderer());
 					Engine.debugInfo(" Physic Track .  Drag to fire~");
 					
 				}
