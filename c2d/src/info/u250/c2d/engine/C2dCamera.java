@@ -26,6 +26,7 @@ public class C2dCamera extends OrthographicCamera {
 		this.viewportWidth = width;
 		this.viewportHeight = height;
 		this.position.set(width/2, height/2,0);
+		this.update();
 	}
 	
 	private static final String UPDATE_SHAKE_NAME = "_c2dCamera_shake_";
