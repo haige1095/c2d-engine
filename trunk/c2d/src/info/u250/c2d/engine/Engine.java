@@ -416,7 +416,6 @@ public abstract class Engine extends ApplicationAdapter{
 	@Override
 	public void resize(int width, int height) {
 		if(this.engineConfig.resizeSync){
-			super.resize(width, height);
 			this.engineConfig.width = width;
 			this.engineConfig.height = height;
 			this.defaultCamera.resize(width, height);
