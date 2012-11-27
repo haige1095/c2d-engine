@@ -43,9 +43,9 @@ public  class ZoomCameraEvent extends PeriodUpdatable{
 	@Override
 	public void update(float delta){
 		if(start){
-			if( (this.zoomStep>=0 && this.zoomOutRadio<=this.camera.getZoom() )
-					|| this.zoomStep<=0 && this.zoomOutRadio>=this.camera.getZoom()){
-				this.camera.setZoom( this.camera.getZoom() - this.zoomStep*delta);
+			if( (this.zoomStep>=0 && this.zoomOutRadio<=this.camera.zoom )
+					|| this.zoomStep<=0 && this.zoomOutRadio>=this.camera.zoom){
+				this.camera.zoom = this.camera.zoom - this.zoomStep*delta;
 				this.render(delta);
 			}else{
 				//disable it
@@ -59,7 +59,7 @@ public  class ZoomCameraEvent extends PeriodUpdatable{
 	@Override
 	public void go(){
 		if(this.duration!=0){
-			this.zoomStep = ( this.camera.getZoom() - this.zoomOutRadio )/this.duration;
+			this.zoomStep = ( this.camera.zoom - this.zoomOutRadio )/this.duration;
 		}else{
 			this.zoomStep = 0;
 		}

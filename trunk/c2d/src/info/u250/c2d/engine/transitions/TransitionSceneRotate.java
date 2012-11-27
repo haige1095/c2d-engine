@@ -20,13 +20,13 @@ final class TransitionSceneRotate extends Transition{
 	protected void doTransition(final int halfDurationMillis) {
 		outgoing.hide();
 		Tween
-		.to(Engine.getDefaultCamera(), C2dCameraAccessor.ROTATION_Z, halfDurationMillis).target(360)
+		.to(Engine.getDefaultCamera(), C2dCameraAccessor.ROTATION, halfDurationMillis).target(360)
 		.setCallback(new TweenCallback() {
 			@Override
 			public void onEvent(int type, BaseTween<?> source) {
 				doSetMainScene(incoming);
 				Tween
-				.to(Engine.getDefaultCamera(), C2dCameraAccessor.ROTATION_Z, halfDurationMillis).target(0)
+				.to(Engine.getDefaultCamera(), C2dCameraAccessor.ROTATION, halfDurationMillis).target(0)
 				.setCallback(new TweenCallback() {
 					@Override
 					public void onEvent(int type, BaseTween<?> source) {

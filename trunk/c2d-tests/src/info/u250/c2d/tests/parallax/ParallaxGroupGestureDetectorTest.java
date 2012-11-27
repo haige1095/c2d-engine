@@ -71,7 +71,7 @@ public class ParallaxGroupGestureDetectorTest  extends Engine{
 					Engine.debugInfo("The parallax background with layer number:"+rbg.getLayers().size+"\n" +
 							"GestureDetector by make a gesture use your mouse or your finger\n"+
 							"The position of the backgroud="+rbg.getCamera().position+"\n" +
-							"The zoom of the backgroud="+1/rbg.getCamera().getZoom()+"\n" +
+							"The zoom of the backgroud="+1/rbg.getCamera().zoom+"\n" +
 							"The speed of the backgroud="+rbg.getSpeed());
 				}
 				

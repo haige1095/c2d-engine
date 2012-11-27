@@ -14,6 +14,7 @@ import com.badlogic.gdx.Gdx;
  * @author lycying@gmail.com
  */
 final class TransitionSceneRotateWithZoomIn extends Transition{	
+	
 	public TransitionSceneRotateWithZoomIn(){
 	}
 	
@@ -23,7 +24,7 @@ final class TransitionSceneRotateWithZoomIn extends Transition{
 		Timeline.createParallel().beginParallel()
 		.push(
 				Tween
-				.to(Engine.getDefaultCamera(), C2dCameraAccessor.ROTATION_Z, halfDurationMillis).target(360*2)
+				.to(Engine.getDefaultCamera(), C2dCameraAccessor.ROTATION, halfDurationMillis).target(360*2)
 			)
 		.push(
 				Tween
@@ -37,7 +38,7 @@ final class TransitionSceneRotateWithZoomIn extends Transition{
 				Timeline.createParallel().beginParallel()
 				.push(
 						Tween
-						.to(Engine.getDefaultCamera(), C2dCameraAccessor.ROTATION_Z, 500).target(0)
+						.to(Engine.getDefaultCamera(), C2dCameraAccessor.ROTATION, 500).target(0)
 					)
 				.push(
 						Tween
