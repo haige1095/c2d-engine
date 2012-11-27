@@ -12,9 +12,9 @@ import info.u250.c2d.tests.animations.AdvanceSpriteShadowTest;
 import info.u250.c2d.tests.animations.AnalogTest;
 import info.u250.c2d.tests.animations.AnimationSpriteLoopTest;
 import info.u250.c2d.tests.animations.AnimationSpriteLoopWithTimesTest;
+import info.u250.c2d.tests.animations.GracefulEffectLabel;
 import info.u250.c2d.tests.animations.LaserTest;
 import info.u250.c2d.tests.animations.RainEffect;
-import info.u250.c2d.tests.animations.GracefulEffectLabel;
 import info.u250.c2d.tests.box2d.KinematicBodiesTest;
 import info.u250.c2d.tests.box2d.PhysicTrackLineTest;
 import info.u250.c2d.tests.box2d.SimpleObjectTest;
@@ -34,15 +34,6 @@ import info.u250.c2d.tests.misc.Ext_luaTest;
 import info.u250.c2d.tests.misc.GestureRecognizerTest;
 import info.u250.c2d.tests.misc.IngameLoadingTest;
 import info.u250.c2d.tests.misc.SvgTest;
-import info.u250.c2d.tests.nehe.Nehe04_Rotation;
-import info.u250.c2d.tests.nehe.Nehe05_3dShapes;
-import info.u250.c2d.tests.nehe.Nehe06_TextureMapping;
-import info.u250.c2d.tests.nehe.Nehe07_TextureFilters_Lighting;
-import info.u250.c2d.tests.nehe.Nehe08_Blending;
-import info.u250.c2d.tests.nehe.Nehe09_BitmapAnimation;
-import info.u250.c2d.tests.nehe.Nehe16_Fog;
-import info.u250.c2d.tests.nehe.Nehe18_Quadrics;
-import info.u250.c2d.tests.nehe.Nehe23_SphereMapping;
 import info.u250.c2d.tests.parallax.CustomDrawableTest;
 import info.u250.c2d.tests.parallax.ParallaxGroupEventsTest;
 import info.u250.c2d.tests.parallax.ParallaxGroupGestureDetectorTest;
@@ -580,88 +571,7 @@ public class C2dTests {
 			map.put("subs", subs);
 			tests.add(map);
 		}
-		//
-		{
-			Map<String,Object> map = new HashMap<String, Object>();
-			map.put("title", "Nehe OpenglES");
-			map.put("desc", "A port of the NeHe tutorials for the Libgdx platform.");
-			map.put("image", "drawable/nehe");
-			final List<Map<String,Object>> subs = new ArrayList<Map<String,Object>>();
-			{
-				Map<String,Object> sub = new HashMap<String,Object>();
-				sub.put("title", "Rotation");
-				sub.put("desc", "Add animation to the scene using rotations. The two objects rotate on different axes.");
-				sub.put("image", "drawable/item");
-				sub.put("cls", Nehe04_Rotation.class.getName());
-				subs.add(sub);
-			}
-			{
-				Map<String,Object> sub = new HashMap<String,Object>();
-				sub.put("title", "3dShapes");
-				sub.put("desc", "Go solid by turning the triangle into a pyramid and the square into a cube.");
-				sub.put("image", "drawable/item");
-				sub.put("cls", Nehe05_3dShapes.class.getName());
-				subs.add(sub);
-			}
-			{
-				Map<String,Object> sub = new HashMap<String,Object>();
-				sub.put("title", "TextureMapping");
-				sub.put("desc", "Render a cube textured with a bitmap image.");
-				sub.put("image", "drawable/item");
-				sub.put("cls", Nehe06_TextureMapping.class.getName());
-				subs.add(sub);
-			}
-			{
-				Map<String,Object> sub = new HashMap<String,Object>();
-				sub.put("title", "TextureFilters Lighting");
-				sub.put("desc", "Build textures with different types of filtering: nearest, linear and mipmap. Uses simple lighting.");
-				sub.put("image", "drawable/item");
-				sub.put("cls", Nehe07_TextureFilters_Lighting.class.getName());
-				subs.add(sub);
-			}
-			{
-				Map<String,Object> sub = new HashMap<String,Object>();
-				sub.put("title", "Blending");
-				sub.put("desc", "Achieve the effect of transparency using blending. Introducing the 4th color component: 'alpha'.");
-				sub.put("image", "drawable/item");
-				sub.put("cls", Nehe08_Blending.class.getName());
-				subs.add(sub);
-			}
-			{
-				Map<String,Object> sub = new HashMap<String,Object>();
-				sub.put("title", "Bitmap Animation");
-				sub.put("desc", "Simple animation using blended 2D sprites. Makes heavier use of model-view transformations.");
-				sub.put("image", "drawable/item");
-				sub.put("cls", Nehe09_BitmapAnimation.class.getName());
-				subs.add(sub);
-			}
-			{
-				Map<String,Object> sub = new HashMap<String,Object>();
-				sub.put("title", "Fog");
-				sub.put("desc", "One of the simplest, yet most impressive OpenGL effects. Illustrates 3 different fog filters.");
-				sub.put("image", "drawable/item");
-				sub.put("cls", Nehe16_Fog.class.getName());
-				subs.add(sub);
-			}
-			{
-				Map<String,Object> sub = new HashMap<String,Object>();
-				sub.put("title", "Quadrics");
-				sub.put("desc", "Draw complex objects like spheres, cylinders, disks and cones. Some math is used behind this.");
-				sub.put("image", "drawable/item");
-				sub.put("cls", Nehe18_Quadrics.class.getName());
-				subs.add(sub);
-			}
-			{
-				Map<String,Object> sub = new HashMap<String,Object>();
-				sub.put("title", "Sphere Mapping");
-				sub.put("desc", "Add reflections to the quadrics from lesson 18 by using sphere mapping. Some tricky math here too.");
-				sub.put("image", "drawable/item");
-				sub.put("cls", Nehe23_SphereMapping.class.getName());
-				subs.add(sub);
-			}
-			map.put("subs", subs);
-			tests.add(map);
-		}
+		
 	}
 	
 	@SuppressWarnings("unchecked")

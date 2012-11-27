@@ -4,43 +4,95 @@ import info.u250.c2d.engine.CoreProvider.TransitionType;
 import info.u250.c2d.engine.Transition;
 
 public class TransitionFactory {
-	
+	static Transition RotateWithZoomIn,FlipHorizontal,FlipVertical,ZoomIn,Rotate,ZoomOut,Fade,
+		SlideInLeft,SlideInRight,SlideInTop,SlideInBottom,MoveInLeft,MoveInRight,MoveInTop,MoveInBottom,FadeWhite;
 	public static Transition getTransitionScene(TransitionType type){
 		switch(type){
 		case RotateWithZoomIn:
-			return new TransitionSceneRotateWithZoomIn();
+			if(null == RotateWithZoomIn){
+				RotateWithZoomIn = new TransitionSceneRotateWithZoomIn();
+			}
+			return RotateWithZoomIn;
 		case FlipHorizontal:
-			return new TransitionSceneFlipHorizontal();
+			if(null == FlipHorizontal){
+				FlipHorizontal = new TransitionSceneFlipHorizontal();
+			}
+			return FlipHorizontal;
 		case FlipVertical:
-			return new TransitionSceneFlipVertical();
+			if(null == FlipVertical){
+				FlipVertical = new TransitionSceneFlipVertical();
+			}
+			return FlipVertical;
 		case ZoomIn:
-			return new TransitionSceneZoomIn();
+			if(null == ZoomIn){
+				ZoomIn = new TransitionSceneZoomIn();
+			}
+			return ZoomIn;
 		case Rotate:
-			return new TransitionSceneRotate();
+			if(null == Rotate){
+				Rotate = new TransitionSceneRotate();
+			}
+			return Rotate;
 		case ZoomOut:
-			return new TransitionSceneZoomOut();
+			if(null == ZoomOut){
+				ZoomOut = new TransitionSceneZoomOut();
+			}
+			return ZoomOut;
 		case Fade:
-			return new TransitionSceneFade();
+			if(null == Fade){
+				Fade = new TransitionSceneFade();
+			}
+			return Fade;
 		case SlideInLeft:
-			return new TransitionSceneSlideInLeft();
+			if(null == SlideInLeft){
+				SlideInLeft = new TransitionSceneSlideInLeft();
+			}
+			return SlideInLeft;
 		case SlideInRight:
-			return new TransitionSceneSlideInRight();
+			if(null == SlideInRight){
+				SlideInRight = new TransitionSceneSlideInRight();
+			}
+			return SlideInRight;
 		case SlideInTop:
-			return new TransitionSceneSlideInTop();
+			if(null == SlideInTop){
+				SlideInTop = new TransitionSceneSlideInTop();
+			}
+			return SlideInTop;
 		case SlideInBottom:
-			return new TransitionSceneSlideInBottom();
+			if(null == SlideInBottom){
+				SlideInBottom = new TransitionSceneSlideInBottom();
+			}
+			return SlideInBottom;
 		case MoveInLeft:
-			return new TransitionSceneMoveInLeft();
+			if(null == MoveInLeft){
+				MoveInLeft = new TransitionSceneMoveInLeft();
+			}
+			return MoveInLeft;
 		case MoveInRight:
-			return new TransitionSceneMoveInRight();
+			if(null == MoveInRight){
+				MoveInRight = new TransitionSceneMoveInRight();
+			}
+			return MoveInRight;
 		case MoveInTop:
-			return new TransitionSceneMoveInTop();
+			if(null == MoveInTop){
+				MoveInTop = new TransitionSceneMoveInTop();
+			}
+			return MoveInTop;
 		case MoveInBottom:
-			return new TransitionSceneMoveInBottom();
+			if(null == MoveInBottom){
+				MoveInBottom = new TransitionSceneMoveInBottom();
+			}
+			return MoveInBottom;
 		case FadeWhite:
-			return new TransitionSceneFadeWhite();
+			if(null == FadeWhite){
+				FadeWhite = new TransitionSceneFadeWhite();
+			}
+			return FadeWhite;
 		default:
-			return new TransitionSceneFade();
+			if(null == Fade){
+				Fade = new TransitionSceneFade();
+			}
+			return Fade;
 		}
 	}
 }

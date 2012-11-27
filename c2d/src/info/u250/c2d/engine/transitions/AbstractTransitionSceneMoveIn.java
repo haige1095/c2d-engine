@@ -29,7 +29,6 @@ abstract class AbstractTransitionSceneMoveIn extends Transition{
 		Tween
 		.to(targetCamera, C2dCameraAccessor.XY, halfDurationMillis*2).target(Engine.getWidth()/2, Engine.getHeight()/2)
 		.setCallback(new TweenCallback() {
-
 			@Override
 			public void onEvent(int type, BaseTween<?> source) {
 				doSetMainScene(incoming);

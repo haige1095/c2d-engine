@@ -135,17 +135,15 @@ public class ParallaxGroup extends Array<ParallaxLayer> implements Renderable{
 		@Override
 		public boolean touchDown(float x, float y, int pointer, int button) {
 			flinging = false;
-			initialScale = camera.position.z / (Engine.getHeight() / 2);
+			initialScale = 1;
 			return false;
 		}
 		@Override
 		public boolean pan(float x, float y, float deltaX, float deltaY) {
 
 			camera.position.add(
-					-deltaX * camera.position.z
-							/ (Engine.getHeight() / 2), deltaY
-							* camera.position.z
-							/ (Engine.getHeight() / 2), 0);
+					-deltaX * camera.zoom, deltaY
+							* camera.zoom, 0);
 
 			return false;
 		}
@@ -154,8 +152,7 @@ public class ParallaxGroup extends Array<ParallaxLayer> implements Renderable{
 		public boolean zoom(float originalDistance, float currentDistance) {
 
 			float ratio = originalDistance / currentDistance;
-			camera.position.z = initialScale * ratio
-					* Engine.getHeight() / 2;
+			camera.zoom = initialScale * ratio;
 			return false;
 		}
 
@@ -186,10 +183,8 @@ public class ParallaxGroup extends Array<ParallaxLayer> implements Renderable{
 		@Override
 		public boolean fling(float velocityX, float velocityY, int button) {
 			flinging = true;
-			velX = camera.position.z / (Engine.getHeight() / 2)
-					* velocityX * 0.5f;
-			velY = camera.position.z / (Engine.getHeight() / 2)
-					* velocityY * 0.5f;
+			velX = camera.zoom * velocityX * 0.5f;
+			velY = camera.zoom * velocityY * 0.5f;
 			return false;
 		}
 		@Override
@@ -209,7 +204,7 @@ public class ParallaxGroup extends Array<ParallaxLayer> implements Renderable{
 		@Override
 		public boolean touchDown(float x, float y, int pointer, int button) {
 			flinging = false;
-			initialScale = camera.position.z/(Engine.getHeight()/2);
+			initialScale = camera.zoom;
 			return false;
 		}
 		@Override
@@ -225,14 +220,14 @@ public class ParallaxGroup extends Array<ParallaxLayer> implements Renderable{
 
 		@Override
 		public boolean pan (float x, float y, float deltaX, float deltaY) {
-			camera.position.add(-deltaX * camera.position.z/(Engine.getHeight()/2), deltaY *camera.position.z/(Engine.getHeight()/2), 0);
+			camera.position.add(-deltaX * camera.zoom, deltaY *camera.zoom, 0);
 			return false;
 		}
 
 		@Override
 		public boolean zoom (float originalDistance, float currentDistance) {
 			float ratio = originalDistance / currentDistance;
-			camera.position.z = initialScale * ratio * Engine.getHeight()/2;
+			camera.zoom = initialScale * ratio;
 			return false;
 		}
 
@@ -252,8 +247,8 @@ public class ParallaxGroup extends Array<ParallaxLayer> implements Renderable{
 		@Override
 		public boolean fling(float velocityX, float velocityY, int button) {
 			flinging = true;
-			velX = camera.position.z/(Engine.getHeight()/2) * velocityX * 0.5f;
-			velY = camera.position.z/(Engine.getHeight()/2) * velocityY * 0.5f;
+			velX = camera.zoom * velocityX * 0.5f;
+			velY = camera.zoom * velocityY * 0.5f;
 			return false;
 		}
 
@@ -376,7 +371,6 @@ public class ParallaxGroup extends Array<ParallaxLayer> implements Renderable{
 		}
 		if(!Engine.isPause()){
 			this.camera.position.add(speed.x*delta,speed.y*delta, 0);
-			this.camera.position.z = this.camera.getZoom() * this.camera.viewportHeight/2;
 		}
 	}
 	private static Json getJsonLoader(final TextureAtlas atlas,final boolean useSystemCamera) {

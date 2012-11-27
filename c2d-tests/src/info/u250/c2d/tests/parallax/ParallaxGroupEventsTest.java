@@ -63,7 +63,7 @@ public class ParallaxGroupEventsTest extends Engine{
 			ZoomCameraEvent  = new ZoomCameraEvent(rbg.getCamera(),5, 2f){
 				@Override
 				public void end() {
-					this.camera.setZoom(1);
+					this.camera.zoom = 1;
 					super.end();
 				}
 			};
@@ -129,7 +129,7 @@ public class ParallaxGroupEventsTest extends Engine{
 							ZoomCameraEvent+"\n" +
 							Day2NightEvent+"\n" +
 							"The position of the backgroud="+rbg.getCamera().position+"\n" +
-							"The zoom of the backgroud="+1/rbg.getCamera().getZoom()+"\n" +
+							"The zoom of the backgroud="+1/rbg.getCamera().zoom+"\n" +
 							"The speed of the backgroud="+rbg.getSpeed());
 					
 				}

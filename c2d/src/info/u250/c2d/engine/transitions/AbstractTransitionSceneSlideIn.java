@@ -32,7 +32,6 @@ abstract class AbstractTransitionSceneSlideIn extends Transition{
 		Tween
 		.to(Engine.getDefaultCamera(), C2dCameraAccessor.XY, halfDurationMillis*2).target(positionBak.x,positionBak.y)
 		.setCallback(new TweenCallback() {
-
 			@Override
 			public void onEvent(int type, BaseTween<?> source) {
 				doSetMainScene(incoming);
@@ -40,7 +39,6 @@ abstract class AbstractTransitionSceneSlideIn extends Transition{
 				incoming.show();
 				Engine.getDefaultCamera().position.set(positionBak);
 				reset();
-				
 			}
 		}).start(Engine.getTweenManager());
 	}

@@ -188,10 +188,10 @@ public class TinyWingsStripesTest extends Engine {
 				public boolean keyUp(int keycode) {
 					switch(keycode){
 					case Keys.UP:
-						Engine.getDefaultCamera().setZoom(Engine.getDefaultCamera().getZoom()+0.1f);
+						Engine.getDefaultCamera().zoom= Engine.getDefaultCamera().zoom+0.1f;
 						break;
 					case Keys.DOWN:
-						Engine.getDefaultCamera().setZoom(Engine.getDefaultCamera().getZoom()-0.1f);
+						Engine.getDefaultCamera().zoom = Engine.getDefaultCamera().zoom-0.1f;
 						break;
 					case Keys.LEFT:
 						Engine.getDefaultCamera().position.x-=10;
