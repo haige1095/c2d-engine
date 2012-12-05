@@ -29,4 +29,11 @@ public class C2dStage extends Stage{
 	public void act(float delta) {
 		super.act(Math.min(delta, 1f/60f));
 	}
+	@Override
+	public void draw() {
+		if (!getRoot().isVisible()) return;
+		Engine.getSpriteBatch().begin();
+		getRoot().draw(Engine.getSpriteBatch(), 1);
+		Engine.getSpriteBatch().end();
+	}
 }
