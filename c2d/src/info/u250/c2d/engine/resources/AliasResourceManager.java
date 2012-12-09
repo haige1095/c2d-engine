@@ -9,8 +9,12 @@ import info.u250.c2d.engine.resources.rules.RuleTexture;
 import info.u250.c2d.engine.resources.rules.RuleTextureAtlas;
 
 import java.io.File;
+import java.net.URL;
+import java.security.CodeSource;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
 
 import com.badlogic.gdx.Application.ApplicationType;
 import com.badlogic.gdx.Gdx;
@@ -92,7 +96,11 @@ public class AliasResourceManager<K>  {
 	/**load resources*/
 	public void load(String dataDir){
 		if(Gdx.app.getType() == ApplicationType.Desktop){
-			loadDesktop(dataDir);
+			if(runningFromJar()){
+				loadJars(dataDir);
+			}else{
+				loadDesktop(dataDir);
+			}
 		}else{
 			FileHandle file = Gdx.files.internal(dataDir);
 			if(null!=file){
@@ -102,6 +110,39 @@ public class AliasResourceManager<K>  {
 					loadFile(file);
 				}
 			}
+		}
+	}
+	private boolean runningFromJar() {
+		   String className = this.getClass().getName().replace('.', '/');
+		   String classJar =  this.getClass().getResource("/" + className + ".class").toString();
+		   if (classJar.startsWith("jar:")) {
+		     return true;
+		   }
+		   return false;
+	}
+	private void loadJars(String dataDir){
+		try{
+			CodeSource src = AliasResourceManager.class.getProtectionDomain().getCodeSource();
+			if (src != null) {
+			  URL jar = src.getLocation();
+			  ZipInputStream zip = new ZipInputStream(jar.openStream());
+			  ZipEntry zipEntry = null;
+			  while ((zipEntry = zip.getNextEntry()) != null) {
+				  String name = zipEntry.getName();
+				  if(name.startsWith(dataDir)){
+					  if (zipEntry.isDirectory()) {
+							 
+					  }else{
+						  loadFile(Gdx.files.internal(name));
+					  }  
+				  }
+			  }
+			  zip.close();
+			}else {
+			  /* Fail... */
+			}
+		}catch(Exception ex){
+			ex.printStackTrace();
 		}
 	}
 	private void loadDesktop(String dataDir){
