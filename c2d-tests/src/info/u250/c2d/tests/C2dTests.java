@@ -8,19 +8,12 @@ import info.u250.c2d.tests.animations.ActionRotate;
 import info.u250.c2d.tests.animations.ActionScale;
 import info.u250.c2d.tests.animations.ActionShake;
 import info.u250.c2d.tests.animations.ActionTint;
-import info.u250.c2d.tests.animations.AdvanceSpriteShadowTest;
 import info.u250.c2d.tests.animations.AnalogTest;
 import info.u250.c2d.tests.animations.AnimationSpriteLoopTest;
 import info.u250.c2d.tests.animations.AnimationSpriteLoopWithTimesTest;
 import info.u250.c2d.tests.animations.GracefulEffectLabel;
 import info.u250.c2d.tests.animations.LaserTest;
 import info.u250.c2d.tests.animations.RainEffect;
-import info.u250.c2d.tests.box2d.KinematicBodiesTest;
-import info.u250.c2d.tests.box2d.PhysicTrackLineTest;
-import info.u250.c2d.tests.box2d.SimpleObjectTest;
-import info.u250.c2d.tests.box2d.SoftBodyTest;
-import info.u250.c2d.tests.box2d.WaterEffectTest;
-import info.u250.c2d.tests.box2d.WebTest;
 import info.u250.c2d.tests.mesh.GradientEllipseTest;
 import info.u250.c2d.tests.mesh.GradientTest;
 import info.u250.c2d.tests.mesh.JumpyLineTest;
@@ -39,7 +32,6 @@ import info.u250.c2d.tests.parallax.ParallaxGroupEventsTest;
 import info.u250.c2d.tests.parallax.ParallaxGroupGestureDetectorTest;
 import info.u250.c2d.tests.particle.FollowableParticle;
 import info.u250.c2d.tests.sfx.EngineSimpleSfxTest;
-import info.u250.c2d.tests.tiled.Box2dTileTest;
 import info.u250.c2d.tests.tools.MotionWelderTest;
 import info.u250.c2d.tests.transitions.FadeTest;
 import info.u250.c2d.tests.transitions.FadeWhiteTest;
@@ -144,14 +136,6 @@ public class C2dTests {
 			}
 			{
 				Map<String,Object> sub = new HashMap<String, Object>();
-				sub.put("title", "AdvanceSprite Shadow");
-				sub.put("desc", "Used a box2d body to make them moveable.");
-				sub.put("image", "drawable/item");
-				sub.put("cls", AdvanceSpriteShadowTest.class.getName());
-				subs.add(sub);
-			}
-			{
-				Map<String,Object> sub = new HashMap<String, Object>();
 				sub.put("title", "Analog");
 				sub.put("desc", "This is a simple analog widget , via this you can get the value and the directions");
 				sub.put("image", "drawable/item");
@@ -226,54 +210,7 @@ public class C2dTests {
 			map.put("desc", "Physical Engine . How to use the c2d box2d");
 			map.put("image", "drawable/box2d");
 			final List<Map<String,Object>> subs = new ArrayList<Map<String,Object>>();
-			{
-				Map<String,Object> sub = new HashMap<String,Object>();
-				sub.put("title", "A Simple Example");
-				sub.put("desc", "Just a simple to show the box and the circle");
-				sub.put("image", "drawable/item");
-				sub.put("cls", SimpleObjectTest.class.getName());
-				subs.add(sub);
-			}
-			{
-				Map<String,Object> sub = new HashMap<String,Object>();
-				sub.put("title", "Track Line");
-				sub.put("desc", "How to make a track line like birds");
-				sub.put("image", "drawable/item");
-				sub.put("cls", PhysicTrackLineTest.class.getName());
-				subs.add(sub);
-			}
-			{
-				Map<String,Object> sub = new HashMap<String,Object>();
-				sub.put("title", "Soft Body");
-				sub.put("desc", "How to make a soft body use spring force");
-				sub.put("image", "drawable/item");
-				sub.put("cls", SoftBodyTest.class.getName());
-				subs.add(sub);
-			}
-			{
-				Map<String,Object> sub = new HashMap<String,Object>();
-				sub.put("title", "Web");
-				sub.put("desc", "there is a spring force between them");
-				sub.put("image", "drawable/item");
-				sub.put("cls", WebTest.class.getName());
-				subs.add(sub);
-			}
-			{
-				Map<String,Object> sub = new HashMap<String,Object>();
-				sub.put("title", "Water effect");
-				sub.put("desc", "the water effect use the box2d. can't use this tool with OpenGL ES 1.x ");
-				sub.put("image", "drawable/item");
-				sub.put("cls", WaterEffectTest.class.getName());
-				subs.add(sub);
-			}
-			{
-				Map<String,Object> sub = new HashMap<String,Object>();
-				sub.put("title", "Kinematic Bodies");
-				sub.put("desc", "A kinematic body is an hybrid body which is not affected by forces and collisions like a static body but can moved with a linear velocity like a dynamic body. ");
-				sub.put("image", "drawable/item");
-				sub.put("cls", KinematicBodiesTest.class.getName());
-				subs.add(sub);
-			}
+			
 			map.put("subs", subs);
 			tests.add(map);
 		}
@@ -502,14 +439,7 @@ public class C2dTests {
 			map.put("desc", "tiledmap");
 			map.put("image", "drawable/tiled");
 			final List<Map<String,Object>> subs = new ArrayList<Map<String,Object>>();
-			{
-				Map<String,Object> sub = new HashMap<String,Object>();
-				sub.put("title", "Box2d TiledMap");
-				sub.put("desc", "example: how to make a pysicalable tiledmap");
-				sub.put("image", "drawable/item");
-				sub.put("cls", Box2dTileTest.class.getName());
-				subs.add(sub);
-			}
+			
 			map.put("subs", subs);
 			tests.add(map);
 		}
