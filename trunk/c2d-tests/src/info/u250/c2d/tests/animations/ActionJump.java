@@ -5,7 +5,7 @@ import info.u250.c2d.engine.EngineDrive;
 import info.u250.c2d.engine.Scene;
 import info.u250.c2d.engine.resources.AliasResourceManager;
 import info.u250.c2d.graphic.AnimationSprite;
-import info.u250.c2d.graphic.AnimationSpriteImage;
+import info.u250.c2d.graphic.AdvanceSpriteImage;
 import info.u250.c2d.graphic.C2dStage;
 
 import com.badlogic.gdx.InputProcessor;
@@ -48,10 +48,10 @@ public class ActionJump extends Engine {
 	}
 
 	private static class MainScene extends C2dStage implements Scene {
-		final AnimationSpriteImage actor;
+		final AdvanceSpriteImage actor;
 
 		public MainScene(){
-			actor = new AnimationSpriteImage(new AnimationSprite(0.05f, Engine.resource("Anim",TextureAtlas.class),"fly"));
+			actor = new AdvanceSpriteImage(new AnimationSprite(0.05f, Engine.resource("Anim",TextureAtlas.class),"fly"));
 			actor.setPosition(200, 20);
 			actor.setRotation(90);
 			actor.setOrigin(actor.getWidth()/2, actor.getHeight()/2);

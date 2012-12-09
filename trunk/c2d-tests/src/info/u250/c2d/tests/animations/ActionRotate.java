@@ -5,7 +5,7 @@ import info.u250.c2d.engine.EngineDrive;
 import info.u250.c2d.engine.Scene;
 import info.u250.c2d.engine.resources.AliasResourceManager;
 import info.u250.c2d.graphic.AnimationSprite;
-import info.u250.c2d.graphic.AnimationSpriteImage;
+import info.u250.c2d.graphic.AdvanceSpriteImage;
 import info.u250.c2d.graphic.C2dStage;
 
 import com.badlogic.gdx.InputProcessor;
@@ -44,9 +44,9 @@ public class ActionRotate extends Engine {
 		}
 	}
 	private static class MainScene extends C2dStage implements Scene{
-		final AnimationSpriteImage actor1,actor2;
+		final AdvanceSpriteImage actor1,actor2;
 		public MainScene(){
-			actor1 = new AnimationSpriteImage(new AnimationSprite(0.05f, Engine.resource("Anim",TextureAtlas.class),"fly"));
+			actor1 = new AdvanceSpriteImage(new AnimationSprite(0.05f, Engine.resource("Anim",TextureAtlas.class),"fly"));
 			actor1.setPosition(200, 200);
 			actor1.addAction(Actions.forever(
 					Actions.sequence(
@@ -58,7 +58,7 @@ public class ActionRotate extends Engine {
 					));
 			this.addActor(actor1);
 			
-			actor2 = new AnimationSpriteImage(new AnimationSprite(0.05f, Engine.resource("Anim",TextureAtlas.class),"fly"));
+			actor2 = new AdvanceSpriteImage(new AnimationSprite(0.05f, Engine.resource("Anim",TextureAtlas.class),"fly"));
 			actor2.setPosition(400, 100);
 			actor2.setOrigin(actor2.getWidth()/2, actor2.getHeight()/2);
 			actor2.addAction(Actions.forever(
