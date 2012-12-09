@@ -5,10 +5,6 @@ import info.u250.c2d.engine.EngineDrive;
 import info.u250.c2d.engine.Scene;
 import info.u250.c2d.engine.resources.AliasResourceManager;
 import info.u250.c2d.graphic.AdvanceSprite;
-import info.u250.c2d.physical.box2d.Cb2Object;
-import info.u250.c2d.physical.box2d.Cb2Object.Cb2ObjectSetupCallback;
-import info.u250.c2d.physical.box2d.Cb2ObjectGroup;
-import info.u250.c2d.physical.box2d.Cb2World;
 
 import java.util.Random;
 
