@@ -3,9 +3,6 @@
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/gdx"/>
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/gdx-backend-android"/>
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/c2d"/>
-	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/c2d-ext-gestures"/>
-	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/c2d-ext-lua"/>
-	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/c2d-ext-svg"/>
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/c2d-tests"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
 	<classpathentry excluding="**/.svn/*" kind="src" path="src"/>

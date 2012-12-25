@@ -23,10 +23,7 @@ import info.u250.c2d.tests.mesh.SurfaceTest;
 import info.u250.c2d.tests.mesh.TinyWingsStripesTest;
 import info.u250.c2d.tests.misc.CustomLoadingTest;
 import info.u250.c2d.tests.misc.EventTest;
-import info.u250.c2d.tests.misc.Ext_luaTest;
-import info.u250.c2d.tests.misc.GestureRecognizerTest;
 import info.u250.c2d.tests.misc.IngameLoadingTest;
-import info.u250.c2d.tests.misc.SvgTest;
 import info.u250.c2d.tests.parallax.CustomDrawableTest;
 import info.u250.c2d.tests.parallax.ParallaxGroupEventsTest;
 import info.u250.c2d.tests.parallax.ParallaxGroupGestureDetectorTest;
@@ -466,22 +463,7 @@ public class C2dTests {
 				sub.put("cls", IngameLoadingTest.class.getName());
 				subs.add(sub);
 			}
-			{
-				Map<String,Object> sub = new HashMap<String,Object>();
-				sub.put("title", "Ext Lua");
-				sub.put("desc", "load lua script and execute it");
-				sub.put("image", "drawable/item");
-				sub.put("cls", Ext_luaTest.class.getName());
-				subs.add(sub);
-			}
-			{
-				Map<String,Object> sub = new HashMap<String,Object>();
-				sub.put("title", "Ext SVG");
-				sub.put("desc", "load svg file and render it . this may take some times to gen the image");
-				sub.put("image", "drawable/item");
-				sub.put("cls", SvgTest.class.getName());
-				subs.add(sub);
-			}
+			
 			{
 				Map<String,Object> sub = new HashMap<String,Object>();
 				sub.put("title", "Event");
@@ -490,14 +472,7 @@ public class C2dTests {
 				sub.put("cls", EventTest.class.getName());
 				subs.add(sub);
 			}
-			{
-				Map<String,Object> sub = new HashMap<String,Object>();
-				sub.put("title", "Gesture Recognizer");
-				sub.put("desc", "load a json file  ");
-				sub.put("image", "drawable/item");
-				sub.put("cls", GestureRecognizerTest.class.getName());
-				subs.add(sub);
-			}
+			
 			map.put("subs", subs);
 			tests.add(map);
 		}

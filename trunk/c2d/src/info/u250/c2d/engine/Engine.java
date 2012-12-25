@@ -61,6 +61,14 @@ public abstract class Engine extends ApplicationAdapter{
 	public static final <T extends Engine> T get(){
 		return (T)instance;
 	}
+	private EngineCallback engineCallback = new DefaultEngineCallback();
+	public static void setEngineCallback(EngineCallback engineCallback){
+		instance.engineCallback = engineCallback;
+	}
+	public static EngineCallback getEngineCallback(){
+		return instance.engineCallback;
+	}
+	
 	private ShapeRenderer shapeRenderer;
 	/** the game logic */
 	private EngineDrive engineDrive;
@@ -171,18 +179,20 @@ public abstract class Engine extends ApplicationAdapter{
 			//set up the sprite batch
 			this.spriteBatch = new SpriteBatch();
 			//set up the default font
-			this.defaultFont = new BitmapFont();
+			this.defaultFont = new BitmapFont(Gdx.files.internal("com/badlogic/gdx/utils/arial-15.fnt"),
+					Gdx.files.internal("com/badlogic/gdx/utils/arial-15.png"), false, true);
 			//set up the default preferences
 			this.preferences = Gdx.app.getPreferences(engineConfig.configFile);
-			this.preLoad();
+			if(null!=engineCallback){
+				engineCallback.preLoad(Gdx.graphics.getDesktopDisplayMode(),engineConfig.assets);
+			}
 			//loading screen
 			this.setupLoading();
 		}catch(Exception ex){
 			ex.printStackTrace();
 		}
 	}
-	protected void preLoad(){}
-	protected void postLoad(){}
+	
 	protected StartupLoading getStartupLoading(){
 		return new SimpleLoading();
 	}
@@ -200,12 +210,11 @@ public abstract class Engine extends ApplicationAdapter{
 				transitionScene = TransitionFactory.getTransitionScene(TransitionType.Fade);
 				engineDrive.onResourcesRegister(aliasResourceManager);
 				engineDrive.onLoadedResourcesCompleted();
-				postLoad();
+				if(null!=engineCallback){
+					engineCallback.postLoad();
+				}
 			}
 		});
-		for(final String path:engineConfig.assets){
-			aliasResourceManager.load(path);
-		}
 	}
 	
 	private void setupTweenEngine(){
@@ -465,4 +474,6 @@ public abstract class Engine extends ApplicationAdapter{
 			//ignore
 		}
 	}
+	
+	
 }
