@@ -1,6 +1,10 @@
 package info.u250.c2d.engine.resources;
 
 import info.u250.c2d.engine.Engine;
+import info.u250.c2d.engine.resources.looper.LoopLoader;
+import info.u250.c2d.engine.resources.looper.LoopLoaderDesktop;
+import info.u250.c2d.engine.resources.looper.LoopLoaderGeneral;
+import info.u250.c2d.engine.resources.looper.LoopLoaderWebGL;
 import info.u250.c2d.engine.resources.rules.RuleFont;
 import info.u250.c2d.engine.resources.rules.RuleMusic;
 import info.u250.c2d.engine.resources.rules.RuleSkin;
@@ -8,13 +12,8 @@ import info.u250.c2d.engine.resources.rules.RuleSound;
 import info.u250.c2d.engine.resources.rules.RuleTexture;
 import info.u250.c2d.engine.resources.rules.RuleTextureAtlas;
 
-import java.io.File;
-import java.net.URL;
-import java.security.CodeSource;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
 
 import com.badlogic.gdx.Application.ApplicationType;
 import com.badlogic.gdx.Gdx;
@@ -31,13 +30,18 @@ import com.badlogic.gdx.utils.Array;
  * @author lycying@gmail.com
  */
 public class AliasResourceManager<K>  {
-	/**
-	 * @author lycying@gmail.com
-	 * this is a rule to load resources , if the file's suffix or contains dictionary match the load rule , then load it .
-	 * such as the texture has the suffix ".png"
-	 */
-	public interface LoadResourceRule{
-		public boolean match(FileHandle file);
+	public AliasResourceManager(){
+		if(Gdx.app.getType() == ApplicationType.Desktop){
+			loopLoader = new LoopLoaderDesktop();
+		}else if(Gdx.app.getType() == ApplicationType.WebGL){
+			loopLoader = new LoopLoaderWebGL();
+		}else{
+			loopLoader = new LoopLoaderGeneral();
+		}
+	}
+	private LoopLoader loopLoader ;
+	public void setLoopLoader(LoopLoader loopLoader) {
+		this.loopLoader = loopLoader;
 	}
 	/**the map to hold all resources*/
 	private Map<K, Object>  resources = new HashMap<K, Object>();
@@ -95,94 +99,28 @@ public class AliasResourceManager<K>  {
 	
 	/**load resources*/
 	public void load(String dataDir){
-		if(Gdx.app.getType() == ApplicationType.Desktop){
-			if(runningFromJar()){
-				loadJars(dataDir);
-			}else{
-				loadDesktop(dataDir);
-			}
-		}else{
-			FileHandle file = Gdx.files.internal(dataDir);
-			if(null!=file){
-				if(file.isDirectory()){
-					loadDirectory(file);
-				}else{
-					loadFile(file);
-				}
-			}
-		}
+		loopLoader.loadResource(dataDir);
 	}
-	private boolean runningFromJar() {
-		   String className = this.getClass().getName().replace('.', '/');
-		   String classJar =  this.getClass().getResource("/" + className + ".class").toString();
-		   if (classJar.startsWith("jar:")) {
-		     return true;
-		   }
-		   return false;
-	}
-	private void loadJars(String dataDir){
-		try{
-			CodeSource src = AliasResourceManager.class.getProtectionDomain().getCodeSource();
-			if (src != null) {
-			  URL jar = src.getLocation();
-			  ZipInputStream zip = new ZipInputStream(jar.openStream());
-			  ZipEntry zipEntry = null;
-			  while ((zipEntry = zip.getNextEntry()) != null) {
-				  String name = zipEntry.getName();
-				  if(name.startsWith(dataDir)){
-					  if (zipEntry.isDirectory()) {
-							 
-					  }else{
-						  loadFile(Gdx.files.internal(name));
-					  }  
-				  }
-			  }
-			  zip.close();
-			}else {
-			  /* Fail... */
-			}
-		}catch(Exception ex){
-			ex.printStackTrace();
-		}
-	}
-	private void loadDesktop(String dataDir){
-		File file = new File( "bin/"+dataDir );
-		if(file.isDirectory()){
-			for(String f:file.list()){
-				loadDesktop((dataDir.endsWith("/")?dataDir:(dataDir+"/"))+f);
-			}
-		}else{
-			loadFile(Gdx.files.internal(dataDir));
-		}
-	}
-	private void loadDirectory(FileHandle dir){
-		for(FileHandle handle :dir.list()){
-			if(handle.isDirectory()){
-				this.loadDirectory(handle);
-			}else{
-				this.loadFile(handle);
-			}
-		}
-	}
-	private void loadFile(FileHandle file){
-		for(LoadResourceRule rule:rules){
-			if(rule.match(file)){
-				return;
-			}
-		}
-		
-	}
-	static Array<LoadResourceRule>  rules = new Array<LoadResourceRule>();
+
+	public static Array<LoadResourceRule>  RULES = new Array<LoadResourceRule>();
 	static{
-		rules.add(new RuleTexture());
-		rules.add(new RuleSound());
-		rules.add(new RuleMusic());
-		rules.add(new RuleTextureAtlas());
-		rules.add(new RuleFont());
-		rules.add(new RuleSkin());
+		RULES.add(new RuleTexture());
+		RULES.add(new RuleSound());
+		RULES.add(new RuleMusic());
+		RULES.add(new RuleTextureAtlas());
+		RULES.add(new RuleFont());
+		RULES.add(new RuleSkin());
 	}
 	public void addRule(LoadResourceRule rule){
-		rules.add(rule);
+		RULES.add(rule);
+	}
+	/**
+	 * @author lycying@gmail.com
+	 * this is a rule to load resources , if the file's suffix or contains dictionary match the load rule , then load it .
+	 * such as the texture has the suffix ".png"
+	 */
+	public interface LoadResourceRule{
+		public boolean match(FileHandle file);
 	}
 
 }

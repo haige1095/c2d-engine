@@ -2,7 +2,6 @@
 <module rename-to="info.u250.c2d">
 	<inherits name="aurelienribon.tweenengine"/>
 	<source path="c2d">
-		<exclude name="physical/**/*"/>
-		<exclude name="utils/Box2dUtils.java"/>
+		<exclude name="engine/cmd/*.java"/>
 	</source>
 </module>

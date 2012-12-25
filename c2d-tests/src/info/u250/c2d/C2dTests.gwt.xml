@@ -4,7 +4,6 @@
 	<inherits name="info.u250.c2d" />
 	<source path="tests">
 		<exclude name="box2d/*.java"/>
-		<exclude name="parallax/*.java"/>
 		<exclude name="tiled/*.java"/>
 	</source>
 </module>

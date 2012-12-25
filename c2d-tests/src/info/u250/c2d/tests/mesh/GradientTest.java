@@ -7,7 +7,7 @@ import info.u250.c2d.engine.resources.AliasResourceManager;
 
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.GL10;
-import com.badlogic.gdx.graphics.glutils.ImmediateModeRenderer10;
+import com.badlogic.gdx.graphics.glutils.ImmediateModeRenderer20;
 
 
 public class GradientTest extends Engine {
@@ -34,7 +34,7 @@ public class GradientTest extends Engine {
 
 		@Override
 		public void onLoadedResourcesCompleted() {
-			final ImmediateModeRenderer10 renderer = new ImmediateModeRenderer10();
+			final ImmediateModeRenderer20 renderer = new ImmediateModeRenderer20(false,true,0);
 			Engine.setMainScene(new Scene() {
 				@Override
 				public void render(float delta) {
