@@ -14,7 +14,7 @@ public class MeshMaskAccessor implements TweenAccessor<FadeMask>{
 		case Transparency:
 			returnValues[0] = target.getTransparency();
 			return 1;
-		default: assert false; return -1;
+		default:  return -1;
 		}
 	}
 
@@ -23,7 +23,8 @@ public class MeshMaskAccessor implements TweenAccessor<FadeMask>{
 		switch(tweenType){
 		case Transparency:
 			target.setTransparency(newValues[0]);
-		default: assert false;
+		default: 
+			break;
 		}
 	}
 

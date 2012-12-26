@@ -2,7 +2,7 @@ package info.u250.c2d.tests.client;
 
 import info.u250.c2d.engine.Engine;
 import info.u250.c2d.engine.EngineCallback;
-import info.u250.c2d.tests.animations.LaserTest;
+import info.u250.c2d.tests.tools.MotionWelderTest;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Graphics.DisplayMode;
@@ -18,7 +18,7 @@ public class GwtLauncher extends GwtApplication {
 
 	@Override
 	public ApplicationListener getApplicationListener () {
-		Engine engine = new LaserTest();
+		Engine engine = new MotionWelderTest();
 		Engine.setEngineCallback(new EngineCallback() {
 			@Override
 			public void postLoad() {}
