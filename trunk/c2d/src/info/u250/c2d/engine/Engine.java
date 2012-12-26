@@ -33,6 +33,7 @@ import aurelienribon.tweenengine.TweenManager;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
+import com.badlogic.gdx.Application.ApplicationType;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.GL20;
@@ -179,8 +180,11 @@ public abstract class Engine extends ApplicationAdapter{
 			//set up the sprite batch
 			this.spriteBatch = new SpriteBatch();
 			//set up the default font
-			this.defaultFont = new BitmapFont(Gdx.files.internal("com/badlogic/gdx/utils/arial-15.fnt"),
-					Gdx.files.internal("com/badlogic/gdx/utils/arial-15.png"), false, true);
+			if(Gdx.app.getType()==ApplicationType.WebGL){
+				this.defaultFont = new BitmapFont(Gdx.files.internal("c2d.fnt"),false);
+			}else{
+				this.defaultFont = new BitmapFont();
+			}
 			//set up the default preferences
 			this.preferences = Gdx.app.getPreferences(engineConfig.configFile);
 			if(null!=engineCallback){
@@ -256,6 +260,8 @@ public abstract class Engine extends ApplicationAdapter{
 	
 	@Override
 	public final void render() {
+		if(null == startupLoading)return;
+		
 		if(Gdx.graphics.isGL20Available()){
 			Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		}else{
