@@ -7,17 +7,10 @@ import info.u250.c2d.engine.service.Renderable;
 import info.u250.c2d.graphic.parallax.ParallaxLayer.ParallaxLayerResult;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.files.FileHandle;
-import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.input.GestureDetector;
 import com.badlogic.gdx.input.GestureDetector.GestureListener;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
-import com.badlogic.gdx.utils.Json;
-import com.badlogic.gdx.utils.Json.Serializer;
-import com.badlogic.gdx.utils.ObjectMap;
 
 /**
  *  This only make a group only via to the {@link SpriteParallaxLayerDrawable} .if you want to 
@@ -253,14 +246,6 @@ public class ParallaxGroup extends Array<ParallaxLayer> implements Renderable{
 		}
 
 	}
-	
-	
-	public static ParallaxGroup  load(TextureAtlas atlas,FileHandle parallaxFile) {
-		return getJsonLoader(atlas,false).fromJson(ParallaxGroup.class,parallaxFile);
-	}
-	public static ParallaxGroup  load(TextureAtlas atlas,FileHandle parallaxFile,boolean useSystemCamera) {
-		return getJsonLoader(atlas,useSystemCamera).fromJson(ParallaxGroup.class,parallaxFile);
-	}
 	/**
 	 * @param width	The screenWith 
 	 * @param height The screenHeight
@@ -341,7 +326,6 @@ public class ParallaxGroup extends Array<ParallaxLayer> implements Renderable{
 						drawX = false;
 					}
 				}
-				//TODO
 			}
 			
 			if(layer.loopY!=-1){
@@ -373,56 +357,63 @@ public class ParallaxGroup extends Array<ParallaxLayer> implements Renderable{
 			this.camera.position.add(speed.x*delta,speed.y*delta, 0);
 		}
 	}
-	private static Json getJsonLoader(final TextureAtlas atlas,final boolean useSystemCamera) {
-		Json json = new Json();
-		json.setTypeName(null);
-		json.setUsePrototypes(false);
-
-		json.setSerializer(ParallaxGroup.class, new Serializer<ParallaxGroup>() {
-			@SuppressWarnings("rawtypes")
-			@Override
-			public void write(Json json, ParallaxGroup object,  Class knownType) {
-			}
-
-			@SuppressWarnings({ "unchecked", "rawtypes" })
-			@Override
-			public ParallaxGroup read(Json json, Object jsonData, Class type) {
-				final int width = json.readValue("width", Integer.class,jsonData);
-				final int height = json.readValue("height", Integer.class,jsonData);
-				final Array<ObjectMap<String, ?>> array = (Array<ObjectMap<String, ?>>) json.readValue("layers", Array.class, jsonData);
-				final Vector2 speed = new Vector2(json.readValue("speedX", float.class, jsonData),json.readValue("speedY", float.class, jsonData));
-				
-				
-				ParallaxGroup rbg = new ParallaxGroup(width, height , speed ,useSystemCamera);
-
-				for (ObjectMap<String, ?> layer_data : array) { 
-					rbg.add(json.readValue("layer",ParallaxLayer.class, layer_data));
-				}
-				return rbg;
-			}
-		});
-
-		json.setSerializer(ParallaxLayer.class, new Serializer<ParallaxLayer>() {
-			@SuppressWarnings("rawtypes")
-			@Override
-			public void write(Json json, ParallaxLayer object, Class type) {
-			}
-			@SuppressWarnings("rawtypes")
-			@Override
-			public ParallaxLayer read(Json json, Object jsonData, Class type) {
-				String name = json.readValue("region", String.class, jsonData);
-				final TextureRegion region = atlas.findRegion(name); 
-				final Vector2 parallaxRatio = new Vector2(json.readValue("parallaxRatioX", float.class, jsonData),json.readValue("parallaxRatioY", float.class, jsonData));
-				final Vector2 startPosition = new Vector2(json.readValue("startPositionX", float.class, jsonData),json.readValue("startPositionY", float.class, jsonData));
-				final Vector2 padding = new Vector2(json.readValue("paddingX", float.class, jsonData),json.readValue("paddingY", float.class, jsonData));
-				final int loopX = json.readValue("loopX", int.class, jsonData);
-				final int loopY = json.readValue("loopY", int.class, jsonData);
-				final ParallaxLayer ret = new ParallaxLayer(name,new SpriteParallaxLayerDrawable(new Sprite(region)),parallaxRatio,padding,loopX,loopY,startPosition);
-				return ret;
-			}
-		});
-
-		return json;
-	}
 	
+//	public static ParallaxGroup  load(TextureAtlas atlas,FileHandle parallaxFile) {
+//	return getJsonLoader(atlas,false).fromJson(ParallaxGroup.class,parallaxFile);
+//}
+//public static ParallaxGroup  load(TextureAtlas atlas,FileHandle parallaxFile,boolean useSystemCamera) {
+//	return getJsonLoader(atlas,useSystemCamera).fromJson(ParallaxGroup.class,parallaxFile);
+//}
+//	private static Json getJsonLoader(final TextureAtlas atlas,final boolean useSystemCamera) {
+//		Json json = new Json();
+//		json.setTypeName(null);
+//		json.setUsePrototypes(false);
+//
+//		json.setSerializer(ParallaxGroup.class, new Serializer<ParallaxGroup>() {
+//			@SuppressWarnings("rawtypes")
+//			@Override
+//			public void write(Json json, ParallaxGroup object,  Class knownType) {
+//			}
+//
+//			@SuppressWarnings({ "unchecked", "rawtypes" })
+//			@Override
+//			public ParallaxGroup read(Json json, Object jsonData, Class type) {
+//				final int width = json.readValue("width", Integer.class,jsonData);
+//				final int height = json.readValue("height", Integer.class,jsonData);
+//				final Array<ObjectMap<String, ?>> array = (Array<ObjectMap<String, ?>>) json.readValue("layers", Array.class, jsonData);
+//				final Vector2 speed = new Vector2(json.readValue("speedX", float.class, jsonData),json.readValue("speedY", float.class, jsonData));
+//				
+//				
+//				ParallaxGroup rbg = new ParallaxGroup(width, height , speed ,useSystemCamera);
+//
+//				for (ObjectMap<String, ?> layer_data : array) { 
+//					rbg.add(json.readValue("layer",ParallaxLayer.class, layer_data));
+//				}
+//				return rbg;
+//			}
+//		});
+//
+//		json.setSerializer(ParallaxLayer.class, new Serializer<ParallaxLayer>() {
+//			@SuppressWarnings("rawtypes")
+//			@Override
+//			public void write(Json json, ParallaxLayer object, Class type) {
+//			}
+//			@SuppressWarnings("rawtypes")
+//			@Override
+//			public ParallaxLayer read(Json json, Object jsonData, Class type) {
+//				String name = json.readValue("region", String.class, jsonData);
+//				final TextureRegion region = atlas.findRegion(name); 
+//				final Vector2 parallaxRatio = new Vector2(json.readValue("parallaxRatioX", float.class, jsonData),json.readValue("parallaxRatioY", float.class, jsonData));
+//				final Vector2 startPosition = new Vector2(json.readValue("startPositionX", float.class, jsonData),json.readValue("startPositionY", float.class, jsonData));
+//				final Vector2 padding = new Vector2(json.readValue("paddingX", float.class, jsonData),json.readValue("paddingY", float.class, jsonData));
+//				final int loopX = json.readValue("loopX", int.class, jsonData);
+//				final int loopY = json.readValue("loopY", int.class, jsonData);
+//				final ParallaxLayer ret = new ParallaxLayer(name,new SpriteParallaxLayerDrawable(new Sprite(region)),parallaxRatio,padding,loopX,loopY,startPosition);
+//				return ret;
+//			}
+//		});
+//
+//		return json;
+//	}
+//	
 }

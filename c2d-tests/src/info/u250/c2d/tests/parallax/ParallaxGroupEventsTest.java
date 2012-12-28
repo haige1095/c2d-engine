@@ -7,7 +7,10 @@ import info.u250.c2d.engine.Scene;
 import info.u250.c2d.engine.load.startup.LineLoading;
 import info.u250.c2d.engine.load.startup.StartupLoading;
 import info.u250.c2d.engine.resources.AliasResourceManager;
+import info.u250.c2d.graphic.AdvanceSprite;
 import info.u250.c2d.graphic.parallax.ParallaxGroup;
+import info.u250.c2d.graphic.parallax.ParallaxLayer;
+import info.u250.c2d.graphic.parallax.SpriteParallaxLayerDrawable;
 import info.u250.c2d.updatable.Day2NightEvent;
 import info.u250.c2d.updatable.ShakeCameraEvent;
 import info.u250.c2d.updatable.SpeedCameraEvent;
@@ -54,10 +57,13 @@ public class ParallaxGroupEventsTest extends Engine{
 		
 		@Override
 		public void onLoadedResourcesCompleted() {
-			rbg = ParallaxGroup.load(
-					Engine.resource("bgAtlas",TextureAtlas.class),
-					Gdx.files.internal("data/parallax/parallax.txt"));
-			
+			final TextureAtlas bgAtlas = Engine.resource("bgAtlas",TextureAtlas.class);
+			rbg = new ParallaxGroup(480, 320, new Vector2(50,100), false);
+			rbg.add(new ParallaxLayer("bg",new SpriteParallaxLayerDrawable(new AdvanceSprite(bgAtlas.findRegion("bg"))),new Vector2(),new Vector2(0,1000),-1,-1));
+			rbg.add(new ParallaxLayer("cloud",new SpriteParallaxLayerDrawable(new AdvanceSprite(bgAtlas.findRegion("cloud"))),new Vector2(0.5f,0),new Vector2(0,100),-1,-1,new Vector2(0,70)));
+			rbg.add(new ParallaxLayer("front",new SpriteParallaxLayerDrawable(new AdvanceSprite(bgAtlas.findRegion("front"))),new Vector2(1f,0),new Vector2(0,1000),-1,-1));
+			rbg.add(new ParallaxLayer("tree",new SpriteParallaxLayerDrawable(new AdvanceSprite(bgAtlas.findRegion("dock-tree"))),new Vector2(1f,0),new Vector2(1000,500),-1,-1));
+
 			ShakeCameraEvent = new ShakeCameraEvent(rbg.getCamera(),8, 4, 1f);
 			Day2NightEvent   = new Day2NightEvent(2, 0.3f, true);
 			ZoomCameraEvent  = new ZoomCameraEvent(rbg.getCamera(),5, 2f){
