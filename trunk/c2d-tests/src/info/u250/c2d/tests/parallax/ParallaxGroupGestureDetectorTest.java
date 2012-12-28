@@ -6,13 +6,16 @@ import info.u250.c2d.engine.Scene;
 import info.u250.c2d.engine.load.startup.StartupLoading;
 import info.u250.c2d.engine.load.startup.WindmillLoading;
 import info.u250.c2d.engine.resources.AliasResourceManager;
+import info.u250.c2d.graphic.AdvanceSprite;
 import info.u250.c2d.graphic.parallax.ParallaxGroup;
 import info.u250.c2d.graphic.parallax.ParallaxGroup.DefaultParallaxGroupGestureListener;
+import info.u250.c2d.graphic.parallax.ParallaxLayer;
+import info.u250.c2d.graphic.parallax.SpriteParallaxLayerDrawable;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.input.GestureDetector;
+import com.badlogic.gdx.math.Vector2;
 
 
 public class ParallaxGroupGestureDetectorTest  extends Engine{
@@ -42,9 +45,13 @@ public class ParallaxGroupGestureDetectorTest  extends Engine{
 		
 		@Override
 		public void onLoadedResourcesCompleted() {
-			rbg = ParallaxGroup.load(
-					Engine.resource("bgAtlas",TextureAtlas.class),
-					Gdx.files.internal("data/parallax/parallax.txt"));
+			final TextureAtlas bgAtlas = Engine.resource("bgAtlas",TextureAtlas.class);
+			rbg = new ParallaxGroup(480, 320, new Vector2(50,100), false);
+			rbg.add(new ParallaxLayer("bg",new SpriteParallaxLayerDrawable(new AdvanceSprite(bgAtlas.findRegion("bg"))),new Vector2(),new Vector2(0,1000),-1,-1));
+			rbg.add(new ParallaxLayer("cloud",new SpriteParallaxLayerDrawable(new AdvanceSprite(bgAtlas.findRegion("cloud"))),new Vector2(0.5f,0),new Vector2(0,100),-1,-1,new Vector2(0,70)));
+			rbg.add(new ParallaxLayer("front",new SpriteParallaxLayerDrawable(new AdvanceSprite(bgAtlas.findRegion("front"))),new Vector2(1f,0),new Vector2(0,1000),-1,-1));
+			rbg.add(new ParallaxLayer("tree",new SpriteParallaxLayerDrawable(new AdvanceSprite(bgAtlas.findRegion("dock-tree"))),new Vector2(1f,0),new Vector2(1000,500),-1,-1));
+
 			rbg.setSpeed(0, 0);
 			
 			Engine.setMainScene(new Scene() {
