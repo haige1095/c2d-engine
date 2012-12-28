@@ -24,7 +24,6 @@ import info.u250.c2d.tests.mesh.TinyWingsStripesTest;
 import info.u250.c2d.tests.misc.CustomLoadingTest;
 import info.u250.c2d.tests.misc.EventTest;
 import info.u250.c2d.tests.misc.IngameLoadingTest;
-import info.u250.c2d.tests.parallax.CustomDrawableTest;
 import info.u250.c2d.tests.parallax.ParallaxGroupEventsTest;
 import info.u250.c2d.tests.parallax.ParallaxGroupGestureDetectorTest;
 import info.u250.c2d.tests.particle.FollowableParticle;
@@ -173,14 +172,14 @@ public class C2dTests {
 			map.put("desc", "Parallax texture or layer . fill the screen");
 			map.put("image", "drawable/parallax");
 			final List<Map<String,Object>> subs = new ArrayList<Map<String,Object>>();
-			{
-				Map<String,Object> sub = new HashMap<String,Object>();
-				sub.put("title", "Custom Drawable");
-				sub.put("desc", "Custom drawable of the layer use tiled render");
-				sub.put("image", "drawable/item");
-				sub.put("cls", CustomDrawableTest.class.getName());
-				subs.add(sub);
-			}
+//			{
+//				Map<String,Object> sub = new HashMap<String,Object>();
+//				sub.put("title", "Custom Drawable");
+//				sub.put("desc", "Custom drawable of the layer use tiled render");
+//				sub.put("image", "drawable/item");
+//				sub.put("cls", CustomDrawableTest.class.getName());
+//				subs.add(sub);
+//			}
 			{
 				Map<String,Object> sub = new HashMap<String,Object>();
 				sub.put("title", "Parallax Events");

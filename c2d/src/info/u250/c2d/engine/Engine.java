@@ -18,22 +18,16 @@ import info.u250.c2d.engine.resources.AliasResourceManager;
 import info.u250.c2d.engine.resources.LanguagesManager;
 import info.u250.c2d.engine.resources.MusicManager;
 import info.u250.c2d.engine.resources.SoundManager;
-import info.u250.c2d.engine.service.Updatable;
 import info.u250.c2d.engine.transitions.TransitionFactory;
 import info.u250.c2d.graphic.C2dFps;
 import info.u250.c2d.graphic.FadeMask;
-import info.u250.c2d.updatable.PeriodUpdatable;
-
-import java.util.HashMap;
-import java.util.Map;
-
 import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenManager;
 
+import com.badlogic.gdx.Application.ApplicationType;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
-import com.badlogic.gdx.Application.ApplicationType;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.GL20;
@@ -109,8 +103,6 @@ public abstract class Engine extends ApplicationAdapter{
 	private TweenManager tweenManager;
 	/** if the game is running */
 	private boolean running = true; 
-	/***/
-	private Map<String,Updatable> updatables = new HashMap<String, Updatable>();
 	/**
 	 * This is one of the most important methods. 
 	 * The typical, all the game logic and rendering entry will go from here. 
@@ -280,9 +272,6 @@ public abstract class Engine extends ApplicationAdapter{
 					System.exit(-1);
 				}
 				tweenManager.update(delta*1000);
-				for(Updatable updatable: updatables.values()){
-					updatable.update(delta);
-				}
 				mainScene.update(delta);
 			}
 			eventManager.update(delta);
@@ -345,35 +334,6 @@ public abstract class Engine extends ApplicationAdapter{
 		return instance.musicManager;
 	}
 
-	/**
-	 * ZoomOut the background and give the correct action
-	 * shake the background ,etc
-	 */
-	public final static void  addUpdatable(String name,Updatable updatable) {
-		Object evt = instance.updatables.get(name);
-		PeriodUpdatable object = null;
-		if(null!=evt){
-			if(evt instanceof PeriodUpdatable){
-				object = (PeriodUpdatable)evt;
-				if(!object.isStart()){
-					object.go();
-				}
-			}
-		}else{
-			if(updatable instanceof PeriodUpdatable){
-				object = (PeriodUpdatable)updatable;
-				if(!object.isStart()){
-					object.go();
-				}
-			}
-		}
-		instance.updatables.put(name,object);
-	}
-	
-	public final static void  removeUpdatable(String name,Updatable updatable) {
-		instance.updatables.remove(name);
-	}
-	
 	public final static AliasResourceManager<String> getAliasResourceManager(){
 		return instance.aliasResourceManager;
 	}
