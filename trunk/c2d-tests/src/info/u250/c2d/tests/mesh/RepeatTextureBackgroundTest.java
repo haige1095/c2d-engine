@@ -5,7 +5,6 @@ import info.u250.c2d.engine.EngineDrive;
 import info.u250.c2d.engine.Scene;
 import info.u250.c2d.engine.resources.AliasResourceManager;
 import info.u250.c2d.graphic.background.RepeatTextureBackground;
-import info.u250.c2d.utils.SpriteUtils;
 
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Color;
@@ -43,7 +42,7 @@ public class RepeatTextureBackgroundTest extends Engine {
 		public void onLoadedResourcesCompleted() {
 			bg = new RepeatTextureBackground("BG");
 			sprite = new Sprite(Engine.resource("BG",Texture.class));
-			SpriteUtils.centerSprite(sprite);
+			sprite.setPosition(Engine.getWidth()/2, Engine.getHeight()/2);
 			Engine.setMainScene(new Scene() {
 				@Override
 				public void render(float delta) {

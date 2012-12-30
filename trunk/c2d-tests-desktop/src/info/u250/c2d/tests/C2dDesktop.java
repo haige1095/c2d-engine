@@ -25,6 +25,7 @@ public class C2dDesktop {
 	static class TestList extends JPanel {
 		private static final long serialVersionUID = -6629737055788922919L;
 
+		@SuppressWarnings({ "unchecked", "rawtypes" })
 		public TestList () {
 			setLayout(new BorderLayout());
 

@@ -19,7 +19,6 @@ import info.u250.c2d.engine.resources.LanguagesManager;
 import info.u250.c2d.engine.resources.MusicManager;
 import info.u250.c2d.engine.resources.SoundManager;
 import info.u250.c2d.engine.transitions.TransitionFactory;
-import info.u250.c2d.graphic.C2dFps;
 import info.u250.c2d.graphic.FadeMask;
 import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenManager;

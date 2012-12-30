@@ -56,11 +56,11 @@ public class ParallaxGroupEventsTest extends Engine{
 			rbg.addActor(new ParallaxLayer(rbg,new Image(new AdvanceSprite(bgAtlas.findRegion("dock-tree") )), new Vector2(1f,0),new Vector2(1000,1000), new Vector2()));
 
 			rbg.addAction(Actions.forever(Actions.sequence(
-					ParallaxGroupSpeedToAction.obtain(1000,300,2),
+					ParallaxGroupSpeedToAction.obtain(1000,300,1),
 					ParallaxGroupSpeedToAction.obtain(50,300,2),
 					Actions.scaleTo(2, 2,0.5f),
 					Actions.scaleTo(1, 1,1.5f),
-					Day2NightAction.obtain(new Color(0,0,0,1), 1),
+					Day2NightAction.obtain(new Color(0.2f,0.2f,0.2f,1), 2),
 					Day2NightAction.obtain(new Color(1,1,1,1), 1)
 					)));
 			final SceneStage stage = new SceneStage();

@@ -2,6 +2,6 @@
 <module rename-to="info.u250.c2d">
 	<inherits name="aurelienribon.tweenengine"/>
 	<source path="c2d">
-		<exclude name="engine/cmd/*.java"/>
+		<exclude name="engine/cmd/JarExportableCmd.java"/>
 	</source>
 </module>
