@@ -6,7 +6,7 @@ import com.badlogic.gdx.utils.Array;
 
 /**
  * Sometimes you may want to has muti layer of the scenes , that's what the {@link #SceneGroup()} do .
- * Such as a HUD scene on top of a Game scene . Its simply draw them togeter and all is up to you .
+ * Such as a HUD scene on top of a Game scene . Its simply draw them together and all is up to you .
  * @author lycying@gmail.com
  */
 public class SceneGroup extends Array<Scene> implements Scene {
