@@ -14,6 +14,7 @@ import info.u250.c2d.tests.animations.AnimationSpriteLoopWithTimesTest;
 import info.u250.c2d.tests.animations.GracefulEffectLabel;
 import info.u250.c2d.tests.animations.LaserTest;
 import info.u250.c2d.tests.animations.RainEffect;
+import info.u250.c2d.tests.box2d.Box2dC2dTest;
 import info.u250.c2d.tests.mesh.GradientEllipseTest;
 import info.u250.c2d.tests.mesh.GradientTest;
 import info.u250.c2d.tests.mesh.JumpyLineTest;
@@ -206,7 +207,14 @@ public class C2dTests {
 			map.put("desc", "Physical Engine . How to use the c2d box2d");
 			map.put("image", "drawable/box2d");
 			final List<Map<String,Object>> subs = new ArrayList<Map<String,Object>>();
-			
+			{
+				Map<String,Object> sub = new HashMap<String,Object>();
+				sub.put("title", "Box2d C2d test");
+				sub.put("desc", "Read datas from XML");
+				sub.put("image", "drawable/item");
+				sub.put("cls", Box2dC2dTest.class.getName());
+				subs.add(sub);
+			}
 			map.put("subs", subs);
 			tests.add(map);
 		}

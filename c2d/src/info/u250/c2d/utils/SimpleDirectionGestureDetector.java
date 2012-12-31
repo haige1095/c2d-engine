@@ -1,4 +1,4 @@
-package info.u250.c2d.input;
+package info.u250.c2d.utils;
 
 import com.badlogic.gdx.input.GestureDetector;
 /**
