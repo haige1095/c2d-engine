@@ -3,6 +3,7 @@ package info.u250.c2d.box2d;
 import info.u250.c2d.box2d.model.b2BodyDefModel;
 import info.u250.c2d.box2d.model.b2FixtureDefModel;
 import info.u250.c2d.box2d.model.b2JointDefModel;
+import info.u250.c2d.box2d.model.b2Scene;
 import info.u250.c2d.box2d.model.fixture.b2CircleFixtureDefModel;
 import info.u250.c2d.box2d.model.fixture.b2PolygonFixtureDefModel;
 import info.u250.c2d.box2d.model.fixture.b2RectangleFixtureDefModel;
@@ -35,6 +36,15 @@ import com.badlogic.gdx.physics.box2d.joints.WeldJointDef;
 import com.badlogic.gdx.physics.box2d.joints.WheelJointDef;
 
 public class DefaultBuilder {
+	public static void buildAll(World world,b2Scene model){
+		for(b2BodyDefModel body:model.bodyDefModels){
+			DefaultBuilder.buildBody(world, body);
+		}
+		for(b2JointDefModel joint:model.jointDefModels){
+			DefaultBuilder.buildJoint(world, joint);
+		}
+	}
+	
 	public static void buildBody(World world,b2BodyDefModel b2Body){
 		if(b2Body.fixtures.size()>0){
 			BodyDef bodyDef = new BodyDef();
@@ -63,7 +73,7 @@ public class DefaultBuilder {
 				def.filter.maskBits = b2Fixture.maskBits;
 				if(b2Fixture instanceof b2CircleFixtureDefModel){
 					CircleShape shape = new CircleShape();
-					shape.setRadius(b2CircleFixtureDefModel.class.cast(b2Fixture).radius/Box2dObject.RADIO);
+					shape.setRadius(((b2CircleFixtureDefModel)b2Fixture).radius/Box2dObject.RADIO);
 					def.shape = shape;
 					b2Body.body.createFixture(def);
 					shape.dispose();
@@ -101,7 +111,7 @@ public class DefaultBuilder {
 	
 	public static void buildJoint(World world,b2JointDefModel b2Joint){
 		if(b2Joint instanceof b2DistanceJointDefModel){
-			b2DistanceJointDefModel b2Def = b2DistanceJointDefModel.class.cast(b2Joint);
+			b2DistanceJointDefModel b2Def = (b2DistanceJointDefModel)(b2Joint);
 			DistanceJointDef def = new DistanceJointDef();
 			def.collideConnected = b2Def.collideConnected;
 			def.bodyA = b2Def.bodyA.body;
@@ -114,7 +124,7 @@ public class DefaultBuilder {
 			b2Def.joint = world.createJoint(def);
 			def = null;
 		}else if(b2Joint instanceof b2FrictionJointDefModel){
-			b2FrictionJointDefModel b2Def = b2FrictionJointDefModel.class.cast(b2Joint);
+			b2FrictionJointDefModel b2Def = (b2FrictionJointDefModel)(b2Joint);
 			FrictionJointDef def = new FrictionJointDef();
 			def.collideConnected = b2Def.collideConnected;
 			def.bodyA = b2Def.bodyA.body;
@@ -126,7 +136,7 @@ public class DefaultBuilder {
 			b2Def.joint = world.createJoint(def);
 			def = null;
 		}else if(b2Joint instanceof b2PrismaticJointDefModel){
-			b2PrismaticJointDefModel b2Def = b2PrismaticJointDefModel.class.cast(b2Joint);
+			b2PrismaticJointDefModel b2Def = (b2PrismaticJointDefModel)(b2Joint);
 			PrismaticJointDef def = new PrismaticJointDef();
 			def.collideConnected = b2Def.collideConnected;
 			def.bodyA = b2Def.bodyA.body;
@@ -144,7 +154,7 @@ public class DefaultBuilder {
 			b2Def.joint = world.createJoint(def);
 			def = null;
 		}else if(b2Joint instanceof b2RevoluteJointDefModel){
-			b2RevoluteJointDefModel b2Def = b2RevoluteJointDefModel.class.cast(b2Joint);
+			b2RevoluteJointDefModel b2Def = (b2RevoluteJointDefModel)(b2Joint);
 			RevoluteJointDef def = new RevoluteJointDef();
 			def.collideConnected = b2Def.collideConnected;
 			def.bodyA = b2Def.bodyA.body;
@@ -161,7 +171,7 @@ public class DefaultBuilder {
 			b2Def.joint = world.createJoint(def);
 			def = null;
 		}else if(b2Joint instanceof b2RopeJointDefModel){
-			b2RopeJointDefModel b2Def = b2RopeJointDefModel.class.cast(b2Joint);
+			b2RopeJointDefModel b2Def = (b2RopeJointDefModel)(b2Joint);
 			RopeJointDef def = new RopeJointDef();
 			def.collideConnected = b2Def.collideConnected;
 			def.bodyA = b2Def.bodyA.body;
@@ -172,7 +182,7 @@ public class DefaultBuilder {
 			b2Def.joint = world.createJoint(def);
 			def = null;
 		}else if(b2Joint instanceof b2WeldJointDefModel){
-			b2WeldJointDefModel b2Def = b2WeldJointDefModel.class.cast(b2Joint);
+			b2WeldJointDefModel b2Def = (b2WeldJointDefModel)(b2Joint);
 			WeldJointDef def = new WeldJointDef();
 			def.collideConnected = b2Def.collideConnected;
 			def.bodyA = b2Def.bodyA.body;
@@ -183,7 +193,7 @@ public class DefaultBuilder {
 			b2Def.joint = world.createJoint(def);
 			def = null;
 		}else if(b2Joint instanceof b2WheelJointDefModel){
-			b2WheelJointDefModel b2Def = b2WheelJointDefModel.class.cast(b2Joint);
+			b2WheelJointDefModel b2Def = (b2WheelJointDefModel)(b2Joint);
 			WheelJointDef def = new WheelJointDef();
 			def.collideConnected = b2Def.collideConnected;
 			def.bodyA = b2Def.bodyA.body;
@@ -199,7 +209,7 @@ public class DefaultBuilder {
 			b2Def.joint = world.createJoint(def);
 			def = null;
 		}else if(b2Joint instanceof b2PulleyJointDefModel){
-			b2PulleyJointDefModel b2Def = b2PulleyJointDefModel.class.cast(b2Joint);
+			b2PulleyJointDefModel b2Def = (b2PulleyJointDefModel)(b2Joint);
 			PulleyJointDef def = new PulleyJointDef();
 			def.collideConnected = b2Def.collideConnected;
 			def.bodyA = b2Def.bodyA.body;
@@ -214,7 +224,7 @@ public class DefaultBuilder {
 			b2Def.joint = world.createJoint(def);
 			def = null;
 		}else if(b2Joint instanceof b2GearJointDefModel){
-			b2GearJointDefModel b2Def = b2GearJointDefModel.class.cast(b2Joint);
+			b2GearJointDefModel b2Def = (b2GearJointDefModel)(b2Joint);
 			GearJointDef def = new GearJointDef();
 			def.collideConnected = b2Def.collideConnected;
 			def.bodyA = b2Def.bodyA.body;
