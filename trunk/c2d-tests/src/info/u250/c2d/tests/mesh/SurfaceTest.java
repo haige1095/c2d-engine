@@ -4,8 +4,8 @@ import info.u250.c2d.engine.Engine;
 import info.u250.c2d.engine.EngineDrive;
 import info.u250.c2d.engine.Scene;
 import info.u250.c2d.engine.resources.AliasResourceManager;
+import info.u250.c2d.graphic.surfaces.SurfaceData;
 import info.u250.c2d.graphic.surfaces.TriangleSurfaces;
-import info.u250.c2d.graphic.surfaces.data.SurfaceData;
 
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.GL10;

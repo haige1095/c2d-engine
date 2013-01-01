@@ -3,8 +3,8 @@ package info.u250.c2d.graphic.background;
 import info.u250.c2d.engine.Engine;
 import info.u250.c2d.engine.service.Disposable;
 import info.u250.c2d.engine.service.Renderable;
+import info.u250.c2d.graphic.surfaces.SurfaceData;
 import info.u250.c2d.graphic.surfaces.TriangleSurfaces;
-import info.u250.c2d.graphic.surfaces.data.SurfaceData;
 
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.math.Vector2;
