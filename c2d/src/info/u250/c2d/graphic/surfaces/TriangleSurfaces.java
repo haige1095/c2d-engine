@@ -1,7 +1,6 @@
 package info.u250.c2d.graphic.surfaces;
 
 import info.u250.c2d.engine.Engine;
-import info.u250.c2d.graphic.surfaces.data.SurfaceData;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL10;

@@ -1,4 +1,4 @@
-package info.u250.c2d.graphic.surfaces.data;
+package info.u250.c2d.graphic.surfaces;
 
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.math.Vector2;
