@@ -34,11 +34,8 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.math.Intersector;
-import com.badlogic.gdx.math.Plane;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
-import com.badlogic.gdx.math.collision.Ray;
 /**
  * The main game engine . it supply many usefully static method to access the managers of the game.
  * you game should begin here , and simply extends this.
@@ -310,13 +307,17 @@ public abstract class Engine extends ApplicationAdapter{
 		return instance.aliasResourceManager.get(key);
 	}
 	
-	private static Ray ray = null;
-	private final static Plane xzPlane = new Plane(new Vector3(0, 1, 0), new Vector3(1, 0, 0),new Vector3(1, 1, 0));
-	private final static Vector3 intersection = new Vector3();
+	//Change to OrthographicCamera
+//	private static Ray ray = null;
+//	private final static Plane xzPlane = new Plane(new Vector3(0, 1, 0), new Vector3(1, 0, 0),new Vector3(1, 1, 0));
+//	private final static Vector3 intersection = new Vector3();
 	public final static Vector2 screenToWorld(float x, float y) {	
-		ray = instance.defaultCamera.getPickRay(x, y);
-		Intersector.intersectRayPlane(ray, xzPlane, intersection);
-		return new Vector2(intersection.x,intersection.y);
+//		ray = instance.defaultCamera.getPickRay(x, y);
+//		Intersector.intersectRayPlane(ray, xzPlane, intersection);
+		instance.defaultCamera.unproject(Vector3.tmp.set(x, y, 0));
+//		screenCoords.x = Vector3.tmp.x;
+//		screenCoords.y = Vector3.tmp.y;
+		return new Vector2(Vector3.tmp.x,Vector3.tmp.y);
 	}
 	
 	
