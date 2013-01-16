@@ -7,6 +7,5 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/c2d"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/c2d-tests"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/gdx-tools"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/gdx-tiled-preprocessor"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
