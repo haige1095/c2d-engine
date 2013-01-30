@@ -168,7 +168,7 @@ public abstract class Engine extends ApplicationAdapter{
 			//set up the sprite batch
 			this.spriteBatch = new SpriteBatch();
 			//set up the default font
-			if(Gdx.app.getType()==ApplicationType.WebGL){
+			if(Gdx.app.getType()==ApplicationType.WebGL || Gdx.app.getType() == ApplicationType.iOS){
 				this.defaultFont = new BitmapFont(Gdx.files.internal("data/font-c2d.fnt"),false);
 			}else{
 				this.defaultFont = new BitmapFont();
