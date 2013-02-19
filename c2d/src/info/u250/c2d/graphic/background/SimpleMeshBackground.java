@@ -19,8 +19,8 @@ public class SimpleMeshBackground{
 		this.color2 = color2;
 	}
 	public void render (float delta) {
-		Engine.getShapeRenderer().begin(ShapeType.FilledRectangle);
-		Engine.getShapeRenderer().filledRect(0, 0, Engine.getWidth(), Engine.getHeight(), color1, color1, color2, color2);
+		Engine.getShapeRenderer().begin(ShapeType.Filled);
+		Engine.getShapeRenderer().rect(0, 0, Engine.getWidth(), Engine.getHeight(), color1, color1, color2, color2);
 		Engine.getShapeRenderer().end();
 	}
 }

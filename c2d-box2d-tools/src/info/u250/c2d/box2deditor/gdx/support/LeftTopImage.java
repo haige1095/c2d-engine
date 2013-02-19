@@ -27,8 +27,8 @@ public class LeftTopImage extends Image {
 		ShapeRenderer render = Engine.getShapeRenderer();
 
 		render.setColor(color);
-		render.begin(ShapeType.FilledRectangle);
-		render.filledRect(getX(), getY(), Engine.getWidth()*this.getScaleX(), this.getHeight()*this.getScaleX());
+		render.begin(ShapeType.Filled);
+		render.rect(getX(), getY(), Engine.getWidth()*this.getScaleX(), this.getHeight()*this.getScaleX());
 		render.end();
 		
 		super.draw(batch, parentAlpha);
