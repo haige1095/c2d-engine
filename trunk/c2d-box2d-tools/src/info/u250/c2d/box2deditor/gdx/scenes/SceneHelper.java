@@ -243,16 +243,16 @@ public class SceneHelper extends AbstractBox2dHelper<SceneModelAdapter> {
 		Gdx.gl.glEnable(GL10.GL_BLEND);
 		if(bodySelectMode && null!=data){
 			render.setColor(colorOuter);
-			render.begin(ShapeType.FilledCircle);
-			render.filledCircle(data.position.x, data.position.y, 150);
+			render.begin(ShapeType.Filled);
+			render.circle(data.position.x, data.position.y, 150);
 			render.end();
 			render.setColor(colorInner);
-			render.begin(ShapeType.FilledCircle);
-			render.filledCircle(data.position.x, data.position.y, 100);
+			render.begin(ShapeType.Filled);
+			render.circle(data.position.x, data.position.y, 100);
 			render.end();
 			render.setColor(colorOuter);
-			render.begin(ShapeType.FilledTriangle);
-			render.filledTriangle(
+			render.begin(ShapeType.Filled);
+			render.triangle(
 					data.position.x+100*MathUtils.cosDeg(data.degrees-30), 
 					data.position.y+100*MathUtils.sinDeg(data.degrees-30),
 					data.position.x+100*MathUtils.cosDeg(data.degrees+90), 
@@ -276,9 +276,9 @@ public class SceneHelper extends AbstractBox2dHelper<SceneModelAdapter> {
 					}
 				}
 				if(null!=b2.body){
-					render.begin(ShapeType.FilledCircle);
+					render.begin(ShapeType.Filled);
 					render.setColor(Color.RED);
-					render.filledCircle(b2.position.x, b2.position.y, 5);
+					render.circle(b2.position.x, b2.position.y, 5);
 					render.end();
 				}
 			

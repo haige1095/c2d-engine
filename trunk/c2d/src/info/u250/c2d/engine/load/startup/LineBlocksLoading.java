@@ -18,10 +18,10 @@ public class LineBlocksLoading extends StartupLoading{
 
 		final float width = (Engine.getWidth()-OFFSET*2)*this.percent();
 		Engine.getShapeRenderer().setColor(Color.WHITE);
-		Engine.getShapeRenderer().begin(ShapeType.FilledRectangle);
+		Engine.getShapeRenderer().begin(ShapeType.Filled);
 		for(int i=0;i*BLOCK*Engine.getWidth()<width;i++){
 			if(i%2==0){
-				Engine.getShapeRenderer().filledRect(OFFSET+i*BLOCK*Engine.getWidth(), Engine.getHeight()/2, BLOCK*Engine.getWidth() , HEIGHT*Engine.getHeight());
+				Engine.getShapeRenderer().rect(OFFSET+i*BLOCK*Engine.getWidth(), Engine.getHeight()/2, BLOCK*Engine.getWidth() , HEIGHT*Engine.getHeight());
 			}
 		}
 		Engine.getShapeRenderer().end();

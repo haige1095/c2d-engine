@@ -71,11 +71,11 @@ public class Geometry {
 		List<Vector2> temp = earClippingTriangulator.computeTriangles(vertices);
 		for(int i=0;i<temp.size();i=i+3){
 			render.setColor(focus?FocusColor:POLYGON);
-			render.begin(ShapeType.FilledTriangle);
-			render.filledTriangle(temp.get(i).x, temp.get(i).y, temp.get(i+1).x, temp.get(i+1).y, temp.get(i+2).x, temp.get(i+2).y);
+			render.begin(ShapeType.Filled);
+			render.triangle(temp.get(i).x, temp.get(i).y, temp.get(i+1).x, temp.get(i+1).y, temp.get(i+2).x, temp.get(i+2).y);
 			render.end();
 			render.setColor(Color.CYAN);
-			render.begin(ShapeType.Triangle);
+			render.begin(ShapeType.Line);
 			render.triangle(temp.get(i).x, temp.get(i).y, temp.get(i+1).x, temp.get(i+1).y, temp.get(i+2).x, temp.get(i+2).y);
 			render.end();
 		}
@@ -105,15 +105,15 @@ public class Geometry {
 		float half_diagonal = (float)Math.sqrt(box.width*box.width+box.height*box.height)/2;
 		
 		render.setColor(focus?FocusColor:BOX);
-		render.begin(ShapeType.FilledTriangle);
-		render.filledTriangle(
+		render.begin(ShapeType.Filled);
+		render.triangle(
 				position.x+MathUtils.cosDeg(180+rect_angle+angle)*half_diagonal, 
 				position.y+MathUtils.sinDeg(180+rect_angle+angle)*half_diagonal, 
 				position.x+MathUtils.cosDeg(-rect_angle+angle)*half_diagonal, 
 				position.y+MathUtils.sinDeg(-rect_angle+angle)*half_diagonal, 
 				position.x+MathUtils.cosDeg(rect_angle+angle)*half_diagonal, 
 				position.y+MathUtils.sinDeg(rect_angle+angle)*half_diagonal);
-		render.filledTriangle(
+		render.triangle(
 				position.x+MathUtils.cosDeg(180-rect_angle+angle)*half_diagonal, 
 				position.y+MathUtils.sinDeg(180-rect_angle+angle)*half_diagonal, 
 				position.x+MathUtils.cosDeg(180+rect_angle+angle)*half_diagonal, 
@@ -122,7 +122,7 @@ public class Geometry {
 				position.y+MathUtils.sinDeg(rect_angle+angle)*half_diagonal);
 		render.end();
 		render.setColor(focus?FocusColor_BORDER:BOX_BORDER);
-		render.begin(ShapeType.Triangle);
+		render.begin(ShapeType.Line);
 		render.triangle(
 				position.x+MathUtils.cosDeg(180+rect_angle+angle)*half_diagonal, 
 				position.y+MathUtils.sinDeg(180+rect_angle+angle)*half_diagonal, 
@@ -143,11 +143,11 @@ public class Geometry {
 	public static void renderCircle(b2CircleFixtureDefModel circle,Vector2 position,float angle,boolean focus){
 		ShapeRenderer render = Engine.getShapeRenderer();
 		render.setColor(focus?FocusColor:CIRCLE);
-		render.begin(ShapeType.FilledCircle);
-		render.filledCircle(position.x, position.y, circle.radius);
+		render.begin(ShapeType.Filled);
+		render.circle(position.x, position.y, circle.radius);
 		render.end();
 		render.setColor(focus?FocusColor_BORDER:CIRCLE_BORDER);
-		render.begin(ShapeType.Circle);
+		render.begin(ShapeType.Line);
 		render.circle(position.x, position.y, circle.radius);
 		render.end();
 		render.setColor(LINE);

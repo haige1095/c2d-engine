@@ -23,40 +23,40 @@ public class WindmillLoading extends StartupLoading{
 		Engine.getShapeRenderer().rotate(0, 0, 1, deltaAppend*50);
 		Engine.getShapeRenderer().setProjectionMatrix(Engine.getDefaultCamera().combined);
 		Engine.getShapeRenderer().setColor(Color.YELLOW);
-		Engine.getShapeRenderer().begin(ShapeType.FilledTriangle);
-		Engine.getShapeRenderer().filledTriangle(
+		Engine.getShapeRenderer().begin(ShapeType.Filled);
+		Engine.getShapeRenderer().triangle(
 				0,0,
 				-50,	100, 
 				50, 	100);
 		Engine.getShapeRenderer().end();
 		Engine.getShapeRenderer().setColor(Color.RED);
-		Engine.getShapeRenderer().begin(ShapeType.FilledTriangle);
-		Engine.getShapeRenderer().filledTriangle(
+		Engine.getShapeRenderer().begin(ShapeType.Filled);
+		Engine.getShapeRenderer().triangle(
 				0,0,
 				-50,	-100, 
 				50, 	-100);
 		Engine.getShapeRenderer().end();
 		Engine.getShapeRenderer().setColor(Color.BLUE);
-		Engine.getShapeRenderer().begin(ShapeType.FilledTriangle);
-		Engine.getShapeRenderer().filledTriangle(
+		Engine.getShapeRenderer().begin(ShapeType.Filled);
+		Engine.getShapeRenderer().triangle(
 				0,0,
 				-100,	-50, 
 				-100, 	50);
 		Engine.getShapeRenderer().end();
 		Engine.getShapeRenderer().setColor(Color.GREEN);
-		Engine.getShapeRenderer().begin(ShapeType.FilledTriangle);
-		Engine.getShapeRenderer().filledTriangle(
+		Engine.getShapeRenderer().begin(ShapeType.Filled);
+		Engine.getShapeRenderer().triangle(
 				0,0,
 				100,	-50, 
 				100, 	50);
 		Engine.getShapeRenderer().end();
 		Engine.getShapeRenderer().setColor(Color.WHITE);
-		Engine.getShapeRenderer().begin(ShapeType.FilledCircle);
-		Engine.getShapeRenderer().filledCircle(0, 0, 15);
+		Engine.getShapeRenderer().begin(ShapeType.Filled);
+		Engine.getShapeRenderer().circle(0, 0, 15);
 		Engine.getShapeRenderer().end();
 		Engine.getShapeRenderer().setColor(Color.ORANGE);
-		Engine.getShapeRenderer().begin(ShapeType.FilledCircle);
-		Engine.getShapeRenderer().filledCircle(0, 0, 10);
+		Engine.getShapeRenderer().begin(ShapeType.Filled);
+		Engine.getShapeRenderer().circle(0, 0, 10);
 		Engine.getShapeRenderer().end();
 	}
 }

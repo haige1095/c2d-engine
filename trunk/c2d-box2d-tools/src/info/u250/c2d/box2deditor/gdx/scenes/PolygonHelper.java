@@ -94,15 +94,15 @@ public class PolygonHelper extends AbstractBox2dHelper<PolygonFixtureDefModel> {
 	void drawSnap(){
 		final float SPACE = 5;
 		for(int i=0;i<model.polygon.size();i++){
-			render.begin(ShapeType.Rectangle);
+			render.begin(ShapeType.Line);
 			render.setColor(Color.BLUE);
 			render.rect(model.polygon.get(i).x-SPACE, model.polygon.get(i).y-SPACE, 2*SPACE, 2*SPACE);
 			render.end();
 		}
 		if(null!=snapPoint){
-			render.begin(ShapeType.FilledRectangle);
+			render.begin(ShapeType.Filled);
 			render.setColor(Color.BLUE);
-			render.filledRect(snapPoint.x-SPACE, snapPoint.y-SPACE, 2*SPACE, 2*SPACE);
+			render.rect(snapPoint.x-SPACE, snapPoint.y-SPACE, 2*SPACE, 2*SPACE);
 			render.end();
 		}
 		Engine.getSpriteBatch().begin();

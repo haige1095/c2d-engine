@@ -35,9 +35,9 @@ public class FadeMask {
 		Gdx.gl.glEnable(GL10.GL_BLEND);
 		Gdx.gl.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
 		Engine.getShapeRenderer().setProjectionMatrix(Engine.getDefaultCamera().combined);
-		Engine.getShapeRenderer().begin(ShapeType.FilledRectangle);
+		Engine.getShapeRenderer().begin(ShapeType.Filled);
 		Engine.getShapeRenderer().setColor(color);
-		Engine.getShapeRenderer().filledRect(0, 0, Engine.getWidth(), Engine.getHeight());
+		Engine.getShapeRenderer().rect(0, 0, Engine.getWidth(), Engine.getHeight());
 		Engine.getShapeRenderer().end();
 		Gdx.gl.glDisable(GL10.GL_BLEND);
 	}
