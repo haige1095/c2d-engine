@@ -11,6 +11,7 @@ import info.u250.c2d.engine.resources.rules.RuleSkin;
 import info.u250.c2d.engine.resources.rules.RuleSound;
 import info.u250.c2d.engine.resources.rules.RuleTexture;
 import info.u250.c2d.engine.resources.rules.RuleTextureAtlas;
+import info.u250.c2d.engine.resources.rules.RuleTmxMap;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -110,6 +111,7 @@ public class AliasResourceManager<K>  {
 		RULES.add(new RuleTextureAtlas());
 		RULES.add(new RuleFont());
 		RULES.add(new RuleSkin());
+		RULES.add(new RuleTmxMap());
 	}
 	public void addRule(LoadResourceRule rule){
 		RULES.add(rule);

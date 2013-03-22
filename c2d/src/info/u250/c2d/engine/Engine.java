@@ -28,12 +28,15 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 /**
@@ -159,6 +162,7 @@ public abstract class Engine extends ApplicationAdapter{
 			this.setupCamera();
 			//the resource manager
 			this.assetManager = new AssetManager();
+			this.assetManager.setLoader(TiledMap.class, new TmxMapLoader(new InternalFileHandleResolver()));
 			this.aliasResourceManager = new AliasResourceManager<String>();
 			this.soundManager = new SoundManager();
 			this.musicManager = new MusicManager();
@@ -311,13 +315,14 @@ public abstract class Engine extends ApplicationAdapter{
 //	private static Ray ray = null;
 //	private final static Plane xzPlane = new Plane(new Vector3(0, 1, 0), new Vector3(1, 0, 0),new Vector3(1, 1, 0));
 //	private final static Vector3 intersection = new Vector3();
+	private final static Vector3 unproject = new Vector3();
 	public final static Vector2 screenToWorld(float x, float y) {	
 //		ray = instance.defaultCamera.getPickRay(x, y);
 //		Intersector.intersectRayPlane(ray, xzPlane, intersection);
-		instance.defaultCamera.unproject(Vector3.tmp.set(x, y, 0));
+		instance.defaultCamera.unproject(unproject.set(x, y, 0));
 //		screenCoords.x = Vector3.tmp.x;
 //		screenCoords.y = Vector3.tmp.y;
-		return new Vector2(Vector3.tmp.x,Vector3.tmp.y);
+		return new Vector2(unproject.x,unproject.y);
 	}
 	
 	
