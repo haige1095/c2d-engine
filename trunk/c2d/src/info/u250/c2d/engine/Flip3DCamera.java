@@ -9,9 +9,12 @@ public class Flip3DCamera extends PerspectiveCamera {
 	private float angleX = 0;
 	private float angleY = 0;
 	private float angleZ = 0;
-	private Vector3 orbitReturnVector = new Vector3();
+	
 	private Vector3 lookAt = new Vector3();
 	
+	private Vector3 axisX = new Vector3(1,0,0);
+	private Vector3 axisY = new Vector3(0,1,0);
+	private Vector3 axisZ = new Vector3(0,0,1);
 	
 	public Flip3DCamera(float width,float height){
 		this.viewportWidth = width;
@@ -49,36 +52,21 @@ public class Flip3DCamera extends PerspectiveCamera {
 		return angleX;
 	}
 	public void setAngleX(float angleX) {
-		float orbitRadius = lookAt.dst(this.position);
-		this.position.set(lookAt);
-		this.rotate( angleX-this.angleX, 1, 0, 0);
-		orbitReturnVector.set(this.direction.tmp().mul(-orbitRadius));
-		this.translate(orbitReturnVector.x, orbitReturnVector.y, orbitReturnVector.z);
-	
+		this.rotateAround(lookAt, axisX , angleX-this.angleX);
 		this.angleX = angleX;
 	}
 	public float getAngleY() {
 		return angleY;
 	}
 	public void setAngleY(float angleY) {
-		 float orbitRadius = lookAt.dst(this.position);
-		 this.position.set(lookAt);
-		 this.rotate(angleY-this.angleY, 0, 1, 0);
-		 orbitReturnVector.set(this.direction.tmp().mul(-orbitRadius));
-		 this.translate(orbitReturnVector.x, orbitReturnVector.y, orbitReturnVector.z);
-
+		this.rotateAround(lookAt, axisY , angleY-this.angleY);
 		this.angleY = angleY;
 	}
 	public float getAngleZ() {
 		return angleZ;
 	}
 	public void setAngleZ(float angleZ) {	
-		float orbitRadius = lookAt.dst(this.position);
-		this.position.set(lookAt);
-		this.rotate( angleZ-this.angleZ, 0, 0, 1);
-		orbitReturnVector.set(this.direction.tmp().mul(-orbitRadius));
-		this.translate(orbitReturnVector.x, orbitReturnVector.y, orbitReturnVector.z);
-	
+		this.rotateAround(lookAt, axisZ , angleZ-this.angleZ);
 		this.angleZ = angleZ;
 	}
 
