@@ -59,7 +59,7 @@ public class MouseJointInput extends InputAdapter {
 	public boolean touchDown (int x, int y, int pointer, int newParam) {
 		if(world == null)return false;
 		// translate the mouse coordinates to world coordinates
-		testPoint.set(Engine.screenToWorld(x, y).mul(1/Box2dObject.RADIO));
+		testPoint.set(Engine.screenToWorld(x, y).scl(1/Box2dObject.RADIO));
 
 		// ask the world which bodies are within the given
 		// bounding box around the mouse pointer
@@ -94,7 +94,7 @@ public class MouseJointInput extends InputAdapter {
 		// the target of the joint based on the new
 		// mouse coordinates
 		if (mouseJoint != null) {
-			testPoint.set(Engine.screenToWorld(x, y).mul(1/Box2dObject.RADIO));
+			testPoint.set(Engine.screenToWorld(x, y).scl(1/Box2dObject.RADIO));
 			mouseJoint.setTarget(target.set(testPoint.x, testPoint.y));
 			return true;
 		}

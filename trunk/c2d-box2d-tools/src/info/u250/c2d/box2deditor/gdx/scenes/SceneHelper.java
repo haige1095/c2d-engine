@@ -342,8 +342,8 @@ public class SceneHelper extends AbstractBox2dHelper<SceneModelAdapter> {
 					DistanceJointDefModel def = new DistanceJointDefModel();
 					def.bodyA = data;
 					def.bodyB = secondData;
-					def.localAnchorA.set(def.bodyA.body.getLocalPoint(startPoint.cpy().div(Box2dObject.RADIO))).mul(Box2dObject.RADIO);
-					def.localAnchorB.set(def.bodyB.body.getLocalPoint(dragTemp.cpy().div(Box2dObject.RADIO))).mul(Box2dObject.RADIO);
+					def.localAnchorA.set(def.bodyA.body.getLocalPoint(startPoint.cpy().div(Box2dObject.RADIO))).scl(Box2dObject.RADIO);
+					def.localAnchorB.set(def.bodyB.body.getLocalPoint(dragTemp.cpy().div(Box2dObject.RADIO))).scl(Box2dObject.RADIO);
 					def.length = startPoint.dst(dragTemp);
 					Geometry.ajustJoint(def);
 					PhysicalWorld.MODEL.addJoint(def);
@@ -383,8 +383,8 @@ public class SceneHelper extends AbstractBox2dHelper<SceneModelAdapter> {
 					RopeJointDefModel def = new RopeJointDefModel();
 					def.bodyA = data;
 					def.bodyB = secondData;
-					def.localAnchorA.set(def.bodyA.body.getLocalPoint(startPoint.cpy().div(Box2dObject.RADIO))).mul(Box2dObject.RADIO);
-					def.localAnchorB.set(def.bodyB.body.getLocalPoint(dragTemp.cpy().div(Box2dObject.RADIO))).mul(Box2dObject.RADIO);
+					def.localAnchorA.set(def.bodyA.body.getLocalPoint(startPoint.cpy().div(Box2dObject.RADIO))).scl(Box2dObject.RADIO);
+					def.localAnchorB.set(def.bodyB.body.getLocalPoint(dragTemp.cpy().div(Box2dObject.RADIO))).scl(Box2dObject.RADIO);
 					Geometry.ajustJoint(def);
 					PhysicalWorld.MODEL.addJoint(def);
 					adapter.callUI.addModelToLeft(def);
@@ -436,8 +436,8 @@ public class SceneHelper extends AbstractBox2dHelper<SceneModelAdapter> {
 					PulleyJointDefModel def = new PulleyJointDefModel();
 					def.bodyA = data;
 					def.bodyB = secondData;
-					def.localAnchorA.set(def.bodyA.body.getLocalPoint(startPoint.cpy().div(Box2dObject.RADIO))).mul(Box2dObject.RADIO);
-					def.localAnchorB.set(def.bodyB.body.getLocalPoint(dragTemp.cpy().div(Box2dObject.RADIO))).mul(Box2dObject.RADIO);
+					def.localAnchorA.set(def.bodyA.body.getLocalPoint(startPoint.cpy().div(Box2dObject.RADIO))).scl(Box2dObject.RADIO);
+					def.localAnchorB.set(def.bodyB.body.getLocalPoint(dragTemp.cpy().div(Box2dObject.RADIO))).scl(Box2dObject.RADIO);
 					def.groundAnchorA.set(startPoint.x, 500);
 					def.groundAnchorB.set(dragTemp.x, 500);
 					def.lengthA = startPoint.dst(def.groundAnchorA);

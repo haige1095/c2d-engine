@@ -1,8 +1,6 @@
 package info.u250.c2d.graphic.surfaces;
 
 import info.u250.c2d.engine.Engine;
-import info.u250.c2d.engine.service.Disposable;
-import info.u250.c2d.engine.service.Renderable;
 
 import com.badlogic.gdx.graphics.Mesh;
 import com.badlogic.gdx.graphics.Texture;
@@ -12,7 +10,7 @@ import com.badlogic.gdx.graphics.Texture.TextureWrap;
  * which defined some base points and draw them ordered ,
  * @author lycying@gmail.com
  */
-public abstract class CurveSurfaces implements Renderable,Disposable{
+public abstract class CurveSurfaces implements com.badlogic.gdx.utils.Disposable{
 	/**
 	 * The render interface rounding the method {@link CurveSurfaces#render(float)}, used to give more controls 
 	 * @author lycying@gmail.com

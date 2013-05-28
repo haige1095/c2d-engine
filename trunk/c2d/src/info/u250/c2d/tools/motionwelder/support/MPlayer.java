@@ -4,8 +4,6 @@
 package info.u250.c2d.tools.motionwelder.support;
 
 import info.u250.c2d.engine.Engine;
-import info.u250.c2d.engine.service.Renderable;
-import info.u250.c2d.engine.service.Updatable;
 
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
@@ -62,7 +60,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
  *   @version 1.0
  *   @author Nitin Pokar (pokar.nitin@gmail.com)
  */
-public abstract class MPlayer implements Renderable,Updatable{
+public abstract class MPlayer {
 	
 	private MSpriteData data;
 	
@@ -570,7 +568,7 @@ public abstract class MPlayer implements Renderable,Updatable{
 //		else	
 //			g.drawRoundRect(xPos,yPos,width,height,arcWidth,arcHeight);		
 //	}
-	@Override
+	
 	public void render(float delta) {
 		this.drawFrame();
 	}
@@ -587,7 +585,7 @@ public abstract class MPlayer implements Renderable,Updatable{
 	private float speed = simulationFps/60f;
 	private float speedCount = 0;
 	
-	@Override
+	
 	public void update(float delta) {
 		speedCount +=delta;
 		if(speedCount>speed){

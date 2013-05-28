@@ -1,14 +1,13 @@
 package info.u250.c2d.engine;
 
 import info.u250.c2d.engine.Engine;
-import info.u250.c2d.engine.service.Renderable;
 
 import com.badlogic.gdx.Gdx;
 
 /**The FPS label was shown on top of all the scenes . Which show the performance of your game
  * @author lycying@gmail.com*/
-class C2dFps implements Renderable{
-	@Override
+class C2dFps{
+	
 	public void render(float delta){
 		String text = 
 				"FPS:"+ Math.min( Gdx.graphics.getFramesPerSecond(), 60)

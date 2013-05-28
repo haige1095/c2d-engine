@@ -4,7 +4,6 @@ import info.u250.c2d.engine.Engine;
 import info.u250.c2d.engine.EngineDrive;
 import info.u250.c2d.engine.Scene;
 import info.u250.c2d.engine.resources.AliasResourceManager;
-import info.u250.c2d.engine.service.Renderable;
 
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Color;
@@ -140,7 +139,7 @@ public class LaserTest extends Engine {
 		}
 	}
 }
-class Laser implements Renderable{
+class Laser {
 	public Vector2 positon = new Vector2() ;
 	public float len;
 	public Color color = new Color(Color.RED);
@@ -149,7 +148,7 @@ class Laser implements Renderable{
 
 	public Sprite begin1,begin2,mid1,mid2,end1,end2;
 	
-	@Override
+	
 	public void render(float delta) {
 		begin1.setColor(color);
 		begin2.setColor(rayColor);
