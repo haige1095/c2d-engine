@@ -1,7 +1,5 @@
 package info.u250.c2d.box2d;
 
-import info.u250.c2d.engine.service.Disposable;
-
 import java.util.List;
 
 import com.badlogic.gdx.Gdx;
@@ -9,15 +7,15 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.Mesh;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.VertexAttribute;
 import com.badlogic.gdx.graphics.Texture.TextureWrap;
+import com.badlogic.gdx.graphics.VertexAttribute;
 import com.badlogic.gdx.graphics.VertexAttributes.Usage;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
-public class PolygonActor extends Actor implements Disposable{
+public class PolygonActor extends Actor implements com.badlogic.gdx.utils.Disposable{
 	Texture texture ;
 	float[] vertices;
 	Mesh mesh;

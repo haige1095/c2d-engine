@@ -173,14 +173,6 @@ public class C2dTests {
 			map.put("desc", "Parallax texture or layer . fill the screen");
 			map.put("image", "drawable/parallax");
 			final List<Map<String,Object>> subs = new ArrayList<Map<String,Object>>();
-//			{
-//				Map<String,Object> sub = new HashMap<String,Object>();
-//				sub.put("title", "Custom Drawable");
-//				sub.put("desc", "Custom drawable of the layer use tiled render");
-//				sub.put("image", "drawable/item");
-//				sub.put("cls", CustomDrawableTest.class.getName());
-//				subs.add(sub);
-//			}
 			{
 				Map<String,Object> sub = new HashMap<String,Object>();
 				sub.put("title", "Parallax Events");
@@ -437,16 +429,23 @@ public class C2dTests {
 			tests.add(map);
 		}
 		//
-		{
-			Map<String,Object> map = new HashMap<String, Object>();
-			map.put("title", "The Tiledmap");
-			map.put("desc", "tiledmap");
-			map.put("image", "drawable/tiled");
-			final List<Map<String,Object>> subs = new ArrayList<Map<String,Object>>();
-			
-			map.put("subs", subs);
-			tests.add(map);
-		}
+//		{
+//			Map<String,Object> map = new HashMap<String, Object>();
+//			map.put("title", "The Tiledmap");
+//			map.put("desc", "tiledmap");
+//			map.put("image", "drawable/tiled");
+//			final List<Map<String,Object>> subs = new ArrayList<Map<String,Object>>();
+//			{
+//				Map<String,Object> sub = new HashMap<String,Object>();
+//				sub.put("title", "Custom Drawable");
+//				sub.put("desc", "Custom drawable of the layer use tiled render");
+//				sub.put("image", "drawable/item");
+//				sub.put("cls", TiledMapLoaderTest.class.getName());
+//				subs.add(sub);
+//			}
+//			map.put("subs", subs);
+//			tests.add(map);
+//		}
 		//
 		{
 			Map<String,Object> map = new HashMap<String, Object>();

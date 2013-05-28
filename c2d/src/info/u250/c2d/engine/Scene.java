@@ -1,8 +1,5 @@
 package info.u250.c2d.engine;
 
-import info.u250.c2d.engine.service.Renderable;
-import info.u250.c2d.engine.service.Updatable;
-
 import com.badlogic.gdx.InputProcessor;
 /**Scene is the main render loop drawable . Such as : main scene, game scene, help scene etc.
  * Many time , only one mainScene allowed besides the transitionScene.
@@ -10,7 +7,7 @@ import com.badlogic.gdx.InputProcessor;
  * another important method is {@link #getInputProcessor()} , which supply a user defined input process .
  * @author lycying@gmail.com
  */
-public abstract interface Scene extends Renderable,Updatable {
+public abstract interface Scene  {
 	/**all the game scene logic show be here if you want */
 	public abstract void update(float delta);
 	/**draw the game objects that on this scene */

@@ -99,7 +99,7 @@ public class Box2dObject extends Group{
 	 */
 	public void setPosition(final float x,final float y){
 		super.setPosition(x, y);
-		model.body.setTransform(new Vector2(x,y).add(model.drawableOffsetX,model.drawableOffsetY).mul(1/RADIO), model.body.getAngle());
+		model.body.setTransform(new Vector2(x,y).add(model.drawableOffsetX,model.drawableOffsetY).scl(1/RADIO), model.body.getAngle());
 	}
 	
 	public void setRotation(float degrees){

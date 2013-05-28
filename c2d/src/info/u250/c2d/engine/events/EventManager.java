@@ -1,6 +1,5 @@
 package info.u250.c2d.engine.events;
 
-import info.u250.c2d.engine.service.Updatable;
 
 /**<p>Provides a way to register/unregister events and listeners to handle the those events.
  * Any accsess can be from {@link info.u250.c2d.engine.Engine#getEventManager() } 
@@ -10,7 +9,7 @@ import info.u250.c2d.engine.service.Updatable;
  * <li>Fire the event when you want to make the event on use {@link #fire(String, Object)} , the event source can be null if you do not need this on the {@link EventListener}</li></ul></p>
  * @author lycying@gmail.com
  */
-public interface EventManager extends  Updatable{
+public interface EventManager{
 	/**
 	 * Registers a new event specifying the id and the object which generated the event
 	 */

@@ -1,8 +1,6 @@
 package info.u250.c2d.graphic.background;
 
 import info.u250.c2d.engine.Engine;
-import info.u250.c2d.engine.service.Disposable;
-import info.u250.c2d.engine.service.Renderable;
 import info.u250.c2d.graphic.surfaces.SurfaceData;
 import info.u250.c2d.graphic.surfaces.TriangleSurfaces;
 
@@ -15,7 +13,7 @@ import com.badlogic.gdx.utils.Array;
  * You should supply a alias name of the texture .
  * @author lycying@gmail.com
  */
-public class RepeatTextureBackground implements Renderable,Disposable{
+public class RepeatTextureBackground implements com.badlogic.gdx.utils.Disposable{
 	private TriangleSurfaces surface ;
 	public RepeatTextureBackground(String textureName){
 		SurfaceData data = new SurfaceData();
@@ -37,7 +35,7 @@ public class RepeatTextureBackground implements Renderable,Disposable{
 		surface.dispose();
 	}
 
-	@Override
+	
 	public void render(float delta) {
 		surface.render(delta);
 	}

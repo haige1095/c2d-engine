@@ -2,7 +2,6 @@ package info.u250.c2d.box2deditor.gdx.support;
 
 import info.u250.c2d.box2d.Box2dObject;
 import info.u250.c2d.box2deditor.gdx.PhysicalWorld;
-import info.u250.c2d.engine.service.Disposable;
 import info.u250.c2d.graphic.C2dStage;
 
 import com.badlogic.gdx.math.Rectangle;
@@ -15,7 +14,7 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 /**
  * One Instance At runtime . No More
  */
-public class Box2dStage extends C2dStage implements Disposable{
+public class Box2dStage extends C2dStage implements com.badlogic.gdx.utils.Disposable{
 	@Override
 	public void act(float delta) {
 		super.act(delta);
@@ -32,10 +31,10 @@ public class Box2dStage extends C2dStage implements Disposable{
 	public Body createScreenBox(final Rectangle rect){
 		ChainShape shape  = new ChainShape();
 		shape.createLoop(new Vector2[]{
-				new Vector2(rect.x,rect.y).mul(1/Box2dObject.RADIO),
-				new Vector2(rect.x+rect.width,rect.y).mul(1/Box2dObject.RADIO),
-				new Vector2(rect.x+rect.width,rect.y+rect.height).mul(1/Box2dObject.RADIO),
-				new Vector2(rect.x,rect.y+rect.height).mul(1/Box2dObject.RADIO),
+				new Vector2(rect.x,rect.y).scl(1/Box2dObject.RADIO),
+				new Vector2(rect.x+rect.width,rect.y).scl(1/Box2dObject.RADIO),
+				new Vector2(rect.x+rect.width,rect.y+rect.height).scl(1/Box2dObject.RADIO),
+				new Vector2(rect.x,rect.y+rect.height).scl(1/Box2dObject.RADIO),
 		});
 		
 		final FixtureDef fixtureDef = new FixtureDef();

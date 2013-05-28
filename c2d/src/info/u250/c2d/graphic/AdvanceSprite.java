@@ -1,7 +1,6 @@
 package info.u250.c2d.graphic;
 
 import info.u250.c2d.engine.Engine;
-import info.u250.c2d.engine.service.Renderable;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -17,7 +16,7 @@ import com.badlogic.gdx.utils.Array;
  *  </ul>
  * @author lycying@gmail.com
  */
-public class AdvanceSprite extends Sprite implements Renderable{
+public class AdvanceSprite extends Sprite {
 	private boolean visible = true;
 	
 	public boolean isVisible() {
@@ -36,7 +35,7 @@ public class AdvanceSprite extends Sprite implements Renderable{
 		super(sprite);
 	}
 	
-	@Override
+	
 	public void render(float delta) {
 		if(visible){
 			this.draw(Engine.getSpriteBatch());

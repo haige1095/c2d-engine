@@ -1,13 +1,12 @@
 package info.u250.c2d.engine;
 
 import info.u250.c2d.engine.resources.AliasResourceManager;
-import info.u250.c2d.engine.service.Disposable;
 
 /**A game must has a {@link EngineDrive} to supply a game logic . You game should begin here.
  * 
  * @author lycying@gmail.com
  */
-public interface EngineDrive extends Disposable{
+public interface EngineDrive extends com.badlogic.gdx.utils.Disposable{
 	/** setup the engine's config , its the config panel here */
 	public abstract EngineOptions onSetupEngine();
 	/** the game init should be here , you may init the game scene and sence group */ 
