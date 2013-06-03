@@ -29,7 +29,6 @@ import info.u250.c2d.tests.parallax.ParallaxGroupEventsTest;
 import info.u250.c2d.tests.parallax.ParallaxGroupGestureDetectorTest;
 import info.u250.c2d.tests.particle.FollowableParticle;
 import info.u250.c2d.tests.sfx.EngineSimpleSfxTest;
-import info.u250.c2d.tests.tools.MotionWelderTest;
 import info.u250.c2d.tests.transitions.FadeTest;
 import info.u250.c2d.tests.transitions.FadeWhiteTest;
 import info.u250.c2d.tests.transitions.FlipHTest;
@@ -289,24 +288,6 @@ public class C2dTests {
 				sub.put("desc", "The particle will follow your finger");
 				sub.put("image", "drawable/item");
 				sub.put("cls", FollowableParticle.class.getName());
-				subs.add(sub);
-			}
-			map.put("subs", subs);
-			tests.add(map);
-		}
-		//
-		{
-			Map<String,Object> map = new HashMap<String, Object>();
-			map.put("title", "Tools");
-			map.put("desc", "thrid tools that we supported");
-			map.put("image", "drawable/tools");
-			final List<Map<String,Object>> subs = new ArrayList<Map<String,Object>>();
-			{
-				Map<String,Object> sub = new HashMap<String,Object>();
-				sub.put("title", "Motion Welder");
-				sub.put("desc", "Motion Welder animation design tool");
-				sub.put("image", "drawable/item");
-				sub.put("cls", MotionWelderTest.class.getName());
 				subs.add(sub);
 			}
 			map.put("subs", subs);

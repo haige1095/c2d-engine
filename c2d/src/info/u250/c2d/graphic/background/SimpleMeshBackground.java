@@ -19,6 +19,7 @@ public class SimpleMeshBackground{
 		this.color2 = color2;
 	}
 	public void render (float delta) {
+		Engine.getShapeRenderer().setProjectionMatrix(Engine.getDefaultCamera().combined);
 		Engine.getShapeRenderer().begin(ShapeType.Filled);
 		Engine.getShapeRenderer().rect(0, 0, Engine.getWidth(), Engine.getHeight(), color1, color1, color2, color2);
 		Engine.getShapeRenderer().end();
