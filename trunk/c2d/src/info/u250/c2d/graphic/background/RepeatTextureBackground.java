@@ -27,8 +27,6 @@ public class RepeatTextureBackground implements com.badlogic.gdx.utils.Disposabl
 		data.texture = textureName;
 		data.followCamera = false;
 		surface = new TriangleSurfaces(data);
-		Engine.getDefaultCamera().position.y -= 100;
-		Engine.getDefaultCamera().position.x -= 100;
 	}
 	@Override
 	public void dispose() {
