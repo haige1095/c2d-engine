@@ -6,6 +6,7 @@ import info.u250.c2d.box2deditor.gdx.CallUIImpl;
 import info.u250.c2d.box2deditor.gdx.PhysicalWorld;
 import info.u250.c2d.box2deditor.gdx.support.AbstractBox2dHelper;
 import info.u250.c2d.box2deditor.gdx.support.BuildWorld;
+import info.u250.c2d.engine.Engine;
 import info.u250.c2d.engine.SceneGroup;
 
 import java.util.HashMap;
@@ -61,6 +62,7 @@ public class MainScene extends SceneGroup {
 	}
 	
 	public void simulation(){
+		Engine.doResume();
 		this.clear();
 		this.add(rightClickHelper);
 		this.add(simulationScene);
@@ -73,6 +75,7 @@ public class MainScene extends SceneGroup {
 		}));
 	}
 	public void stopSimulation(){
+		Engine.doResume();
 		simulationScene.addAction(Actions.run(new Runnable() {
 			@Override
 			public void run() {

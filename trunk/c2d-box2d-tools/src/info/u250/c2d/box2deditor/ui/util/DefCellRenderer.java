@@ -12,7 +12,6 @@ import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 import javax.swing.border.Border;
 
-@SuppressWarnings("rawtypes")
 public class DefCellRenderer extends JLabel implements ListCellRenderer {
 	private static final long serialVersionUID = -4431896294266156816L;
 	private static final Color HIGHLIGHT_COLOR = new Color(120, 181, 223);

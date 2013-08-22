@@ -45,7 +45,6 @@ import javax.swing.SwingUtilities;
 
 import com.badlogic.gdx.math.Vector2;
 
-@SuppressWarnings({"rawtypes","unchecked"})
 public class BodyDefPropertiesPanel extends AbstractBindablePropertiesPanel {
 	private static final long serialVersionUID = -2860320186841083760L;
 	private JSpinner spinnerAngularVelocity;

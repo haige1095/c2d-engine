@@ -20,7 +20,6 @@ import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-@SuppressWarnings({"rawtypes","unchecked"})
 public abstract class FixtureDefPropertiesPanel extends AbstractBindablePropertiesPanel {
 
 	private static final long serialVersionUID = -8501957140419675396L;

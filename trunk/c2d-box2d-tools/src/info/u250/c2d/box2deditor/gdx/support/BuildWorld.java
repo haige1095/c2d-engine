@@ -8,34 +8,36 @@ import info.u250.c2d.box2deditor.adapter.PolygonFixtureDefModel;
 import info.u250.c2d.box2deditor.adapter.SceneModelAdapter;
 import info.u250.c2d.box2deditor.gdx.PhysicalWorld;
 
-import java.util.Iterator;
-
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Joint;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.utils.Array;
 
 public class BuildWorld {
 	public static void stopSimulation(){
 		if(PhysicalWorld.WORLD!=null){
 			//destroy all joints 
-			Iterator<Joint> joints = PhysicalWorld.WORLD.getJoints();
-			while(joints.hasNext()){
+			Array<Joint> joints = new Array<Joint>();
+			PhysicalWorld.WORLD.getJoints(joints);
+			for(Joint j:joints){
 				try{
-					PhysicalWorld.WORLD.destroyJoint(joints.next());
+					PhysicalWorld.WORLD.destroyJoint(j);
 				}catch(Exception ex){
 					//do nothing
 				}
 			}
 			//destroy all body
-			Iterator<Body> bodys = PhysicalWorld.WORLD.getBodies();
-			while(bodys.hasNext()){
+			Array<Body> bodys = new Array<Body>();
+			PhysicalWorld.WORLD.getBodies(bodys);
+			for(Body body:bodys){
 				try{
-					PhysicalWorld.WORLD.destroyBody(bodys.next());
+					PhysicalWorld.WORLD.destroyBody(body);
 				}catch(Exception ex){
 					//do nothing
 				}
 			}
+			
 		}
 		PhysicalWorld.WORLD.dispose();
 		PhysicalWorld.WORLD = new World(new Vector2(0,-10), false);
