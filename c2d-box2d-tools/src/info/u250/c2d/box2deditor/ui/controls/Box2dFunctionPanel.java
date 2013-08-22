@@ -29,7 +29,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingUtilities;
-@SuppressWarnings({"rawtypes","unchecked"})
 public class Box2dFunctionPanel extends JPanel {
 
 	private static final long serialVersionUID = 1368673847228258801L;
