@@ -78,4 +78,9 @@ public class DefaultParallaxGroupGestureListener implements ParallaxGroupGesture
 	public boolean longPress(float x, float y) {
 		return false;
 	}
+
+	@Override
+	public boolean panStop(float x, float y, int pointer, int button) {
+		return false;
+	}
 }
