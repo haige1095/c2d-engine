@@ -21,15 +21,14 @@ import info.u250.c2d.box2deditor.adapter.WheelJointDefModel;
 import info.u250.c2d.engine.Engine;
 import info.u250.c2d.utils.Mathutils;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.EarClippingTriangulator;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.utils.FloatArray;
+import com.badlogic.gdx.utils.ShortArray;
 
 public class Geometry {
 	public static final Color COLOR_DistanceJoint = new Color(Color.RED);
@@ -58,43 +57,48 @@ public class Geometry {
 		final float cos = MathUtils.cosDeg(angle);
 		final float sin = MathUtils.sinDeg(angle);
 		
-		final List<Vector2> vertices = new ArrayList<Vector2>();
+		final FloatArray vertices = new FloatArray();
 		// rotate if needed
 		for(Vector2 v:polygon.polygon){
 			if (angle != 0) {
-				vertices.add(new Vector2(cos * v.x - sin * v.y,sin * v.x + cos * v.y).add(position));
+				vertices.add(cos * v.x - sin * v.y + position.x);
+				vertices.add(sin * v.x + cos * v.y + position.y);
 			}else{
-				vertices.add(v.cpy().add(position));
+				vertices.add(v.x + position.x);
+				vertices.add(v.y + position.y);
 			}
 		}
 		
-		List<Vector2> temp = earClippingTriangulator.computeTriangles(vertices);
-		for(int i=0;i<temp.size();i=i+3){
+		ShortArray temp = earClippingTriangulator.computeTriangles(vertices);
+		for(int i=0;i<temp.size;i+=3){
 			render.setColor(focus?FocusColor:POLYGON);
 			render.begin(ShapeType.Filled);
-			render.triangle(temp.get(i).x, temp.get(i).y, temp.get(i+1).x, temp.get(i+1).y, temp.get(i+2).x, temp.get(i+2).y);
+			render.triangle(vertices.get(2*temp.get(i)), vertices.get(2*temp.get(i)+1), vertices.get(2*temp.get(i+1)), vertices.get(2*temp.get(i+1)+1),vertices.get(2*temp.get(i+2)), vertices.get(2*temp.get(i+2)+1));
 			render.end();
 			render.setColor(Color.CYAN);
 			render.begin(ShapeType.Line);
-			render.triangle(temp.get(i).x, temp.get(i).y, temp.get(i+1).x, temp.get(i+1).y, temp.get(i+2).x, temp.get(i+2).y);
+			render.triangle(vertices.get(2*temp.get(i)), vertices.get(2*temp.get(i)+1), vertices.get(2*temp.get(i+1)), vertices.get(2*temp.get(i+1)+1),vertices.get(2*temp.get(i+2)), vertices.get(2*temp.get(i+2)+1));
 			render.end();
 		}
 		
 		render.setColor(focus?FocusColor_BORDER:POLYGON_BORDER);
 		render.begin(ShapeType.Line);
-		Vector2 lv = new Vector2();
-		Vector2 f  = new Vector2();
-		for (int i = 0; i < vertices.size(); i++) {
-			Vector2 v = vertices.get(i);
+		float sx = 0; float sy = 0;
+		float fx = 0; float fy = 0;
+		int vertexCount = vertices.size/2;
+		for (int i = 0; i < vertexCount; i++) {
+			float x = vertices.get(2*i) ;
+			float y = vertices.get(2*i+1);
 			if (i == 0) {
-				lv.set(v);
-				f.set(v);
+				sx = fx = x ;
+				sy = fy = y ;
 				continue;
 			}
-			render.line(lv.x, lv.y, v.x, v.y);
-			lv.set(v);
+			render.line(sx, sy, x, y);
+			sx = x;
+			sy = y;
 		}
-		render.line(f.x, f.y, lv.x, lv.y);
+		render.line(fx, fy, sx, sy);
 		render.end();
 		
 	}
@@ -274,12 +278,17 @@ public class Geometry {
 	}
 	public static void splitPolygon(PolygonFixtureDefModel object){
 		object.vertices.clear();
-		List<Vector2> temp = earClippingTriangulator.computeTriangles(object.polygon);
-		for(int i=0;i<temp.size();i=i+3){
+		final FloatArray vertices = new FloatArray();
+		for(Vector2 v:object.polygon){
+			vertices.add(v.x);
+			vertices.add(v.y);
+		}
+		ShortArray temp = earClippingTriangulator.computeTriangles(vertices);
+		for(int i=0;i<temp.size;i+=3){
 			Vector2[] vv = new Vector2[3];
-			vv[0] = temp.get(i);
-			vv[1] = temp.get(i+1);
-			vv[2] = temp.get(i+2);
+			vv[0] = new Vector2(vertices.get(2*temp.get(i)),vertices.get(2*temp.get(i)+1));
+			vv[1] = new Vector2(vertices.get(2*temp.get(i+1)),vertices.get(2*temp.get(i+1)+1));
+			vv[2] = new Vector2(vertices.get(2*temp.get(i+2)),vertices.get(2*temp.get(i+2)+1));
 			if (Mathutils.isClockwise(vv[0], vv[1], vv[2])) {
 				Vector2 vt = vv[0];
 				vv[0] = vv[2];
