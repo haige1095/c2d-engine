@@ -15,6 +15,7 @@ import info.u250.c2d.tests.animations.GracefulEffectLabel;
 import info.u250.c2d.tests.animations.LaserTest;
 import info.u250.c2d.tests.animations.RainEffect;
 import info.u250.c2d.tests.box2d.Box2dC2dTest;
+import info.u250.c2d.tests.mesh.FingerSwipeTest;
 import info.u250.c2d.tests.mesh.GradientEllipseTest;
 import info.u250.c2d.tests.mesh.GradientTest;
 import info.u250.c2d.tests.mesh.JumpyLineTest;
@@ -268,6 +269,14 @@ public class C2dTests {
 				Map<String,Object> sub = new HashMap<String, Object>();
 				sub.put("title", "Jumpy line");
 				sub.put("desc", " A line that jump jump jump .");
+				sub.put("image", "drawable/item");
+				sub.put("cls", FingerSwipeTest.class.getName());
+				subs.add(sub);
+			}
+			{
+				Map<String,Object> sub = new HashMap<String, Object>();
+				sub.put("title", "Finger Swipe");
+				sub.put("desc", "Surely most of you are familiar with the Fruit Ninja type of games. https://github.com/mattdesl/lwjgl-basics/wiki/LibGDX-Finger-Swipe");
 				sub.put("image", "drawable/item");
 				sub.put("cls", JumpyLineTest.class.getName());
 				subs.add(sub);

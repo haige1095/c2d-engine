@@ -17,15 +17,18 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
+import com.badlogic.gdx.backends.lwjgl.LwjglFiles;
+import com.badlogic.gdx.backends.lwjgl.LwjglPreferences;
+import com.badlogic.gdx.files.FileHandle;
 
 public class C2dDesktop {
 	
 	static class TestList extends JPanel {
 		private static final long serialVersionUID = -6629737055788922919L;
 
-		@SuppressWarnings({ "unchecked", "rawtypes" })
 		public TestList () {
 			setLayout(new BorderLayout());
 
@@ -45,6 +48,9 @@ public class C2dDesktop {
 				}
 			});
 
+			final Preferences prefs = new LwjglPreferences(new FileHandle(new LwjglFiles().getExternalStoragePath() + ".prefs/c2d-tests"));
+			list.setSelectedValue(prefs.getString("last", null), true);
+			
 			button.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed (ActionEvent e) {
@@ -58,6 +64,9 @@ public class C2dDesktop {
 					config.title = testName;
 					config.vSyncEnabled = true;
 
+					prefs.putString("last", testName);
+					prefs.flush();
+					
 					new LwjglApplication(test,  config);
 				}
 			});
