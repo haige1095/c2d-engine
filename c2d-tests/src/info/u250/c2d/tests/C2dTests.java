@@ -19,10 +19,12 @@ import info.u250.c2d.tests.mesh.FingerSwipeTest;
 import info.u250.c2d.tests.mesh.GradientEllipseTest;
 import info.u250.c2d.tests.mesh.GradientTest;
 import info.u250.c2d.tests.mesh.JumpyLineTest;
+import info.u250.c2d.tests.mesh.LightningTest;
 import info.u250.c2d.tests.mesh.RepeatTextureBackgroundTest;
 import info.u250.c2d.tests.mesh.SimpleMeshBackgroundTest;
 import info.u250.c2d.tests.mesh.SurfaceTest;
 import info.u250.c2d.tests.mesh.TinyWingsStripesTest;
+import info.u250.c2d.tests.mesh.WaterTest;
 import info.u250.c2d.tests.misc.CustomLoadingTest;
 import info.u250.c2d.tests.misc.EventTest;
 import info.u250.c2d.tests.misc.IngameLoadingTest;
@@ -279,6 +281,22 @@ public class C2dTests {
 				sub.put("desc", "Surely most of you are familiar with the Fruit Ninja type of games. https://github.com/mattdesl/lwjgl-basics/wiki/LibGDX-Finger-Swipe");
 				sub.put("image", "drawable/item");
 				sub.put("cls", JumpyLineTest.class.getName());
+				subs.add(sub);
+			}
+			{
+				Map<String,Object> sub = new HashMap<String, Object>();
+				sub.put("title", "WaterTest");
+				sub.put("desc", "Port from http://gamedev.tutsplus.com/tutorials/implementation/make-a-splash-with-2d-water-effects/");
+				sub.put("image", "drawable/item");
+				sub.put("cls", WaterTest.class.getName());
+				subs.add(sub);
+			}
+			{
+				Map<String,Object> sub = new HashMap<String, Object>();
+				sub.put("title", "LightTest");
+				sub.put("desc", "Port from http://gamedev.tutsplus.com/tutorials/implementation/how-to-generate-shockingly-good-2d-lightning-effects/");
+				sub.put("image", "drawable/item");
+				sub.put("cls", LightningTest.class.getName());
 				subs.add(sub);
 			}
 			map.put("subs", subs);
