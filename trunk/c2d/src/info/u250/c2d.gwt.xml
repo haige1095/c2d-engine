@@ -3,5 +3,6 @@
 	<inherits name="aurelienribon.tweenengine"/>
 	<source path="c2d">
 		<exclude name="engine/cmd/JarExportableCmd.java"/>
+		<exclude name="engine/tools/ExportTextureAtlasTool.java"/>
 	</source>
 </module>
