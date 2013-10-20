@@ -7,6 +7,7 @@ import info.u250.c2d.engine.resources.looper.LoopLoaderGeneral;
 import info.u250.c2d.engine.resources.looper.LoopLoaderWebGL;
 import info.u250.c2d.engine.resources.rules.RuleFont;
 import info.u250.c2d.engine.resources.rules.RuleMusic;
+import info.u250.c2d.engine.resources.rules.RuleParticleEffect;
 import info.u250.c2d.engine.resources.rules.RuleSkin;
 import info.u250.c2d.engine.resources.rules.RuleSound;
 import info.u250.c2d.engine.resources.rules.RuleTexture;
@@ -23,6 +24,7 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.Array;
@@ -93,6 +95,11 @@ public class AliasResourceManager<K>  {
 		this.resources.put(key, Engine.getAssetManager().get(res, Skin.class));
 		this.resources_alias.put(key, res);
 	}
+	/** quick access skin */
+	public void particleEffect(K key,String res){
+		this.resources.put(key, Engine.getAssetManager().get(res, ParticleEffect.class));
+		this.resources_alias.put(key, res);
+	}
 	/** quickly put any type resource object */
 	public <T> void object(K key,T res){
 		this.resources.put(key, res);
@@ -112,6 +119,7 @@ public class AliasResourceManager<K>  {
 		RULES.add(new RuleFont());
 		RULES.add(new RuleSkin());
 		RULES.add(new RuleTmxMap());
+		RULES.add(new RuleParticleEffect());
 	}
 	public void addRule(LoadResourceRule rule){
 		RULES.add(rule);
