@@ -16,6 +16,7 @@ import info.u250.c2d.tests.animations.LaserTest;
 import info.u250.c2d.tests.animations.RainEffect;
 import info.u250.c2d.tests.box2d.Box2dC2dTest;
 import info.u250.c2d.tests.mesh.FingerSwipeTest;
+import info.u250.c2d.tests.mesh.FlagTest;
 import info.u250.c2d.tests.mesh.GradientEllipseTest;
 import info.u250.c2d.tests.mesh.GradientTest;
 import info.u250.c2d.tests.mesh.JumpyLineTest;
@@ -297,6 +298,14 @@ public class C2dTests {
 				sub.put("desc", "Port from http://gamedev.tutsplus.com/tutorials/implementation/how-to-generate-shockingly-good-2d-lightning-effects/");
 				sub.put("image", "drawable/item");
 				sub.put("cls", LightningTest.class.getName());
+				subs.add(sub);
+			}
+			{
+				Map<String,Object> sub = new HashMap<String, Object>();
+				sub.put("title", "FlagTest");
+				sub.put("desc", "flag test");
+				sub.put("image", "drawable/item");
+				sub.put("cls", FlagTest.class.getName());
 				subs.add(sub);
 			}
 			map.put("subs", subs);

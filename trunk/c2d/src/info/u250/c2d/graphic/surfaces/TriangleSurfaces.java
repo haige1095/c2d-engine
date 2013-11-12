@@ -22,12 +22,43 @@ import com.badlogic.gdx.utils.Array;
  * @author lycying@gmail.com
  */
 public class TriangleSurfaces extends CurveSurfaces {
-	ShaderProgram shader = null;
-	
+	static ShaderProgram shader = null;
+	//used by engine dispose
+	public static void disposeShader(){
+		if(null != shader) shader.dispose();
+	}
 	private ShaderProgram createShader (){
-			ShaderProgram shader = new ShaderProgram(
-					Gdx.files.classpath("info/u250/c2d/graphic/surfaces/surface.vertex.glsl"), 
-					Gdx.files.classpath("info/u250/c2d/graphic/surfaces/surface.fragment.glsl"));
+			ShaderProgram shader = new ShaderProgram("#ifdef GL_ES\r\n" + 
+					"#define LOWP lowp\r\n" + 
+					"precision mediump float;\r\n" + 
+					"#else\r\n" + 
+					"#define LOWP \r\n" + 
+					"#endif\r\n" + 
+					"attribute vec4 a_position;\r\n" + 
+					"attribute vec2 a_texCoord0;\r\n" + 
+					"uniform mat4 u_projectionViewMatrix;\r\n" + 
+					"varying vec2 v_tex0;\r\n" + 
+					"void main() {\r\n" + 
+					"   gl_Position = u_projectionViewMatrix * a_position;\r\n" + 
+					"   v_tex0 = a_texCoord0;\r\n" + 
+					"}", 
+					
+					"#ifdef GL_ES\r\n" + 
+					"#define LOWP lowp\r\n" + 
+					"precision mediump float;\r\n" + 
+					"#else\r\n" + 
+					"#define LOWP \r\n" + 
+					"#endif\r\n" + 
+					"varying vec2 v_tex0;\r\n" + 
+					"uniform sampler2D u_texture0;\r\n" + 
+					"uniform vec4 u_color;\r\n" + 
+					"void main() {\r\n" + 
+					" if (u_color.r == 0.0 && u_color.g == 0.0 && u_color.b == 0.0 && u_color.a == 0.0 ) { \r\n" + 
+					" gl_FragColor = vec4(1, 0, 0, 0.5);\r\n" + 
+					"} else { \r\n" + 
+					" gl_FragColor = u_color; \r\n" + 
+					"} gl_FragColor = gl_FragColor *  texture2D(u_texture0,  v_tex0);\r\n" + 
+					"}");
 			return shader;
 		
 	}
@@ -35,9 +66,13 @@ public class TriangleSurfaces extends CurveSurfaces {
 	protected TriangleSurfaces(){}
 	public TriangleSurfaces(SurfaceData data) {
 		super(data);
-		if(Gdx.graphics.isGL20Available()) shader = createShader();
+		if(Gdx.graphics.isGL20Available()) if(null == shader ) shader = createShader();
 	}
 
+	Vector3 tmp = new Vector3(
+			Engine.getDefaultCamera().position.x - Engine.getWidth()/2,
+			Engine.getDefaultCamera().position.y - Engine.getHeight()/2,
+			0);
 	@Override
 	protected void doRender(float delta) {
 		if (null != mesh) {
@@ -53,11 +88,7 @@ public class TriangleSurfaces extends CurveSurfaces {
 				if(data.followCamera){
 					shader.setUniformMatrix("u_projectionViewMatrix", Engine.getDefaultCamera().combined);
 				}else{
-					shader.setUniformMatrix("u_projectionViewMatrix", Engine.getDefaultCamera().combined.translate(new Vector3(
-							Engine.getDefaultCamera().position.x - Engine.getWidth()/2,
-							Engine.getDefaultCamera().position.y - Engine.getHeight()/2,
-							0
-							)));
+					shader.setUniformMatrix("u_projectionViewMatrix", Engine.getDefaultCamera().combined.translate(tmp));
 				}
 				shader.setUniformf("u_color", 1, 1,1, 1);
 				shader.setUniformi("u_texture" + 0, 0);
@@ -89,7 +120,6 @@ public class TriangleSurfaces extends CurveSurfaces {
 	@Override
 	public void dispose() {
 		super.dispose();
-		if(null!=shader)shader.dispose();
 	}
 	protected float[] verticesForUnscaledTexture(Texture texture,
 			Array<Vector2> vertices) {
