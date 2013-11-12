@@ -95,7 +95,7 @@ public class AliasResourceManager<K>  {
 		this.resources.put(key, Engine.getAssetManager().get(res, Skin.class));
 		this.resources_alias.put(key, res);
 	}
-	/** quick access skin */
+	/** quick access particle */
 	public void particleEffect(K key,String res){
 		this.resources.put(key, Engine.getAssetManager().get(res, ParticleEffect.class));
 		this.resources_alias.put(key, res);

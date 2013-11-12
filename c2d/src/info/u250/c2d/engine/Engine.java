@@ -20,6 +20,7 @@ import info.u250.c2d.engine.resources.MusicManager;
 import info.u250.c2d.engine.resources.SoundManager;
 import info.u250.c2d.engine.transitions.TransitionFactory;
 import info.u250.c2d.graphic.FadeMask;
+import info.u250.c2d.graphic.surfaces.TriangleSurfaces;
 import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenManager;
 
@@ -405,6 +406,8 @@ public abstract class Engine extends ApplicationAdapter{
 	@Override
 	public void dispose() {
 		try{
+			TriangleSurfaces.disposeShader();//dispose the shader
+			
 			this.tweenManager.killAll();
 			engineDrive.dispose();
 			if(null!=shapeRenderer){
@@ -443,6 +446,7 @@ public abstract class Engine extends ApplicationAdapter{
 			super.dispose();
 		}catch (Exception ex){
 			//ignore
+			ex.printStackTrace();
 		}
 	}
 	
