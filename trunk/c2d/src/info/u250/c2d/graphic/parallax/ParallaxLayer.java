@@ -1,6 +1,6 @@
 package info.u250.c2d.graphic.parallax;
 
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
@@ -31,7 +31,7 @@ public class ParallaxLayer extends Group{
 	}
 	
 	@Override
-	public void draw(SpriteBatch batch, float parentAlpha) {
+	public void draw(Batch batch, float parentAlpha) {
 		float currentX =  - parallaxGroup.getResult().speedTracker.x * parallaxRatio.x % ( this.getWidth() + padding.x) ;
 		if(currentX>0){
 			currentX -= ( this.getWidth() + padding.x);

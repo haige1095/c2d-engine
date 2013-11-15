@@ -5,7 +5,7 @@ import info.u250.c2d.box2d.model.fixture.b2CircleFixtureDefModel;
 import info.u250.c2d.box2d.model.fixture.b2RectangleFixtureDefModel;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Action;
@@ -88,7 +88,7 @@ public class Box2dObject extends Group{
 	}
 	
 	@Override
-	public void draw(SpriteBatch batch, float parentAlpha) {
+	public void draw(Batch batch, float parentAlpha) {
 		final Vector2  position = model.body.getPosition();
 		this.setPosition(position.x*RADIO -model.drawableOffsetX,position.y*RADIO -model.drawableOffsetY);
 		this.setRotation(MathUtils.radiansToDegrees * model.body.getAngle());
