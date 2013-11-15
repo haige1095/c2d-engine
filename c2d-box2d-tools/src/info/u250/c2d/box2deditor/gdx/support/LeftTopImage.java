@@ -3,7 +3,7 @@ package info.u250.c2d.box2deditor.gdx.support;
 import info.u250.c2d.engine.Engine;
 
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
@@ -23,7 +23,7 @@ public class LeftTopImage extends Image {
 	}
 	Color color = new Color(1,1,154f/255f,1f);
 	@Override
-	public void draw(SpriteBatch batch, float parentAlpha) {
+	public void draw(Batch batch, float parentAlpha) {
 		ShapeRenderer render = Engine.getShapeRenderer();
 
 		render.setColor(color);

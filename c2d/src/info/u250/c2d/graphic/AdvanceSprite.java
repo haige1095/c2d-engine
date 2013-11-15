@@ -3,8 +3,8 @@ package info.u250.c2d.graphic;
 import info.u250.c2d.engine.Engine;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
@@ -43,14 +43,14 @@ public class AdvanceSprite extends Sprite {
 		this.shadowUpdate(delta);
 	}
 	@Override
-	public void draw(SpriteBatch spriteBatch) {
+	public void draw(Batch spriteBatch) {
 		if(visible){
 			super.draw(spriteBatch);
 			this.shadowRender(spriteBatch);
 		}
 	}
 	@Override
-	public void draw(SpriteBatch spriteBatch, float alphaModulation) {
+	public void draw(Batch spriteBatch, float alphaModulation) {
 		if(visible){
 			super.draw(spriteBatch, alphaModulation);
 			this.shadowRender(spriteBatch);
@@ -97,7 +97,7 @@ public class AdvanceSprite extends Sprite {
 			}
 		}
 	}
-	private void shadowRender(SpriteBatch batch){
+	private void shadowRender(Batch batch){
 		if(shadow){
 			for(int i=shadows.length-1;i>=0;i--){
 				Sprite shadow = shadows[i];

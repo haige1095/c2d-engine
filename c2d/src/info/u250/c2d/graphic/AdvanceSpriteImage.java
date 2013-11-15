@@ -3,7 +3,7 @@ package info.u250.c2d.graphic;
 import info.u250.c2d.engine.Engine;
 
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
 public class AdvanceSpriteImage extends Actor {
@@ -17,7 +17,7 @@ public class AdvanceSpriteImage extends Actor {
 		this.setHeight( this.sprite.getHeight() );
 	}
 	@Override
-	public void draw(SpriteBatch batch, float parentAlpha) {
+	public void draw(Batch batch, float parentAlpha) {
 		final Color color = getColor();
 		this.sprite.setOrigin(this.getOriginX(), this.getOriginY());
 		this.sprite.setColor(color);
